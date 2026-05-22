@@ -1,0 +1,9 @@
+# Python
+*.pyc
+__pycache__
+*.egg-info
+
+# Data
+src/archive
+src/visualize
+src/gqa_images

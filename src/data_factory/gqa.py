@@ -10,11 +10,109 @@ from typing import Any, Dict, List, Optional, Tuple
 from datasets import load_dataset
 
 
-IMAGE_OUTPUT_DIR = Path("/mnt/data2/eunwooim/rlpt/gqa/images/")
-LATEST_JSONL_PATH = Path("/mnt/data1/eunwooim/rlpt/archive/gqa_v1_latest.jsonl")
-FINAL_JSONL_PATH = Path("/mnt/data1/eunwooim/rlpt/src/data_factory/gqa_v1.jsonl")
-DEFAULT_SCENE_GRAPH_PATH = "/mnt/data2/eunwooim/rlpt/gqa/train_sceneGraphs.json" # Downloaded from: https://cs.stanford.edu/people/dorarad/gqa/download.html?utm_source=chatgpt.com
+# ============================================================
+# Paths
+# ============================================================
 
+DEFAULT_SCENE_GRAPH_PATH = "/mnt/data2/eunwooim/train_sceneGraph.json"
+DEFAULT_IMAGE_OUT_DIR = "/mnt/data1/eunwooim/rlpt/data/images/"
+DEFAULT_OUT_DIR = "/mnt/data1/eunwooim/rlpt/src/data_factory/qcvsr_gqa_v1/"
+
+
+# ============================================================
+# Config
+# ============================================================
+
+STUFF_OBJECTS = {
+    "water", "sky", "grass", "road", "street", "sidewalk", "floor", "ground",
+    "wall", "ceiling", "field", "snow", "sand", "sea", "ocean", "river",
+    "lake", "background", "room", "area", "place", "window", "building",
+    "cloud", "clouds", "tree leaves", "leaves"
+}
+
+TARGET_QUOTAS = {
+    "bbox_pair_spatial_compare": {
+        "left": 1000,
+        "right": 1000,
+        "higher": 1000,
+        "lower": 1000,
+    },
+    "bbox_pair_size_compare": {
+        "larger": 1000,
+        "smaller": 1000,
+    },
+    "count_pair_compare": {
+        "more_than_yesno": 1000,
+        "difference": 1000,
+    },
+}
+
+TRAIN_TEMPLATES = {
+    "left": [
+        "Which is farther left, the {a} or the {b}?",
+        "Which object is more to the left, the {a} or the {b}?",
+    ],
+    "right": [
+        "Which is farther right, the {a} or the {b}?",
+        "Which object is more to the right, the {a} or the {b}?",
+    ],
+    "higher": [
+        "Which is higher in the image, the {a} or the {b}?",
+        "Which object appears higher, the {a} or the {b}?",
+    ],
+    "lower": [
+        "Which is lower in the image, the {a} or the {b}?",
+        "Which object appears lower, the {a} or the {b}?",
+    ],
+    "larger": [
+        "Which object occupies a larger area, the {a} or the {b}?",
+        "Which looks larger in the image, the {a} or the {b}?",
+    ],
+    "smaller": [
+        "Which object occupies a smaller area, the {a} or the {b}?",
+        "Which looks smaller in the image, the {a} or the {b}?",
+    ],
+    "more_than_yesno": [
+        "Are there more {a}s than {b}s?",
+        "Does the image contain more {a}s than {b}s?",
+    ],
+    "difference": [
+        "How many more {a}s are there than {b}s?",
+        "What is the difference between the number of {a}s and {b}s?",
+    ],
+}
+
+OOD_TEMPLATES = {
+    "left": [
+        "Between the {a} and the {b}, which one is closer to the left side of the image?",
+    ],
+    "right": [
+        "Between the {a} and the {b}, which one is closer to the right side of the image?",
+    ],
+    "higher": [
+        "Between the {a} and the {b}, which one is closer to the top of the image?",
+    ],
+    "lower": [
+        "Between the {a} and the {b}, which one is closer to the bottom of the image?",
+    ],
+    "larger": [
+        "Between the {a} and the {b}, which has the bigger bounding region?",
+    ],
+    "smaller": [
+        "Between the {a} and the {b}, which has the smaller bounding region?",
+    ],
+    "more_than_yesno": [
+        "Is the count of {a}s greater than the count of {b}s?",
+    ],
+    "difference": [
+        "Subtract the number of {b}s from the number of {a}s. What is the result?",
+    ],
+}
+
+
+# ============================================================
+# Geometry utilities
+# ============================================================
 
 def clamp(v: float, lo: float, hi: float) -> float:
     return max(lo, min(hi, v))
@@ -25,7 +123,17 @@ def xywh_to_xyxy(box: List[float]) -> List[float]:
     return [x, y, x + w, y + h]
 
 
-def xyxy_pixel_to_norm1000(box: List[float], width: int, height: int) -> List[int]:
+def box_area(box: List[float]) -> float:
+    x1, y1, x2, y2 = box
+    return max(0.0, x2 - x1) * max(0.0, y2 - y1)
+
+
+def box_center(box: List[float]) -> Tuple[float, float]:
+    x1, y1, x2, y2 = box
+    return (x1 + x2) / 2.0, (y1 + y2) / 2.0
+
+
+def xyxy_to_norm1000(box: List[float], width: int, height: int) -> List[int]:
     x1, y1, x2, y2 = box
 
     x1 = clamp(x1, 0, width)
@@ -44,146 +152,28 @@ def xyxy_pixel_to_norm1000(box: List[float], width: int, height: int) -> List[in
     ]
 
 
-def is_valid_norm_box(box: List[int]) -> bool:
-    if len(box) != 4:
-        return False
+def valid_box(box: List[float], width: int, height: int) -> bool:
     x1, y1, x2, y2 = box
-    return 0 <= x1 < x2 <= 1000 and 0 <= y1 < y2 <= 1000
+    if x2 <= x1 or y2 <= y1:
+        return False
+
+    area_ratio = box_area(box) / float(width * height)
+    if area_ratio < 0.005:
+        return False
+    if area_ratio > 0.50:
+        return False
+
+    return True
 
 
-def normalize_answer(ans: Any) -> str:
-    return str(ans).strip().lower()
-
-
-def should_keep_answer(raw_answer: Any, max_answer_words: int = 4) -> bool:
-    ans = normalize_answer(raw_answer)
-    return bool(ans) and len(ans.split()) <= max_answer_words
-
+# ============================================================
+# IO utilities
+# ============================================================
 
 def load_scene_graphs(path: str) -> Dict[str, Any]:
     with open(path, "r", encoding="utf-8") as f:
-        scene_graphs = json.load(f)
-    return {str(k): v for k, v in scene_graphs.items()}
-
-
-def get_annotation_values(example: Dict[str, Any], key: str) -> List[str]:
-    annotations = example.get("annotations", {})
-    if not isinstance(annotations, dict):
-        return []
-
-    items = annotations.get(key, [])
-    if not isinstance(items, list):
-        return []
-
-    values = []
-    for item in items:
-        if isinstance(item, dict) and item.get("value") is not None:
-            values.append(str(item["value"]))
-
-    # preserve order, remove duplicates
-    seen = set()
-    out = []
-    for v in values:
-        if v not in seen:
-            seen.add(v)
-            out.append(v)
-    return out
-
-
-def lookup_scene_object(
-    scene_graphs: Dict[str, Any],
-    image_id: str,
-    object_id: str,
-) -> Optional[Dict[str, Any]]:
-    sg = scene_graphs.get(str(image_id))
-    if not isinstance(sg, dict):
-        return None
-
-    objects = sg.get("objects", {})
-    if not isinstance(objects, dict):
-        return None
-
-    obj = objects.get(str(object_id))
-    if not isinstance(obj, dict):
-        return None
-
-    if not all(k in obj for k in ("x", "y", "w", "h")):
-        return None
-
-    try:
-        x, y, w, h = float(obj["x"]), float(obj["y"]), float(obj["w"]), float(obj["h"])
-    except Exception:
-        return None
-
-    if w <= 0 or h <= 0:
-        return None
-
-    return {
-        "object_id": str(object_id),
-        "name": obj.get("name"),
-        "attributes": obj.get("attributes", []),
-        "relations": obj.get("relations", []),
-        "box_xywh_pixel": [x, y, w, h],
-        "box_xyxy_pixel": xywh_to_xyxy([x, y, w, h]),
-        "raw_object": obj,
-    }
-
-
-def extract_single_evidence_object(
-    example: Dict[str, Any],
-    scene_graphs: Dict[str, Any],
-) -> Tuple[Optional[Dict[str, Any]], str]:
-    """
-    Extract exactly one bbox-backed evidence object.
-
-    Priority:
-      1. annotations["answer"]
-      2. annotations["fullAnswer"]
-      3. annotations["question"]
-
-    For v1, we keep only examples where one of these fields maps to exactly
-    one valid scene-graph object. Multi-object evidence is skipped for now.
-    """
-    image_id = example.get("imageId")
-    if image_id is None:
-        return None, "missing_image_id"
-
-    for key in ("answer", "fullAnswer", "question"):
-        object_ids = get_annotation_values(example, key)
-        if not object_ids:
-            continue
-
-        candidates = []
-        for oid in object_ids:
-            obj = lookup_scene_object(scene_graphs, str(image_id), oid)
-            if obj is not None:
-                candidates.append(obj)
-
-        if len(candidates) == 1:
-            return candidates[0], f"ok_from_{key}"
-        if len(candidates) > 1:
-            return None, f"multiple_objects_from_{key}"
-
-    return None, "no_single_evidence_object"
-
-
-def build_prompt(question: str) -> str:
-    return (
-        "<image>\n"
-        f"Question: {question}\n\n"
-        'Output: <evidence>{"bbox":[x1,y1,x2,y2]}</evidence><answer>...</answer>\n'
-        "bbox uses normalized 0-1000 xyxy coordinates."
-    )
-
-
-def save_image(image_obj: Any, image_id: str) -> str:
-    IMAGE_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    path = IMAGE_OUTPUT_DIR / f"{image_id}.jpg"
-
-    if not path.exists():
-        image_obj.convert("RGB").save(path, quality=95)
-
-    return str(path)
+        raw = json.load(f)
+    return {str(k): v for k, v in raw.items()}
 
 
 def write_jsonl(records: List[Dict[str, Any]], path: Path) -> None:
@@ -191,121 +181,481 @@ def write_jsonl(records: List[Dict[str, Any]], path: Path) -> None:
     tmp_path = path.with_suffix(path.suffix + ".tmp")
 
     with tmp_path.open("w", encoding="utf-8") as f:
-        for r in records:
-            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+        for record in records:
+            f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
     tmp_path.replace(path)
 
 
-def print_sample(record: Dict[str, Any], prefix: str) -> None:
-    gt = record["reward_model"]["ground_truth"]
+def save_image(image_obj: Any, image_id: str, image_out_dir: str) -> str:
+    out_dir = Path(image_out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
 
-    print(f"\n[{prefix}]")
-    print("data_source:", record["data_source"])
-    print("image:", record["images"][0])
-    print("question:", record["extra_info"]["question"])
-    print("target_answer:", gt["target_answer"])
-    print("bbox_norm1000:", gt["target_evidence"]["bbox_xyxy_norm1000"])
-    print("bbox_pixel:", gt["target_evidence"]["bbox_xyxy_pixel"])
-    print("evidence_source:", record["extra_info"]["evidence_source"])
-    print("prompt:")
-    print(record["prompt"][0]["content"])
-    print("-" * 100)
+    path = out_dir / f"{image_id}.jpg"
+    if not path.exists():
+        image_obj.convert("RGB").save(path, quality=95)
+
+    return str(path)
 
 
-def build_record(
-    example: Dict[str, Any],
-    idx: int,
-    image_obj: Any,
+# ============================================================
+# Scene graph object extraction
+# ============================================================
+
+def normalize_name(name: Any) -> str:
+    return str(name).strip().lower()
+
+
+def extract_objects(
+    scene_graph: Dict[str, Any],
+    width: int,
+    height: int,
+) -> List[Dict[str, Any]]:
+    objects = scene_graph.get("objects", {})
+    if not isinstance(objects, dict):
+        return []
+
+    extracted = []
+
+    for object_id, obj in objects.items():
+        if not isinstance(obj, dict):
+            continue
+
+        name = normalize_name(obj.get("name"))
+        if not name or name in STUFF_OBJECTS:
+            continue
+
+        if not all(k in obj for k in ("x", "y", "w", "h")):
+            continue
+
+        try:
+            x = float(obj["x"])
+            y = float(obj["y"])
+            w = float(obj["w"])
+            h = float(obj["h"])
+        except Exception:
+            continue
+
+        if w <= 0 or h <= 0:
+            continue
+
+        bbox_pixel = xywh_to_xyxy([x, y, w, h])
+        if not valid_box(bbox_pixel, width, height):
+            continue
+
+        extracted.append(
+            {
+                "object_id": str(object_id),
+                "name": name,
+                "attributes": obj.get("attributes", []),
+                "relations": obj.get("relations", []),
+                "bbox_xywh_pixel": [x, y, w, h],
+                "bbox_xyxy_pixel": bbox_pixel,
+                "bbox_xyxy_norm1000": xyxy_to_norm1000(bbox_pixel, width, height),
+            }
+        )
+
+    return extracted
+
+
+# ============================================================
+# Prompt and record construction
+# ============================================================
+
+def build_prompt(question: str, schema: str, evidence_template: str) -> str:
+    return (
+        "<image>\n"
+        f"Question: {question}\n"
+        "Return exactly:\n"
+        f"<schema>{schema}</schema>\n"
+        f"<evidence>{evidence_template}</evidence>\n"
+        "<answer>...</answer>"
+    )
+
+
+def make_record(
+    *,
+    question_id: str,
+    data_source: str,
+    schema: str,
+    question: str,
+    evidence_template: str,
     image_path: str,
-    evidence_obj: Dict[str, Any],
-    evidence_source: str,
-) -> Optional[Dict[str, Any]]:
-    question = example.get("question")
-    raw_answer = example.get("answer")
-    image_id = example.get("imageId")
-    types_meta = example.get("types", {})
-
-    if not question or raw_answer is None or image_id is None:
-        return None
-
-    width, height = image_obj.size
-    bbox_pixel = evidence_obj["box_xyxy_pixel"]
-    bbox_norm1000 = xyxy_pixel_to_norm1000(bbox_pixel, width, height)
-
-    if not is_valid_norm_box(bbox_norm1000):
-        return None
-
-    structural = types_meta.get("structural", "unknown")
-    semantic = types_meta.get("semantic", "unknown")
-    detailed = types_meta.get("detailed", "unknown")
-    composite_key = f"{structural}_{semantic}_{detailed}"
-
-    target_answer = normalize_answer(raw_answer)
-
+    image_id: str,
+    target_evidence: Dict[str, Any],
+    target_answer: str,
+    verifier: str,
+    split: str,
+    operation: str,
+    extra_info: Dict[str, Any],
+) -> Dict[str, Any]:
     return {
-        "data_source": f"gqa_dual_{composite_key}",
-        "prompt": [{"role": "user", "content": build_prompt(question)}],
+        "question_id": question_id,
+        "data_source": data_source,
+        "prompt": [{"role": "user", "content": build_prompt(question, schema, evidence_template)}],
         "images": [image_path],
         "reward_model": {
             "style": "rule",
             "ground_truth": {
-                "target_evidence": {
-                    "bbox_xyxy_norm1000": bbox_norm1000,
-                    "bbox_xyxy_pixel": bbox_pixel,
-                    "bbox_format": "xyxy_norm1000",
-                    "image_width": width,
-                    "image_height": height,
-                },
-                "target_answer": target_answer,
+                "target_schema": schema,
+                "target_evidence": target_evidence,
+                "target_answer": str(target_answer).strip().lower(),
+                "verifier": verifier,
                 "reward_types": {
-                    "evidence": "iou",
-                    "answer": "exact_match",
+                    "schema": "exact_match",
+                    "evidence": "schema_specific",
+                    "answer": "exact_match_or_numeric",
+                    "consistency": "verifier",
                 },
             },
         },
-        "ability": "dual_evidence_answer",
+        "ability": "query_conditioned_visual_schema_reasoning",
         "extra_info": {
-            "gqa_id": example.get("id", str(idx)),
             "image_id": image_id,
-            "image_path": image_path,
             "question": question,
-            "raw_answer": str(raw_answer),
-            "normalized_answer": target_answer,
-            "composite_key": composite_key,
-            "structural_type": structural,
-            "semantic_type": semantic,
-            "detailed_type": detailed,
-            "evidence_source": evidence_source,
-            "evidence_object_id": evidence_obj["object_id"],
-            "evidence_object_name": evidence_obj.get("name"),
-            "bbox_xywh_pixel_raw": evidence_obj["box_xywh_pixel"],
+            "split": split,
+            "schema": schema,
+            "operation": operation,
+            **extra_info,
         },
     }
 
 
-def process_gqa_dual_reward(
-    dataset_repo: str = "lmms-lab/GQA",
-    instruction_config: str = "train_balanced_instructions",
-    image_config: str = "train_balanced_images",
+def node_pair_evidence(a: Dict[str, Any], b: Dict[str, Any], operation: str) -> Dict[str, Any]:
+    return {
+        "nodes": [
+            {
+                "id": "object_a",
+                "name": a["name"],
+                "bbox": a["bbox_xyxy_norm1000"],
+            },
+            {
+                "id": "object_b",
+                "name": b["name"],
+                "bbox": b["bbox_xyxy_norm1000"],
+            },
+        ],
+        "operation": operation,
+        "coordinate_format": "xyxy_norm1000",
+    }
+
+
+def bbox_pair_template() -> str:
+    return (
+        '{"nodes":[{"id":"object_a","name":"...","bbox":[x1,y1,x2,y2]},'
+        '{"id":"object_b","name":"...","bbox":[x1,y1,x2,y2]}],'
+        '"operation":"..."}'
+    )
+
+
+def count_pair_template() -> str:
+    return (
+        '{"nodes":[{"id":"class_a","name":"...","count":0},'
+        '{"id":"class_b","name":"...","count":0}],'
+        '"operation":"..."}'
+    )
+
+
+# ============================================================
+# Candidate generation
+# ============================================================
+
+def generate_spatial_candidates(
+    image_id: str,
+    image_path: str,
+    objects: List[Dict[str, Any]],
+    rng: random.Random,
+    split: str,
+    template_bank: Dict[str, List[str]],
+) -> List[Dict[str, Any]]:
+    candidates = []
+    schema = "bbox_pair_spatial_compare"
+    evidence_template = bbox_pair_template()
+
+    pairs = []
+    for i in range(len(objects)):
+        for j in range(i + 1, len(objects)):
+            a, b = objects[i], objects[j]
+            if a["name"] == b["name"]:
+                continue
+
+            ax, ay = box_center(a["bbox_xyxy_pixel"])
+            bx, by = box_center(b["bbox_xyxy_pixel"])
+
+            if abs(ax - bx) >= 50:
+                pairs.append((a, b, "left"))
+                pairs.append((a, b, "right"))
+            if abs(ay - by) >= 50:
+                pairs.append((a, b, "higher"))
+                pairs.append((a, b, "lower"))
+
+    rng.shuffle(pairs)
+
+    for a, b, operation in pairs:
+        ax, ay = box_center(a["bbox_xyxy_pixel"])
+        bx, by = box_center(b["bbox_xyxy_pixel"])
+
+        if operation == "left":
+            answer = a["name"] if ax < bx else b["name"]
+            verifier = "compare_x_center_min"
+        elif operation == "right":
+            answer = a["name"] if ax > bx else b["name"]
+            verifier = "compare_x_center_max"
+        elif operation == "higher":
+            answer = a["name"] if ay < by else b["name"]
+            verifier = "compare_y_center_min"
+        elif operation == "lower":
+            answer = a["name"] if ay > by else b["name"]
+            verifier = "compare_y_center_max"
+        else:
+            continue
+
+        question = rng.choice(template_bank[operation]).format(a=a["name"], b=b["name"])
+
+        target_evidence = node_pair_evidence(a, b, verifier)
+
+        candidates.append(
+            {
+                "data_source": "qcvsr_gqa_bbox_pair_spatial_compare",
+                "schema": schema,
+                "question": question,
+                "evidence_template": evidence_template,
+                "image_path": image_path,
+                "image_id": image_id,
+                "target_evidence": target_evidence,
+                "target_answer": answer,
+                "verifier": verifier,
+                "split": split,
+                "operation": operation,
+                "extra_info": {
+                    "object_a_id": a["object_id"],
+                    "object_b_id": b["object_id"],
+                    "object_a_bbox_pixel": a["bbox_xyxy_pixel"],
+                    "object_b_bbox_pixel": b["bbox_xyxy_pixel"],
+                },
+            }
+        )
+
+    return candidates
+
+
+def generate_size_candidates(
+    image_id: str,
+    image_path: str,
+    objects: List[Dict[str, Any]],
+    rng: random.Random,
+    split: str,
+    template_bank: Dict[str, List[str]],
+) -> List[Dict[str, Any]]:
+    candidates = []
+    schema = "bbox_pair_size_compare"
+    evidence_template = bbox_pair_template()
+
+    pairs = []
+    for i in range(len(objects)):
+        for j in range(i + 1, len(objects)):
+            a, b = objects[i], objects[j]
+            if a["name"] == b["name"]:
+                continue
+
+            area_a = box_area(a["bbox_xyxy_pixel"])
+            area_b = box_area(b["bbox_xyxy_pixel"])
+            ratio = max(area_a, area_b) / max(min(area_a, area_b), 1.0)
+
+            if ratio < 1.5:
+                continue
+
+            pairs.append((a, b, "larger"))
+            pairs.append((a, b, "smaller"))
+
+    rng.shuffle(pairs)
+
+    for a, b, operation in pairs:
+        area_a = box_area(a["bbox_xyxy_pixel"])
+        area_b = box_area(b["bbox_xyxy_pixel"])
+
+        if operation == "larger":
+            answer = a["name"] if area_a > area_b else b["name"]
+            verifier = "compare_bbox_area_max"
+        elif operation == "smaller":
+            answer = a["name"] if area_a < area_b else b["name"]
+            verifier = "compare_bbox_area_min"
+        else:
+            continue
+
+        question = rng.choice(template_bank[operation]).format(a=a["name"], b=b["name"])
+        target_evidence = node_pair_evidence(a, b, verifier)
+
+        candidates.append(
+            {
+                "data_source": "qcvsr_gqa_bbox_pair_size_compare",
+                "schema": schema,
+                "question": question,
+                "evidence_template": evidence_template,
+                "image_path": image_path,
+                "image_id": image_id,
+                "target_evidence": target_evidence,
+                "target_answer": answer,
+                "verifier": verifier,
+                "split": split,
+                "operation": operation,
+                "extra_info": {
+                    "object_a_id": a["object_id"],
+                    "object_b_id": b["object_id"],
+                    "object_a_bbox_pixel": a["bbox_xyxy_pixel"],
+                    "object_b_bbox_pixel": b["bbox_xyxy_pixel"],
+                },
+            }
+        )
+
+    return candidates
+
+
+def generate_count_candidates(
+    image_id: str,
+    image_path: str,
+    objects: List[Dict[str, Any]],
+    rng: random.Random,
+    split: str,
+    template_bank: Dict[str, List[str]],
+) -> List[Dict[str, Any]]:
+    candidates = []
+    schema = "count_pair_compare"
+    evidence_template = count_pair_template()
+
+    counts = Counter(obj["name"] for obj in objects)
+    names = sorted([name for name, count in counts.items() if count >= 1 and name not in STUFF_OBJECTS])
+
+    pairs = []
+    for i in range(len(names)):
+        for j in range(i + 1, len(names)):
+            a, b = names[i], names[j]
+            if counts[a] == counts[b]:
+                continue
+            pairs.append((a, b, "more_than_yesno"))
+            pairs.append((a, b, "difference"))
+
+    rng.shuffle(pairs)
+
+    for class_a, class_b, operation in pairs:
+        count_a = counts[class_a]
+        count_b = counts[class_b]
+
+        if operation == "more_than_yesno":
+            answer = "yes" if count_a > count_b else "no"
+            verifier = "compare_count_greater_than"
+        elif operation == "difference":
+            answer = str(count_a - count_b)
+            verifier = "count_difference"
+        else:
+            continue
+
+        question = rng.choice(template_bank[operation]).format(a=class_a, b=class_b)
+
+        target_evidence = {
+            "nodes": [
+                {"id": "class_a", "name": class_a, "count": count_a},
+                {"id": "class_b", "name": class_b, "count": count_b},
+            ],
+            "operation": verifier,
+        }
+
+        candidates.append(
+            {
+                "data_source": "qcvsr_gqa_count_pair_compare",
+                "schema": schema,
+                "question": question,
+                "evidence_template": evidence_template,
+                "image_path": image_path,
+                "image_id": image_id,
+                "target_evidence": target_evidence,
+                "target_answer": answer,
+                "verifier": verifier,
+                "split": split,
+                "operation": operation,
+                "extra_info": {},
+            }
+        )
+
+    return candidates
+
+
+# ============================================================
+# Split logic
+# ============================================================
+
+def split_image_ids(image_ids: List[str], seed: int) -> Dict[str, List[str]]:
+    rng = random.Random(seed)
+    ids = list(image_ids)
+    rng.shuffle(ids)
+
+    n = len(ids)
+    n_train = int(0.80 * n)
+    n_eval_id = int(0.07 * n)
+    n_ood_template = int(0.07 * n)
+
+    return {
+        "train": ids[:n_train],
+        "eval_id": ids[n_train:n_train + n_eval_id],
+        "eval_ood_template": ids[n_train + n_eval_id:n_train + n_eval_id + n_ood_template],
+        "eval_ood_operation": ids[n_train + n_eval_id + n_ood_template:],
+    }
+
+
+def get_quota_for_split(split: str, base_quotas: Dict[str, Dict[str, int]]) -> Dict[str, Dict[str, int]]:
+    if split == "train":
+        return base_quotas
+
+    factor = 0.10
+    out = {}
+    for schema, ops in base_quotas.items():
+        out[schema] = {op: max(50, int(v * factor)) for op, v in ops.items()}
+    return out
+
+
+def allowed_for_ood_operation(schema: str, operation: str) -> bool:
+    # Example OOD operation split:
+    # hold out vertical spatial operations from train-like generation.
+    if schema == "bbox_pair_spatial_compare":
+        return operation in {"higher", "lower"}
+    if schema == "bbox_pair_size_compare":
+        return operation in {"smaller"}
+    if schema == "count_pair_compare":
+        return operation in {"difference"}
+    return True
+
+
+def allowed_for_train_or_id(schema: str, operation: str) -> bool:
+    if schema == "bbox_pair_spatial_compare":
+        return operation in {"left", "right"}
+    if schema == "bbox_pair_size_compare":
+        return operation in {"larger"}
+    if schema == "count_pair_compare":
+        return operation in {"more_than_yesno"}
+    return True
+
+
+# ============================================================
+# Main generation
+# ============================================================
+
+def generate_dataset(
     scene_graph_path: str = DEFAULT_SCENE_GRAPH_PATH,
-    samples_per_composite_type: int = 200,
+    image_out_dir: str = DEFAULT_IMAGE_OUT_DIR,
+    out_dir: str = DEFAULT_OUT_DIR,
+    dataset_repo: str = "lmms-lab/GQA",
+    image_config: str = "train_balanced_images",
     seed: int = 42,
+    max_images: Optional[int] = None,
     checkpoint_every: int = 1000,
-    preview_every: int = 1000,
-    max_answer_words: int = 4,
 ) -> None:
-    IMAGE_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    LATEST_JSONL_PATH.parent.mkdir(parents=True, exist_ok=True)
+    rng = random.Random(seed)
+    out_dir_path = Path(out_dir)
+    out_dir_path.mkdir(parents=True, exist_ok=True)
 
-    print("Image dir:", IMAGE_OUTPUT_DIR)
-    print("Latest JSONL:", LATEST_JSONL_PATH)
-    print("Final JSONL:", FINAL_JSONL_PATH)
-
-    print(f"\nLoading instructions: {dataset_repo}/{instruction_config}")
-    instructions_raw = load_dataset(dataset_repo, instruction_config)
-    instructions_ds = instructions_raw["train"] if hasattr(instructions_raw, "keys") and "train" in instructions_raw else instructions_raw
-    instructions_ds = instructions_ds.shuffle(seed=seed)
+    print(f"Loading scene graph: {scene_graph_path}")
+    scene_graphs = load_scene_graphs(scene_graph_path)
+    print(f"Loaded scene graphs: {len(scene_graphs)}")
 
     print(f"Loading images: {dataset_repo}/{image_config}")
     images_raw = load_dataset(dataset_repo, image_config)
@@ -313,131 +663,157 @@ def process_gqa_dual_reward(
 
     id_col = "id" if "id" in images_ds.column_names else "imageId"
     image_id_to_idx = {str(img_id): idx for idx, img_id in enumerate(images_ds[id_col])}
-    print(f"Indexed {len(image_id_to_idx)} images")
 
-    print(f"Loading scene graph: {scene_graph_path}")
-    scene_graphs = load_scene_graphs(scene_graph_path)
-    print(f"Loaded {len(scene_graphs)} scene-graph entries")
+    image_ids = sorted(set(scene_graphs.keys()) & set(image_id_to_idx.keys()))
+    if max_images is not None:
+        rng.shuffle(image_ids)
+        image_ids = image_ids[:max_images]
 
-    records = []
+    split_to_ids = split_image_ids(image_ids, seed=seed)
+
+    all_outputs = {}
     skip_stats = Counter()
-    composite_counts = defaultdict(int)
 
-    for idx, example in enumerate(instructions_ds):
-        types_meta = example.get("types", {})
-        if not isinstance(types_meta, dict):
-            skip_stats["missing_types"] += 1
-            continue
+    for split, ids in split_to_ids.items():
+        print(f"\nGenerating split: {split}, images={len(ids)}")
 
-        structural = types_meta.get("structural")
-        semantic = types_meta.get("semantic")
-        detailed = types_meta.get("detailed")
+        quotas = get_quota_for_split(split, TARGET_QUOTAS)
+        quota_counts = {schema: Counter() for schema in quotas.keys()}
+        records = []
 
-        if not (structural and semantic and detailed):
-            skip_stats["incomplete_types"] += 1
-            continue
+        template_bank = OOD_TEMPLATES if split == "eval_ood_template" else TRAIN_TEMPLATES
 
-        if structural not in {"query", "choose", "verify"}:
-            skip_stats[f"unsupported_structural:{structural}"] += 1
-            continue
+        for image_id in ids:
+            if all(
+                quota_counts[schema][op] >= quotas[schema][op]
+                for schema in quotas
+                for op in quotas[schema]
+            ):
+                break
 
-        composite_key = f"{structural}_{semantic}_{detailed}"
-        if composite_counts.get(composite_key, 0) >= samples_per_composite_type:
-            skip_stats["quota_full"] += 1
-            continue
+            try:
+                image_row = images_ds[image_id_to_idx[image_id]]
+                image_obj = image_row.get("image")
+                if image_obj is None:
+                    skip_stats[f"{split}:missing_image"] += 1
+                    continue
 
-        question = example.get("question")
-        raw_answer = example.get("answer")
-        image_id = example.get("imageId")
+                width, height = image_obj.size
+                image_path = save_image(image_obj, image_id, image_out_dir)
 
-        if not question:
-            skip_stats["missing_question"] += 1
-            continue
-        if raw_answer is None:
-            skip_stats["missing_answer"] += 1
-            continue
-        if not should_keep_answer(raw_answer, max_answer_words=max_answer_words):
-            skip_stats["answer_too_long_or_empty"] += 1
-            continue
-        if image_id is None:
-            skip_stats["missing_image_id"] += 1
-            continue
+                objects = extract_objects(scene_graphs[image_id], width, height)
+                if len(objects) < 2:
+                    skip_stats[f"{split}:too_few_objects"] += 1
+                    continue
 
-        image_idx = image_id_to_idx.get(str(image_id))
-        if image_idx is None:
-            skip_stats["image_not_found"] += 1
-            continue
+                candidates = []
+                candidates.extend(generate_spatial_candidates(image_id, image_path, objects, rng, split, template_bank))
+                candidates.extend(generate_size_candidates(image_id, image_path, objects, rng, split, template_bank))
+                candidates.extend(generate_count_candidates(image_id, image_path, objects, rng, split, template_bank))
 
-        evidence_obj, evidence_status = extract_single_evidence_object(example, scene_graphs)
-        if evidence_obj is None:
-            skip_stats[f"evidence_fail:{evidence_status}"] += 1
-            continue
+                rng.shuffle(candidates)
 
-        image_row = images_ds[image_idx]
-        image_obj = image_row.get("image")
-        if image_obj is None:
-            skip_stats["missing_image_object"] += 1
-            continue
+                for cand in candidates:
+                    schema = cand["schema"]
+                    op = cand["operation"]
 
-        image_path = save_image(image_obj, str(image_id))
-        record = build_record(
-            example=example,
-            idx=idx,
-            image_obj=image_obj,
-            image_path=image_path,
-            evidence_obj=evidence_obj,
-            evidence_source=evidence_status,
+                    if schema not in quotas or op not in quotas[schema]:
+                        continue
+
+                    if split == "eval_ood_operation":
+                        if not allowed_for_ood_operation(schema, op):
+                            continue
+                    else:
+                        if not allowed_for_train_or_id(schema, op):
+                            continue
+
+                    if quota_counts[schema][op] >= quotas[schema][op]:
+                        continue
+
+                    qid = f"qcvsr_gqa_v1_{split}_{len(records):08d}"
+
+                    record = make_record(
+                        question_id=qid,
+                        data_source=cand["data_source"],
+                        schema=cand["schema"],
+                        question=cand["question"],
+                        evidence_template=cand["evidence_template"],
+                        image_path=cand["image_path"],
+                        image_id=cand["image_id"],
+                        target_evidence=cand["target_evidence"],
+                        target_answer=cand["target_answer"],
+                        verifier=cand["verifier"],
+                        split=split,
+                        operation=cand["operation"],
+                        extra_info={
+                            "question_id": qid,
+                            **cand["extra_info"],
+                        },
+                    )
+
+                    records.append(record)
+                    quota_counts[schema][op] += 1
+
+                    if checkpoint_every > 0 and len(records) % checkpoint_every == 0:
+                        latest_path = out_dir_path / f"latest_{split}.jsonl"
+                        write_jsonl(records, latest_path)
+                        print(f"[{split}] checkpoint records={len(records)} quota_counts={quota_counts}")
+
+            except Exception as e:
+                skip_stats[f"{split}:exception:{type(e).__name__}"] += 1
+                continue
+
+        records = sorted(
+            records,
+            key=lambda r: (
+                r["data_source"],
+                r["extra_info"]["operation"],
+                r["images"][0],
+                r["question_id"],
+            ),
         )
 
-        if record is None:
-            skip_stats["record_build_failed"] += 1
-            continue
+        # Reassign IDs after sorting.
+        for idx, record in enumerate(records):
+            qid = f"qcvsr_gqa_v1_{split}_{idx:08d}"
+            record["question_id"] = qid
+            record["extra_info"]["question_id"] = qid
 
-        records.append(record)
-        composite_counts[composite_key] += 1
+        out_path = out_dir_path / f"{split}.jsonl"
+        write_jsonl(records, out_path)
+        all_outputs[split] = records
 
-        n = len(records)
-        if n == 1:
-            print_sample(record, "FIRST VALID RECORD")
+        print(f"[{split}] written={len(records)} path={out_path}")
+        print(f"[{split}] quota_counts:")
+        for schema, counter in quota_counts.items():
+            print(f"  {schema}: {dict(counter)}")
 
-        if preview_every > 0 and n % preview_every == 0:
-            print_sample(record, f"VALID RECORD {n}")
+    # Combined train/eval convenience files.
+    train_path = out_dir_path / "train.jsonl"
+    eval_path = out_dir_path / "eval_all.jsonl"
 
-        if checkpoint_every > 0 and n % checkpoint_every == 0:
-            write_jsonl(records, LATEST_JSONL_PATH)
-            print(f"\n[checkpoint] seen={idx + 1}, written={n}, latest={LATEST_JSONL_PATH}")
-            print("[top skip reasons]")
-            for k, v in skip_stats.most_common(12):
-                print(f"  {k}: {v}")
+    write_jsonl(all_outputs.get("train", []), train_path)
 
-    records = sorted(records, key=lambda r: r["images"][0])
-    for q_idx, record in enumerate(records):
-        question_id = f"gqa_dual_v1_{q_idx:08d}"
-        record["question_id"] = question_id
-        record["extra_info"]["question_id"] = question_id
-    write_jsonl(records, LATEST_JSONL_PATH)
-    write_jsonl(records, FINAL_JSONL_PATH)
+    eval_records = []
+    for split in ["eval_id", "eval_ood_template", "eval_ood_operation"]:
+        eval_records.extend(all_outputs.get(split, []))
+    write_jsonl(eval_records, eval_path)
 
     print("\nDone.")
-    print("Written:", len(records))
-    print("Latest:", LATEST_JSONL_PATH)
-    print("Final:", FINAL_JSONL_PATH)
-    print("Images:", IMAGE_OUTPUT_DIR)
-
-    print("\nComposite counts:")
-    for k, v in sorted(composite_counts.items()):
-        print(f"  {k}: {v}")
-
+    print(f"Output dir: {out_dir_path}")
+    print(f"Train: {train_path}")
+    print(f"Eval all: {eval_path}")
     print("\nSkip stats:")
     for k, v in skip_stats.most_common():
         print(f"  {k}: {v}")
 
 
 if __name__ == "__main__":
-    process_gqa_dual_reward(
+    generate_dataset(
         scene_graph_path=DEFAULT_SCENE_GRAPH_PATH,
-        samples_per_composite_type=200,
-        checkpoint_every=10000,
-        preview_every=1000,
-        max_answer_words=4,
+        image_out_dir=DEFAULT_IMAGE_OUT_DIR,
+        out_dir=DEFAULT_OUT_DIR,
+        seed=42,
+        max_images=None,
+        checkpoint_every=1000,
     )
