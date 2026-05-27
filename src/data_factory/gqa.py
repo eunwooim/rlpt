@@ -1,6 +1,7 @@
 import os
-os.environ["HF_HOME"] = "/mnt/data2/eunwooim/data/rlpt/hf_cache/"
+os.environ.setdefault("HF_HOME", "/scratch/sghos104/rlpt/data/hf_cache/")
 
+import argparse
 import json
 import random
 from collections import Counter, defaultdict
@@ -14,9 +15,9 @@ from datasets import load_dataset
 # Paths
 # ============================================================
 
-DEFAULT_SCENE_GRAPH_PATH = "/mnt/data2/eunwooim/train_sceneGraph.json"
-DEFAULT_IMAGE_OUT_DIR = "/mnt/data1/eunwooim/rlpt/data/images/"
-DEFAULT_OUT_DIR = "/mnt/data1/eunwooim/rlpt/src/data_factory/qcvsr_gqa_v1/"
+DEFAULT_SCENE_GRAPH_PATH = "/scratch/sghos104/rlpt/data/scene_graphs/train_sceneGraph.json"
+DEFAULT_IMAGE_OUT_DIR = "/scratch/sghos104/rlpt/data/images/"
+DEFAULT_OUT_DIR = "/scratch/sghos104/rlpt/data/qcvsr_gqa_v1/"
 
 
 # ============================================================
@@ -30,22 +31,75 @@ STUFF_OBJECTS = {
     "cloud", "clouds", "tree leaves", "leaves"
 }
 
+# Irregular singular -> plural map for object names used in count templates.
+IRREGULAR_PLURALS = {
+    "man": "men", "woman": "women", "child": "children",
+    "person": "people", "foot": "feet", "tooth": "teeth",
+    "mouse": "mice", "goose": "geese", "ox": "oxen",
+}
+
+# Names that should not be pluralized (already plural, invariant, or
+# scene-graph annotations that are themselves the plural form).
+INVARIANT_PLURALS = {
+    "sheep", "deer", "fish", "moose", "salmon", "trout", "aircraft",
+    "series", "species", "men", "women", "children", "people",
+    "feet", "teeth", "mice", "geese", "oxen",
+}
+
+
+def pluralize(name: str) -> str:
+    """Pluralize the last word of an English noun phrase.
+
+    Handles irregular singulars, invariant nouns, and names already in
+    plural form (anything ending in 's'). Falls through to standard
+    suffix rules otherwise.
+    """
+    parts = name.split()
+    if not parts:
+        return name
+    last = parts[-1].lower()
+
+    if last in IRREGULAR_PLURALS:
+        parts[-1] = IRREGULAR_PLURALS[last]
+    elif last in INVARIANT_PLURALS:
+        return name
+    elif last.endswith("s"):
+        # Treat any name already ending in 's' as already plural. Avoids
+        # mangling scene-graph annotations like "pants" or "glasses".
+        return name
+    elif last.endswith(("x", "z", "ch", "sh")):
+        parts[-1] = last + "es"
+    elif last.endswith("y") and len(last) > 1 and last[-2] not in "aeiou":
+        parts[-1] = last[:-1] + "ies"
+    elif last.endswith("fe"):
+        parts[-1] = last[:-2] + "ves"
+    elif last.endswith("f") and len(last) > 1 and last[-2] not in "aeiou":
+        parts[-1] = last[:-1] + "ves"
+    else:
+        parts[-1] = last + "s"
+    return " ".join(parts)
+
 TARGET_QUOTAS = {
     "bbox_pair_spatial_compare": {
-        "left": 1000,
-        "right": 1000,
-        "higher": 1000,
-        "lower": 1000,
+        "left": 2500,
+        "right": 2500,
+        "higher": 2500,
+        "lower": 2500,
     },
     "bbox_pair_size_compare": {
-        "larger": 1000,
-        "smaller": 1000,
+        "larger": 2500,
+        "smaller": 2500,
     },
     "count_pair_compare": {
-        "more_than_yesno": 1000,
-        "difference": 1000,
+        "more_than_yesno": 2500,
+        "difference": 2500,
     },
 }
+
+# Cap on how many records a single image can contribute to any one (schema, op)
+# bucket in a split. Prevents object-dense scenes from dominating the dataset
+# and forces the quota loop to pull from many more unique images.
+MAX_RECORDS_PER_IMAGE_PER_OP = 2
 
 TRAIN_TEMPLATES = {
     "left": [
@@ -73,12 +127,12 @@ TRAIN_TEMPLATES = {
         "Which looks smaller in the image, the {a} or the {b}?",
     ],
     "more_than_yesno": [
-        "Are there more {a}s than {b}s?",
-        "Does the image contain more {a}s than {b}s?",
+        "Are there more {a_plural} than {b_plural}?",
+        "Does the image contain more {a_plural} than {b_plural}?",
     ],
     "difference": [
-        "How many more {a}s are there than {b}s?",
-        "What is the difference between the number of {a}s and {b}s?",
+        "How many more {a_plural} are there than {b_plural}?",
+        "What is the difference between the number of {a_plural} and {b_plural}?",
     ],
 }
 
@@ -102,10 +156,10 @@ OOD_TEMPLATES = {
         "Between the {a} and the {b}, which has the smaller bounding region?",
     ],
     "more_than_yesno": [
-        "Is the count of {a}s greater than the count of {b}s?",
+        "Is the count of {a_plural} greater than the count of {b_plural}?",
     ],
     "difference": [
-        "Subtract the number of {b}s from the number of {a}s. What is the result?",
+        "Subtract the number of {b_plural} from the number of {a_plural}. What is the result?",
     ],
 }
 
@@ -550,7 +604,10 @@ def generate_count_candidates(
         else:
             continue
 
-        question = rng.choice(template_bank[operation]).format(a=class_a, b=class_b)
+        question = rng.choice(template_bank[operation]).format(
+            a=class_a, b=class_b,
+            a_plural=pluralize(class_a), b_plural=pluralize(class_b),
+        )
 
         target_evidence = {
             "nodes": [
@@ -713,6 +770,8 @@ def generate_dataset(
 
                 rng.shuffle(candidates)
 
+                per_image_op_count: Counter = Counter()
+
                 for cand in candidates:
                     schema = cand["schema"]
                     op = cand["operation"]
@@ -728,6 +787,9 @@ def generate_dataset(
                             continue
 
                     if quota_counts[schema][op] >= quotas[schema][op]:
+                        continue
+
+                    if per_image_op_count[(schema, op)] >= MAX_RECORDS_PER_IMAGE_PER_OP:
                         continue
 
                     qid = f"qcvsr_gqa_v1_{split}_{len(records):08d}"
@@ -753,6 +815,7 @@ def generate_dataset(
 
                     records.append(record)
                     quota_counts[schema][op] += 1
+                    per_image_op_count[(schema, op)] += 1
 
                     if checkpoint_every > 0 and len(records) % checkpoint_every == 0:
                         latest_path = out_dir_path / f"latest_{split}.jsonl"
@@ -808,12 +871,29 @@ def generate_dataset(
         print(f"  {k}: {v}")
 
 
+def _parse_args() -> argparse.Namespace:
+    p = argparse.ArgumentParser(description="Generate QCVSR GQA synthetic dataset.")
+    p.add_argument("--scene-graph-path", default=DEFAULT_SCENE_GRAPH_PATH)
+    p.add_argument("--image-out-dir", default=DEFAULT_IMAGE_OUT_DIR)
+    p.add_argument("--out-dir", default=DEFAULT_OUT_DIR)
+    p.add_argument("--dataset-repo", default="lmms-lab/GQA")
+    p.add_argument("--image-config", default="train_balanced_images")
+    p.add_argument("--seed", type=int, default=42)
+    p.add_argument("--max-images", type=int, default=None,
+                   help="Limit number of images processed (after the dataset is loaded). None = all.")
+    p.add_argument("--checkpoint-every", type=int, default=1000)
+    return p.parse_args()
+
+
 if __name__ == "__main__":
+    args = _parse_args()
     generate_dataset(
-        scene_graph_path=DEFAULT_SCENE_GRAPH_PATH,
-        image_out_dir=DEFAULT_IMAGE_OUT_DIR,
-        out_dir=DEFAULT_OUT_DIR,
-        seed=42,
-        max_images=None,
-        checkpoint_every=1000,
+        scene_graph_path=args.scene_graph_path,
+        image_out_dir=args.image_out_dir,
+        out_dir=args.out_dir,
+        dataset_repo=args.dataset_repo,
+        image_config=args.image_config,
+        seed=args.seed,
+        max_images=args.max_images,
+        checkpoint_every=args.checkpoint_every,
     )

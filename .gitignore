@@ -7,3 +7,4 @@ __pycache__
 src/archive
 src/visualize
 src/gqa_images
+data/
