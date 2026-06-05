@@ -1,5 +1,5 @@
 import os
-os.environ["HF_HOME"] = "/mnt/data2/eunwooim/data/rlpt/hf_cache/"
+os.environ["HF_HOME"] = "/scratch/eunwooim/data/rlpt/hf_cache/"
 
 import json
 import random
@@ -14,9 +14,9 @@ from datasets import load_dataset
 # Paths
 # ============================================================
 
-DEFAULT_SCENE_GRAPH_PATH = "/mnt/data2/eunwooim/train_sceneGraph.json"
-DEFAULT_IMAGE_OUT_DIR = "/mnt/data1/eunwooim/rlpt/data/images/"
-DEFAULT_OUT_DIR = "/mnt/data1/eunwooim/rlpt/src/data_factory/qcvsr_gqa_v1/"
+DEFAULT_SCENE_GRAPH_PATH = "/scratch/eunwooim/train_sceneGraphs.json"
+DEFAULT_IMAGE_OUT_DIR = "/scratch/eunwooim/rlpt/visualize/images/"
+DEFAULT_OUT_DIR = "/scratch/eunwooim/rlpt/src/data_factory/qcvsr_gqa_v1/"
 
 
 # ============================================================
@@ -113,6 +113,26 @@ OOD_TEMPLATES = {
 # ============================================================
 # Geometry utilities
 # ============================================================
+
+def active_quota_ops_for_split(
+    split: str,
+    quotas: Dict[str, Dict[str, int]],
+) -> Dict[str, Dict[str, int]]:
+    active = {}
+
+    for schema, ops in quotas.items():
+        active[schema] = {}
+
+        for op, quota in ops.items():
+            if split == "eval_ood_operation":
+                if allowed_for_ood_operation(schema, op):
+                    active[schema][op] = quota
+            else:
+                if allowed_for_train_or_id(schema, op):
+                    active[schema][op] = quota
+
+    return active
+
 
 def clamp(v: float, lo: float, hi: float) -> float:
     return max(lo, min(hi, v))
@@ -677,7 +697,8 @@ def generate_dataset(
     for split, ids in split_to_ids.items():
         print(f"\nGenerating split: {split}, images={len(ids)}")
 
-        quotas = get_quota_for_split(split, TARGET_QUOTAS)
+        quotas_raw = get_quota_for_split(split, TARGET_QUOTAS)
+        quotas = active_quota_ops_for_split(split, quotas_raw)
         quota_counts = {schema: Counter() for schema in quotas.keys()}
         records = []
 
@@ -720,12 +741,12 @@ def generate_dataset(
                     if schema not in quotas or op not in quotas[schema]:
                         continue
 
-                    if split == "eval_ood_operation":
-                        if not allowed_for_ood_operation(schema, op):
-                            continue
-                    else:
-                        if not allowed_for_train_or_id(schema, op):
-                            continue
+                    # if split == "eval_ood_operation":
+                    #     if not allowed_for_ood_operation(schema, op):
+                    #         continue
+                    # else:
+                    #     if not allowed_for_train_or_id(schema, op):
+                    #         continue
 
                     if quota_counts[schema][op] >= quotas[schema][op]:
                         continue
