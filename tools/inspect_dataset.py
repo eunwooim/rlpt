@@ -50,34 +50,67 @@ def check_image_loadable(rec):
         return False
 
 
+def _iter_bboxes(node):
+    """Yield bboxes from a node — either single `bbox` or list under `instances`."""
+    if "instances" in node:
+        for bb in node["instances"]:
+            yield bb
+    elif "bbox" in node:
+        yield node["bbox"]
+
+
+def _cx(b):
+    return (b[0] + b[2]) / 2
+
+
+def _cy(b):
+    return (b[1] + b[3]) / 2
+
+
+def _area(b):
+    return max(0, b[2] - b[0]) * max(0, b[3] - b[1])
+
+
 def check_bbox_in_range(rec):
     ev = rec["reward_model"]["ground_truth"]["target_evidence"]
     for node in ev.get("nodes", []):
-        bbox = node.get("bbox")
-        if bbox is None:
-            continue
-        if len(bbox) != 4:
-            return False
-        if any(not (0 <= v <= 1000) for v in bbox):
-            return False
+        for bbox in _iter_bboxes(node):
+            if len(bbox) != 4:
+                return False
+            if any(not (0 <= v <= 1000) for v in bbox):
+                return False
     return True
 
 
 def check_bbox_valid_order(rec):
     ev = rec["reward_model"]["ground_truth"]["target_evidence"]
     for node in ev.get("nodes", []):
-        bbox = node.get("bbox")
-        if bbox is None:
-            continue
-        x1, y1, x2, y2 = bbox
-        if not (x1 < x2 and y1 < y2):
-            return False
+        for bbox in _iter_bboxes(node):
+            x1, y1, x2, y2 = bbox
+            if not (x1 < x2 and y1 < y2):
+                return False
     return True
 
 
-def check_evidence_two_nodes(rec):
+# Schemas whose evidence is exactly two nodes (one per compared object).
+PAIRWISE_SCHEMAS = {
+    "bbox_pair_spatial_compare", "bbox_pair_size_compare",
+    "count_pair_compare", "attr_select_spatial", "relation_target",
+}
+
+
+def check_evidence_node_count(rec):
+    """Pairwise schemas: exactly 2 nodes. count_relation: 1 reference + >=2 subjects."""
+    schema = rec["reward_model"]["ground_truth"]["target_schema"]
     ev = rec["reward_model"]["ground_truth"]["target_evidence"]
-    return len(ev.get("nodes", [])) == 2
+    nodes = ev.get("nodes", [])
+    if schema in PAIRWISE_SCHEMAS:
+        return len(nodes) == 2
+    if schema == "count_relation":
+        refs = [n for n in nodes if n.get("role") == "reference"]
+        subs = [n for n in nodes if n.get("role") == "subject"]
+        return len(refs) == 1 and len(subs) >= 2 and len(nodes) == len(refs) + len(subs)
+    return False
 
 
 def check_evidence_schema_match(rec):
@@ -90,6 +123,21 @@ def check_evidence_schema_match(rec):
         return all("bbox" in n and "name" in n for n in nodes)
     if schema == "count_pair_compare":
         return all("count" in n and "name" in n for n in nodes)
+    if schema == "attr_select_spatial":
+        if not all("bbox" in n and "name" in n for n in nodes):
+            return False
+        ids = {n.get("id") for n in nodes}
+        return ev.get("selected_id") in ids
+    if schema == "count_relation":
+        if not all("bbox" in n and "name" in n for n in nodes):
+            return False
+        subs = [n for n in nodes if n.get("role") == "subject"]
+        return "relation" in ev and ev.get("count") == len(subs)
+    if schema == "relation_target":
+        if not all("bbox" in n and "name" in n for n in nodes):
+            return False
+        roles = {n.get("role") for n in nodes}
+        return {"subject", "target"} <= roles and "relation" in ev
     return False
 
 
@@ -99,40 +147,54 @@ def check_answer_consistency(rec):
     verifier = gt["verifier"]
     ev = gt["target_evidence"]
     nodes = ev.get("nodes", [])
-    if len(nodes) != 2:
-        return False
-    a, b = nodes
     target = str(gt["target_answer"]).strip().lower()
 
     try:
         if verifier in ("compare_x_center_min", "compare_x_center_max"):
-            ac = (a["bbox"][0] + a["bbox"][2]) / 2
-            bc = (b["bbox"][0] + b["bbox"][2]) / 2
+            a, b = nodes
             if verifier == "compare_x_center_min":
-                expected = a["name"] if ac < bc else b["name"]
+                expected = a["name"] if _cx(a["bbox"]) < _cx(b["bbox"]) else b["name"]
             else:
-                expected = a["name"] if ac > bc else b["name"]
+                expected = a["name"] if _cx(a["bbox"]) > _cx(b["bbox"]) else b["name"]
         elif verifier in ("compare_y_center_min", "compare_y_center_max"):
-            ac = (a["bbox"][1] + a["bbox"][3]) / 2
-            bc = (b["bbox"][1] + b["bbox"][3]) / 2
+            a, b = nodes
             if verifier == "compare_y_center_min":
-                expected = a["name"] if ac < bc else b["name"]
+                expected = a["name"] if _cy(a["bbox"]) < _cy(b["bbox"]) else b["name"]
             else:
-                expected = a["name"] if ac > bc else b["name"]
+                expected = a["name"] if _cy(a["bbox"]) > _cy(b["bbox"]) else b["name"]
         elif verifier in ("compare_bbox_area_max", "compare_bbox_area_min"):
-            area_a = (a["bbox"][2] - a["bbox"][0]) * (a["bbox"][3] - a["bbox"][1])
-            area_b = (b["bbox"][2] - b["bbox"][0]) * (b["bbox"][3] - b["bbox"][1])
+            a, b = nodes
             if verifier == "compare_bbox_area_max":
-                expected = a["name"] if area_a > area_b else b["name"]
+                expected = a["name"] if _area(a["bbox"]) > _area(b["bbox"]) else b["name"]
             else:
-                expected = a["name"] if area_a < area_b else b["name"]
+                expected = a["name"] if _area(a["bbox"]) < _area(b["bbox"]) else b["name"]
         elif verifier == "compare_count_greater_than":
+            a, b = nodes
             expected = "yes" if a["count"] > b["count"] else "no"
         elif verifier == "count_difference":
+            a, b = nodes
             expected = str(a["count"] - b["count"])
+        elif verifier.startswith("select_") and verifier.endswith("_color"):
+            # Consistency = the selected node is the geometric extreme on its axis.
+            a, b = nodes
+            if "x_center_min" in verifier:
+                geo = a if _cx(a["bbox"]) < _cx(b["bbox"]) else b
+            elif "x_center_max" in verifier:
+                geo = a if _cx(a["bbox"]) > _cx(b["bbox"]) else b
+            elif "y_center_min" in verifier:
+                geo = a if _cy(a["bbox"]) < _cy(b["bbox"]) else b
+            else:  # y_center_max
+                geo = a if _cy(a["bbox"]) > _cy(b["bbox"]) else b
+            return geo["id"] == ev.get("selected_id")
+        elif verifier == "count_related_subjects":
+            subs = [n for n in nodes if n.get("role") == "subject"]
+            return str(len(subs)) == target and ev.get("count") == len(subs)
+        elif verifier == "relation_target_name":
+            tgt = [n for n in nodes if n.get("role") == "target"]
+            return len(tgt) == 1 and str(tgt[0]["name"]).strip().lower() == target
         else:
             return False
-    except (KeyError, IndexError, TypeError):
+    except (KeyError, IndexError, TypeError, ValueError):
         return False
 
     return str(expected).strip().lower() == target
@@ -154,7 +216,7 @@ CHECKS = [
     ("image_loadable", check_image_loadable),
     ("bbox_in_range", check_bbox_in_range),
     ("bbox_valid_order", check_bbox_valid_order),
-    ("evidence_two_nodes", check_evidence_two_nodes),
+    ("evidence_node_count", check_evidence_node_count),
     ("evidence_schema_match", check_evidence_schema_match),
     ("answer_consistency", check_answer_consistency),
     ("pluralization", check_pluralization),
@@ -208,17 +270,15 @@ def render_sample_grid(records, out_path, n=50, ncols=5, cell_w=320, cell_h=320,
             d = ImageDraw.Draw(im)
             ev = rec["reward_model"]["ground_truth"]["target_evidence"]
             for j, node in enumerate(ev.get("nodes", [])):
-                bbox = node.get("bbox")
-                if not bbox:
-                    continue
-                x1, y1, x2, y2 = bbox
-                x1 = x1 * W / 1000.0
-                x2 = x2 * W / 1000.0
-                y1 = y1 * H / 1000.0
-                y2 = y2 * H / 1000.0
-                d.rectangle([x1, y1, x2, y2],
-                            outline=bbox_colors[j % 2],
-                            width=max(3, W // 150))
+                for bbox in _iter_bboxes(node):
+                    x1, y1, x2, y2 = bbox
+                    x1 = x1 * W / 1000.0
+                    x2 = x2 * W / 1000.0
+                    y1 = y1 * H / 1000.0
+                    y2 = y2 * H / 1000.0
+                    d.rectangle([x1, y1, x2, y2],
+                                outline=bbox_colors[j % 2],
+                                width=max(3, W // 150))
             scale = min(cell_w / W, cell_h / H)
             new_w, new_h = int(W * scale), int(H * scale)
             im = im.resize((new_w, new_h), Image.LANCZOS)

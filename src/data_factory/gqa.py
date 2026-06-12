@@ -63,12 +63,13 @@ def pluralize(name: str) -> str:
         parts[-1] = IRREGULAR_PLURALS[last]
     elif last in INVARIANT_PLURALS:
         return name
+    elif last.endswith(("ss", "x", "z", "ch", "sh")):
+        # Sibilant endings take 'es': glass -> glasses, box -> boxes.
+        parts[-1] = last + "es"
     elif last.endswith("s"):
-        # Treat any name already ending in 's' as already plural. Avoids
+        # Treat any other name ending in 's' as already plural. Avoids
         # mangling scene-graph annotations like "pants" or "glasses".
         return name
-    elif last.endswith(("x", "z", "ch", "sh")):
-        parts[-1] = last + "es"
     elif last.endswith("y") and len(last) > 1 and last[-2] not in "aeiou":
         parts[-1] = last[:-1] + "ies"
     elif last.endswith("fe"):
@@ -79,20 +80,68 @@ def pluralize(name: str) -> str:
         parts[-1] = last + "s"
     return " ".join(parts)
 
+# Classes that tend to appear many times per image (people, worn clothing,
+# small repeated items). GQA scene graphs annotate only a *subset* of instances,
+# so for these classes "exactly N annotated" does NOT mean N visible -- e.g. a
+# street scene annotates 2 "pants" but a dozen people wear pants. Frame-relative
+# instance selection ("the pants on the left") is then ambiguous, so these
+# classes are excluded from schemas that localize one instance by position.
+CROWDABLE_CLASSES = {
+    "person", "people", "man", "men", "woman", "women", "boy", "girl",
+    "child", "children", "kid", "kids", "guy", "lady", "gentleman",
+    "pedestrian", "crowd", "spectator", "player", "passenger",
+    "pants", "jeans", "trousers", "shirt", "t-shirt", "jacket", "coat",
+    "shorts", "dress", "skirt", "sweater", "hoodie", "jersey", "uniform",
+    "tie", "shoe", "shoes", "sneaker", "sneakers", "boot", "boots",
+    "sock", "socks", "glove", "gloves", "sandal", "sandals",
+}
+
+
+def is_crowdable(name: str) -> bool:
+    return name in CROWDABLE_CLASSES
+
+
+# Color attribute vocabulary (for the spatial-selected attribute schema).
+COLOR_ATTRIBUTES = {
+    "white", "black", "green", "blue", "brown", "red", "gray", "grey",
+    "yellow", "orange", "pink", "purple", "silver", "gold", "tan", "beige",
+}
+
+# Relation predicates used by the compositional schemas. Each has a SEEN set
+# (train / eval_id / eval_ood_template) and an UNSEEN set held out for the
+# eval_ood_operation split, so that split tests generalization to new predicates.
+COUNT_RELATIONS_SEEN = {"on", "in", "near", "under", "above", "below", "on top of"}
+COUNT_RELATIONS_UNSEEN = {"behind", "in front of", "next to", "beside", "inside"}
+
+TARGET_RELATIONS_SEEN = {"wearing", "holding", "on"}
+TARGET_RELATIONS_UNSEEN = {"riding", "carrying", "sitting on", "eating"}
+
 TARGET_QUOTAS = {
     "bbox_pair_spatial_compare": {
-        "left": 2500,
-        "right": 2500,
-        "higher": 2500,
-        "lower": 2500,
+        "left": 1500,
+        "right": 1500,
+        "higher": 1500,
+        "lower": 1500,
     },
     "bbox_pair_size_compare": {
-        "larger": 2500,
-        "smaller": 2500,
+        "larger": 1500,
+        "smaller": 1500,
     },
-    "count_pair_compare": {
-        "more_than_yesno": 2500,
-        "difference": 2500,
+    # NOTE: count_pair_compare ("more bags than people?") is intentionally
+    # excluded -- its evidence is bare counts with no bounding boxes (no visual
+    # grounding) and the counts are unreliable under incomplete annotation.
+    # Box-grounded counting is covered by count_relation instead.
+    "attr_select_spatial": {
+        "color_left": 1500,
+        "color_right": 1500,
+        "color_higher": 1500,
+        "color_lower": 1500,
+    },
+    "count_relation": {
+        "count_relation": 1500,
+    },
+    "relation_target": {
+        "relation_target": 1500,
     },
 }
 
@@ -134,6 +183,30 @@ TRAIN_TEMPLATES = {
         "How many more {a_plural} are there than {b_plural}?",
         "What is the difference between the number of {a_plural} and {b_plural}?",
     ],
+    "color_left": [
+        "What color is the {name} on the left?",
+        "What is the color of the leftmost {name}?",
+    ],
+    "color_right": [
+        "What color is the {name} on the right?",
+        "What is the color of the rightmost {name}?",
+    ],
+    "color_higher": [
+        "What color is the upper {name}?",
+        "What is the color of the {name} nearer the top of the image?",
+    ],
+    "color_lower": [
+        "What color is the lower {name}?",
+        "What is the color of the {name} nearer the bottom of the image?",
+    ],
+    "count_relation": [
+        "How many {name_plural} are {rel} the {ref}?",
+        "Count the {name_plural} that are {rel} the {ref}.",
+    ],
+    "relation_target": [
+        "What is the {name} {rel}?",
+        "What is the {name} {rel}? Answer with the object name.",
+    ],
 }
 
 OOD_TEMPLATES = {
@@ -160,6 +233,24 @@ OOD_TEMPLATES = {
     ],
     "difference": [
         "Subtract the number of {b_plural} from the number of {a_plural}. What is the result?",
+    ],
+    "color_left": [
+        "Of the two {name} objects, what color is the one positioned farther to the left?",
+    ],
+    "color_right": [
+        "Of the two {name} objects, what color is the one positioned farther to the right?",
+    ],
+    "color_higher": [
+        "Of the two {name} objects, what color is the one positioned closer to the top?",
+    ],
+    "color_lower": [
+        "Of the two {name} objects, what color is the one positioned closer to the bottom?",
+    ],
+    "count_relation": [
+        "What is the number of {name_plural} located {rel} the {ref}?",
+    ],
+    "relation_target": [
+        "Identify the object that the {name} is {rel}.",
     ],
 }
 
@@ -297,6 +388,12 @@ def extract_objects(
         if not valid_box(bbox_pixel, width, height):
             continue
 
+        bbox_norm = xyxy_to_norm1000(bbox_pixel, width, height)
+        # Drop boxes that collapse to zero width/height after rounding to
+        # 0-1000 — they break bbox order and the area verifier.
+        if bbox_norm[0] >= bbox_norm[2] or bbox_norm[1] >= bbox_norm[3]:
+            continue
+
         extracted.append(
             {
                 "object_id": str(object_id),
@@ -305,7 +402,7 @@ def extract_objects(
                 "relations": obj.get("relations", []),
                 "bbox_xywh_pixel": [x, y, w, h],
                 "bbox_xyxy_pixel": bbox_pixel,
-                "bbox_xyxy_norm1000": xyxy_to_norm1000(bbox_pixel, width, height),
+                "bbox_xyxy_norm1000": bbox_norm,
             }
         )
 
@@ -375,19 +472,36 @@ def make_record(
     }
 
 
+def group_objects_by_class(objects: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, Any]]]:
+    """Group object instances by lowercase class name (preserving order)."""
+    groups: Dict[str, List[Dict[str, Any]]] = {}
+    for obj in objects:
+        groups.setdefault(obj["name"], []).append(obj)
+    return groups
+
+
+def unique_classes(objects: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Return the single instance of every class that appears exactly once.
+
+    A class with one instance is an *unambiguous referent*: "the cup" points at
+    exactly one object, so spatial/size comparisons about it are well posed.
+    Crowdable classes are excluded -- a lone annotated "man" may still be one of
+    many in the image (incomplete annotation), so "the man" is not reliable.
+    """
+    groups = group_objects_by_class(objects)
+    singletons = [
+        insts[0] for name, insts in groups.items()
+        if len(insts) == 1 and not is_crowdable(name)
+    ]
+    return sorted(singletons, key=lambda o: o["name"])
+
+
 def node_pair_evidence(a: Dict[str, Any], b: Dict[str, Any], operation: str) -> Dict[str, Any]:
+    """Pairwise evidence with one bbox per (unique) object."""
     return {
         "nodes": [
-            {
-                "id": "object_a",
-                "name": a["name"],
-                "bbox": a["bbox_xyxy_norm1000"],
-            },
-            {
-                "id": "object_b",
-                "name": b["name"],
-                "bbox": b["bbox_xyxy_norm1000"],
-            },
+            {"id": "object_a", "name": a["name"], "bbox": a["bbox_xyxy_norm1000"]},
+            {"id": "object_b", "name": b["name"], "bbox": b["bbox_xyxy_norm1000"]},
         ],
         "operation": operation,
         "coordinate_format": "xyxy_norm1000",
@@ -410,6 +524,41 @@ def count_pair_template() -> str:
     )
 
 
+def attr_select_template() -> str:
+    return (
+        '{"nodes":[{"id":"inst_a","name":"...","bbox":[x1,y1,x2,y2]},'
+        '{"id":"inst_b","name":"...","bbox":[x1,y1,x2,y2]}],'
+        '"operation":"...","selected_id":"...","answer_attribute":"color"}'
+    )
+
+
+def count_relation_template() -> str:
+    return (
+        '{"nodes":[{"id":"reference","name":"...","bbox":[x1,y1,x2,y2],"role":"reference"},'
+        '{"id":"subject_0","name":"...","bbox":[x1,y1,x2,y2],"role":"subject"}],'
+        '"operation":"count_related_subjects","relation":"...","count":0}'
+    )
+
+
+def relation_target_template() -> str:
+    return (
+        '{"nodes":[{"id":"subject","name":"...","bbox":[x1,y1,x2,y2],"role":"subject"},'
+        '{"id":"target","name":"...","bbox":[x1,y1,x2,y2],"role":"target"}],'
+        '"operation":"relation_traverse","relation":"..."}'
+    )
+
+
+def single_color(obj: Dict[str, Any]) -> Optional[str]:
+    """Return the object's sole color attribute, or None if zero/ambiguous."""
+    colors = [a for a in obj.get("attributes", []) if normalize_name(a) in COLOR_ATTRIBUTES]
+    colors = sorted(set(normalize_name(c) for c in colors))
+    return colors[0] if len(colors) == 1 else None
+
+
+def objects_by_id(objects: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    return {o["object_id"]: o for o in objects}
+
+
 # ============================================================
 # Candidate generation
 # ============================================================
@@ -422,17 +571,21 @@ def generate_spatial_candidates(
     split: str,
     template_bank: Dict[str, List[str]],
 ) -> List[Dict[str, Any]]:
+    """Spatial comparison between two *uniquely-referrable* objects.
+
+    Only classes appearing exactly once are eligible, so "the {a}" / "the {b}"
+    each denote a single object and the comparison has a determinate answer.
+    """
     candidates = []
     schema = "bbox_pair_spatial_compare"
     evidence_template = bbox_pair_template()
 
-    pairs = []
-    for i in range(len(objects)):
-        for j in range(i + 1, len(objects)):
-            a, b = objects[i], objects[j]
-            if a["name"] == b["name"]:
-                continue
+    objs = unique_classes(objects)
 
+    pairs = []
+    for i in range(len(objs)):
+        for j in range(i + 1, len(objs)):
+            a, b = objs[i], objs[j]
             ax, ay = box_center(a["bbox_xyxy_pixel"])
             bx, by = box_center(b["bbox_xyxy_pixel"])
 
@@ -465,7 +618,6 @@ def generate_spatial_candidates(
             continue
 
         question = rng.choice(template_bank[operation]).format(a=a["name"], b=b["name"])
-
         target_evidence = node_pair_evidence(a, b, verifier)
 
         candidates.append(
@@ -501,17 +653,17 @@ def generate_size_candidates(
     split: str,
     template_bank: Dict[str, List[str]],
 ) -> List[Dict[str, Any]]:
+    """Size comparison between two *uniquely-referrable* objects."""
     candidates = []
     schema = "bbox_pair_size_compare"
     evidence_template = bbox_pair_template()
 
-    pairs = []
-    for i in range(len(objects)):
-        for j in range(i + 1, len(objects)):
-            a, b = objects[i], objects[j]
-            if a["name"] == b["name"]:
-                continue
+    objs = unique_classes(objects)
 
+    pairs = []
+    for i in range(len(objs)):
+        for j in range(i + 1, len(objs)):
+            a, b = objs[i], objs[j]
             area_a = box_area(a["bbox_xyxy_pixel"])
             area_b = box_area(b["bbox_xyxy_pixel"])
             ratio = max(area_a, area_b) / max(min(area_a, area_b), 1.0)
@@ -559,6 +711,269 @@ def generate_size_candidates(
                     "object_a_bbox_pixel": a["bbox_xyxy_pixel"],
                     "object_b_bbox_pixel": b["bbox_xyxy_pixel"],
                 },
+            }
+        )
+
+    return candidates
+
+
+def generate_attr_select_candidates(
+    image_id: str,
+    image_path: str,
+    objects: List[Dict[str, Any]],
+    rng: random.Random,
+    split: str,
+    template_bank: Dict[str, List[str]],
+) -> List[Dict[str, Any]]:
+    """Compositional: spatial selection -> attribute readout.
+
+    Requires a class with exactly two instances that (a) are clearly separated
+    on the queried axis and (b) carry *different* single colors -- so the
+    spatial clause is what makes the answer unique. Multi-instance is the point.
+    """
+    candidates = []
+    schema = "attr_select_spatial"
+    evidence_template = attr_select_template()
+
+    groups = group_objects_by_class(objects)
+
+    for name, insts in sorted(groups.items()):
+        if len(insts) != 2:
+            continue
+        if is_crowdable(name):
+            # Crowd-prone classes (clothing, people) are under-annotated, so
+            # "the {name} on the left" is ambiguous vs unannotated instances.
+            continue
+        p, q = insts
+        cp, cq = single_color(p), single_color(q)
+        if cp is None or cq is None or cp == cq:
+            continue
+
+        px, py = box_center(p["bbox_xyxy_pixel"])
+        qx, qy = box_center(q["bbox_xyxy_pixel"])
+
+        axis_ops = []
+        if abs(px - qx) >= 40:
+            axis_ops.append(("color_left", "x", True))    # min center-x
+            axis_ops.append(("color_right", "x", False))  # max center-x
+        if abs(py - qy) >= 40:
+            axis_ops.append(("color_higher", "y", True))
+            axis_ops.append(("color_lower", "y", False))
+
+        for operation, axis, want_min in axis_ops:
+            if axis == "x":
+                pv, qv = px, qx
+            else:
+                pv, qv = py, qy
+            if want_min:
+                selected = p if pv < qv else q
+            else:
+                selected = p if pv > qv else q
+
+            verifier = {
+                "color_left": "select_x_center_min_color",
+                "color_right": "select_x_center_max_color",
+                "color_higher": "select_y_center_min_color",
+                "color_lower": "select_y_center_max_color",
+            }[operation]
+
+            answer = single_color(selected)
+            sel_id = "inst_a" if selected is p else "inst_b"
+
+            question = rng.choice(template_bank[operation]).format(name=name)
+            target_evidence = {
+                "nodes": [
+                    {"id": "inst_a", "name": name, "bbox": p["bbox_xyxy_norm1000"]},
+                    {"id": "inst_b", "name": name, "bbox": q["bbox_xyxy_norm1000"]},
+                ],
+                "operation": verifier,
+                "selected_id": sel_id,
+                "answer_attribute": "color",
+                "coordinate_format": "xyxy_norm1000",
+            }
+
+            candidates.append(
+                {
+                    "data_source": "qcvsr_gqa_attr_select_spatial",
+                    "schema": schema,
+                    "question": question,
+                    "evidence_template": evidence_template,
+                    "image_path": image_path,
+                    "image_id": image_id,
+                    "target_evidence": target_evidence,
+                    "target_answer": answer,
+                    "verifier": verifier,
+                    "split": split,
+                    "operation": operation,
+                    "extra_info": {
+                        "class_count": 2,
+                        "other_color": cq if selected is p else cp,
+                    },
+                }
+            )
+
+    return candidates
+
+
+def generate_count_relation_candidates(
+    image_id: str,
+    image_path: str,
+    objects: List[Dict[str, Any]],
+    rng: random.Random,
+    split: str,
+    template_bank: Dict[str, List[str]],
+) -> List[Dict[str, Any]]:
+    """Compositional: count subjects bearing a relation to a unique reference.
+
+    "How many {cups} are on the {table}?" -- requires >=2 subjects of one class
+    related to a single (uniquely-referrable) reference object.
+    """
+    candidates = []
+    schema = "count_relation"
+    evidence_template = count_relation_template()
+    operation = "count_relation"
+
+    rel_set = COUNT_RELATIONS_UNSEEN if split == "eval_ood_operation" else COUNT_RELATIONS_SEEN
+
+    groups = group_objects_by_class(objects)
+    unique_refs = {name: insts[0] for name, insts in groups.items() if len(insts) == 1}
+    id_map = objects_by_id(objects)
+
+    triples = []  # (subject_name, ref_obj, relation, subject_objs)
+    for sub_name, insts in groups.items():
+        # map ref_id -> {relation -> [subject objs]}
+        by_ref_rel: Dict[Tuple[str, str], List[Dict[str, Any]]] = defaultdict(list)
+        for o in insts:
+            for r in o.get("relations", []):
+                rel = normalize_name(r.get("name"))
+                ref_id = str(r.get("object"))
+                if rel in rel_set and ref_id in id_map:
+                    by_ref_rel[(ref_id, rel)].append(o)
+        for (ref_id, rel), subs in by_ref_rel.items():
+            ref = id_map[ref_id]
+            if ref["name"] == sub_name:
+                continue
+            # reference must be an unambiguous referent
+            if ref["name"] not in unique_refs or unique_refs[ref["name"]]["object_id"] != ref_id:
+                continue
+            if len(subs) >= 2:
+                triples.append((sub_name, ref, rel, subs))
+
+    rng.shuffle(triples)
+
+    for sub_name, ref, rel, subs in triples:
+        count = len(subs)
+        question = rng.choice(template_bank[operation]).format(
+            name_plural=pluralize(sub_name), ref=ref["name"], rel=rel,
+        )
+        nodes = [{
+            "id": "reference", "name": ref["name"],
+            "bbox": ref["bbox_xyxy_norm1000"], "role": "reference",
+        }]
+        for k, s in enumerate(subs):
+            nodes.append({
+                "id": f"subject_{k}", "name": sub_name,
+                "bbox": s["bbox_xyxy_norm1000"], "role": "subject",
+            })
+        target_evidence = {
+            "nodes": nodes,
+            "operation": "count_related_subjects",
+            "relation": rel,
+            "count": count,
+            "coordinate_format": "xyxy_norm1000",
+        }
+
+        candidates.append(
+            {
+                "data_source": "qcvsr_gqa_count_relation",
+                "schema": schema,
+                "question": question,
+                "evidence_template": evidence_template,
+                "image_path": image_path,
+                "image_id": image_id,
+                "target_evidence": target_evidence,
+                "target_answer": str(count),
+                "verifier": "count_related_subjects",
+                "split": split,
+                "operation": operation,
+                "extra_info": {"relation": rel, "reference": ref["name"]},
+            }
+        )
+
+    return candidates
+
+
+def generate_relation_target_candidates(
+    image_id: str,
+    image_path: str,
+    objects: List[Dict[str, Any]],
+    rng: random.Random,
+    split: str,
+    template_bank: Dict[str, List[str]],
+) -> List[Dict[str, Any]]:
+    """Compositional: traverse a relation from a unique subject to its target.
+
+    "What is the {boy} {wearing}?" -- subject must be uniquely referrable and
+    have exactly one relation of the queried predicate, so the target is unique.
+    """
+    candidates = []
+    schema = "relation_target"
+    evidence_template = relation_target_template()
+    operation = "relation_target"
+
+    rel_set = TARGET_RELATIONS_UNSEEN if split == "eval_ood_operation" else TARGET_RELATIONS_SEEN
+
+    groups = group_objects_by_class(objects)
+    unique_refs = {name: insts[0] for name, insts in groups.items() if len(insts) == 1}
+    id_map = objects_by_id(objects)
+
+    items = []  # (subject_obj, relation, target_obj)
+    for name, subj in unique_refs.items():
+        by_rel: Dict[str, List[str]] = defaultdict(list)
+        for r in subj.get("relations", []):
+            rel = normalize_name(r.get("name"))
+            ref_id = str(r.get("object"))
+            if rel in rel_set and ref_id in id_map:
+                by_rel[rel].append(ref_id)
+        for rel, target_ids in by_rel.items():
+            target_ids = list(dict.fromkeys(target_ids))
+            if len(target_ids) != 1:
+                continue  # ambiguous: multiple distinct targets
+            target = id_map[target_ids[0]]
+            if target["name"] == name:
+                continue
+            items.append((subj, rel, target))
+
+    rng.shuffle(items)
+
+    for subj, rel, target in items:
+        question = rng.choice(template_bank[operation]).format(name=subj["name"], rel=rel)
+        target_evidence = {
+            "nodes": [
+                {"id": "subject", "name": subj["name"],
+                 "bbox": subj["bbox_xyxy_norm1000"], "role": "subject"},
+                {"id": "target", "name": target["name"],
+                 "bbox": target["bbox_xyxy_norm1000"], "role": "target"},
+            ],
+            "operation": "relation_traverse",
+            "relation": rel,
+            "coordinate_format": "xyxy_norm1000",
+        }
+
+        candidates.append(
+            {
+                "data_source": "qcvsr_gqa_relation_target",
+                "schema": schema,
+                "question": question,
+                "evidence_template": evidence_template,
+                "image_path": image_path,
+                "image_id": image_id,
+                "target_evidence": target_evidence,
+                "target_answer": target["name"],
+                "verifier": "relation_target_name",
+                "split": split,
+                "operation": operation,
+                "extra_info": {"relation": rel, "subject": subj["name"]},
             }
         )
 
@@ -671,14 +1086,20 @@ def get_quota_for_split(split: str, base_quotas: Dict[str, Dict[str, int]]) -> D
 
 
 def allowed_for_ood_operation(schema: str, operation: str) -> bool:
-    # Example OOD operation split:
-    # hold out vertical spatial operations from train-like generation.
+    # OOD-operation split holds out unseen *operations* (vertical spatial,
+    # smaller, difference, vertical attribute-select). The two relation schemas
+    # hold out unseen *predicates* instead -- handled inside their generators
+    # via the `split` argument -- so their single op is allowed here.
     if schema == "bbox_pair_spatial_compare":
         return operation in {"higher", "lower"}
     if schema == "bbox_pair_size_compare":
         return operation in {"smaller"}
     if schema == "count_pair_compare":
         return operation in {"difference"}
+    if schema == "attr_select_spatial":
+        return operation in {"color_higher", "color_lower"}
+    if schema in ("count_relation", "relation_target"):
+        return True
     return True
 
 
@@ -689,6 +1110,10 @@ def allowed_for_train_or_id(schema: str, operation: str) -> bool:
         return operation in {"larger"}
     if schema == "count_pair_compare":
         return operation in {"more_than_yesno"}
+    if schema == "attr_select_spatial":
+        return operation in {"color_left", "color_right"}
+    if schema in ("count_relation", "relation_target"):
+        return True
     return True
 
 
@@ -766,7 +1191,9 @@ def generate_dataset(
                 candidates = []
                 candidates.extend(generate_spatial_candidates(image_id, image_path, objects, rng, split, template_bank))
                 candidates.extend(generate_size_candidates(image_id, image_path, objects, rng, split, template_bank))
-                candidates.extend(generate_count_candidates(image_id, image_path, objects, rng, split, template_bank))
+                candidates.extend(generate_attr_select_candidates(image_id, image_path, objects, rng, split, template_bank))
+                candidates.extend(generate_count_relation_candidates(image_id, image_path, objects, rng, split, template_bank))
+                candidates.extend(generate_relation_target_candidates(image_id, image_path, objects, rng, split, template_bank))
 
                 rng.shuffle(candidates)
 

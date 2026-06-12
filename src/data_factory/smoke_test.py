@@ -74,6 +74,12 @@ def main() -> int:
             img_id, image_path, objects, rng, "train", gqa.TRAIN_TEMPLATES))
         candidates.extend(gqa.generate_count_candidates(
             img_id, image_path, objects, rng, "train", gqa.TRAIN_TEMPLATES))
+        candidates.extend(gqa.generate_attr_select_candidates(
+            img_id, image_path, objects, rng, "train", gqa.TRAIN_TEMPLATES))
+        candidates.extend(gqa.generate_count_relation_candidates(
+            img_id, image_path, objects, rng, "train", gqa.TRAIN_TEMPLATES))
+        candidates.extend(gqa.generate_relation_target_candidates(
+            img_id, image_path, objects, rng, "train", gqa.TRAIN_TEMPLATES))
 
         if not candidates:
             skip_stats["no_candidates"] += 1

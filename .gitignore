@@ -8,3 +8,8 @@ src/archive
 src/visualize
 src/gqa_images
 data/
+
+# Experiment artifacts (huge / regenerable)
+checkpoints/
+models/
+outputs/
