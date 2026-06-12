@@ -1,6 +1,6 @@
 # RLPT ScienceQA GRPO — Results Storyline
 
-*(as of 2026-06-10; ablation + validation jobs still running)*
+*(as of 2026-06-12; validation campaign complete — raw TSVs in `docs/results/`)*
 
 ## Chapter 1 — The setup
 
@@ -74,23 +74,57 @@ output, so it partly reflects brevity.)
 | 160 | 0.891 | 0.752 | 1.00 | 6.90 |
 | 176 | 0.891 | 0.766 | 1.00 | 6.91 |
 
-## Chapter 6 — The skeptic's question (in progress)
+## Chapter 6 — The skeptic's question
 
 The match climb is partly circular — we optimized it — and could reflect stylistic mimicry
 of ScienceQA solutions rather than better image analysis. The validation plan addresses
 this: shuffled-GT control, NLI re-scoring, image-swap probe, transfer eval, and the
-`w_match=0` ablation.
+`w_match=0` ablation. Design principle: mimicry is style-specific and image-independent;
+real reasoning is content-specific and image-dependent.
 
-Currently running (2026-06-10):
+## Chapter 7 — Validation results: all five tests pass (2026-06-10/11)
 
-- **`rlpt-grpo-nomatch`** — the `w_match=0` ablation, the causal keystone. Training
-  healthily (~140 s/step, score ~4.5–4.8 of max 6). Early hint: entropy falling
-  (0.99→0.84) and responses getting *shorter* (119→90 mean tokens) — without the match
-  term the model has no incentive to elaborate its reasoning.
-- **`rlpt-gen-valid`** — generation pass over validation rows (vLLM warm, generating).
-- **`rlpt-score-valid`** — queued behind gen-valid; scores the generations.
+All on the same 256-row test subset and greedy-decode harness; raw tables in
+`docs/results/main_arm/` and `docs/results/nomatch_arm/`.
 
-The comparison to watch: if the no-match run reaches ~90% accuracy but its match score
-*doesn't* climb past ~0.6, that isolates the bipartite term as the cause of the
-reasoning-faithfulness gains — the third leg of the publishable claim
-(content-not-style · image-grounded · caused-by-match-term).
+1. **Shuffled-GT control — PASS.** Own-GT match climbs 0.377 → 0.627 (step 20) → 0.760
+   (176); match against *same-topic but different-question* GT stays flat (0.15 → ~0.22).
+   The gap widens 0.22 → 0.53. Style mimicry would have lifted both.
+2. **Style-insensitive re-scoring — PASS.** NLI entailment (DeBERTa-MNLI) own-GT rises
+   0.21 → 0.52 with shuffled-GT flat ~0.07 — the gain is propositional content, not
+   phrasing. An alternate encoder (all-mpnet-base-v2) tracks the reward encoder ~1:1 —
+   no encoder hacking.
+3. **Image-swap probe — PASS.** Swapping images collapses accuracy ~−0.21 at every
+   checkpoint (answers are image-dependent, not text-prior), and the *reasoning's*
+   swap-sensitivity grows with training (Δmatch −0.048 base → −0.079 at 176): RL
+   increased the image-grounding of the reasoning itself.
+4. **A-OKVQA transfer — PASS.** Zero training on it: base 0.430 → step-176 **0.840**
+   accuracy. Style can't transfer to a differently-styled benchmark; reasoning can.
+5. **`w_match=0` ablation — PASS; the match term is CAUSAL.** Identical config, reward =
+   format+answer only. Its own-GT match bumps to 0.461 at step 20 (that bump = the
+   answer-only confound) then goes flat/declining to 0.424 at 176, vs the main arm's
+   0.760. Its NLI entailment never moves (flat 0.17–0.22 vs main 0.21 → 0.52), and its
+   reasoning never gains image-sensitivity (Δmatch −0.036 at 176 ≈ base). Honest caveat:
+   ScienceQA MCQ **accuracy** doesn't need the match term — the ablation reaches
+   0.93–0.94, and its A-OKVQA transfer (0.844) matches the main arm (0.840). On
+   near-saturated benchmarks the answer term alone buys the accuracy.
+
+## Chapter 8 — MMK12: the match term buys accuracy where reasoning is the bottleneck (2026-06-12)
+
+The ScienceQA accuracy tie was a **ceiling effect**, not a property of the match term. On
+the held-out MMK12 test set (MM-Eureka; K12 exam MCQs, math/physics/chemistry/biology,
+1,024 balanced rows, zero training on it; base model is near chance at 31%):
+
+| model | acc | format | bio | chem | math | physics |
+|---|---|---|---|---|---|---|
+| base | 0.311 | 0.18 | 0.336 | 0.270 | 0.363 | 0.277 |
+| ablation-176 (answer-only) | 0.397 | 0.99 | 0.465 | 0.332 | 0.465 | 0.328 |
+| main-176 (with match term) | **0.439** | 0.99 | **0.535** | 0.336 | **0.508** | **0.375** |
+
+**+4.1 points from the match term at identical format compliance; paired McNemar exact
+p = 0.021** (179 main-only-correct vs 137 ablation-only-correct discordant pairs). Where
+reasoning is the bottleneck, training the reasoning channel converts to answer accuracy.
+
+The publishable claim now has four legs: **content-not-style** (tests 1–2) ·
+**image-grounded** (tests 3–4) · **match-term-causal for reasoning faithfulness**
+(test 5) · **OOD accuracy gains** (MMK12).

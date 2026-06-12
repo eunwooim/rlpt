@@ -1,0 +1,4 @@
+file	n	acc	format	acc_biology	acc_chemistry	acc_math	acc_physics
+mmk12_base.jsonl	1024	0.3115	0.1777	0.3359	0.2695	0.3633	0.2773
+mmk12_main176.jsonl	1024	0.4385	0.9883	0.5352	0.3359	0.5078	0.3750
+mmk12_nomatch176.jsonl	1024	0.3975	0.9912	0.4648	0.3320	0.4648	0.3281
