@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Any
 
 import torch
+from tqdm.auto import tqdm
 
 from .base import clamp01
 from .transformer_utils import load_classifier
@@ -32,9 +33,16 @@ class NLIScorer:
         return mapped
 
     @torch.inference_mode()
-    def _directional(self, pairs: list[tuple[str, str]], batch_size: int) -> list[dict[str, float]]:
+    def _directional(self, pairs: list[tuple[str, str]], batch_size: int, desc: str) -> list[dict[str, float]]:
         outputs: list[dict[str, float]] = []
-        for start in range(0, len(pairs), batch_size):
+        batch_starts = range(0, len(pairs), batch_size)
+        for start in tqdm(
+            batch_starts,
+            total=(len(pairs) + batch_size - 1) // batch_size,
+            desc=desc,
+            unit="batch",
+            leave=False,
+        ):
             batch = pairs[start : start + batch_size]
             encoded = self.tokenizer(
                 [a for a, _ in batch],
@@ -60,8 +68,8 @@ class NLIScorer:
     def score_pairs(self, pairs: list[tuple[str, str]], batch_size: int) -> list[dict[str, Any]]:
         if not pairs:
             return []
-        ab = self._directional(pairs, batch_size)
-        ba = self._directional([(b, a) for a, b in pairs], batch_size)
+        ab = self._directional(pairs, batch_size, "nli forward")
+        ba = self._directional([(b, a) for a, b in pairs], batch_size, "nli reverse")
         rows: list[dict[str, Any]] = []
         for forward, reverse in zip(ab, ba):
             e_ab = forward["E"]
@@ -86,4 +94,3 @@ class NLIScorer:
                 }
             )
         return rows
-

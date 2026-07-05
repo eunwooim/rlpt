@@ -1,4 +1,4 @@
-# Reliability Experiment Spec
+# Reliability Experiment Details
 
 ## Ranking Mode
 
@@ -25,4 +25,3 @@ Tau calibration is not tuned in this experiment. Tables report a fixed tau grid 
 - `table_scorer_overall.csv`: summarizes scorer behavior by dataset and score field.
 - `load_errors.jsonl`: records unavailable or malformed datasets/subcategories.
 - `scorer_errors.jsonl`: records scorer load or execution failures.
-

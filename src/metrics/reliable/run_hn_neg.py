@@ -13,7 +13,7 @@ if __package__ in {None, ""}:
 
     sys.path.append(str(Path(__file__).resolve().parents[2]))
 
-from metrics.reliable.aggregate import aggregate
+from rlpt.src.metrics.reliable.aggregate_hn_neg import aggregate
 from metrics.reliable.data_loaders import load_negbench, load_sugarcrepe, load_sugarcrepepp
 from metrics.reliable.data_loaders.common import Case, write_jsonl
 from metrics.reliable.scorers import SCORER_REGISTRY, ScorerError, make_device

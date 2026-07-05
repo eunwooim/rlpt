@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Any
 
 import torch
+from tqdm.auto import tqdm
 
 from .transformer_utils import load_encoder, mean_pool, normalize_embeddings
 
@@ -18,7 +19,14 @@ class SbertCosineScorer:
     @torch.inference_mode()
     def _encode(self, texts: list[str], batch_size: int) -> torch.Tensor:
         chunks: list[torch.Tensor] = []
-        for start in range(0, len(texts), batch_size):
+        batch_starts = range(0, len(texts), batch_size)
+        for start in tqdm(
+            batch_starts,
+            total=(len(texts) + batch_size - 1) // batch_size,
+            desc=f"{self.name} encoding",
+            unit="batch",
+            leave=False,
+        ):
             batch = texts[start : start + batch_size]
             encoded = self.tokenizer(
                 batch,
@@ -42,4 +50,3 @@ class SbertCosineScorer:
         emb_b = self._encode(text_b, batch_size)
         scores = (emb_a * emb_b).sum(dim=1).tolist()
         return [{"raw_score": float(score)} for score in scores]
-
