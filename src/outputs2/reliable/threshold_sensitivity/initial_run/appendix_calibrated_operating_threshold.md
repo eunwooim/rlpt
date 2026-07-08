@@ -1,5 +1,0 @@
-# Calibrated Operating Threshold
-
-| scorer | selected_operating_tau | calibration_best | calibration_predictions |
-| --- | --- | --- | --- |
-| nli_calibrated_logistic | 0.1351 | src/outputs/reliable/calibration/run_20260706_224211/configs/nli_calibration_best.json | src/outputs/reliable/calibration/run_20260706_224211/raw/nli_calibration_predictions.jsonl |
