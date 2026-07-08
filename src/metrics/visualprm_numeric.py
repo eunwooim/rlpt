@@ -9,7 +9,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Iterable
 
-from metrics.reliable.data_loaders.common import coerce_text, read_jsonl
+from metrics.data_loaders.common import coerce_text, read_jsonl
 from tqdm.auto import tqdm
 
 

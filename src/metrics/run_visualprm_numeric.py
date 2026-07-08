@@ -11,12 +11,12 @@ from typing import Any
 if __package__ in {None, ""}:
     import sys
 
-    sys.path.append(str(Path(__file__).resolve().parents[2]))
+    sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from metrics.reliable.aggregate_visualprm_numeric import aggregate
-from metrics.reliable.data_loaders.common import read_jsonl, write_jsonl
-from metrics.reliable.scorers import SCORER_REGISTRY, ScorerError, make_device
-from metrics.reliable.visualprm_numeric import (
+from metrics.aggregate_visualprm_numeric import aggregate
+from metrics.data_loaders.common import read_jsonl, write_jsonl
+from metrics.scorers import SCORER_REGISTRY, ScorerError, make_device
+from metrics.visualprm_numeric import (
     balanced_sample_traces,
     build_segment_requests,
     generate_cases_with_mock,

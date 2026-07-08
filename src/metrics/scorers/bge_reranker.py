@@ -40,5 +40,12 @@ class BGERerankerScorer:
             logits = self.model(**encoded).logits.detach().cpu()
             flat = logits.reshape(logits.shape[0], -1)
             for row in flat:
-                rows.append({"raw_score": float(row[0])})
+                raw_score = float(row[0])
+                rows.append(
+                    {
+                        "raw_score": raw_score,
+                        "bge_reranker_logit": raw_score,
+                        "bge_reranker_logits": [float(value) for value in row.tolist()],
+                    }
+                )
         return rows

@@ -36,7 +36,7 @@ REQUESTED_SUBCATEGORIES = {
 
 SEARCH_ROOTS = [
     Path("data"),
-    Path("src/metrics/reliable/data/negbench"),
+    Path("src/metrics/data/negbench"),
     Path("src/data/negbench"),
     Path("data/negbench"),
     Path("benchmarks/data"),

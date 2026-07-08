@@ -11,8 +11,7 @@ requirements.txt
 .gitignore
 src/
   train/                 # SFT, RLVR, GRPO, and veRL launch scripts
-  metrics/
-    reliable/            # reliability tests for text encoders/scorers
+  metrics/               # reliability tests for text encoders/scorers
   outputs/               # ignored experiment outputs
   ckpts/                 # ignored checkpoints
   archive/               # ignored debug artifacts and small experiments

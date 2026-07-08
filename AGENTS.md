@@ -47,7 +47,7 @@ Workstation defaults:
 
 - Conda root: `/mnt/data2/eunwooim/.conda`
 - Shared Hugging Face cache: `/mnt/shared/shared_hf_home`
-- Allowed GPU indices: `4,5,6,7`
+- Allowed GPU indices: `0,1,2,3,4,5,6,7`
 
 SLURM or alternate-machine runs should override `ROOT`, for example:
 
@@ -89,8 +89,7 @@ requirements.txt
 .gitignore
 src/
   train/                 # SFT/RL/GRPO/veRL launch scripts
-  metrics/
-    reliable/            # reliability-test framework for text scorers
+  metrics/               # reliability-test framework for text scorers
   outputs/               # ignored; experiment outputs
   ckpts/                 # ignored; checkpoints
   archive/               # ignored; small experiments/debugs/plots
