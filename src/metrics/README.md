@@ -161,7 +161,7 @@ Caption and negation reliability:
 ```bash
 CUDA_VISIBLE_DEVICES=4,5,6,7 python src/metrics/run_hn_neg.py \
   --datasets sugarcrepe,sugarcrepepp,negbench \
-  --scorers sbert,nli,cross_nli,bge_reranker \
+  --scorers sbert,bertscore,nli,cross_nli,bge_reranker \
   --output_dir src/outputs/reliable/caption_negation/initial_run \
   --batch_size 32 \
   --device auto \
@@ -178,7 +178,7 @@ CUDA_VISIBLE_DEVICES=4,5,6,7 python src/metrics/run_visualprm_numeric.py \
   --dataset_split train \
   --dataset_streaming \
   --max_traces 10000 \
-  --scorers sbert,nli,cross_nli,bge_reranker \
+  --scorers sbert,bertscore,nli,cross_nli,bge_reranker \
   --generator_model Qwen/Qwen3-32B \
   --tensor_parallel_size 4 \
   --generation_batch_size 64 \
@@ -194,7 +194,7 @@ CUDA_VISIBLE_DEVICES=4,5,6,7 python src/metrics/run_visualprm_numeric.py \
   --cases_jsonl src/outputs/reliable/visualprm_numeric/initial_run/raw/numeric_cases.jsonl \
   --output_dir src/outputs/reliable/visualprm_numeric/initial_run \
   --score_only \
-  --scorers sbert,nli,cross_nli,bge_reranker \
+  --scorers sbert,bertscore,nli,cross_nli,bge_reranker \
   --batch_size 32 \
   --device auto \
   --seed 42
