@@ -11,7 +11,7 @@ from .transformer_utils import load_classifier
 
 class NLIScorer:
     name = "nli"
-    model_name = "microsoft/deberta-large-mnli"
+    model_name = "microsoft/deberta-xlarge-mnli"
 
     def __init__(self, device: torch.device):
         self.device = device

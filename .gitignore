@@ -34,3 +34,7 @@ venv/
 env/
 *.conda
 *.egg-info/
+
+_*.json
+_*.jsonl
+./src/data/_images/
