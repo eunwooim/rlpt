@@ -12,7 +12,7 @@ requirements.txt
 src/
   train/                 # SFT, RLVR, GRPO, and veRL launch scripts
   metrics/               # reliability tests for text encoders/scorers
-  data/                  # dataset generation pipelines
+  process_reward/        # VisualPRM process-reward pipeline
   outputs/               # ignored experiment outputs
   ckpts/                 # ignored checkpoints
   archive/               # ignored debug artifacts and small experiments
@@ -79,7 +79,7 @@ Use `--no-deps` when `requirements.txt` is a full transitive freeze. This avoids
 
 ## Process-reward pipeline
 
-The fast VisualPRM generation, frozen-NLI caching, DeBERTaV3 LoRA training, and inference flow is documented in [`src/data/process_reward/README.md`](src/data/process_reward/README.md). Each stage is independently runnable and exchanges dataset-agnostic JSONL records.
+The fast VisualPRM generation, frozen-NLI caching, DeBERTaV3 LoRA training, and inference flow is documented in [`src/process_reward/README.md`](src/process_reward/README.md). Each stage is independently runnable and exchanges dataset-agnostic JSONL records.
 
 ## Reliability-Test Goal
 
