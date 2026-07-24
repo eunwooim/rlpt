@@ -134,6 +134,16 @@ def create_grouped_splits(
     test_ratio: float,
     seed: int,
 ) -> None:
+    for ratio_name, ratio in (
+        ("train_ratio", train_ratio),
+        ("validation_ratio", validation_ratio),
+        ("test_ratio", test_ratio),
+    ):
+        if not 0 <= ratio <= 1:
+            raise ValueError(
+                f"{ratio_name} must be in [0, 1], but received {ratio}."
+            )
+
     ratio_sum = train_ratio + validation_ratio + test_ratio
     if abs(ratio_sum - 1.0) > 1e-8:
         raise ValueError(
@@ -213,6 +223,49 @@ def create_grouped_splits(
     )
 
 
+def validate_existing_splits(
+    train_path: Path,
+    validation_path: Path,
+    test_path: Path,
+) -> None:
+    sources_by_split: dict[str, set[str]] = {}
+
+    for split_name, split_path in (
+        ("train", train_path),
+        ("validation", validation_path),
+        ("test", test_path),
+    ):
+        source_ids: set[str] = set()
+        row_count = 0
+        for row_number, row in enumerate(iter_jsonl(split_path), start=1):
+            source_sample_id = row.get("source_sample_id")
+            if not isinstance(source_sample_id, str) or not source_sample_id:
+                raise ValueError(
+                    f"{split_path}:{row_number} has no valid "
+                    "'source_sample_id'."
+                )
+            source_ids.add(source_sample_id)
+            row_count += 1
+
+        if row_count == 0:
+            raise ValueError(
+                f"Existing {split_name} split is empty: {split_path}"
+            )
+        sources_by_split[split_name] = source_ids
+
+    split_names = tuple(sources_by_split)
+    for index, left_name in enumerate(split_names):
+        for right_name in split_names[index + 1 :]:
+            overlap = sources_by_split[left_name] & sources_by_split[right_name]
+            if overlap:
+                examples = sorted(overlap)[:5]
+                raise ValueError(
+                    "Source leakage detected between existing "
+                    f"{left_name} and {right_name} splits. "
+                    f"Example source_sample_id values: {examples}"
+                )
+
+
 def prepare_data_splits(
     data_path: str | Path,
     *,
@@ -232,6 +285,11 @@ def prepare_data_splits(
     existing = [path.exists() for path in split_paths]
 
     if all(existing):
+        validate_existing_splits(
+            train_path,
+            validation_path,
+            test_path,
+        )
         print(
             "Using existing dataset splits:\n"
             f"  train: {train_path}\n"
@@ -379,9 +437,6 @@ def main() -> None:
     config = {**vars(args), "lora_target_modules": targets, "output_dir": str(resolved_output)}
 
     if is_main_process:
-        output_dir = create_stage_layout(resolved_output, include_checkpoints=True)
-        write_json(output_dir / "configs" / "args.json", config)
-        write_json(output_dir / "configs" / "model_config.json", architecture)
         train_path, validation_path, test_path = prepare_data_splits(
             args.data_path,
             train_ratio=args.train_ratio,
@@ -389,6 +444,9 @@ def main() -> None:
             test_ratio=args.test_ratio,
             seed=args.split_seed,
         )
+        output_dir = create_stage_layout(resolved_output, include_checkpoints=True)
+        write_json(output_dir / "configs" / "args.json", config)
+        write_json(output_dir / "configs" / "model_config.json", architecture)
     else:
         output_dir = resolved_output
         _, train_path, validation_path, test_path = resolve_data_paths(args.data_path)
@@ -533,7 +591,7 @@ torchrun \
   --standalone \
   --nnodes=1 \
   --nproc-per-node=4 \
-  src/data/process_reward/train.py \
+  src/process_reward/train.py \
   --data_path src/outputs/process_reward_generation/v1_1/data \
   --train_ratio 0.90 \
   --validation_ratio 0.05 \
