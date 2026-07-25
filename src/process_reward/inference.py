@@ -118,3 +118,10 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+"""
+python src/process_reward/visualprocessbench.py \
+  --validate_data_only \
+  --data_path /mnt/data1/eunwooim/VisualProcessBench/test.jsonl \
+  --model_path src/outputs/process_reward_judge/v1_1_0/checkpoints/final
+"""

@@ -9,6 +9,9 @@ OpenGVLab/VisualPRM400K-v1.1
                          |-> cache_nli.py -> nli_features.jsonl (optional analysis)
                          `-> train.py     -> grouped splits + LoRA adapter + MLP head
   -> inference.py      -> compatibility probability
+OpenGVLab/VisualProcessBench-derived pairs
+  -> vpb_process.py -> evaluator pair JSONL
+  -> visualprocessbench.py -> metrics.json + predictions.jsonl
 ```
 
 VisualProcessBench is not used for loading, prompt examples, generation, or training.
@@ -186,14 +189,118 @@ CUDA_VISIBLE_DEVICES=4 python src/process_reward/inference.py \
 
 For a JSONL batch containing `anchor` and `generated` fields, use `--pairs_jsonl` and optionally `--output_jsonl`. Python callers can use `ProcessRewardScorer.from_pretrained(...)` followed by `score_pairs(...)`.
 
+## 6. Evaluate VisualProcessBench
+
+`visualprocessbench.py` has two explicit input modes.
+
+### Raw context-step mode
+
+Use `--input_mode context_step` for raw VisualProcessBench records containing
+`question`, `policy_model`, `data_source`, and parallel
+`response.steps`/`response.process_correctness` lists. Each step is projected
+as:
+
+```text
+anchor    = question + preceding response steps
+generated = current response step
+```
+
+Labels are `1=correct`, `-1=incorrect`, and `0=neutral`. Step and label lists
+must have equal length. Neutral steps are scored and retained in
+`predictions.jsonl`, but excluded from loss, AUC, F1, accuracy, precision, and
+recall.
+
+This is an explicit distribution-shift evaluation: the judge was trained on
+`(original step, generated variant)` pairs, not
+`(question + preceding response steps, current step)` pairs. Do not interpret
+context-step results as in-distribution judge performance.
+
+Validate the local raw file without loading the checkpoint:
+
+```bash
+python src/process_reward/visualprocessbench.py \
+  --input_mode context_step \
+  --validate_data_only \
+  --data_path /mnt/data1/eunwooim/VisualProcessBench/test.jsonl \
+  --model_path PLACEHOLDER
+```
+
+Run raw evaluation:
+
+```bash
+CUDA_VISIBLE_DEVICES=4 python src/process_reward/visualprocessbench.py \
+  --input_mode context_step \
+  --data_path /mnt/data1/eunwooim/VisualProcessBench/test.jsonl \
+  --model_path src/outputs/process_reward_judge/v1_1_0/checkpoints/final \
+  --output_dir src/outputs/process_reward_evaluation/run_<TIMESTAMP> \
+  --batch_size 32 \
+  --max_length 256 \
+  --threshold 0.5 \
+  --device cuda
+```
+
+For binary softmax probabilities, prediction uses the strict margin rule:
+
+```text
+prediction = 1 if (p_positive - p_negative) > threshold else -1
+```
+
+### Existing pair mode
+
+Pair mode remains the default and evaluates the judge on its trained input
+shape:
+
+```json
+{
+  "pair_id": "pair_001",
+  "source_sample_id": "sample_001",
+  "step_index": 0,
+  "data_source": "geometry",
+  "policy_model": "optional_policy_model",
+  "anchor": "The reference reasoning segment.",
+  "generated": "The candidate reasoning segment.",
+  "compatibility_label": 1
+}
+```
+
+Use `vpb_process.py` only to normalize records that already define those two
+texts:
+
+```bash
+python src/process_reward/vpb_process.py \
+  --input_jsonl path/to/defined_pairs.jsonl \
+  --output_jsonl path/to/evaluator_pairs.jsonl
+
+CUDA_VISIBLE_DEVICES=4 python src/process_reward/visualprocessbench.py \
+  --input_mode pair \
+  --data_path path/to/evaluator_pairs.jsonl \
+  --model_path src/outputs/process_reward_judge/v1_1_0/checkpoints/final \
+  --batch_size 32 \
+  --max_length 256 \
+  --threshold 0.5 \
+  --device cuda
+```
+
+Omit `--output_dir` for a timestamped run. `--max_samples N` limits flattened
+steps in context-step mode or records in pair mode. `--auto` retains the
+weighted per-data-source macro-F1 threshold search and should be treated as an
+in-dataset diagnostic. Inference shows a step-level `tqdm` progress bar; use
+`--no_progress` to disable it.
+
+Each run writes `metrics.json`, `predictions.jsonl`, and `run_config.json`.
+Metrics include overall results plus grouped results by `policy_model` and
+`data_source`. Prediction rows contain both class probabilities, their margin,
+the `-1`/`1` prediction, and all neutral rows.
+
 ## Lightweight validation
 
 These checks do not access datasets or load models:
 
 ```bash
 python -m py_compile src/process_reward/*.py
+python -m unittest discover -s src/process_reward -p 'test_visualprocessbench.py' -v
 
-for script in load_visualprm generate cache_nli dataset model train inference; do
+for script in load_visualprm generate cache_nli dataset model train inference vpb_process visualprocessbench; do
   python "src/process_reward/${script}.py" --help
 done
 
@@ -206,6 +313,29 @@ python src/process_reward/train.py --config_only \
   --data_path PLACEHOLDER.jsonl \
   --lora_target_modules query_proj,value_proj
 python src/process_reward/inference.py --config_only --checkpoint PLACEHOLDER
+python src/process_reward/vpb_process.py --config_only \
+  --input_jsonl PLACEHOLDER.jsonl \
+  --output_jsonl PLACEHOLDER_PAIRS.jsonl
+python src/process_reward/visualprocessbench.py --config_only \
+  --data_path PLACEHOLDER.jsonl \
+  --model_path PLACEHOLDER
 
-python -c "import sys; sys.path.insert(0, 'src'); import process_reward.load_visualprm, process_reward.generate, process_reward.cache_nli, process_reward.dataset, process_reward.model, process_reward.train, process_reward.inference"
+python -c "import sys; sys.path.insert(0, 'src'); import process_reward.load_visualprm, process_reward.generate, process_reward.cache_nli, process_reward.dataset, process_reward.model, process_reward.train, process_reward.inference, process_reward.vpb_process, process_reward.visualprocessbench"
+```
+
+Validate pair or raw data without loading a checkpoint:
+
+```bash
+python src/process_reward/visualprocessbench.py \
+  --validate_data_only \
+  --data_path path/to/visualprocessbench_pairs.jsonl \
+  --model_path PLACEHOLDER
+```
+
+```bash
+python src/process_reward/visualprocessbench.py \
+  --input_mode context_step \
+  --validate_data_only \
+  --data_path /mnt/data1/eunwooim/VisualProcessBench/test.jsonl \
+  --model_path PLACEHOLDER
 ```
