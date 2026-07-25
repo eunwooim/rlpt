@@ -172,89 +172,126 @@ def _pair_example(
 
 
 def _context_step_examples(
-    row: dict[str, Any], source: Path, line_number: int
+    row: dict[str, Any],
+    source: Path,
+    line_number: int,
 ) -> list[EvaluationExample]:
     question = row.get("question")
     if not isinstance(question, str) or not question.strip():
-        raise ValueError(f"{source}:{line_number} has no non-empty string 'question'")
+        raise ValueError(
+            f"{source}:{line_number} has no non-empty string 'question'"
+        )
+    question_text = question.strip()
+
     response = row.get("response")
     if not isinstance(response, dict):
         raise ValueError(f"{source}:{line_number} has no response object")
-    steps = response.get("steps")
-    labels = response.get("process_correctness")
-    if not isinstance(steps, list):
-        raise ValueError(f"{source}:{line_number} response.steps must be a list")
-    if not isinstance(labels, list):
+
+    raw_steps = response.get("steps")
+    human_labels = response.get("process_correctness")
+
+    if not isinstance(raw_steps, list):
         raise ValueError(
-            f"{source}:{line_number} response.process_correctness must be a list"
+            f"{source}:{line_number} response.steps must be a list"
         )
-    if len(steps) != len(labels):
+    if not isinstance(human_labels, list):
+        raise ValueError(
+            f"{source}:{line_number} "
+            "response.process_correctness must be a list"
+        )
+    if len(raw_steps) != len(human_labels):
         raise ValueError(
             f"{source}:{line_number} step/label length mismatch: "
-            f"{len(steps)} steps != {len(labels)} labels"
+            f"{len(raw_steps)} steps != {len(human_labels)} labels"
         )
-    if not steps:
-        raise ValueError(f"{source}:{line_number} contains no response steps")
-
-    clean_steps: list[str] = []
-    clean_labels: list[int] = []
-    for step_index, (step, label) in enumerate(zip(steps, labels)):
-        if not isinstance(step, str):
-            raise ValueError(
-                f"{source}:{line_number} has an invalid step at index {step_index}"
-            )
-        if (
-            isinstance(label, bool)
-            or not isinstance(label, int)
-            or label not in {-1, 0, 1}
-        ):
-            raise ValueError(
-                f"{source}:{line_number} has invalid process_correctness "
-                f"{label!r} at step index {step_index}; expected -1, 0, or 1"
-            )
-        clean_steps.append(step.strip())
-        clean_labels.append(label)
+    if not raw_steps:
+        raise ValueError(
+            f"{source}:{line_number} contains no response steps"
+        )
 
     data_source = _data_source(row)
     policy_model = _policy_model(row)
     provided_source_id = _optional_identifier(
-        row, "source_sample_id", source, line_number
+        row,
+        "source_sample_id",
+        source,
+        line_number,
     )
     source_sample_id = provided_source_id or _stable_id(
         "vpb_",
         {
-            "question": question.strip(),
+            "question": question_text,
             "image": row.get("image", row.get("images")),
             "policy_model": policy_model,
             "data_source": data_source,
         },
     )
     metadata = _compact_metadata(row)
-    output: list[EvaluationExample] = []
-    for step_index, (step, label) in enumerate(zip(clean_steps, clean_labels)):
-        output.append(
+
+    examples: list[EvaluationExample] = []
+    preceding_steps: list[str] = []
+
+    for original_step_index, (raw_step, human_label) in enumerate(
+        zip(raw_steps, human_labels)
+    ):
+        if not isinstance(raw_step, str):
+            raise ValueError(
+                f"{source}:{line_number} has an invalid step "
+                f"at index {original_step_index}"
+            )
+
+        if (
+            isinstance(human_label, bool)
+            or not isinstance(human_label, int)
+            or human_label not in {-1, 0, 1}
+        ):
+            raise ValueError(
+                f"{source}:{line_number} has invalid "
+                f"process_correctness {human_label!r} at step index "
+                f"{original_step_index}; expected -1, 0, or 1"
+            )
+
+        current_step = raw_step.strip()
+
+        if not current_step:
+            if human_label == 0:
+                # Empty neutral steps contain no reasoning to score.
+                continue
+
+            raise ValueError(
+                f"{source}:{line_number} has an empty non-neutral "
+                f"response step at index {original_step_index}"
+            )
+
+        examples.append(
             EvaluationExample(
                 row_index=line_number,
-                anchor=_context_anchor(question.strip(), clean_steps[:step_index]),
-                generated=step,
-                compatibility_label=label,
+                anchor=_context_anchor(
+                    question_text,
+                    preceding_steps,
+                ),
+                generated=current_step,
+                compatibility_label=human_label,
                 data_source=data_source,
                 policy_model=policy_model,
                 pair_id=_stable_id(
                     "vpb_step_",
                     {
                         "source_sample_id": source_sample_id,
-                        "step_index": step_index,
-                        "step": step,
+                        "step_index": original_step_index,
+                        "step": current_step,
                     },
                 ),
                 source_sample_id=source_sample_id,
-                step_index=step_index,
+                step_index=original_step_index,
                 input_mode="context_step",
                 metadata=metadata,
             )
         )
-    return output
+
+        preceding_steps.append(current_step)
+
+    return examples
 
 
 def load_evaluation_examples(
@@ -354,44 +391,6 @@ def _auc(y_true: list[int], scores: list[float]) -> float | None:
         return None
 
 
-def _select_threshold(
-    by_source: dict[str, dict[str, list[Any]]],
-    global_y: list[int],
-    margins: list[float],
-) -> tuple[float, dict[str, Any]]:
-    candidates = sorted(set(round(score, 4) for score in margins))
-    if len(candidates) > 1000:
-        candidates = candidates[::max(1, len(candidates) // 1000)]
-    best_micro = (-1.0, 0.5)
-    best_pooled = (-1.0, 0.5)
-    for threshold in candidates:
-        weighted = 0.0
-        counted = 0
-        for values in by_source.values():
-            predicted = [1 if score > threshold else -1 for score in values["s"]]
-            count = len(values["y"])
-            weighted += _macro_f1_binary(values["y"], predicted)["macro_f1"] * count
-            counted += count
-        micro = weighted / counted if counted else 0.0
-        if micro > best_micro[0]:
-            best_micro = (micro, threshold)
-        predicted = [1 if score > threshold else -1 for score in margins]
-        pooled = _macro_f1_binary(global_y, predicted)["macro_f1"]
-        if pooled > best_pooled[0]:
-            best_pooled = (pooled, threshold)
-    return best_micro[1], {
-        "auc": _auc(global_y, margins),
-        "candidate_count": len(candidates),
-        "best_threshold_micro_over_sources": {
-            "threshold": best_micro[1],
-            "score": best_micro[0],
-        },
-        "best_threshold_pooled_macro": {
-            "threshold": best_pooled[1],
-            "score": best_pooled[0],
-        },
-    }
-
 
 def _grouped_metrics(
     examples: Sequence[EvaluationExample],
@@ -431,7 +430,6 @@ def compute_metrics(
     scores: Sequence[float],
     *,
     threshold: float,
-    auto: bool,
     runtime: float,
 ) -> tuple[dict[str, Any], list[int]]:
     """Compute preserved F1 metrics from binary softmax probability margins."""
@@ -455,19 +453,7 @@ def compute_metrics(
         if example.compatibility_label != 0
     ]
     y_true = [examples[index].compatibility_label for index in evaluated_indices]
-    evaluated_margins = [margins[index] for index in evaluated_indices]
-    by_source: dict[str, dict[str, list[Any]]] = {}
-    for index in evaluated_indices:
-        example = examples[index]
-        values = by_source.setdefault(example.data_source, {"y": [], "s": []})
-        values["y"].append(example.compatibility_label)
-        values["s"].append(margins[index])
-
-    selected = threshold
-    auto_info = None
-    if auto and evaluated_indices:
-        selected, auto_info = _select_threshold(by_source, y_true, evaluated_margins)
-    predictions = [1 if margin > selected else -1 for margin in margins]
+    predictions = [1 if margin > threshold else -1 for margin in margins]
     evaluated_predictions = [predictions[index] for index in evaluated_indices]
 
     epsilon = 1e-12
@@ -495,6 +481,7 @@ def compute_metrics(
     metrics: dict[str, Any] = {
         "evaluation_loss": sum(losses) / len(losses) if losses else 0.0,
         **_binary_metrics(y_true, evaluated_predictions),
+        "f1": pooled["macro_f1"],
         "runtime": runtime,
         "samples_per_second": len(examples) / runtime if runtime > 0 else 0.0,
         "per_source": grouped_data_source,
@@ -503,7 +490,7 @@ def compute_metrics(
             "data_source": grouped_data_source,
         },
         "overall": {
-            "micro_over_sources": (
+            "weighted_macro_f1_over_sources": (
                 weighted_macro / evaluated_count if evaluated_count else 0.0
             ),
             "macro_f1_pooled": pooled["macro_f1"],
@@ -512,7 +499,7 @@ def compute_metrics(
             "total_steps": len(examples),
             "evaluated_steps": evaluated_count,
             "neutral_steps": len(examples) - evaluated_count,
-            "threshold_used": selected,
+            "threshold_used": threshold,
             "threshold_definition": "p_positive_minus_p_negative_strictly_greater",
             "auc": _auc(
                 y_true,
@@ -520,8 +507,6 @@ def compute_metrics(
             ),
         },
     }
-    if auto_info is not None:
-        metrics["auto_search"] = auto_info
     return metrics, predictions
 
 
@@ -602,6 +587,29 @@ def _model_path(value: str | Path) -> Path:
     return model_path
 
 
+def _class_indices(model_config: dict[str, Any]) -> tuple[int, int]:
+    num_labels = model_config.get("num_labels")
+    positive_index = model_config.get("reward_class_index")
+    if isinstance(num_labels, bool) or not isinstance(num_labels, int):
+        raise ValueError("Judge model_config.json must define integer num_labels")
+    if num_labels != 2:
+        raise ValueError(
+            f"Margin evaluation requires exactly two labels, found {num_labels}"
+        )
+    if isinstance(positive_index, bool) or not isinstance(positive_index, int):
+        raise ValueError(
+            "Judge model_config.json must define integer reward_class_index"
+        )
+    if positive_index not in range(num_labels):
+        raise ValueError(
+            f"reward_class_index {positive_index} is invalid for {num_labels} labels"
+        )
+    negative_index = next(
+        index for index in range(num_labels) if index != positive_index
+    )
+    return positive_index, negative_index
+
+
 def _score_with_progress(
     scorer: Any,
     examples: Sequence[EvaluationExample],
@@ -648,8 +656,7 @@ def evaluate(args: argparse.Namespace) -> tuple[Path, dict[str, Any]]:
     scorer = ProcessRewardScorer.from_pretrained(
         model_path, device=args.device, max_length=args.max_length
     )
-    if int(scorer.config.get("num_labels", 2)) != 2:
-        raise ValueError("Margin evaluation requires a binary two-label judge")
+    positive_class_index, negative_class_index = _class_indices(scorer.config)
     started = time.perf_counter()
     scores = _score_with_progress(
         scorer,
@@ -662,7 +669,6 @@ def evaluate(args: argparse.Namespace) -> tuple[Path, dict[str, Any]]:
         examples,
         scores,
         threshold=args.threshold,
-        auto=args.auto,
         runtime=runtime,
     )
 
@@ -675,6 +681,8 @@ def evaluate(args: argparse.Namespace) -> tuple[Path, dict[str, Any]]:
         "output_dir": str(output_dir),
         "steps_loaded": len(examples),
         "neutral_steps": sum(item.compatibility_label == 0 for item in examples),
+        "positive_class_index": positive_class_index,
+        "negative_class_index": negative_class_index,
         "sklearn_auc_available": _HAS_SKLEARN,
         "distribution_shift": distribution_shift,
         "distribution_shift_note": (
@@ -729,15 +737,10 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--threshold",
         type=float,
-        default=0.5,
+        default=0.0,
         help="Strict threshold on p_positive - p_negative, in [-1, 1].",
     )
     parser.add_argument("--device", choices=("auto", "cpu", "cuda"), default="auto")
-    parser.add_argument(
-        "--auto",
-        action="store_true",
-        help="Search margin thresholds using weighted per-data-source macro-F1.",
-    )
     parser.add_argument(
         "--no_progress",
         "--no-progress",
@@ -747,6 +750,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--max_samples",
         "--max-samples",
+        "--limit",
         type=int,
         default=None,
         help="Maximum pairs or flattened steps to evaluate.",
@@ -825,6 +829,6 @@ CUDA_VISIBLE_DEVICES=4 python src/process_reward/visualprocessbench.py \
   --model_path src/outputs/process_reward_judge/v1_1_0/checkpoints/final \
   --batch_size 32 \
   --max_length 256 \
-  --threshold 0.5 \
+  --threshold 0.0 \
   --device cuda
 """
