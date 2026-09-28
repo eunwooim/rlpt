@@ -1,0 +1,314 @@
+[
+  {
+    "text": "Since opposite angles in a kite are equal:\n\\[ 4x = 72^\\circ \\]\n\\[ 3y = 112^\\circ \\]",
+    "anchors": [
+      [
+        "x",
+        "((72)*pi/180)"
+      ],
+      [
+        "y",
+        "((112)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "4. CE\u6bd4DE\u591a\\(\\frac{1}{2}\\)\uff0c\u56e0\u6b64CE = 4\uff0cDE = 2\u3002",
+    "anchors": [
+      [
+        "CE",
+        "4"
+      ],
+      [
+        "DE",
+        "2"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "1. Given that angle \\( AOE \\) is \\( 80^\\circ \\).\n2. Angles \\( AOE \\) and \\( BOE \\) are supplementary angles because they lie on a straight line. Therefore:\n   \\[\n   \\angle AOE + \\angle BOE = 180^\\circ\n   \\]\n   \\[\n   80^\\circ + \\angle BOE = 180^\\circ\n   \\]\n   \\[\n   \\angle BOE = 100^\\circ\n   \\]\n3. Since \\( OC \\) bisects angle \\( BOE \\), it divides angle \\( BOE \\) into two equal parts. Hence:\n   \\[\n   \\angle BOC = \\angle COE = \\frac{100^\\circ}{2} = 50^\\circ\n   \\]\n4. Angle \\( AOC \\) can be found by considering that angles on a straight line sum up to \\( 180^\\circ \\):\n   \\[\n   \\angle AOC = 180^\\circ - \\angle AOE = 180^\\circ - 80^\\circ = 100^\\circ\n   \\]\n5. Since angle \\( AOC \\) and angle \\( COB \\) are supplementary:\n   \\[\n   \\angle AOD = \\angle AOC - \\angle COD\n   \\]\n   where \\(\\angle COD = 50^\\circ\\) because \\(OC\\) bisects \\(BOE\\) and extends to \\(D\\).",
+    "anchors": [
+      [
+        "BOE",
+        "((180)*pi/180)"
+      ],
+      [
+        "BOE",
+        "((100)*pi/180)"
+      ],
+      [
+        "COE",
+        "((((100)*pi/180))/(2))"
+      ],
+      [
+        "AOE",
+        "((180)*pi/180) - ((80)*pi/180)"
+      ],
+      [
+        "COD",
+        "((50)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "Given:\n- \\( AC = 11 \\)\n- \\( BC = 6 \\)\n- \\( EF = 4 \\)\n\nWe need to find the length of \\( DE \\).",
+    "anchors": [
+      [
+        "AC",
+        "11"
+      ],
+      [
+        "BC",
+        "6"
+      ],
+      [
+        "EF",
+        "4"
+      ]
+    ],
+    "n_anchor_components": 3
+  },
+  {
+    "text": "Step 5: Conclusion\n- Since \\(BC = 16\\) and \\(E\\) is midpoint, \\(HE = \\frac{16}{2} = 8\\).",
+    "anchors": [
+      [
+        "BC",
+        "16"
+      ],
+      [
+        "HE",
+        "((16)/(2))"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "1. **\u5efa\u7acb\u57fa\u672c\u6a21\u578b**:\n   \\(\\odot O\\) \u662f\u4e00\u4e2a\u534a\u5f84\u4e3a \\(4\\) \u7684\u5706\uff0c\u5b83\u7684\u5706\u5fc3\u4e3a \\(O\\)\u3002\\(\\triangle ABC\\) \u662f\u4e00\u4e2a\u76f4\u89d2\u4e09\u89d2\u5f62\uff0c\u5176\u4e2d \\(\\angle ACB = 90\u00b0\\)\uff0c\\(\\angle BAC = 30\u00b0\\)\u3002\u70b9 \\(A\\) \u662f\u5706 \\(\\odot O\\) \u4e0e \\(BC\\) \u7684\u5207\u70b9\u3002",
+    "anchors": [
+      [
+        "ACB",
+        "((90)*pi/180)"
+      ],
+      [
+        "BAC",
+        "((30)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "2. **Given Values:** \n   - RP = 3.5\n   - JP = 9",
+    "anchors": [
+      [
+        "RP",
+        "3.5"
+      ],
+      [
+        "JP",
+        "9"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "5. **Combining Equations**:\n   - Since PA = PB = 15, and tangents from a point outside the circle to the circle are equal:\n   - PC = CD = CE = 15.\n   - Perimeter = PC + CD + PD = 15 + 15 + 15 = 45.",
+    "anchors": [
+      [
+        "PB",
+        "15"
+      ],
+      [
+        "CE",
+        "15."
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "4. Since \u2220ABC = 90\u00b0 and \u2220A = 30\u00b0, we have that angle \u2220ABC + \u2220BAD = 90\u00b0.",
+    "anchors": [
+      [
+        "angle_ABC",
+        "((90)*pi/180)"
+      ],
+      [
+        "angle_A",
+        "((30)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "Here comes the step by step reasoning:\n- In \u2206 CAB, the angle CAB, ABC and \u2220BDC, sum up to 180 degrees.\nSince ABC = (20 + 90) = 40.1 + 32 and \u2220BDC = 160 degrees",
+    "anchors": [
+      [
+        "ABC",
+        "(20 + 90)"
+      ],
+      [
+        "angle_BDC",
+        "160"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "To Solve:\n1. Since \\( BD \\) is a tangent to the circle at \\( B \\), \\( OB \\) is perpendicular to \\( BD \\). Thus, \\(\\angle OBD = 90^\\circ\\).\n2. \\( OABC \\) is a rhombus, implying that \\( OB = BC = 1 \\) (radii of the circle and equal sides of the rhombus).\n3. We need to calculate \\( BD \\).",
+    "anchors": [
+      [
+        "OBD",
+        "((90)*pi/180)"
+      ],
+      [
+        "BC",
+        "1"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "1. Identify given angles:\n   - \\(\\angle JLQ = 26^\\circ\\)\n   - \\(\\angle KJQ = 29^\\circ\\)",
+    "anchors": [
+      [
+        "JLQ",
+        "((26)*pi/180)"
+      ],
+      [
+        "KJQ",
+        "((29)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "To solve this problem, we need to use the given information and apply the properties of rotation.\n\n1. Since \u25b3ABC is rotated around point A to form \u25b3ADE, it means that AA is the same length in both triangles. Additionally, point D is the image of point C under the rotation, and point E is the image of point B.\n2. Given that \u2220B = 40\u00b0 and \u2220CAE = 60\u00b0, we can find the measure of \u2220DAC.",
+    "anchors": [
+      [
+        "angle_B",
+        "((40)*pi/180)"
+      ],
+      [
+        "angle_CAE",
+        "((60)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "1. **Identifying Tangent and Radius Relationship**: \n   The given image shows that AB and AC are tangent lines to circle O at points B and C respectively. By the definition of tangents, a tangent at any point of a circle is perpendicular to the radius at the point of contact. Therefore, \u2220OBA = 90\u00b0 and \u2220OCA = 90\u00b0.",
+    "anchors": [
+      [
+        "angle_OBA",
+        "((90)*pi/180)"
+      ],
+      [
+        "angle_OCA",
+        "((90)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "\u4f46\u8fd9\u4e00\u6b65\u63a8\u5bfc\u4e0d\u6b63\u786e\uff0c\u6211\u4eec\u5e94\u8c03\u6574\u601d\u8def\uff1a\n\n\u6b63\u786e\u5173\u7cfb\u5e94\u8be5\u8c03\u6574\u4e3a\uff1a\n\u5728\u25b3PBD\u4e2d\uff0c\u2220PBD = 100\u00b0\uff08\u56e0\u4e3a\u5706\u5fc3\u89d2\u662f\u5468\u89d2\u7684\u4e24\u500d\uff09\u3002\n\u7ed3\u5408\u2220PBD\u7684\u5b9e\u9645\u6027\u8d28\u548c\u5706\u5468\u89d2\u516c\u5f0f\uff1a\n\n\u5b9e\u9645\u5e94\u8be5\u662f\u7531\u2220AOD=110\u00b0\uff0c\u4ece\u800c\u2220PBD\u7684\u89d2\u5ea6\u662f110\u00b0\u7684\u4e00\u534a\u537355\u00b0\uff0c\u5e76\u4ece\u4e09\u89d2\u5f62\u7684\u89d2\u5ea6\u5173\u7cfb\u6765\u770b\uff0c\u2220P = 180\u00b0 - \u2220PBD - \u2220BDC\u3002",
+    "anchors": [
+      [
+        "angle_PBD",
+        "((100)*pi/180)"
+      ],
+      [
+        "angle_AOD",
+        "((110)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "1. In the given parallelogram ABCD, AD = 7 cm and AB = 3 cm.\n2. Since AD is parallel and equal to BC, we have AD = BC = 7 cm.\n3. Since AE is the angle bisector of \u2220BAD, it divides \u2220BAD into two equal angles.\n4. Since AB is parallel to CD and AD is a transversal, \u2220ABC and \u2220DAC are supplementary angles, meaning they add up to 180 degrees.",
+    "anchors": [
+      [
+        "AD",
+        "7"
+      ],
+      [
+        "AB",
+        "3"
+      ],
+      [
+        "BC",
+        "7"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "Given the distances:\n- AB = 8\n- AD = CD = 5",
+    "anchors": [
+      [
+        "AB",
+        "8"
+      ],
+      [
+        "CD",
+        "5"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "5. **Geometrical Considerations:**\n   - The minimum distance from a point outside a segment to any point on that segment occurs when the point is perpendicular to the segment.\n   - Given that \\( \\angle AOB = 30\u00b0 \\), we can use the properties of a 30\u00b0-60\u00b0-90\u00b0 triangle to determine the distances.\n\n6. **Applying the Strategy:**\n   - Since \\( OP = 10 \\) and \\( \\angle AOB = 30\u00b0 \\), ideally, we would want \\( \\triangle OPB \\) to be an isosceles triangle to ensure symmetry and to simplify the calculation.",
+    "anchors": [
+      [
+        "AOB",
+        "((30)*pi/180)"
+      ],
+      [
+        "OP",
+        "10"
+      ],
+      [
+        "AOB",
+        "((30)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "7. **Find the Required Angle \u2220PDC:**\n   - Since PD is the diameter and \u2220CPD = 54\u00b0, we need to find the relationship between PD and CD.\n   - \u2220PDC is formed at point D directly across the circle, considering the properties and the diameter.\n   - From the tangent properties, the total angle formed at point P is 180\u00b0 - \u2220CPD = 180\u00b0 - 54\u00b0 = 126\u00b0.\n   - Since PD is a diameter, it subtends an angle \u2220BDC and another angle of complementary nature to it.\n   - Thus, to find \u2220PDC directly, we subtract the known angle from 90 degrees (since PD is a diameter and forms a right angle), which is:\n     \u2220PDC = 90\u00b0 \u2212 54\u00b0 = 36\u00b0.",
+    "anchors": [
+      [
+        "angle_CPD",
+        "((54)*pi/180)"
+      ],
+      [
+        "angle_CPD",
+        "((180)*pi/180) - ((54)*pi/180)"
+      ],
+      [
+        "angle_PDC",
+        "((90)*pi/180) - ((54)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "Since 130\u00b0 is not a valid option, there seems to be a potential error. Let's reconsider the placement and calculations.\n\nWe may need to focus on the internal angles of the larger triangle ABC using:\n- \u2220C = 90\u00b0 (right angle given)\n- \u2220ABC = 30\u00b0\n- \u22202 + 90\u00b0 + 30\u00b0 = 180\u00b0 (triangle sum property)",
+    "anchors": [
+      [
+        "angle_C",
+        "((90)*pi/180)"
+      ],
+      [
+        "angle_ABC",
+        "((30)*pi/180)"
+      ],
+      [
+        "angle_2",
+        "((180)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 3
+  }
+]

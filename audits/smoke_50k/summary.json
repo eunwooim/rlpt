@@ -1,0 +1,71 @@
+{
+  "path": "/scratch/sghos104/rlpt/canonical_chunked_v2.jsonl",
+  "lines_scanned": 50000,
+  "unparseable": 0,
+  "by_method": {
+    "marker": {
+      "totals": {
+        "multi_records": 49759,
+        "single_records": 0,
+        "chunks": 500108,
+        "boundaries": 450349
+      },
+      "counts": {
+        "next_starts_continuation": 594,
+        "prev_no_terminal_punct": 120672,
+        "unbalanced_()": 39,
+        "next_starts_operator": 62,
+        "mid_sentence_pair": 5,
+        "unbalanced_$": 35,
+        "prev_odd_ending": 213,
+        "unbalanced_[]": 5,
+        "prev_ends_on_operator": 19003,
+        "unbalanced_{}": 1
+      }
+    },
+    "model": {
+      "totals": {
+        "multi_records": 33,
+        "single_records": 208,
+        "chunks": 102,
+        "boundaries": 69
+      },
+      "counts": {
+        "next_starts_continuation": 5
+      }
+    }
+  },
+  "by_method_source": {
+    "marker||OpenGVLab/VisualPRM400K-v1.1": {
+      "totals": {
+        "multi_records": 49759,
+        "single_records": 0,
+        "chunks": 500108,
+        "boundaries": 450349
+      },
+      "counts": {
+        "next_starts_continuation": 594,
+        "prev_no_terminal_punct": 120672,
+        "unbalanced_()": 39,
+        "next_starts_operator": 62,
+        "mid_sentence_pair": 5,
+        "unbalanced_$": 35,
+        "prev_odd_ending": 213,
+        "unbalanced_[]": 5,
+        "prev_ends_on_operator": 19003,
+        "unbalanced_{}": 1
+      }
+    },
+    "model||OpenGVLab/VisualPRM400K-v1.1": {
+      "totals": {
+        "multi_records": 33,
+        "single_records": 208,
+        "chunks": 102,
+        "boundaries": 69
+      },
+      "counts": {
+        "next_starts_continuation": 5
+      }
+    }
+  }
+}

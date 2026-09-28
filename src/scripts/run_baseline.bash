@@ -24,7 +24,7 @@ DATASET_CONFIG="${DATASET_CONFIG:-$(dataset_config_for_alias "${DATASET}")}"
 ratio_tag="${DATA_RATIO//./p}"
 lr_tag="${LEARNING_RATE//./p}"
 EXPERIMENT_NAME="${EXPERIMENT_NAME:-${DATASET}_${MODE}_ratio_${ratio_tag}_seed_${SEED}_lr_${lr_tag}}"
-OUTPUT_DIR="$(make_output_dir "${EXPERIMENT_NAME}")"
+OUTPUT_DIR="${OUTPUT_DIR_OVERRIDE:-$(make_output_dir "${EXPERIMENT_NAME}")}"
 
 if [[ "${MODE}" == "sft" ]]; then
   ENTRYPOINT="${SFT_ENTRYPOINT}"
@@ -99,6 +99,27 @@ if [[ "${MODE}" == "rlvr" ]]; then
   if [[ -n "${BATCH_SIZE}" ]]; then
     cmd+=(--train_batch_size "${BATCH_SIZE}")
   fi
+  if [[ -n "${ROLLOUT_N:-}" ]]; then
+    cmd+=(--rollout_n "${ROLLOUT_N}")
+  fi
+  if [[ -n "${PPO_MINI_BATCH_SIZE:-}" ]]; then
+    cmd+=(--ppo_mini_batch_size "${PPO_MINI_BATCH_SIZE}")
+  fi
+  if [[ -n "${PPO_MICRO_BATCH_SIZE_PER_GPU:-}" ]]; then
+    cmd+=(--ppo_micro_batch_size_per_gpu "${PPO_MICRO_BATCH_SIZE_PER_GPU}")
+  fi
+  if [[ -n "${SAVE_FREQ:-}" ]]; then
+    cmd+=(--save_freq "${SAVE_FREQ}")
+  fi
+  if [[ -n "${TEST_FREQ:-}" ]]; then
+    cmd+=(--test_freq "${TEST_FREQ}")
+  fi
+  if [[ -n "${VERL_EXTRA_OVERRIDES:-}" ]]; then
+    # space-separated list of Hydra overrides, each passed as its own flag
+    for _ov in ${VERL_EXTRA_OVERRIDES}; do
+      cmd+=(--verl_extra_override "${_ov}")
+    done
+  fi
 else
   cmd+=(--image_mode "${IMAGE_MODE}")
   if [[ -n "${IMAGE_ZIP}" ]]; then
@@ -109,6 +130,12 @@ else
   fi
   if [[ -n "${GRAD_ACCUM_STEPS}" ]]; then
     cmd+=(--gradient_accumulation_steps "${GRAD_ACCUM_STEPS}")
+  fi
+  if [[ -n "${SAVE_STEPS:-}" ]]; then
+    cmd+=(--save_steps "${SAVE_STEPS}")
+  fi
+  if [[ -n "${SAVE_TOTAL_LIMIT:-}" ]]; then
+    cmd+=(--save_total_limit "${SAVE_TOTAL_LIMIT}")
   fi
 fi
 

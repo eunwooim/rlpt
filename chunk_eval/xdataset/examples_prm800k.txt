@@ -1,0 +1,120 @@
+prm800k: 10007 records; markers ⟦=⟧ match ⟦G⟧ gold-only (missed) ⟦P⟧ pred-only (spurious)
+
+==============================================================================
+[WORST] sid=prm800k_train_2672 subset=train n_gold=8 n_pred=22 P=0.29 R=0.86 F1=0.43 dens=3.00
+==============================================================================
+To find the least whole number of hours that is greater than $4$ hours and is "clock equivalent'' to its square number of hours, I need to check the squares of the numbers that are greater than $4$ and see if they are equivalent to their roots on a $12$-hour clock. ⟦=⟧The next number after $4$ is $5$, so I square it and get $25$. ⟦P⟧To see if $25$ is clock equivalent to $5$, I need to reduce it by multiples of $12$ until I get a number between $0$ and $11$. ⟦P⟧I can subtract $12$ twice from $25$ and get $25 - 12 - 12 = 1$. ⟦P⟧Since $1$ is not equal to $5$, $25$ is not clock equivalent to $5$. ⟦=⟧The next number after $5$ is $6$, so I square it and get $36$. ⟦P⟧To see if $36$ is clock equivalent to $6$, I need to reduce it by multiples of $12$ until I get a number between $0$ and $11$. ⟦P⟧I can subtract $12$ three times from $36$ and get $36 - 12 - 12 - 12 = 0$. ⟦P⟧Since $0$ is not equal to $6$, $36$ is not clock equivalent to $6$. ⟦=⟧The next number after $6$ is $7$, so I square it and get $49$. ⟦P⟧To see if $49$ is clock equivalent to $7$, I need to reduce it by multiples of $12$ until I get a number between $0$ and $11$. ⟦P⟧I can subtract $12$ four times from $49$ and get $49 - 12 - 12 - 12 - 12 = 1$. ⟦P⟧Since $1$ is not equal to $7$, $49$ is not clock equivalent to $7$. ⟦=⟧The next number after $7$ is $8$, so I square it and get $64$. ⟦P⟧To see if $64$ is clock equivalent to $8$, I need to reduce it by multiples of $12$ until I get a number between $0$ and $11$. ⟦P⟧I can subtract $12$ five times from $64$ and get $64 - 12 - 12 - 12 - 12 - 12 = 4$. ⟦P⟧Since $4$ is not equal to $8$, $64$ is not clock equivalent to $8$. ⟦=⟧The next number after $8$ is $9$, so I square it and get $81$. ⟦P⟧To see if $81$ is clock equivalent to $9$, I need to reduce it by multiples of $12$ until I get a number between $0$ and $11$. ⟦P⟧I can subtract $12$ six times from $81$ and get $81 - 12 - 12 - 12 - 12 - 12 - 12 = 9$. ⟦P⟧Since $9$ is equal to $9$, $81$ is clock equivalent to $9$. ⟦=⟧Therefore, the least whole number of hours that is greater than $4$ hours and is "clock equivalent'' to its square number of hours is $9$ hours. ⟦G⟧# Answer
+
+9
+
+==============================================================================
+[WORST] sid=prm800k_train_3324 subset=train n_gold=8 n_pred=21 P=0.30 R=0.86 F1=0.44 dens=2.86
+==============================================================================
+This problem involves counting the number of sequences that satisfy certain conditions, which suggests using the multiplication principle of counting: if we can break down the task of forming a sequence into a series of steps, and we know how many choices we have for each step, then we can multiply those choices to get the total number of sequences. ⟦=⟧The first thing to notice is that the order of the letters in a good word is very important, since it determines whether the word violates any of the given rules. ⟦P⟧So we should think about how to choose the first letter, then the second letter, and so on, until the seventh letter. ⟦=⟧The second thing to notice is that the choices for each letter depend on the previous letter, since we cannot have certain pairs of letters next to each other. ⟦P⟧For example, if the first letter is $A$, then the second letter cannot be $B$. ⟦=⟧So let's start with the first letter. ⟦P⟧How many choices do we have for it? ⟦P⟧Well, there are no restrictions on the first letter, so we can choose any of the three letters $A$, $B$, or $C$. ⟦P⟧That means we have 3 choices for the first letter. ⟦=⟧Now, let's look at the second letter. ⟦P⟧How many choices do we have for it, given that we already know the first letter? ⟦P⟧Well, it depends on what the first letter was. ⟦P⟧If the first letter was $A$, then the second letter cannot be $B$, so we only have 2 choices: $A$ or $C$. ⟦P⟧If the first letter was $B$, then the second letter cannot be $C$, so we only have 2 choices: $A$ or $B$. ⟦P⟧If the first letter was $C$, then the second letter cannot be $A$, so we only have 2 choices: $B$ or $C$. ⟦P⟧So no matter what the first letter was, we have 2 choices for the second letter. ⟦=⟧We can continue this reasoning for the third letter, and see that we also have 2 choices for it, given the second letter. ⟦P⟧For example, if the second letter was $A$, then the third letter cannot be $B$, so we only have 2 choices: $A$ or $C$. ⟦P⟧Similarly, we have 2 choices for the fourth, fifth, sixth, and seventh letters, given the previous letter. ⟦=⟧So, to summarize, we have 3 choices for the first letter, and 2 choices for each of the remaining six letters. ⟦P⟧By the multiplication principle, the total number of seven-letter good words is $3 \times 2^6 = 192$. ⟦G⟧# Answer
+
+192
+
+==============================================================================
+[WORST] sid=prm800k_train_3680 subset=train n_gold=6 n_pred=14 P=0.31 R=0.80 F1=0.44 dens=2.60
+==============================================================================
+I notice that Pascal's triangle is constructed by adding the two numbers above each entry. ⟦P⟧For example, the 6 in Row 4 is obtained by adding the 3 and 3 in Row 3. ⟦=⟧I also notice that the first and last elements in each row are always 1, and the second and second-to-last elements are always the same as the row number. ⟦P⟧For example, in Row 4, the second element is 4 and the second-to-last element is also 4. ⟦=⟧I wonder if there is a general formula for the elements in Pascal's triangle. ⟦P⟧I recall that the binomial coefficient $\binom{n}{k}$ counts the number of ways to choose k elements out of n, without regard to order. ⟦P⟧I also remember that $\binom{n}{k} = \frac{n!}{k!(n-k)!}$, where n! means n factorial, or the product of all positive integers up to n. ⟦=⟧I observe that the elements in Row n of Pascal's triangle are exactly the binomial coefficients $\binom{n}{0}, \binom{n}{1}, \binom{n}{2}, \dots, \binom{n}{n}$. ⟦P⟧For example, in Row 4, we have $\binom{4}{0} = 1, \binom{4}{1} = 4, \binom{4}{2} = 6, \binom{4}{3} = 4, \binom{4}{4} = 1$. ⟦=⟧Therefore, to find the fourth element in Row 15, I need to calculate $\binom{15}{3}$. ⟦P⟧I use the formula $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ and plug in n = 15 and k = 3. ⟦P⟧I get $\binom{15}{3} = \frac{15!}{3!(15-3)!} ⟦P⟧= \frac{15 \times 14 \times 13 \times 12!}{3 \times 2 \times 1 \times 12!} ⟦P⟧= \frac{15 \times 14 \times 13}{3 \times 2} = 455$. ⟦G⟧# Answer
+
+455
+
+==============================================================================
+[WORST] sid=prm800k_train_3774 subset=train n_gold=4 n_pred=7 P=0.33 R=0.67 F1=0.44 dens=2.00
+==============================================================================
+I need to find the midpoint of $(3,5)$ and $(-6,2)$, which is where they agreed to meet. ⟦P⟧I can use the midpoint formula, which is the average of the $x$-coordinates and the average of the $y$-coordinates. ⟦P⟧So the midpoint is $\left(\frac{3+(-6)}{2},\frac{5+2}{2}\right) = \left(-1.5,3.5\right)$. ⟦=⟧Now I need to find the midpoint of $(3,5)$ and $(-10,4)$, which is where they should actually meet. ⟦P⟧I can use the same formula, and get $\left(\frac{3+(-10)}{2},\frac{5+4}{2}\right) = \left(-3.5,4.5\right)$. ⟦=⟧The positive difference in the $x$-coordinates is the absolute value of the difference between $-1.5$ and $-3.5$. ⟦P⟧That is, $|-1.5-(-3.5)| = |2| = 2$. ⟦G⟧# Answer
+
+2
+
+==============================================================================
+[WORST] sid=prm800k_train_49025 subset=train n_gold=15 n_pred=9 P=0.62 R=0.36 F1=0.45 dens=0.57
+==============================================================================
+To find the time in $6666$ seconds, I need to add $6666$ seconds to $3\!:\!00\!:\!00 \text{ p.m. ⟦G⟧}$ and adjust for the hour and minute changes. ⟦=⟧I can start by adding $6000$ seconds, which is equivalent to $100$ minutes, to $3\!:\!00\!:\!00 \text{ p.m. ⟦G⟧}$ ⟦P⟧That gives me $4\!:\!40\!:\!00 \text{ p.m. ⟦G⟧}$ ⟦=⟧Next, I need to add the remaining $666$ seconds, which is equivalent to $11$ minutes and $6$ seconds, to $4\!:\!40\!:\!00 \text{ p.m. ⟦G⟧}$ ⟦P⟧That gives me $4\!:\!51\!:\!06 \text{ p.m. ⟦G⟧}$ ⟦=⟧However, the problem asks for the time in the format "HH:MM:SS", without including "am" or "pm". ⟦=⟧So, I need to convert $4\!:\!51\!:\!06 \text{ p.m. ⟦G⟧}$ to a 24-hour clock format. ⟦=⟧To do that, I add $12$ hours to the hour part of the time, since $4\!:\!00 \text{ p.m. ⟦G⟧}$ is $12$ hours after $4\!:\!00 \text{ a.m. ⟦G⟧}$ ⟦P⟧That gives me $16\!:\!51\!:\!06$ as the final answer. ⟦G⟧# Answer
+
+16:51:06
+
+==============================================================================
+[MEDIAN] sid=prm800k_train_18234 subset=train n_gold=12 n_pred=11 P=1.00 R=0.91 F1=0.95 dens=0.91
+==============================================================================
+To solve this problem, I will try to rewrite the trigonometric expressions in terms of a common function, such as cosine. ⟦=⟧I recall that $\tan \theta = \frac{\sin \theta}{\cos \theta}$ and $\sin \theta = \cos (90^\circ - \theta).$ ⟦=⟧Using these identities, I can rewrite $\tan 20^\circ$ as $\frac{\cos (90^\circ - 20^\circ)}{\cos 20^\circ} = \frac{\cos 70^\circ}{\cos 20^\circ}.$ ⟦=⟧Similarly, I can rewrite $4 \sin 20^\circ$ as $4 \cos (90^\circ - 20^\circ) = 4 \cos 70^\circ.$ ⟦=⟧Now I have $\frac{\cos 70^\circ}{\cos 20^\circ} + 4 \cos 70^\circ = \frac{\cos 70^\circ + 4 \cos 20^\circ \cos 70^\circ}{\cos 20^\circ}.$ ⟦=⟧To simplify this fraction, I will use the product-to-sum identity $\cos \alpha \cos \beta = \frac{1}{2} (\cos (\alpha + \beta) + \cos (\alpha - \beta)).$ ⟦=⟧Applying this identity to the numerator, I get $\cos 70^\circ + 4 \cos 20^\circ \cos 70^\circ = \cos 70^\circ + 2 (\cos (90^\circ) + \cos (50^\circ)).$ ⟦=⟧But $\cos 90^\circ = 0,$ so this reduces to $\cos 70^\circ + 2 \cos 50^\circ.$ ⟦=⟧Now I have $\frac{\cos 70^\circ + 2 \cos 50^\circ}{\cos 20^\circ}.$ ⟦=⟧To evaluate this fraction, I will use a calculator. ⟦=⟧I get $\frac{0.3420201433 + 2 \times 0.6427876097}{0.9396926208} \approx 2.366926456.$ ⟦G⟧# Answer
+
+2.366926456
+
+==============================================================================
+[MEDIAN] sid=prm800k_train_1831 subset=train n_gold=12 n_pred=11 P=1.00 R=0.91 F1=0.95 dens=0.91
+==============================================================================
+I need to find the smallest number of unit vectors that can add up to a given vector. ⟦=⟧One way to approach this problem is to use the triangle inequality, which states that the sum of the lengths of any two sides of a triangle is greater than or equal to the length of the third side. ⟦=⟧If I apply the triangle inequality to the unit vectors and the given vector, I get that
+\[\left\|\mathbf{v}_1 + \mathbf{v}_2 + \dots + \mathbf{v}_k\right\| \leq \left\|\mathbf{v}_1\right\| + \left\|\mathbf{v}_2\right\| + \dots + \left\|\mathbf{v}_k\right\|.\] ⟦=⟧Since the unit vectors have magnitude 1, this simplifies to
+\[\left\|\mathbf{v}_1 + \mathbf{v}_2 + \dots + \mathbf{v}_k\right\| \leq k.\] ⟦=⟧Now, I need to find the magnitude of the given vector, which is the square root of the sum of the squares of its components. ⟦=⟧I have
+\[\left\|\begin{pmatrix} 6 \\ -5 \end{pmatrix}\right\| = \sqrt{6^2 + (-5)^2} = \sqrt{61}.\] ⟦=⟧Therefore, I have the inequality
+\[\sqrt{61} \leq k.\] ⟦=⟧To find the smallest possible value of $k,$ I need to round up $\sqrt{61}$ to the next integer, since $k$ has to be a positive integer. ⟦=⟧I can use a calculator or an approximation to find that $\sqrt{61}$ is about 7.81. ⟦=⟧Rounding up, I get that the smallest possible value of $k$ is 8. ⟦=⟧This means that I need at least 8 unit vectors to add up to the given vector. ⟦G⟧# Answer
+
+8
+
+==============================================================================
+[MEDIAN] sid=prm800k_train_18468 subset=train n_gold=12 n_pred=11 P=1.00 R=0.91 F1=0.95 dens=0.91
+==============================================================================
+I know that $\lfloor r \rfloor$ is the greatest integer less than or equal to $r$, so it must be an integer. ⟦=⟧That means that $r$ must have a decimal part of $0.2$, since adding it to an integer gives $12.2$. ⟦=⟧So I can write $r = n + 0.2$, where $n$ is some integer. ⟦=⟧Then the equation becomes $\lfloor n + 0.2 \rfloor + n + 0.2 = 12.2$. ⟦=⟧I can simplify this by noting that $\lfloor n + 0.2 \rfloor = n$, since $n$ is already an integer. ⟦=⟧So I have $n + n + 0.2 = 12.2$, or $2n = 12$. ⟦=⟧Dividing by $2$, I get $n = 6$. ⟦=⟧Therefore, $r = n + 0.2 = 6.2$. ⟦=⟧I can check that this works by plugging it back into the original equation: $\lfloor 6.2 \rfloor + 6.2 = 6 + 6.2 = 12.2$, which is true. ⟦=⟧I can also see that this is the only possible value of $r$, since any other value with a decimal part of $0.2$ would give a different value for $\lfloor r \rfloor$ and make the equation false. ⟦=⟧So the only solution is $r = 6.2$. ⟦G⟧# Answer
+
+6.2
+
+==============================================================================
+[MEDIAN] sid=prm800k_train_1850 subset=train n_gold=11 n_pred=12 P=0.91 R=1.00 F1=0.95 dens=1.10
+==============================================================================
+To find the minimum possible value for $\frac{A}{B},$ I need to express $A$ and $B$ in terms of a single variable and then use calculus to find the critical points of the function. ⟦=⟧Alternatively, I can try to find a relationship between $A$ and $B$ that does not involve $x$ and see if I can simplify the fraction. ⟦=⟧I notice that $B^2 = \left(x - \frac{1}{x}\right)^2 = x^2 - 2 + \frac{1}{x^2},$ so I can write $A = B^2 + 2.$ ⟦=⟧This means that $\frac{A}{B} = \frac{B^2 + 2}{B} = B + \frac{2}{B}.$ ⟦=⟧Now I want to minimize $B + \frac{2}{B}$ with respect to $B.$ ⟦=⟧I can use calculus and find the derivative of this function, or I can use a more elementary approach and notice that $B + \frac{2}{B}$ is always positive for positive $B,$ and it is the sum of two positive terms that have a constant product of 2. ⟦=⟧This reminds me of the arithmetic mean-geometric mean inequality, which says that the arithmetic mean of two positive numbers is always greater than or equal to their geometric mean, with equality only when the numbers are equal. ⟦=⟧In this case, the arithmetic mean of $B$ and $\frac{2}{B}$ is $\frac{B + \frac{2}{B}}{2},$ and their geometric mean is $\sqrt{B \cdot \frac{2}{B}} = \sqrt{2}.$ ⟦=⟧Therefore, by the AM-GM inequality, I have that $\frac{B + \frac{2}{B}}{2} \geq \sqrt{2},$ or $B + \frac{2}{B} \geq 2\sqrt{2}.$ ⟦=⟧This means that the minimum possible value for $B + \frac{2}{B}$ is $2\sqrt{2},$ and it occurs when $B = \frac{2}{B},$ or $B = \sqrt{2}.$ ⟦=⟧Since $\frac{A}{B} = B + \frac{2}{B},$ this also means that the minimum possible value for $\frac{A}{B}$ is $2\sqrt{2},$ and it occurs when $B = \sqrt{2},$ or $x - \frac{1}{x} = \sqrt{2}.$
+
+⟦P⟧# Answer
+
+2\sqrt{2}
+
+==============================================================================
+[MEDIAN] sid=prm800k_train_1854 subset=train n_gold=12 n_pred=11 P=1.00 R=0.91 F1=0.95 dens=0.91
+==============================================================================
+I notice that the expression $x+\tfrac1x$ appears in both the given equation and the definition of $S_m$, so I wonder if I can use the equation to simplify $S_m$ somehow. ⟦=⟧I try to write $S_m$ in terms of $S_1 = x+\tfrac1x$, which I know is equal to 3. ⟦=⟧I start with the simplest case: $S_2 = x^2 + \tfrac{1}{x^2}$. ⟦=⟧I can rewrite this as $S_2 = (x+\tfrac1x)^2 - 2x\tfrac1x$. ⟦=⟧Substituting 3 for $S_1$, I get $S_2 = 3^2 - 2 = 7$. ⟦=⟧I try to generalize this idea for higher powers of $S_m$. ⟦=⟧I notice that $S_{m+1} = x^{m+1} + \tfrac{1}{x^{m+1}}$ can be written as $S_{m+1} = (x+\tfrac1x)(x^m + \tfrac{1}{x^m}) - x^{m-1} - \tfrac{1}{x^{m-1}}$. ⟦=⟧This means that $S_{m+1} = S_1S_m - S_{m-1}$. ⟦=⟧This is a nice recurrence relation that relates $S_{m+1}$ to the previous two terms $S_m$ and $S_{m-1}$. ⟦=⟧I can use this relation to compute $S_7$ by starting from $S_1 = 3$ and $S_2 = 7$. ⟦=⟧I get $S_3 = 3 \cdot 7 - 3 = 18$, $S_4 = 3 \cdot 18 - 7 = 47$, $S_5 = 3 \cdot 47 - 18 = 123$, $S_6 = 3 \cdot 123 - 47 = 322$, and finally $S_7 = 3 \cdot 322 - 123 = 843$. ⟦G⟧# Answer
+
+843
+
+==============================================================================
+[BEST] sid=prm800k_train_998 subset=train n_gold=3 n_pred=3 P=1.00 R=1.00 F1=1.00 dens=1.00
+==============================================================================
+I notice that the function $f(x)$ is symmetric about the line $x=1$, since replacing $x$ with $2-x$ does not change the value of $f(x)$. ⟦=⟧That means that the line $x=1$ is an axis of symmetry of the graph of $y=f(x)$. ⟦=⟧The simplest equation of this line is just $x=1$.
+
+# Answer
+
+x=1
+
+==============================================================================
+[BEST] sid=prm800k_train_97769 subset=train n_gold=17 n_pred=17 P=1.00 R=1.00 F1=1.00 dens=1.00
+==============================================================================
+I notice that the problem involves an isosceles triangle and an altitude, which are usually helpful for finding similar triangles or right triangles. ⟦=⟧I draw a sketch of the triangle and label the lengths I know: $AB=AC=4$ and $AH=3(HC)$. ⟦=⟧I also mark the right angle at $H$ since the altitude is perpendicular to the base. ⟦=⟧I see that $\triangle ABC$ is divided into two right triangles, $\triangle ABH$ and $\triangle BCH$. ⟦=⟧I wonder if I can use the Pythagorean theorem or some similarity ratio to find $BC$. ⟦=⟧I try to find $AH$ and $HC$ in terms of $AC$. ⟦=⟧I use the given ratio $AH=3(HC)$ to write $AC=AH+HC=3(HC)+HC=4(HC)$. ⟦=⟧I divide both sides by $4$ to get $HC=\frac{AC}{4}=\frac{4}{4}=1$. ⟦=⟧Then I plug in $HC=1$ into $AH=3(HC)$ to get $AH=3(1)=3$. ⟦=⟧I check that $AH+HC=AC$ as expected. ⟦=⟧I use the Pythagorean theorem on $\triangle ABH$ to write $AB^2=AH^2+BH^2$. ⟦=⟧I plug in the values I know: $4^2=3^2+BH^2$. ⟦=⟧I solve for $BH$ by subtracting $9$ from both sides and taking the square root: $BH=\sqrt{4^2-9}=\sqrt{7}$. ⟦=⟧I notice that $BC$ is the hypotenuse of $\triangle BCH$, so I use the Pythagorean theorem again to write $BC^2=BH^2+HC^2$. ⟦=⟧I plug in the values I know: $BC^2=(\sqrt{7})^2+1^2$. ⟦=⟧I simplify and solve for $BC$ by taking the square root: $BC=\sqrt{7+1}=\sqrt{8}$. ⟦=⟧# Answer
+
+$\sqrt{8}$
+
+==============================================================================
+[BEST] sid=prm800k_train_97740 subset=train n_gold=7 n_pred=7 P=1.00 R=1.00 F1=1.00 dens=1.00
+==============================================================================
+To find the slope of a line, we need to put it in slope-intercept form. ⟦=⟧That means we need to solve for y. ⟦=⟧Right. So we subtract 3x from both sides. ⟦=⟧That gives us $5y = -3x + 20$. ⟦=⟧Now we need to divide both sides by 5. ⟦=⟧That leaves us with $y = -\dfrac{3}{5}x + 4$. ⟦=⟧Now we can see that the slope is -3/5.
+
+# Answer
+
+-3/5
+
+==============================================================================
+[BEST] sid=prm800k_train_97739 subset=train n_gold=5 n_pred=5 P=1.00 R=1.00 F1=1.00 dens=1.00
+==============================================================================
+So we want to find the slope of the line $2y = -3x + 6$. ⟦=⟧Right. To do that, we need to get y by itself. ⟦=⟧So we should divide both sides by 2. ⟦=⟧That gives us $y = -\frac{3}{2}x + 3$. ⟦=⟧Now we can see that the slope is -3/2.
+
+# Answer
+
+-3/2
+
+==============================================================================
+[BEST] sid=prm800k_train_97734 subset=train n_gold=3 n_pred=3 P=1.00 R=1.00 F1=1.00 dens=1.00
+==============================================================================
+So the GCF of the two terms is $(x-3)$. ⟦=⟧Right, so we can factor that out. ⟦=⟧So we get $(x-3)(2x+3)$.
+
+# Answer
+
+(x-3)(2x+3)

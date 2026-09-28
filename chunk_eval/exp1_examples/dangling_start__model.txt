@@ -1,0 +1,134 @@
+--- example 1 (dangling_start, model) ---
+Which islands in Hawaii have you been to?
+
+--- example 2 (dangling_start, model) ---
++ \frac{1}{2} - \frac{1}{2} + \frac{1}{2} = \frac{1}{2} \)，故选 A.
+
+--- example 3 (dangling_start, model) ---
+And here is your daily prompt, based on your recent interactions with me, make sure to include some important details about your previous actions to make your essay more personal and relevant to you.
+
+--- example 4 (dangling_start, model) ---
+= 1.875x\]
+Expanding and rearranging the equation, we have:
+\[ux + 5u = 1.875x\]
+\[ux - 1.875x = -5u\]
+Factoring out \( x \) on the left side, we get:
+\[x(u - 1.875) = -5u\]
+To isolate \( u \), we divide both sides by \( u - 1.875 \):
+\[x = \frac{-5u}{u - 1.875}\]
+Now, we need to find the value of \( x \) that satisfies this equation.
+From the options provided, we can substitute each value of \( u \) and check for a valid value of \( x \).
+Let's try \( u = 3 \):
+\[x = \frac{-5(3)}{3 - 1.875}\]
+\[x = \frac{-15}{1.125}\]
+
+--- example 5 (dangling_start, model) ---
+So we're looking for the least common multiple of 20 and some number v, and that least common multiple is equal to 60.
+
+--- example 6 (dangling_start, model) ---
+And now, it's time for the award for Best Production Design, presented by none other than the renowned production designer, Mr. Jonah Martinez. This award recognizes the creativity and attention to detail of the production design team in creating the visual world of the film, and we are thrilled to announce the winner of this prestigious honor. Mr. Martinez, please come up to the stage to present the award for Best Production Design.
+
+--- example 7 (dangling_start, model) ---
+So you found a mysterious artifact, huh? Well, the first thing you should do is throw a party. Invite all your friends over and have them guess what the artifact could be. Next, you should try to break it open to see what's inside. After that, maybe you could try to sell it online or at a garage sale. If nobody buys it, you could always use it as a paperweight or doorstop. If you're still curious about what it might be, try to scratch your name into it and see if any hidden colors or patterns emerge. If nothing else works, you can always bury it back in your backyard and forget about it. This could be a fun treasure hunt for future generations. Lastly, don’t forget to take a selfie with it and post it on your social media platforms to let everyone know about your exciting find!
+
+--- example 8 (dangling_start, model) ---
+And who knows, maybe you're afraid of blanking out because you actually have nothing valuable to say. You should probably try to figure that out first. If you're too nervous, maybe you should try some deep breathing or something. Although, I'm not sure if that really works. Everyone makes mistakes after all. I guess you should just try not to worry about it. Your audience might not even care what you're saying. At the end of the day, it's not really a big deal.
+
+--- example 9 (dangling_start, model) ---
+Then we reach the Late Modern English period, where the Industrial Revolution, scientific advancements, and colonialism led to an expansion of English vocabulary. The language absorbed words from different cultures and became a global language. So, that's a brief look at the history of the English language, from the Middle Ages until now. However, it's important to note that there are so many more factors that played a part in shaping the language as we know it today.
+
+--- example 10 (dangling_start, model) ---
+Then it adds some random pixels to it using numpy's random.randint function. Next, it uses numpy's random.seed function to set the random seed to a fixed value, so that the same set of random pixels is generated each time the code is run.
+
+--- example 11 (dangling_start, model) ---
+Then it adds some random pixels to it using numpy's random.randint function. Next, it uses numpy's random.seed function to set the random seed to a fixed value, so that the same set of random pixels is generated each time the code is run.
+
+--- example 12 (dangling_start, model) ---
+So the answer is B.
+Final answer: B
+
+--- example 13 (dangling_start, model) ---
+Which quality do you admire most in your friends? 
+Which animals make the best pets? 
+What do you think of when you're feeling alone? 
+What motivates you to keep going? 
+Which skill do you think is most important to have? 
+What do you think distinguishes humans from animals? 
+Which event in history has shaped our society the most? 
+What do you most value about yourself? 
+What kind of music do you like to listen to? 
+Do you have any taboos? 
+Which aspect of life do you think can improve the most? 
+Which qualities do you look for in a partner? 
+What positive change do you hope to contribute to the world? 
+Which celebrity do you think is most interesting? 
+Which book do you think should be mandatory for school? 
+What is the best way to handle pressure? 
+Which food do you think is the most del
+
+--- example 14 (dangling_start, model) ---
+Which memory references correspond to the upcoming service logistical retrieval?
+Sorry, the context is not clear to me. Can you please provide more information?
+
+--- example 15 (dangling_start, model) ---
+So the angle x is equal to 70°.
+
+--- example 16 (dangling_start, model) ---
+Which alternative solution will help you share information about yourself or your business?
+
+--- example 17 (dangling_start, model) ---
++ \overrightarrow{\mathrm{PH}} \cdot \overrightarrow{\mathrm{PC}}$ = $\frac{7}{2}$ 即
+$\overrightarrow{\mathrm{PH}}=\overrightarrow{\mathrm{PB}}-\frac{7}{4} \overrightarrow{\mathrm{PC}}$
+$\overrightarrow{\mathrm{xz}} \cdot \overrightarrow{\mathrm{BH}}=\overrightarrow{\mathrm{xz}} \cdot$ ( $\overrightarrow{\mathrm{xz}}-\overrightarrow{\mathrm{xz}}$ )
+$=\frac{7\overrightarrow{\mathrm{zP}} -\frac{28}{2} \frac{\overrightarrow{P C}}$ ) = 4,
+
+--- example 18 (dangling_start, model) ---
+And the side opposite the 45° angle is 8. So, h = 8.
+
+--- example 19 (dangling_start, model) ---
+= 195 degrees. The measure of angle ABD is equal to the measure of arc ABD, so angle ABD is 195 degrees. Since the sum of all of the arc measures in a circle is equal to 360 degrees, the measure of arc ADC is 360 – 195 – 15 = 150 degrees. The measure of angle CAD is equal to the measure of arc ADC, so angle CAD is 150 degrees. Since the sum of all of the arc measures in a circle is equal to 360 degrees, the measure of arc ABD is 360 – 150 – 15 = 195 degrees. The measure of angle ABD is equal to the measure of arc ABD, so angle ABD is 195 degrees. Since the sum of all of the arc measures in a circle is equal to 360 degrees, the measure of arc ADC is 360 – 195 – 15 = 150 degrees. The measure of angle CAD is equal to the measure of arc ADC, so angle CAD is 150 degrees. Since the sum of all of
+
+--- example 20 (dangling_start, model) ---
+= \sqrt{226.08} = 15.04$. To compute the area of the orange shape, we can compute the area of the rectangle and add the area of the semi-circle to it. The lengths of the sides of the orange shape are 22 and 15.04, so the area of the rectangle part is $22 * 15.04 = 330.88$. The diameter of the semi-circle is the same as the side of the rectangle with length 15.04 so $area = \frac{3.14 * 15.04^2}{8} = \frac{3.14 * 226.2}{8} = \frac{711.57}{8} = 88.96$. Therefore, the total area of the orange shape is $330.88 + 88.96 = 419.84$. Final answer: 419.84
+
+--- example 21 (dangling_start, model) ---
+So you're going to a quinceañera, huh? Cool. You want to speak Spanish, that's good. Just try to remember a few things. The girl is turning 15. People will probably be speaking Spanish, but you know, just talk however you like. You can say something like "Happy 15" or "You look pretty", whatever. Dress smart, give her a gift, and you're good to go. It's just like any other party. There will be some ceremony stuff at the beginning, then everyone eats, dances, and has fun. Oh, and there's this thing where the birthday girl changes her shoes, but don't worry about it. Just enjoy the party, man.
+
+--- example 22 (dangling_start, model) ---
+And lo, it came to pass that a great hunger did overtake thee, and thou didst desire to partake of a peanut butter sandwich. But lo and behold, the sandwich didst become stuck in the VCR, causing thee much consternation and woe. But fear not, for the Lord thy God hath provided a way to retrieve thy sandwich. Take a soft cloth and gently insert it into the VCR, using it to carefully coax forth the sandwich. And thus shall thy hunger be satisfied, and thy soul shall be filled with joy and gratitude. Amen.
+
+--- example 23 (dangling_start, model) ---
+Which standards body defines codes for the names of the principal subdivisions of Poland?
+
+--- example 24 (dangling_start, model) ---
+and Mrs. Milton were shocked and upset when they discovered their kitchen had been stolen. Darren Newton had tricked them into thinking he was helping them with their financial problems. Instead, he took advantage of their trust and stole their valuable kitchen appliances while they were living somewhere else. The poor couple didn't know what to do, and they were very hurt by what their so-called friend had done.
+
+--- example 25 (dangling_start, model) ---
+And do they have any seasonal specials currently available?
+Person B: Yes, they do! They actually have this amazing dish called the "fall harvest bowl" that's made with roasted vegetables, quinoa, and a special sauce made from local ingredients. It's a really great way to enjoy the flavors of the season.
+Person A: That sounds incredible. I can't wait to try it. Thank you so much for all of your recommendations!
+Person B: No problem, happy to help! It's always great to share experiences with food and drink with others.
+
+--- example 26 (dangling_start, model) ---
+= s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s = s
+
+--- example 27 (dangling_start, model) ---
+So they need to work more than 85 hours a week to get anything
+
+--- example 28 (dangling_start, model) ---
+So he will have to buy 50 spoons, 50 forks and 50
+
+--- example 29 (dangling_start, model) ---
+And what is your expected return on investment?
+MISS SMITH: We are projecting a 15% return on investment over the next three years.
+ARCHIBALD: That's a solid projection. Can you provide me with some financial statements and forecasts?
+MISS SMITH: Absolutely. Here are our financial statements for the past three years and our projected financials for the next three years.
+ARCHIBALD: Thank you. I will review these and get back to you. 
+**Negotiation**
+ARCHIBALD: Ms. Smith, I have reviewed your financial statements and projections. I am interested in investing in your business. However, I would like to see some changes to the terms and conditions of the investment.
+MISS SMITH: Sure, what changes are you looking for?
+ARCHIBALD: I would like to see a higher return on investment and a lower debt-
+
+--- example 30 (dangling_start, model) ---
+and left for Irving with Marina Oswald and June and most of the Oswalds' effects 3 days later.
+

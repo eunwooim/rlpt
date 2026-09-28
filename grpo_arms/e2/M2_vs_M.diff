@@ -1,0 +1,31 @@
+2,3c2,3
+< #SBATCH --job-name=full_M_match
+< #SBATCH --account=grp_vgupt140
+---
+> #SBATCH --job-name=e2_M2_match
+> #SBATCH --account=grp_bshettah
+17c17
+< # ===== FULL run "M" (2026-09-18): v4 B resumed in place from global_step_60 to 183, account grp_vgupt140, v4 optimizer unchanged: every run-specific value is set here so `diff grpo_arms/v3/ctrl.sbatch grpo_arms/run_arm.sbatch`
+---
+> # ===== E2 run "M2" (2026-09-19): epoch 2 of M (match + soft gates), resumed from M global_step_183 into a fresh OUTDIR, account grp_bshettah, config unchanged, dataloader seed 43
+23,25c23,25
+< export OUTDIR=/scratch/sghos104/rlpt/grpo_arms/runs/arm1_3b_matchv4_softgate
+< export STATUS_FILE=grpo_arms/FULL_STATUS.md
+< export EXTRA="--max_steps 183 --save_freq 30 --test_freq 10 --learning_rate 1e-6 --extra_val_files /scratch/sghos104/rlpt/grpo_arms/data/vpb_dev.parquet --verl_extra_override actor_rollout_ref.actor.ppo_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.ref.log_prob_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.rollout.log_prob_max_token_len_per_gpu=8192 --rollout_n 5 --verl_extra_override actor_rollout_ref.actor.kl_loss_coef=0.01 --verl_extra_override actor_rollout_ref.actor.clip_ratio_low=0.2 --verl_extra_override actor_rollout_ref.actor.clip_ratio_high=0.28 --verl_extra_override trainer.max_actor_ckpt_to_keep=-1"
+---
+> export OUTDIR=/scratch/sghos104/rlpt/grpo_arms/runs/arm1_3b_match_e2
+> export STATUS_FILE=grpo_arms/E2_STATUS.md
+> export EXTRA="--max_steps 366 --total_epochs 2 --save_freq 30 --test_freq 10 --learning_rate 1e-6 --extra_val_files /scratch/sghos104/rlpt/grpo_arms/data/vpb_dev.parquet --verl_extra_override actor_rollout_ref.actor.ppo_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.ref.log_prob_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.rollout.log_prob_max_token_len_per_gpu=8192 --rollout_n 5 --verl_extra_override actor_rollout_ref.actor.kl_loss_coef=0.01 --verl_extra_override actor_rollout_ref.actor.clip_ratio_low=0.2 --verl_extra_override actor_rollout_ref.actor.clip_ratio_high=0.28 --verl_extra_override trainer.max_actor_ckpt_to_keep=-1 --verl_extra_override data.seed=43"
+77a78,89
+> 
+> # ----- epoch-2 prologue (E2): copy the epoch-1 step-183 checkpoint into the fresh OUTDIR once; resume_mode=auto then loads it -----
+> E1_SRC=/scratch/sghos104/rlpt/grpo_arms/runs/arm1_3b_matchv4_softgate
+> if [[ ! -f "$OUTDIR/checkpoints/global_step_183/actor/fsdp_config.json" ]]; then
+>   mkdir -p "$OUTDIR/checkpoints/global_step_183" "$OUTDIR/logs"
+>   echo "[e2] copying $E1_SRC/checkpoints/global_step_183/actor -> $OUTDIR (no data.pt: dataloader restarts with data.seed=43) $(date)"
+>   cp -r "$E1_SRC/checkpoints/global_step_183/actor" "$OUTDIR/checkpoints/global_step_183/" || { echo "[e2] FATAL checkpoint copy failed"; exit 1; }
+>   echo 183 > "$OUTDIR/checkpoints/latest_checkpointed_iteration.txt"
+>   
+>   [[ -d "$OUTDIR/data" ]] || cp -r "$E1_SRC/data" "$OUTDIR/data"   # same train/val parquet + materialised images (sha bd15b1f1 subset)
+>   echo "[e2] copy done $(date): $(du -sh $OUTDIR/checkpoints/global_step_183 | cut -f1)"
+> fi

@@ -1,0 +1,135 @@
+--- example 1 (no_terminal_punct, gold) ---
+Final answer: SYARIKAT PENIAGAAN GIN KEE
+
+--- example 2 (no_terminal_punct, gold) ---
+2. Identify and count the spheres in the image.
+   - Red sphere
+   - Cyan sphere
+
+--- example 3 (no_terminal_punct, gold) ---
+3. Subtract the number of spheres from the total number of objects.
+   - Total objects: 8
+   - Number of spheres: 2
+
+--- example 4 (no_terminal_punct, gold) ---
+2. **Sera**:
+   - Land: 90%
+   - Combat: 10%
+
+--- example 5 (no_terminal_punct, gold) ---
+Final answer: 418
+
+--- example 6 (no_terminal_punct, gold) ---
+Final answer: Yes
+
+--- example 7 (no_terminal_punct, gold) ---
+Final answer: -5
+
+--- example 8 (no_terminal_punct, gold) ---
+Final answer: 10
+
+--- example 9 (no_terminal_punct, gold) ---
+Next, examine the right image. It shows four instruments:
+- One straight instrument (flute-like, top left)
+- Three curved saxophones (top right, bottom left, bottom right)
+
+--- example 10 (no_terminal_punct, gold) ---
+Final answer: **4**
+
+--- example 11 (no_terminal_punct, gold) ---
+| Day | Distance (miles) |
+| 1   | d_1              |
+| 2   | d_2              |
+| 3   | d_3              |
+| 4   | d_4              |
+
+--- example 12 (no_terminal_punct, gold) ---
++ ________
+
+--- example 13 (no_terminal_punct, gold) ---
+Final answer: No
+
+--- example 14 (no_terminal_punct, gold) ---
+Final answer: 0.64
+
+--- example 15 (no_terminal_punct, gold) ---
+\[
+A \approx 45^\circ
+\]
+
+Final answer: 45
+
+--- example 16 (no_terminal_punct, gold) ---
+Final answer: A
+
+--- example 17 (no_terminal_punct, gold) ---
+Final answer: B
+
+--- example 18 (no_terminal_punct, gold) ---
+4. **Match with the Given Choices:**
+   - Option A: 4000π
+   - Option B: 3600π
+   - Option C: 2000π
+   - Option D: 1000π
+
+--- example 19 (no_terminal_punct, gold) ---
+Given objects:
+1. Brown truck: Metal (rustic, likely to be composite)
+2. Green double bus: Metal
+3. Blue road bike: Metal
+4. Blue SUV: Metal 
+5. Red mountain bike: Rubber
+6. Brown mountain bike: Rubber
+
+--- example 20 (no_terminal_punct, gold) ---
+\[ x = \frac{1}{b} \]
+
+Given \( b = \frac{c}{2} = 1 \):
+
+So the zeros are \( x = 0 \) and \( x = 4 \).
+
+Final answer: 0, 4
+
+--- example 21 (no_terminal_punct, gold) ---
+Final answer: Household final consumption expenditure
+
+--- example 22 (no_terminal_punct, gold) ---
+1. 已知OC垂直于OD，根据垂直的定义，角COD是一个直角，因此∠COD = 90°。
+2. 已知角AOC为35°。
+3. 因为A、O、B在同一直线上，所以角AOC和角BOD是邻补角。
+4. 相邻角和为180°，因此 ∠AOC + ∠BOC = 180°。
+5. 由于OC垂直于OD，则 ∠BOC + ∠COD + ∠DOB = 180°，即 90° + ∠DOB = 180°。
+6. 解出∠DOB = 180° - 90° - 35° = 55°。
+
+--- example 23 (no_terminal_punct, gold) ---
+Therefore, the closest correct choice is:
+B. Reba can trade her tomatoes for Johnny's broccoli.
+
+Final answer: B
+
+--- example 24 (no_terminal_punct, gold) ---
+Final answer: renminbi
+
+--- example 25 (no_terminal_punct, gold) ---
+Final answer: no
+
+--- example 26 (no_terminal_punct, gold) ---
+So the function \(f(x)\) is:
+\[ f(x) = 2x \]
+
+### Step 3: Find the Zeros
+
+--- example 27 (no_terminal_punct, gold) ---
+- \( \frac { 5 } { 2 } \sqrt { 2 } = x \)
+
+Therefore,
+
+--- example 28 (no_terminal_punct, gold) ---
+Final answer: D
+
+--- example 29 (no_terminal_punct, gold) ---
+Final answer: -5
+
+--- example 30 (no_terminal_punct, gold) ---
+Final answer: A
+

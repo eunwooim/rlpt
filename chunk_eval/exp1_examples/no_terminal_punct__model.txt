@@ -1,0 +1,135 @@
+--- example 1 (no_terminal_punct, model) ---
+| Incorrect Sentence | Corrected Sentence |
+|-------------------|--------------------|
+| We going to the beach | We are going to the beach |
+
+--- example 2 (no_terminal_punct, model) ---
+在 $\triangle \mathrm{PBC}$ 中，因为 $\mathrm{G}$、 $\mathrm{F}$ 分别为 $\mathrm{PB}$、$\mathrm{PC}$ 的中点，所以 $\mathrm{GF} \parallel \mathrm{PC}$，因此 $\mathrm{GF} \perp$ 平面 $\mathrm{PDC}$。又 $\mathrm{GF} \subset$ 平面 $\mathrm{EFG}$，所以平面 $\mathrm{EFG} \perp$ 平面 $\mathrm{PDC}$。在 $\triangle \mathrm{PBC}$ 中，因为 $\mathrm{PB}=\mathrm{BC}=4，
+
+--- example 3 (no_terminal_punct, model) ---
+hummingbird cake?  it's like if banana bread and carrot cake had a love child.  amazing filled with mango curd, and frosted with cream cheese frosting
+
+--- example 4 (no_terminal_punct, model) ---
+Final answer: 120.00
+
+--- example 5 (no_terminal_punct, model) ---
+| Incorrect Sentence | Corrected Sentence |
+|-------------------|--------------------|
+| We going to the beach | We are going to the beach |
+
+--- example 6 (no_terminal_punct, model) ---
+Let the scale factor be \mathit{k} Then the ratio of the areas is \mathit{k}^2
+
+--- example 7 (no_terminal_punct, model) ---
+Fun day at the pool with friends 🏊 Had a blast! Thanks to @PoolPartyParadise for the cool floats. 🤗 Enjoy the summer sun everyone! ☀️ #PoolParty #Sponsor
+
+--- example 8 (no_terminal_punct, model) ---
+Manager here.   10% engineering work  90% administrative BS
+
+--- example 9 (no_terminal_punct, model) ---
+Therefore, option B is the correct answer.
+Final answer: B
+
+--- example 10 (no_terminal_punct, model) ---
+Hmm, perhaps what you’re looking for is the “abuse of big data” defense. There’s a famous example of police departments manipulating crime statistics to make their precincts look safer than they really are. If they show more crime in an area, then the city may want to allocate more police resources there, and housing prices will
+
+--- example 11 (no_terminal_punct, model) ---
+Final answer: C
+
+--- example 12 (no_terminal_punct, model) ---
+The stacked binders on the shelf in the cubicle suggest that the person working there needs to reference a lot of material, hence an organized work environment can be inferred. 
+Additionally, the sheet of paper posted on the wall suggests that the work requires following certain instructions. 
+The red pen on top of the paper in front of the man indicates that the person in the cubicle was in the middle of circling imperfect items on paper, further supporting the idea of an organized work environment. Creative elements are not found in the workplace.
+Therefore, option D is the correct answer.
+Final answer: D
+
+--- example 13 (no_terminal_punct, model) ---
+Final answer: D
+
+--- example 14 (no_terminal_punct, model) ---
+ye
+
+--- example 15 (no_terminal_punct, model) ---
+To efficiently execute my role in this global project, I would utilize a high-quality language translation model to communicate with our French, Japanese, German, and Russian team members. In French, I'd express the project details as, "Nous devons achever notre projet avant le 30 septembre. Vos responsabilités comprennent l'achèvement en temps voulu et la qualité du travail." With the Japanese team, the communication would be, "プロジェクトは9月30日までに完了する必要があります。期限内の完了と仕事の品質はあなたの責任です。
+
+--- example 16 (no_terminal_punct, model) ---
+Let’s reason about the multi-choice question.
+Since the sum of the angles in a triangle is 180°,
+therefore 60°+80°+∠3=180°，
+and ∠3=180°−60°−80°=40°．
+
+--- example 17 (no_terminal_punct, model) ---
+<html>
+<head>
+    <style>
+        body {
+            background-color: #58ffbb;
+        }
+        h1 {
+            color: #FFF501;
+        }
+        p {
+            font-family: 'Open Sans', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flappy Bird!</h1>
+    <p>Hit the space bar to start. Move the bird with your left mouse button.</p>
+    <script src="flappybird.js"></script>
+</body>
+</html
+
+--- example 18 (no_terminal_punct, model) ---
+Final answer: C
+
+--- example 19 (no_terminal_punct, model) ---
+Final answer: (A) False
+
+--- example 20 (no_terminal_punct, model) ---
+Final answer: 25.00
+
+--- example 21 (no_terminal_punct, model) ---
+Vadakkunokkiyantram (1989)
+
+--- example 22 (no_terminal_punct, model) ---
+Final answer: B
+
+--- example 23 (no_terminal_punct, model) ---
+Among the states that border Montana, Idaho, South Dakota, North Dakota, and Wyoming have the lowest value. Therefore, the states with the highest value are not among them.  
+Final answer: None
+
+--- example 24 (no_terminal_punct, model) ---
+Final answer: 4.70
+
+--- example 25 (no_terminal_punct, model) ---
+Final answer: 70.78
+
+--- example 26 (no_terminal_punct, model) ---
+Final answer: A
+
+--- example 27 (no_terminal_punct, model) ---
+Reduce salt and add a couple dashes of fish sauce and soy sauce
+
+--- example 28 (no_terminal_punct, model) ---
+【解答】解:根据圆周角定理,同弧所对的圆周角相等,得∠BCD=∠ABD=48°．
+
+--- example 29 (no_terminal_punct, model) ---
+To solve this problem, we need to determine the scale factor between triangle ABC and triangle ADE.
+We know that triangle ADE is similar to triangle ABC because DE is parallel to BC and AD is parallel to BC.
+The ratio of the sides of two similar triangles is equal to the ratio of their corresponding sides.
+We are given:
+\frac{AD}{AB} = \frac{u}{20.0}
+\frac{BC}{DE} = \frac{40.0}{32.0} = \frac{5}{4} = 1.25
+Since triangle ADE is similar to triangle ABC, the ratio of the corresponding sides is equal.
+Therefore, we have:
+\frac{AD}{AB} = \frac{u}{20.0} = \frac{1}{1.25} = 0.8
+Solving for u, we get:
+u = 0.8 * 20.0
+u = 16.0
+The value of u is 16.0.
+The answer is: C
+
+--- example 30 (no_terminal_punct, model) ---
+I'm more interested in what happens to gravity as you approach the center of the Earth. Wouldn't the ball reach the center, slowing the whole way, and then reverse¿
+

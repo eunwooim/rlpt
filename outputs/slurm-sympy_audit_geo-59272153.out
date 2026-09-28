@@ -1,0 +1,8 @@
+sympy version: 1.14.0
+sampling 150/source (seed=0) from data/visualprm_v11_filtered/stage2_kept_tau0.85.jsonl
+4 sources, 600 traces sampled
+[annotations/geo170k_extracted_full.jsonl] steps=885 claims=649 ok=608 fail=41
+[annotations/geoqa+_en_20240402_extracted_open_ended_only.jsonl] steps=862 claims=469 ok=425 fail=44
+[annotations/geoqa+_extracted_en_version.jsonl] steps=887 claims=473 ok=433 fail=40
+[annotations/unigeo_calc_en_20240402_extracted_open_ended_only.jsonl] steps=974 claims=696 ok=629 fail=67
+wrote data/visualprm_v11_filtered/sympy_audit/text_fix_check/extractability_table.md

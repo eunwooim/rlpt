@@ -1,0 +1,26 @@
+[coldstart_sft_3b] host=sg029 job=62068025 start=Mon Aug 24 14:32:52 MST 2026
+GPU 0: NVIDIA A100-SXM4-80GB (UUID: GPU-d8403449-d178-aee1-e781-77d6cc96e584)
+ROOT=/scratch/sghos104/rlpt
+OUTPUT_DIR=/scratch/sghos104/rlpt/src/outputs/train/coldstart_metamath_3b/run_v1
+COMMAND=/scratch/sghos104/envs/rlpt-train/bin/python -u src/train/sft.py --base_model Qwen/Qwen2.5-VL-3B-Instruct --dataset_name /scratch/sghos104/rlpt/data/metamath_coldstart/train_dir --dataset_split train --data_ratio 1 --max_seq_len 2048 --seed 42 --token_budget 2621440 --learning_rate 1e-5 --output_dir /scratch/sghos104/rlpt/src/outputs/train/coldstart_metamath_3b/run_v1 --report_to none --force --image_mode auto --per_device_train_batch_size 4 --gradient_accumulation_steps 32 --save_steps 50 --save_total_limit 3
+Loading training dataset
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 9933 examples [00:00, 74147.15 examples/s]Generating train split: 18179 examples [00:00, 102003.81 examples/s]
+Traceback (most recent call last):
+  File "/scratch/sghos104/rlpt/src/train/sft.py", line 415, in <module>
+    main()
+  File "/scratch/sghos104/rlpt/src/train/sft.py", line 314, in main
+    raw_dataset = load_hf_dataset(args)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/sghos104/rlpt/src/train/train_common.py", line 185, in load_hf_dataset
+    return datasets.load_dataset(args.dataset_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/sghos104/envs/rlpt-train/lib/python3.11/site-packages/datasets/load.py", line 1718, in load_dataset
+    builder_instance.download_and_prepare(
+  File "/scratch/sghos104/envs/rlpt-train/lib/python3.11/site-packages/datasets/builder.py", line 890, in download_and_prepare
+    self._download_and_prepare(
+  File "/scratch/sghos104/envs/rlpt-train/lib/python3.11/site-packages/datasets/builder.py", line 953, in _download_and_prepare
+    raise OSError("Cannot find data file. " + "\nOriginal error:\n" + str(e)) from None
+OSError: Cannot find data file. 
+Original error:
+[Errno 2] No such file or directory: '/scratch/sghos104/rlpt/data/hf_cache/datasets/train_dir/default/0.0.0/a883cff27859e4bb.incomplete/train_dir-train-00000-00000-of-NNNNN.arrow'
+[coldstart_sft_3b] done=Mon Aug 24 14:33:43 MST 2026 rc=1

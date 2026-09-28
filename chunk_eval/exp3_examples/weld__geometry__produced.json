@@ -1,0 +1,330 @@
+[
+  {
+    "text": "- The rectangle's sides are AB = 12.35 and BC = 5.8 (same as the side of the triangle).",
+    "anchors": [
+      [
+        "AB",
+        "12.35"
+      ],
+      [
+        "BC",
+        "5.8"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "- \\( DE = 0.6 \\) units (height of point \\( D \\))\n\nUsing the Pythagorean theorem:\n\\[ AC^2 = AE^2 + EC^2 \\]\n\\[5.0^2 = 3.0^2 + EC^2\\]\n\\[25 = 9 + EC^2\\]\n\\[EC^2 = 25 - 9\\]\n\\[EC^2 = 16\\]\n\\[EC = \\sqrt{16}\\]\n\\[EC = 4 \\]\n\nNow, the slope \\( m \\) of the rock dam is given by the vertical distance over the horizontal distance:\n\\[ m = \\frac{EC}{AB} \\]\n\\[ m = \\frac{4}{3.0} \\]\n\\[ m = \\frac{4}{3} \\]\n\nIt seems that \\( AB \\) was calculated as 1.0 unit instead of 4 units. Thus, correcting it:\n\n\\[ m = \\frac{4}{3.0} = \\frac{4}{3} \\]\n\nHowever, this doesn't perfectly match your provided choices. Let's re-evaluate:\n\\[\nm = \\frac{1}{3.0}\n\\]\n\nTherefore, the correct answer is:\n\nFinal answer: B",
+    "anchors": [
+      [
+        "DE",
+        "0.6"
+      ],
+      [
+        "EC",
+        "5.0**2"
+      ],
+      [
+        "EC",
+        "25"
+      ],
+      [
+        "EC",
+        "25 - 9"
+      ],
+      [
+        "EC",
+        "16"
+      ],
+      [
+        "EC",
+        "sqrt(16)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "- In this scenario, since ED = 7 (the sum of EB and BD) and FG = 3, we need to determine EB and DC in terms of segments using the given proportions.",
+    "anchors": [
+      [
+        "ED",
+        "7"
+      ],
+      [
+        "FG",
+        "3"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "- Calculate the total of \\( BED \\):\n     \\[\n     (BED + 50 = EDB, 50 = DE\n     \\]\n\n\\[\nFinal answer:.55 degrees \\] \\v \\( v - 50  = 65,\\, u = 50 degrees ;\\, 60 degrees.",
+    "anchors": [
+      [
+        "DE",
+        "50"
+      ],
+      [
+        "v",
+        "65"
+      ],
+      [
+        "u",
+        "50"
+      ]
+    ],
+    "n_anchor_components": 3
+  },
+  {
+    "text": "4. \u2220BOD = 50\u00b0 (half of the circle) because the straight angle of 180\u00b0 is split into two parts by the diameter.\n\nSince CD is perpendicular to AB, it shows that \u2220DAO = 90\u00b0.\n\nNow, we can see that \u2220CBD = 90\u00b0 (since CD is perpendicular and bisects angle ADO).\n\nUsing these relationships:\n\n\u2220CBD covers angles \u2220BDO and \u2220CDB.\n\nLastly, let\u2019s use triangle geometry. In a circle with a right angle and a known angle of 30\u00b0, the other angles of the triangle can be found in relation to the sum of angles in a circle:",
+    "anchors": [
+      [
+        "angle_BOD",
+        "((50)*pi/180)"
+      ],
+      [
+        "angle_DAO",
+        "((90)*pi/180)"
+      ],
+      [
+        "angle_CBD",
+        "((90)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 3
+  },
+  {
+    "text": "- AD = 4, CD = 2.0",
+    "anchors": [
+      [
+        "AD",
+        "4"
+      ],
+      [
+        "CD",
+        "2.0"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "6. **Compute the lengths with trigonometric relations:**\n\n   Using the semicircle properties:\n   \\[\n   r = 6.5, \\, d = 2 \\times 6.5 = 13\n   \\]",
+    "anchors": [
+      [
+        "r",
+        "6.5"
+      ],
+      [
+        "d",
+        "2 * 6.5"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "- \\( \\angle FGA = 60^\\circ \\)\n\n   Since the sum of angles in a triangle is \\(180^\\circ\\), we can find \\( \\angle GAF \\):\n\n   \\[\n   \\angle GAF = 180^\\circ - 55^\\circ - 60^\\circ = 65^\\circ\n   \\]",
+    "anchors": [
+      [
+        "FGA",
+        "((60)*pi/180)"
+      ],
+      [
+        "GAF",
+        "((180)*pi/180) - ((55)*pi/180) - ((60)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "- Given \\(AB = 4\\) units, it follows that \\(BE = 4\\) units.",
+    "anchors": [
+      [
+        "AB",
+        "4"
+      ],
+      [
+        "BE",
+        "4"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "- Given the choices, if \\( x = 26\u00b0 \\), then angle AOB = 2 * 26\u00b0 = 52\u00b0.\n\nTherefore",
+    "anchors": [
+      [
+        "x",
+        "((26)*pi/180)"
+      ],
+      [
+        "AOB",
+        "2 * ((26)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "### Step 2: Calculate the length of AB\nThe ABHIJ shape is a combination of a rectangle and an equilateral triangle. The given perimeter of this shape is 90.\n\nIn this shape:\n- The rectangle has two sides of length 14 (one side of the rectangle and two sides of the triangle).\n- Let the unknown side of the rectangle be \\( x \\), which is also the side length of the equilateral triangle.\n\nThe perimeter equation is:\n\\[\n2x + 3 \\times 14 = 90\n\\]\n\\[\n2x + 42 = 90\n\\]\n\\[\n2x = 48\n\\]\n\\[\nx = 24\n\\]\n\nThus, AB = 24.",
+    "anchors": [
+      [
+        "x",
+        "90"
+      ],
+      [
+        "x",
+        "90"
+      ],
+      [
+        "x",
+        "48"
+      ],
+      [
+        "x",
+        "24"
+      ],
+      [
+        "AB",
+        "24."
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "6. Since \\(\\angle CDA\\) is a part of the larger right-angled triangle DEC (or similar to \\(\\angle CEB\\)), we add the supplementary and vertical angles considering F (or line AF) as the transversal of both triangles:\n\n\\[\n\\angle DFA = \\angle CEB + \\angle CDA = 65\u00b0 + 90\u00b0 = 155\u00b0\n\\]\n\nHowever, this may imply more on \\(\\angle ACE\\) and \\(\\angle ACD\\). Given the complementary nature, let's confirm this.\n\nGiven \\(\\angle BAC = u = 20\u00b0\\) and \\(\\angle CEB = v = 65\u00b0\\), \\(\\angle EDC\\) must also make \\(90\u00b0 - 20\u00b0\\) or \\(70\u00b0\\)\n\nSo from line \\(DF\\), we get:\n \n\\[\n180\u00b0 - 155\u00b0 = 25\u00b0\n\\]\n\nThus by confirming, the \\(\\angle DFA\\) considering \\(\\angle ABC\\) and \\(\\angle BAC\\):\n\nThus final answer, the value of \\(\\angle DFA = \\)\n\nFinal answer: B",
+    "anchors": [
+      [
+        "u",
+        "((20)*pi/180)"
+      ],
+      [
+        "v",
+        "((65)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "### Step-by-Step Solution:\n\nGiven:\n- Triangle ABC with AB = 30.0, AC = 24.0, and AD = 20.0.\n- We need to find the diameter AE of the circumscribed circle.",
+    "anchors": [
+      [
+        "AB",
+        "30.0"
+      ],
+      [
+        "AC",
+        "24.0"
+      ],
+      [
+        "AD",
+        "20.0"
+      ]
+    ],
+    "n_anchor_components": 3
+  },
+  {
+    "text": "- \u2220AOC = 140\u00b0 is a central angle intercepting arc AC.\n\nFrom the circle's properties, the measure of a central angle is twice the measure of the inscribed angle that intercepts the same arc. Therefore, the measure of the inscribed angle that intercepts arc AC (which is \u2220BAC) will be:\n\\[ \\text{\u2220BAC} = \\frac{1}{2} \\times \\text{\u2220AOC} = \\frac{1}{2} \\times 140\u00b0 = 70\u00b0 \\]\n\nThus, the measure of \u2220AOC is 140\u00b0, and using the inscribed angle and central angle relationship, we find:\n\\[ \\text{\u2220BAC} = 70\u00b0 \\]\n\nFinal answer: 70",
+    "anchors": [
+      [
+        "angle_AOC",
+        "((140)*pi/180)"
+      ],
+      [
+        "AOC_",
+        "((1)/(2)) * ((140)*pi/180)"
+      ],
+      [
+        "BAC_",
+        "((70)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "4. Next, consider that angle ABC and angle AEF are supplementary angles (they are on a straight line intersected by line DE). Since supplementary angles add up to 180 degrees, the measure of angle AEF can be found by subtracting angle ABC from 180 degrees:\n   \\[ \\text{Angle AEF} = 180^\\circ - 100^\\circ \\]\n   \\[ \\text{Angle AEF} = 80^\\circ \\]\n\nThus, we have determined that:\n\\[ v = 80^\\circ \\]\n\nFinal answer: D",
+    "anchors": [
+      [
+        "Angle_AEF_",
+        "((180)*pi/180) - ((100)*pi/180)"
+      ],
+      [
+        "Angle_AEF_",
+        "((80)*pi/180)"
+      ],
+      [
+        "v",
+        "((80)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "- Since opposite angles are equal, we can note that:\n     - \u2220DAB = \u2220BCA = 59\u00b0\n     - \u2220ABC = \u2220DAC = 49\u00b0",
+    "anchors": [
+      [
+        "angle_BCA",
+        "((59)*pi/180)"
+      ],
+      [
+        "angle_DAC",
+        "((49)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "- Given AB = 12 and BC = 20, we can set up proportion for AE and ED.",
+    "anchors": [
+      [
+        "AB",
+        "12"
+      ],
+      [
+        "BC",
+        "20"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "- From above, we determined:\n     \\[ BE = 4, \\]\n     \\[ DE = 4, \\]\n     \\[\n     \\text{Thus, the perimeter of triangle } BDE \\text{ is } BE + DE + BD = 4 + 4 + 8 = 16 \\.\n\nFinal answer: 16",
+    "anchors": [
+      [
+        "BE",
+        "4"
+      ],
+      [
+        "DE",
+        "4"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "1. **Identify the lengths of different parts of the shape:**\n    - Given that \\( AB = 21 \\) units and \\( CD = 13 \\) units.\n    - Let the radius of the semi-circle part with center \\( D \\) be \\( r \\).",
+    "anchors": [
+      [
+        "AB",
+        "21"
+      ],
+      [
+        "CD",
+        "13"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "- Substitute \\ OA \\ = OB = 5 \\ into the equation:\n     \\[\n     8^2 = 5^2 + AC^2\n     \\]",
+    "anchors": [
+      [
+        "OB",
+        "5"
+      ],
+      [
+        "AC",
+        "8**2"
+      ]
+    ],
+    "n_anchor_components": 2
+  }
+]

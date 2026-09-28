@@ -35,6 +35,11 @@ class SupervisedDataset:
         return normalize_supervised_example(self.dataset[index])
 
 
+# Qwen2.5-VL spends one token per 28x28 pixel block; an unbounded image can expand past
+# max_seq_len and get truncated mid-image-block, which the processor rejects.
+MAX_IMAGE_PIXELS = int(os.environ.get("SFT_MAX_IMAGE_PIXELS", str(1280 * 28 * 28)))
+
+
 class VLMDataCollator:
     def __init__(self, processor: Any, max_seq_len: int) -> None:
         self.processor = processor
@@ -42,6 +47,13 @@ class VLMDataCollator:
         self.image_load_failures = 0
         tokenizer = getattr(processor, "tokenizer", processor)
         self.pad_token_id = getattr(tokenizer, "pad_token_id", None)
+        # Vision placeholder tokens must not be prediction targets.
+        unk = getattr(tokenizer, "unk_token_id", None)
+        self.vision_token_ids = []
+        for special in ("<|image_pad|>", "<|video_pad|>", "<|vision_start|>", "<|vision_end|>"):
+            tid = tokenizer.convert_tokens_to_ids(special)
+            if isinstance(tid, int) and tid >= 0 and tid != unk:
+                self.vision_token_ids.append(tid)
 
     def __call__(self, features: list[dict[str, Any]]) -> dict[str, Any]:
         texts: list[str] = []
@@ -69,7 +81,7 @@ class VLMDataCollator:
             texts.append(text)
             if loaded_images:
                 has_images = True
-                all_images.append(loaded_images[0] if len(loaded_images) == 1 else loaded_images)
+                all_images.append(loaded_images)  # uniform nesting; processor flattens
 
         processor_kwargs: dict[str, Any] = {
             "text": texts,
@@ -86,16 +98,26 @@ class VLMDataCollator:
             labels[labels == self.pad_token_id] = -100
         if "attention_mask" in batch:
             labels[batch["attention_mask"] == 0] = -100
+        for tid in self.vision_token_ids:
+            labels[labels == tid] = -100
         batch["labels"] = labels
         return batch
 
     @staticmethod
-    def _load_image(image: Any) -> Any:
+    def _bound_pixels(image: Any) -> Any:
+        total = image.width * image.height
+        if total <= MAX_IMAGE_PIXELS:
+            return image
+        scale = (MAX_IMAGE_PIXELS / total) ** 0.5
+        return image.resize((max(28, int(image.width * scale)), max(28, int(image.height * scale))))
+
+    @classmethod
+    def _load_image(cls, image: Any) -> Any:
         if isinstance(image, (str, Path)) and Path(image).exists():
             from PIL import Image
 
             with Image.open(image) as pil_image:
-                return pil_image.convert("RGB").copy()
+                return cls._bound_pixels(pil_image.convert("RGB").copy())
         if isinstance(image, str) and image.startswith("zip://") and "::" in image:
             import zipfile
 
@@ -105,7 +127,7 @@ class VLMDataCollator:
             with zipfile.ZipFile(archive_name) as archive:
                 with archive.open(member_name) as f:
                     with Image.open(f) as pil_image:
-                        return pil_image.convert("RGB").copy()
+                        return cls._bound_pixels(pil_image.convert("RGB").copy())
         if isinstance(image, str):
             raise ValueError(f"unsupported image reference: {image}")
         return image
@@ -141,6 +163,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--max_steps", type=int, default=-1)
     parser.add_argument("--logging_steps", type=int, default=1)
     parser.add_argument("--save_steps", type=int, default=100)
+    parser.add_argument("--save_total_limit", type=int, default=None)
     parser.add_argument("--eval_steps", type=int, default=0)
     parser.add_argument("--warmup_ratio", type=float, default=0.03)
     parser.add_argument("--weight_decay", type=float, default=0.0)
@@ -346,6 +369,7 @@ def main() -> None:
         max_steps=planned_max_steps,
         logging_steps=args.logging_steps,
         save_steps=args.save_steps,
+        save_total_limit=args.save_total_limit,
         warmup_ratio=args.warmup_ratio,
         weight_decay=args.weight_decay,
         bf16=args.bf16,
@@ -374,7 +398,15 @@ def main() -> None:
         callbacks=[make_step_progress_callback(transformers, planned_max_steps)],
     )
     print("Starting SFT training", flush=True)
-    result = trainer.train()
+    # RLPT_RESUME=1: continue from the latest checkpoint-* under checkpoints/
+    # (opt-in so a plain rerun keeps the original fresh-start behaviour).
+    resume_ckpt = None
+    if os.environ.get("RLPT_RESUME") == "1":
+        from transformers.trainer_utils import get_last_checkpoint
+
+        resume_ckpt = get_last_checkpoint(str(output_dir / "checkpoints"))
+        print(f"Resume requested; latest checkpoint: {resume_ckpt}", flush=True)
+    result = trainer.train(resume_from_checkpoint=resume_ckpt)
     trainer.save_model(str(output_dir / "checkpoints" / "final"))
     if hasattr(processor, "save_pretrained"):
         processor.save_pretrained(str(output_dir / "checkpoints" / "final"))

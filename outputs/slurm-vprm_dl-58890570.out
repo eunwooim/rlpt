@@ -1,0 +1,7 @@
+[vprm_dl] host=sc006 job=58890570 start=Fri Jul 10 22:56:53 MST 2026
+DONE annotations.zip at: /scratch/sghos104/rlpt/data/hf_cache/hub/datasets--OpenGVLab--VisualPRM400K-v1.1-Raw/snapshots/650e4b2f2af9754643f91f3eb44e56c373127c80/annotations.zip (0.19 GB)
+DONE images.zip at: /scratch/sghos104/rlpt/data/hf_cache/hub/datasets--OpenGVLab--VisualPRM400K-v1.1-Raw/snapshots/650e4b2f2af9754643f91f3eb44e56c373127c80/images.zip (21.55 GB)
+[vprm_dl] verifying archive integrity
+annotations.zip: 39 members, corrupt=None
+images.zip: 214557 members, corrupt=None
+[vprm_dl] done=Fri Jul 10 23:09:35 MST 2026

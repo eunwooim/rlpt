@@ -1,0 +1,242 @@
+{
+  "body": {
+    "n": 499525,
+    "mean": 30.117898003102948,
+    "p50": 24
+  },
+  "all": {
+    "n": 603315,
+    "mean": 25.6530436007724,
+    "p50": 20
+  },
+  "per_source": {
+    "CLEVR_math_en_20240402_extracted": {
+      "records": 2990,
+      "body_per_rec": 4.213377926421405,
+      "words_per_step": 22.203524368947452,
+      "p50": 20
+    },
+    "MathV360K_prompts": {
+      "records": 2990,
+      "body_per_rec": 4.15886287625418,
+      "words_per_step": 26.2951347004423,
+      "p50": 21
+    },
+    "SROIE_information_extraction_multi_turn_20240620_extracted": {
+      "records": 2999,
+      "body_per_rec": 4.0403467822607535,
+      "words_per_step": 20.643971280019805,
+      "p50": 18
+    },
+    "ai2d_train_12k_en_20240410_extracted": {
+      "records": 3000,
+      "body_per_rec": 4.171333333333333,
+      "words_per_step": 32.606360875819085,
+      "p50": 25
+    },
+    "chartqa_trainval_30k_w_csv_en_20240402_extracted": {
+      "records": 2999,
+      "body_per_rec": 3.936645548516172,
+      "words_per_step": 24.77172624089446,
+      "p50": 21
+    },
+    "cocorem_exist_yorn_en_20241016": {
+      "records": 2994,
+      "body_per_rec": 3.0490981963927855,
+      "words_per_step": 34.776207689779824,
+      "p50": 25
+    },
+    "docvqa_train_56k_en_20240402_extracted": {
+      "records": 2994,
+      "body_per_rec": 3.674682698730795,
+      "words_per_step": 22.76486093437557,
+      "p50": 19
+    },
+    "dvqa_en_20240402_extracted_int_only": {
+      "records": 2999,
+      "body_per_rec": 4.150716905635211,
+      "words_per_step": 22.951558483290487,
+      "p50": 20
+    },
+    "figureqa_en_20240402_extracted": {
+      "records": 2998,
+      "body_per_rec": 4.640093395597065,
+      "words_per_step": 30.303860254474877,
+      "p50": 25
+    },
+    "geo170k_extracted_full": {
+      "records": 2976,
+      "body_per_rec": 5.707325268817204,
+      "words_per_step": 28.185634383279364,
+      "p50": 22
+    },
+    "geometry3k_en_20240402_extracted": {
+      "records": 2998,
+      "body_per_rec": 6.2665110073382255,
+      "words_per_step": 23.62596476286794,
+      "p50": 19
+    },
+    "geometry3k_en_20240402_extracted_open_ended_only": {
+      "records": 2999,
+      "body_per_rec": 6.42214071357119,
+      "words_per_step": 24.146728971962617,
+      "p50": 20
+    },
+    "geomverse_extracted": {
+      "records": 2274,
+      "body_per_rec": 6.6376429199648195,
+      "words_per_step": 28.898635219292434,
+      "p50": 22
+    },
+    "geoqa+_en_20240402_extracted_open_ended_only": {
+      "records": 2899,
+      "body_per_rec": 4.408416695412211,
+      "words_per_step": 14.235307927067845,
+      "p50": 8
+    },
+    "geoqa+_extracted_en_version": {
+      "records": 2986,
+      "body_per_rec": 5.280308104487609,
+      "words_per_step": 28.69994291875436,
+      "p50": 22
+    },
+    "geos_en_20240402_extracted": {
+      "records": 1827,
+      "body_per_rec": 8.221127531472359,
+      "words_per_step": 46.911984021304924,
+      "p50": 32
+    },
+    "geos_en_20240402_extracted_open_ended_only": {
+      "records": 178,
+      "body_per_rec": 7.780898876404494,
+      "words_per_step": 36.83898916967509,
+      "p50": 28
+    },
+    "iconqa_train_extracted": {
+      "records": 2995,
+      "body_per_rec": 3.8654424040066777,
+      "words_per_step": 22.77489850565777,
+      "p50": 18
+    },
+    "infographics_20240403_qa_20240407_v2_extracted": {
+      "records": 2993,
+      "body_per_rec": 3.673237554293351,
+      "words_per_step": 25.910041841004183,
+      "p50": 22
+    },
+    "koniq10k_en_20240403": {
+      "records": 3000,
+      "body_per_rec": 5.169,
+      "words_per_step": 34.49384149093957,
+      "p50": 32
+    },
+    "m3cot_train_extracted": {
+      "records": 2995,
+      "body_per_rec": 4.989983305509182,
+      "words_per_step": 28.6825025092004,
+      "p50": 24
+    },
+    "mapqa_suv_en_20240402_extracted": {
+      "records": 2091,
+      "body_per_rec": 4.082735533237686,
+      "words_per_step": 25.964620431115275,
+      "p50": 22
+    },
+    "mavis_function_abs": {
+      "records": 3000,
+      "body_per_rec": 7.707666666666666,
+      "words_per_step": 39.79898802058556,
+      "p50": 35
+    },
+    "mavis_function_cos": {
+      "records": 2993,
+      "body_per_rec": 6.721683929168059,
+      "words_per_step": 37.20598469032707,
+      "p50": 31
+    },
+    "mavis_function_log": {
+      "records": 2993,
+      "body_per_rec": 7.324757768125626,
+      "words_per_step": 36.104456506864935,
+      "p50": 31
+    },
+    "mavis_function_poly": {
+      "records": 3000,
+      "body_per_rec": 6.851666666666667,
+      "words_per_step": 30.143809292143033,
+      "p50": 27
+    },
+    "mavis_function_sin": {
+      "records": 2995,
+      "body_per_rec": 6.632387312186978,
+      "words_per_step": 36.39936568666935,
+      "p50": 30
+    },
+    "mavis_function_tan": {
+      "records": 2999,
+      "body_per_rec": 6.788929643214405,
+      "words_per_step": 37.2458742632613,
+      "p50": 31
+    },
+    "mavis_geo_depth0_text_dominant_vision_dominant_en": {
+      "records": 2613,
+      "body_per_rec": 2.64638346727899,
+      "words_per_step": 34.52393347794649,
+      "p50": 27
+    },
+    "mavis_geo_depth1_text_dominant_vision_dominant_en": {
+      "records": 2522,
+      "body_per_rec": 3.3754956383822363,
+      "words_per_step": 35.99635851051333,
+      "p50": 28
+    },
+    "mavis_geo_depth2_text_dominant_vision_dominant_en": {
+      "records": 2571,
+      "body_per_rec": 3.6091015169194867,
+      "words_per_step": 38.62194201961418,
+      "p50": 29
+    },
+    "mavis_geo_depth3_text_dominant_vision_dominant_en": {
+      "records": 2650,
+      "body_per_rec": 4.327169811320755,
+      "words_per_step": 37.01168570681085,
+      "p50": 28
+    },
+    "nlvr2_en_20240910": {
+      "records": 2974,
+      "body_per_rec": 2.210827168796234,
+      "words_per_step": 30.180532319391634,
+      "p50": 28
+    },
+    "scienceqa_multi_choice_en_20240402_extracted": {
+      "records": 2998,
+      "body_per_rec": 4.386591060707138,
+      "words_per_step": 28.436848908828225,
+      "p50": 23
+    },
+    "super_clevr_en_20240402_int": {
+      "records": 1738,
+      "body_per_rec": 3.4096662830840048,
+      "words_per_step": 31.520587242659467,
+      "p50": 25
+    },
+    "super_clevr_en_20240402_yorn": {
+      "records": 1721,
+      "body_per_rec": 2.8373038930854153,
+      "words_per_step": 32.11079254556625,
+      "p50": 28
+    },
+    "unigeo_calc_en_20240402_extracted_open_ended_only": {
+      "records": 2859,
+      "body_per_rec": 4.68520461699895,
+      "words_per_step": 17.058230683090706,
+      "p50": 10
+    },
+    "vqav2_en_20240402_int": {
+      "records": 2994,
+      "body_per_rec": 2.9665998663994655,
+      "words_per_step": 25.981873451925242,
+      "p50": 20
+    }
+  }
+}

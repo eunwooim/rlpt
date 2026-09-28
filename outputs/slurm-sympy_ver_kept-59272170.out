@@ -1,0 +1,7 @@
+sympy 1.14.0; input=../../data/visualprm_v11_filtered/stage2_kept_tau0.85.jsonl
+5622 traces to verify
+2000/5622 {'PASS': 861, 'FAIL_LOW_CONFIDENCE': 40, 'EXPLORATORY': 92, 'FAIL': 107, 'SKIPPED_NO_SURFACE': 900}
+<string>:1: SyntaxWarning: 'tuple' object is not callable; perhaps you missed a comma?
+<string>:1: SyntaxWarning: 'tuple' object is not callable; perhaps you missed a comma?
+4000/5622 {'PASS': 1254, 'FAIL_LOW_CONFIDENCE': 158, 'EXPLORATORY': 331, 'FAIL': 607, 'SKIPPED_NO_SURFACE': 1650}
+DONE {'PASS': 1894, 'FAIL_LOW_CONFIDENCE': 202, 'EXPLORATORY': 397, 'FAIL': 729, 'SKIPPED_NO_SURFACE': 2400}

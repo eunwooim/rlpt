@@ -1,0 +1,16 @@
+[vpbdl] host=sc045 job=61217337 start=Thu Aug 13 04:24:48 MST 2026
+[vpb] listing OpenGVLab/VisualProcessBench ...
+[vpb] remote files: 4
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:  25%|██▌       | 1/4 [00:00<00:02,  1.35it/s]Fetching 4 files:  75%|███████▌  | 3/4 [00:05<00:02,  2.03s/it]Fetching 4 files: 100%|██████████| 4/4 [00:05<00:00,  1.43s/it]
+[vpb] snapshot -> /scratch/sghos104/rlpt/data/visualprocessbench
+
+status                     bytes  path
+PASS_GIT_SHA1              2,461  .gitattributes
+PASS_GIT_SHA1              5,696  README.md
+PASS                 500,803,320  images.zip
+PASS_GIT_SHA1          9,542,161  test.jsonl  rows=2,866
+
+[vpb] LFS sha256 verified: 1 | non-LFS (git sha1): 3 | failures: 0
+[vpb] manifest -> /scratch/sghos104/rlpt/data/visualprocessbench/vpb_acquisition.json
+[vpb] DONE
+[vpbdl] rc=0 end=Thu Aug 13 04:25:19 MST 2026

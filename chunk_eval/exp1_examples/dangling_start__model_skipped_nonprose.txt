@@ -1,0 +1,33 @@
+--- example 1 (dangling_start, model_skipped_nonprose) ---
++ 10324388
+
+--- example 2 (dangling_start, model_skipped_nonprose) ---
+= 9 * 1 + 9 * 10^2 + 9 * 10^4 + 9 * 10^6 + 9 * 10^8 = 9 + 900 + 90000 + 9000000 + 900000000 = 900000999.
+
+--- example 3 (dangling_start, model_skipped_nonprose) ---
+So we have $2^{10} * 2^{15}$.
+
+--- example 4 (dangling_start, model_skipped_nonprose) ---
+So we know 515 in base 10 means 5*100 + 1*10 + 5*1.
+
+--- example 5 (dangling_start, model_skipped_nonprose) ---
+So for the first row, we have $2 * (4 * 5 - 2 * (-3)) - 0 + (-1)(7 * 2 - 2 * (-3))$.
+
+--- example 6 (dangling_start, model_skipped_nonprose) ---
+So we know that $f(1)=(-1)^2=1$.
+
+--- example 7 (dangling_start, model_skipped_nonprose) ---
+So we know that $225 = 3^2 * 5^2$.
+
+--- example 8 (dangling_start, model_skipped_nonprose) ---
+So for Allie, we have f(5)=0, f(4)=2, f(1)=0, and f(2)=6.
+
+--- example 9 (dangling_start, model_skipped_nonprose) ---
+So I'm fairly sympathetic to this idea, but I have spent a lot of time playing with the numbers and I just can't make them work.  Specifically, I ran the numbers for the following:  * A benefit of $11,880 per adult in the United States, and $4160 per child.  * Eliminating all social welfare programs indexed to income except medicaid.  * Counting social security against the basic income, so people presently on social security don't see a benefit cut.  The numbers I got are as follows:  **Program cost:** $3.191 trillion per year.  **Cuts:** $1.098 trillion per year  **Addition to deficit:**  2.093 trillion per year.  I do not think there is any plausible tax increase that can get you to $2.093 trillion of additional revenue.  For perspective, that's double what all of Bernie Sanders' propose
+
+--- example 10 (dangling_start, model_skipped_nonprose) ---
+So I'm fairly sympathetic to this idea, but I have spent a lot of time playing with the numbers and I just can't make them work.  Specifically, I ran the numbers for the following:  * A benefit of $11,880 per adult in the United States, and $4160 per child.  * Eliminating all social welfare programs indexed to income except medicaid.  * Counting social security against the basic income, so people presently on social security don't see a benefit cut.  The numbers I got are as follows:  **Program cost:** $3.191 trillion per year.  **Cuts:** $1.098 trillion per year  **Addition to deficit:**  2.093 trillion per year.  I do not think there is any plausible tax increase that can get you to $2.093 trillion of additional revenue.  For perspective, that's double what all of Bernie Sanders' propose
+
+--- example 11 (dangling_start, model_skipped_nonprose) ---
+So I'm fairly sympathetic to this idea, but I have spent a lot of time playing with the numbers and I just can't make them work.  Specifically, I ran the numbers for the following:  * A benefit of $11,880 per adult in the United States, and $4160 per child.  * Eliminating all social welfare programs indexed to income except medicaid.  * Counting social security against the basic income, so people presently on social security don't see a benefit cut.  The numbers I got are as follows:  **Program cost:** $3.191 trillion per year.  **Cuts:** $1.098 trillion per year  **Addition to deficit:**  2.093 trillion per year.  I do not think there is any plausible tax increase that can get you to $2.093 trillion of additional revenue.  For perspective, that's double what all of Bernie Sanders' propose
+

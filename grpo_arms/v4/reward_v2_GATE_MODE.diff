@@ -1,0 +1,89 @@
+--- reward_redesign/reward_v2.py.bak_v4	2026-09-13 04:32:41.000000000 -0700
++++ reward_redesign/reward_v2.py	2026-09-13 04:32:42.000000000 -0700
+@@ -195,25 +195,31 @@
+ 
+ 
+ def score_new(rollout: str, gold_steps: list[str], gold_answer: str, S: Scorers, finish_reason: str | None = None,
+-              mode: str | None = None) -> Breakdown:
++              mode: str | None = None, gate_mode: str | None = None) -> Breakdown:
+     """Final-spec reward (see module docstring). TAU_MATCH is deliberately unused here.
+ 
+     mode (2026-09-11 v3 plumbing): "match" (default, = env REWARD_MODE) computes the full reward;
+     "answer_only" applies the SAME three gates, then returns R = W_ANSWER*answer + W_FORMAT*format with
+     match = pun = 0 and no NLI call (the answer-only control arm). Matching logic is untouched.
++    gate_mode (2026-09-13 v4): "hard" (default, = env GATE_MODE) or "soft" — see the gate comment below.
+     """
+     mode = mode or os.environ.get("REWARD_MODE", "match")
++    gate_mode = gate_mode or os.environ.get("GATE_MODE", "hard")
+     ans = extract_final(rollout)
+     segs, ans_lines = split_steps(rollout)
+     gold = [THINK_RE.sub("", g).strip() for g in gold_steps if not FINAL_RE.match(g.strip())]
+     gold = [g for g in gold if g]
+     n_steps, n_gold = len(segs), max(1, len(gold))
+     roll_mass, gold_mass = sum(mass(s) for s in segs), max(1, sum(mass(g) for g in gold))
+-    # gates: no answer / truncated / answer not the final line (front-loaded answer + padding) -> R = 0
+-    if ans is None or not segs or finish_reason == "length" or not answer_at_end(rollout):
++    answer_valid = ans is not None and answer_at_end(rollout)      # parsable AND on the last non-empty line
++    # gates (GATE_MODE, 2026-09-13 v4):
++    #   hard (default, = previous behaviour): no answer / truncated / answer not the final line -> R = 0
++    #   soft: truncated -> R = 0 (unchanged); no answer or answer not on the last line -> answer term 0 only,
++    #         match / format / pun computed as normal from the response text
++    if not segs or finish_reason == "length" or (gate_mode == "hard" and not answer_valid):
+         return Breakdown(0.0, 0, 0.0, 0, 0.0, 0.0, 0.0, n_steps, 0, 0, 0.0, roll_mass, gold_mass, True, None)
+ 
+-    answer = int(norm_answer(ans) == norm_answer(gold_answer))
++    answer = int(answer_valid and norm_answer(ans) == norm_answer(gold_answer))
+ 
+     kept, dup = S.dedupe(segs)
+     fmt = int(MIN_SEGS <= len(kept) <= MAX_SEGS and len(ans_lines) == 1)
+--- grpo_arms/score_server.py.bak_v4	2026-09-13 04:32:41.000000000 -0700
++++ grpo_arms/score_server.py	2026-09-13 04:32:42.000000000 -0700
+@@ -99,9 +99,11 @@
+         if op == "reward_v2":
+             adapter, rv = self._rv()
+             b = rv.score_new(req["response"], req["gold_steps"], str(req.get("gold_answer", "")), adapter, req.get("finish_reason"),
+-                             mode=req.get("mode"))
++                             mode=req.get("mode"), gate_mode=req.get("gate_mode"))
+             d = rv.as_dict(b)
+-            d["acc"] = int(b.answer) if not b.gated else 0      # v3 plumbing: gated rollouts count as incorrect
++            # v4: answer_valid = parsable answer on the last line and not truncated/gated; acc = correct AND valid (same meaning in hard and soft mode)
++            d["answer_valid"] = int((not b.gated) and b.extracted is not None and rv.answer_at_end(req["response"]))
++            d["acc"] = int(b.answer) if d["answer_valid"] else 0
+             return d
+         if op == "ping":
+             return {"ok": True, "id2label": self.scorer.id2label,
+--- grpo_arms/arm_reward.py.bak_v4	2026-09-13 04:32:41.000000000 -0700
++++ grpo_arms/arm_reward.py	2026-09-13 04:55:17.000000000 -0700
+@@ -155,7 +155,7 @@
+             # answer-only reward with the truncation gate so the logged 'answer'/'acc' mean is a plain accuracy.
+             gated = int(_finish_reason(solution_str) == "length" or not has_marker)
+             R = 0.0 if gated else W_ANSWER * ans + W_FORMAT * fmt
+-            return {"score": R, "format": fmt, "answer": ans, "acc": 0.0 if gated else ans, "match": 0.0, "pun": 0.0,
++            return {"score": R, "format": fmt, "answer": ans, "acc": 0.0 if gated else ans, "soft_gated": 0, "match": 0.0, "pun": 0.0,
+                     "gated": gated, "n_segments": 0, "n_dup": 0, "n_matched": 0, "match_precision": 0.0,
+                     "match_recall": 0.0, "inv_frac": 0.0}
+         resp = _call_server({
+@@ -165,13 +165,19 @@
+             "gold_answer": str(gt["answer"]),
+             "finish_reason": _finish_reason(solution_str),
+             "mode": reward_mode,
++            "gate_mode": os.environ.get("GATE_MODE", "hard"),           # v4: hard | soft (run B)
+         })
+-        # keep this module's numeric-equivalence answer checker for the answer term
++        # keep this module's numeric-equivalence answer checker for the answer term — but only when the server
++        # says the answer position is valid (parsable, last line, not truncated); in soft mode an invalid position
++        # keeps answer = 0 while match/format/pun stand
+         R = float(resp["R"])
+-        if not resp["gated"]:
++        valid = bool(resp.get("answer_valid", not resp["gated"]))
++        if valid:
+             R += W_ANSWER * (ans - float(resp["answer"]))
+-        acc = 0.0 if resp["gated"] else ans                              # v3: filter_groups.metric=acc keys on this
+-        out = {"score": R, "format": float(resp["format"]), "answer": ans, "acc": acc, "match": float(resp["match"]),
++        acc = ans if valid else 0.0                                      # = correct AND on the last line (v3/v4 definition)
++        soft_gated = int((not resp["gated"]) and (not valid))            # v4: soft gate fired (no answer / not last line)
++        out = {"score": R, "format": float(resp["format"]), "answer": ans, "acc": acc, "soft_gated": soft_gated,
++               "match": float(resp["match"]),
+                "pun": float(resp["pun"]), "gated": int(resp["gated"]), "n_segments": resp["n_segs"],
+                "n_dup": resp["n_dup"], "n_matched": resp["n_pairs"], "match_precision": resp["prec"],
+                "match_recall": resp["cov"], "inv_frac": resp["inv_frac"]}

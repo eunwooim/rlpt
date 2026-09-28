@@ -1,0 +1,671 @@
+{
+  "path": "/scratch/sghos104/rlpt/chunk_eval/singles/singles_chunked.jsonl",
+  "lines_scanned": 32971,
+  "unparseable": 0,
+  "by_method": {
+    "model": {
+      "totals": {
+        "multi_records": 31084,
+        "single_records": 1887,
+        "chunks": 189046,
+        "boundaries": 157962
+      },
+      "counts": {
+        "prev_no_terminal_punct": 3816,
+        "next_starts_continuation": 11348,
+        "next_starts_operator": 1359,
+        "prev_odd_ending": 1039,
+        "mid_sentence_pair": 17,
+        "unbalanced_$": 402,
+        "prev_ends_on_operator": 221,
+        "unbalanced_()": 1203,
+        "unbalanced_{}": 105,
+        "unbalanced_[]": 1162,
+        "unbalanced_latex": 900,
+        "unbalanced_fence": 22
+      }
+    }
+  },
+  "by_method_source": {
+    "model||CLEVR_math_en_20240402_extracted": {
+      "totals": {
+        "multi_records": 992,
+        "single_records": 8,
+        "chunks": 4649,
+        "boundaries": 3657
+      },
+      "counts": {
+        "prev_no_terminal_punct": 321,
+        "next_starts_continuation": 182,
+        "next_starts_operator": 3
+      }
+    },
+    "model||MathV360K_prompts": {
+      "totals": {
+        "multi_records": 7,
+        "single_records": 18,
+        "chunks": 14,
+        "boundaries": 7
+      },
+      "counts": {
+        "next_starts_continuation": 1,
+        "prev_odd_ending": 1,
+        "mid_sentence_pair": 1
+      }
+    },
+    "model||SROIE_information_extraction_multi_turn_20240620_extracted": {
+      "totals": {
+        "multi_records": 926,
+        "single_records": 74,
+        "chunks": 4738,
+        "boundaries": 3812
+      },
+      "counts": {
+        "prev_no_terminal_punct": 358,
+        "next_starts_continuation": 214,
+        "unbalanced_$": 77,
+        "prev_odd_ending": 3,
+        "next_starts_operator": 23,
+        "prev_ends_on_operator": 3,
+        "unbalanced_()": 2,
+        "unbalanced_{}": 1,
+        "unbalanced_[]": 1,
+        "unbalanced_latex": 1
+      }
+    },
+    "model||ai2d_train_12k_en_20240410_extracted": {
+      "totals": {
+        "multi_records": 988,
+        "single_records": 12,
+        "chunks": 4602,
+        "boundaries": 3614
+      },
+      "counts": {
+        "next_starts_continuation": 223,
+        "prev_no_terminal_punct": 60,
+        "next_starts_operator": 17,
+        "prev_ends_on_operator": 1
+      }
+    },
+    "model||chartqa_trainval_30k_w_csv_en_20240402_extracted": {
+      "totals": {
+        "multi_records": 898,
+        "single_records": 102,
+        "chunks": 3895,
+        "boundaries": 2997
+      },
+      "counts": {
+        "next_starts_continuation": 202,
+        "prev_odd_ending": 182,
+        "prev_no_terminal_punct": 138,
+        "unbalanced_$": 28,
+        "next_starts_operator": 17,
+        "unbalanced_fence": 1,
+        "prev_ends_on_operator": 4,
+        "unbalanced_()": 4
+      }
+    },
+    "model||cocorem_exist_yorn_en_20241016": {
+      "totals": {
+        "multi_records": 966,
+        "single_records": 34,
+        "chunks": 3910,
+        "boundaries": 2944
+      },
+      "counts": {
+        "next_starts_continuation": 41,
+        "unbalanced_$": 2,
+        "prev_no_terminal_punct": 4,
+        "next_starts_operator": 8,
+        "prev_ends_on_operator": 2
+      }
+    },
+    "model||docvqa_train_56k_en_20240402_extracted": {
+      "totals": {
+        "multi_records": 284,
+        "single_records": 716,
+        "chunks": 1066,
+        "boundaries": 782
+      },
+      "counts": {
+        "prev_no_terminal_punct": 92,
+        "unbalanced_$": 109,
+        "next_starts_operator": 32,
+        "next_starts_continuation": 9,
+        "prev_ends_on_operator": 4,
+        "unbalanced_()": 2,
+        "prev_odd_ending": 1
+      }
+    },
+    "model||dvqa_en_20240402_extracted_int_only": {
+      "totals": {
+        "multi_records": 999,
+        "single_records": 1,
+        "chunks": 5423,
+        "boundaries": 4424
+      },
+      "counts": {
+        "prev_no_terminal_punct": 1304,
+        "next_starts_continuation": 115,
+        "prev_odd_ending": 147,
+        "next_starts_operator": 2,
+        "prev_ends_on_operator": 1,
+        "unbalanced_fence": 1
+      }
+    },
+    "model||figureqa_en_20240402_extracted": {
+      "totals": {
+        "multi_records": 1000,
+        "single_records": 0,
+        "chunks": 5459,
+        "boundaries": 4459
+      },
+      "counts": {
+        "next_starts_operator": 10,
+        "prev_ends_on_operator": 2,
+        "prev_no_terminal_punct": 472,
+        "next_starts_continuation": 86,
+        "prev_odd_ending": 20,
+        "unbalanced_fence": 2
+      }
+    },
+    "model||geo170k_extracted_full": {
+      "totals": {
+        "multi_records": 997,
+        "single_records": 3,
+        "chunks": 7282,
+        "boundaries": 6285
+      },
+      "counts": {
+        "unbalanced_[]": 52,
+        "unbalanced_{}": 20,
+        "unbalanced_latex": 105,
+        "next_starts_continuation": 571,
+        "prev_odd_ending": 47,
+        "prev_no_terminal_punct": 14,
+        "unbalanced_()": 45,
+        "next_starts_operator": 15,
+        "prev_ends_on_operator": 5,
+        "unbalanced_fence": 1
+      }
+    },
+    "model||geometry3k_en_20240402_extracted": {
+      "totals": {
+        "multi_records": 993,
+        "single_records": 7,
+        "chunks": 7452,
+        "boundaries": 6459
+      },
+      "counts": {
+        "next_starts_continuation": 813,
+        "unbalanced_()": 21,
+        "prev_no_terminal_punct": 33,
+        "prev_odd_ending": 15,
+        "unbalanced_[]": 26,
+        "unbalanced_{}": 9,
+        "unbalanced_latex": 39,
+        "next_starts_operator": 25,
+        "prev_ends_on_operator": 2
+      }
+    },
+    "model||geometry3k_en_20240402_extracted_open_ended_only": {
+      "totals": {
+        "multi_records": 1000,
+        "single_records": 0,
+        "chunks": 7308,
+        "boundaries": 6308
+      },
+      "counts": {
+        "next_starts_continuation": 558,
+        "prev_no_terminal_punct": 6,
+        "prev_odd_ending": 14,
+        "prev_ends_on_operator": 8,
+        "unbalanced_()": 13,
+        "unbalanced_[]": 9,
+        "unbalanced_latex": 17,
+        "next_starts_operator": 14,
+        "unbalanced_{}": 3
+      }
+    },
+    "model||geomverse_extracted": {
+      "totals": {
+        "multi_records": 983,
+        "single_records": 17,
+        "chunks": 7458,
+        "boundaries": 6475
+      },
+      "counts": {
+        "next_starts_continuation": 615,
+        "unbalanced_[]": 20,
+        "unbalanced_latex": 39,
+        "unbalanced_$": 2,
+        "prev_odd_ending": 24,
+        "unbalanced_()": 17,
+        "prev_no_terminal_punct": 24,
+        "next_starts_operator": 65,
+        "prev_ends_on_operator": 13,
+        "unbalanced_fence": 1,
+        "unbalanced_{}": 3
+      }
+    },
+    "model||geoqa+_en_20240402_extracted_open_ended_only": {
+      "totals": {
+        "multi_records": 952,
+        "single_records": 48,
+        "chunks": 5966,
+        "boundaries": 5014
+      },
+      "counts": {
+        "next_starts_continuation": 116,
+        "prev_odd_ending": 122,
+        "next_starts_operator": 32,
+        "prev_ends_on_operator": 3,
+        "prev_no_terminal_punct": 13,
+        "mid_sentence_pair": 9,
+        "unbalanced_fence": 3,
+        "unbalanced_[]": 2,
+        "unbalanced_latex": 4,
+        "unbalanced_{}": 2,
+        "unbalanced_()": 2
+      }
+    },
+    "model||geoqa+_extracted_en_version": {
+      "totals": {
+        "multi_records": 996,
+        "single_records": 4,
+        "chunks": 6867,
+        "boundaries": 5871
+      },
+      "counts": {
+        "next_starts_continuation": 519,
+        "unbalanced_()": 41,
+        "prev_odd_ending": 85,
+        "prev_no_terminal_punct": 17,
+        "unbalanced_latex": 63,
+        "unbalanced_[]": 31,
+        "next_starts_operator": 23,
+        "unbalanced_{}": 6,
+        "prev_ends_on_operator": 6
+      }
+    },
+    "model||geos_en_20240402_extracted": {
+      "totals": {
+        "multi_records": 984,
+        "single_records": 16,
+        "chunks": 7179,
+        "boundaries": 6195
+      },
+      "counts": {
+        "next_starts_continuation": 632,
+        "prev_odd_ending": 24,
+        "unbalanced_()": 7,
+        "prev_no_terminal_punct": 42,
+        "next_starts_operator": 55,
+        "unbalanced_[]": 11,
+        "unbalanced_latex": 17,
+        "unbalanced_{}": 3,
+        "prev_ends_on_operator": 4
+      }
+    },
+    "model||geos_en_20240402_extracted_open_ended_only": {
+      "totals": {
+        "multi_records": 716,
+        "single_records": 4,
+        "chunks": 5021,
+        "boundaries": 4305
+      },
+      "counts": {
+        "next_starts_continuation": 326,
+        "prev_no_terminal_punct": 12,
+        "prev_odd_ending": 8,
+        "next_starts_operator": 3,
+        "unbalanced_[]": 6,
+        "unbalanced_{}": 3,
+        "unbalanced_latex": 9,
+        "unbalanced_()": 2
+      }
+    },
+    "model||iconqa_train_extracted": {
+      "totals": {
+        "multi_records": 993,
+        "single_records": 7,
+        "chunks": 4063,
+        "boundaries": 3070
+      },
+      "counts": {
+        "prev_no_terminal_punct": 63,
+        "next_starts_continuation": 209,
+        "prev_odd_ending": 2,
+        "next_starts_operator": 6,
+        "prev_ends_on_operator": 2
+      }
+    },
+    "model||infographics_20240403_qa_20240407_v2_extracted": {
+      "totals": {
+        "multi_records": 996,
+        "single_records": 4,
+        "chunks": 4093,
+        "boundaries": 3097
+      },
+      "counts": {
+        "next_starts_continuation": 152,
+        "prev_odd_ending": 84,
+        "prev_no_terminal_punct": 141,
+        "next_starts_operator": 9,
+        "unbalanced_$": 86,
+        "prev_ends_on_operator": 4,
+        "unbalanced_fence": 2
+      }
+    },
+    "model||koniq10k_en_20240403": {
+      "totals": {
+        "multi_records": 998,
+        "single_records": 2,
+        "chunks": 5802,
+        "boundaries": 4804
+      },
+      "counts": {
+        "next_starts_continuation": 56,
+        "next_starts_operator": 148,
+        "prev_ends_on_operator": 6,
+        "prev_no_terminal_punct": 6
+      }
+    },
+    "model||m3cot_train_extracted": {
+      "totals": {
+        "multi_records": 986,
+        "single_records": 14,
+        "chunks": 5120,
+        "boundaries": 4134
+      },
+      "counts": {
+        "next_starts_continuation": 236,
+        "next_starts_operator": 125,
+        "prev_no_terminal_punct": 61,
+        "unbalanced_$": 86,
+        "prev_ends_on_operator": 15,
+        "unbalanced_()": 19,
+        "unbalanced_[]": 6,
+        "unbalanced_latex": 10,
+        "prev_odd_ending": 9,
+        "unbalanced_{}": 5
+      }
+    },
+    "model||mapqa_suv_en_20240402_extracted": {
+      "totals": {
+        "multi_records": 997,
+        "single_records": 3,
+        "chunks": 5591,
+        "boundaries": 4594
+      },
+      "counts": {
+        "next_starts_continuation": 315,
+        "prev_no_terminal_punct": 322,
+        "prev_odd_ending": 140,
+        "prev_ends_on_operator": 6,
+        "next_starts_operator": 10,
+        "unbalanced_$": 1
+      }
+    },
+    "model||mavis_function_abs": {
+      "totals": {
+        "multi_records": 988,
+        "single_records": 12,
+        "chunks": 9654,
+        "boundaries": 8666
+      },
+      "counts": {
+        "next_starts_continuation": 818,
+        "unbalanced_()": 85,
+        "unbalanced_latex": 139,
+        "next_starts_operator": 211,
+        "unbalanced_[]": 81,
+        "prev_ends_on_operator": 31,
+        "unbalanced_{}": 14,
+        "prev_no_terminal_punct": 19,
+        "prev_odd_ending": 3,
+        "unbalanced_fence": 1
+      }
+    },
+    "model||mavis_function_cos": {
+      "totals": {
+        "multi_records": 997,
+        "single_records": 3,
+        "chunks": 8204,
+        "boundaries": 7207
+      },
+      "counts": {
+        "next_starts_continuation": 514,
+        "unbalanced_()": 318,
+        "unbalanced_[]": 306,
+        "unbalanced_latex": 113,
+        "prev_no_terminal_punct": 18,
+        "prev_ends_on_operator": 11,
+        "next_starts_operator": 51,
+        "unbalanced_{}": 8,
+        "prev_odd_ending": 1,
+        "unbalanced_fence": 3,
+        "unbalanced_$": 1
+      }
+    },
+    "model||mavis_function_log": {
+      "totals": {
+        "multi_records": 998,
+        "single_records": 2,
+        "chunks": 8774,
+        "boundaries": 7776
+      },
+      "counts": {
+        "next_starts_continuation": 821,
+        "next_starts_operator": 78,
+        "prev_ends_on_operator": 17,
+        "unbalanced_()": 38,
+        "unbalanced_latex": 58,
+        "unbalanced_[]": 43,
+        "prev_no_terminal_punct": 11,
+        "unbalanced_{}": 3,
+        "unbalanced_fence": 1,
+        "prev_odd_ending": 3
+      }
+    },
+    "model||mavis_function_poly": {
+      "totals": {
+        "multi_records": 999,
+        "single_records": 1,
+        "chunks": 7615,
+        "boundaries": 6616
+      },
+      "counts": {
+        "next_starts_continuation": 858,
+        "unbalanced_()": 12,
+        "prev_no_terminal_punct": 17,
+        "prev_ends_on_operator": 19,
+        "next_starts_operator": 90,
+        "unbalanced_[]": 11,
+        "unbalanced_latex": 18,
+        "prev_odd_ending": 1,
+        "unbalanced_{}": 1
+      }
+    },
+    "model||mavis_function_sin": {
+      "totals": {
+        "multi_records": 998,
+        "single_records": 2,
+        "chunks": 8084,
+        "boundaries": 7086
+      },
+      "counts": {
+        "unbalanced_()": 248,
+        "unbalanced_[]": 247,
+        "next_starts_continuation": 475,
+        "next_starts_operator": 63,
+        "prev_ends_on_operator": 16,
+        "unbalanced_latex": 106,
+        "prev_no_terminal_punct": 13,
+        "prev_odd_ending": 13,
+        "unbalanced_{}": 7,
+        "unbalanced_$": 2
+      }
+    },
+    "model||mavis_function_tan": {
+      "totals": {
+        "multi_records": 999,
+        "single_records": 1,
+        "chunks": 8621,
+        "boundaries": 7622
+      },
+      "counts": {
+        "next_starts_continuation": 461,
+        "unbalanced_latex": 150,
+        "next_starts_operator": 78,
+        "unbalanced_()": 320,
+        "unbalanced_[]": 304,
+        "prev_ends_on_operator": 15,
+        "unbalanced_$": 6,
+        "unbalanced_{}": 13,
+        "prev_no_terminal_punct": 20,
+        "prev_odd_ending": 14,
+        "unbalanced_fence": 2
+      }
+    },
+    "model||mavis_geo_depth0_text_dominant_vision_dominant_en": {
+      "totals": {
+        "multi_records": 88,
+        "single_records": 8,
+        "chunks": 211,
+        "boundaries": 123
+      },
+      "counts": {
+        "next_starts_continuation": 92
+      }
+    },
+    "model||mavis_geo_depth1_text_dominant_vision_dominant_en": {
+      "totals": {
+        "multi_records": 54,
+        "single_records": 5,
+        "chunks": 141,
+        "boundaries": 87
+      },
+      "counts": {
+        "next_starts_continuation": 53
+      }
+    },
+    "model||mavis_geo_depth2_text_dominant_vision_dominant_en": {
+      "totals": {
+        "multi_records": 38,
+        "single_records": 5,
+        "chunks": 114,
+        "boundaries": 76
+      },
+      "counts": {
+        "next_starts_continuation": 33
+      }
+    },
+    "model||mavis_geo_depth3_text_dominant_vision_dominant_en": {
+      "totals": {
+        "multi_records": 21,
+        "single_records": 7,
+        "chunks": 57,
+        "boundaries": 36
+      },
+      "counts": {
+        "next_starts_continuation": 16
+      }
+    },
+    "model||nlvr2_en_20240910": {
+      "totals": {
+        "multi_records": 729,
+        "single_records": 271,
+        "chunks": 3240,
+        "boundaries": 2511
+      },
+      "counts": {
+        "next_starts_continuation": 119,
+        "next_starts_operator": 39,
+        "prev_ends_on_operator": 6,
+        "prev_no_terminal_punct": 9
+      }
+    },
+    "model||scienceqa_multi_choice_en_20240402_extracted": {
+      "totals": {
+        "multi_records": 906,
+        "single_records": 94,
+        "chunks": 4614,
+        "boundaries": 3708
+      },
+      "counts": {
+        "next_starts_continuation": 304,
+        "prev_no_terminal_punct": 61,
+        "next_starts_operator": 84,
+        "prev_ends_on_operator": 12,
+        "unbalanced_[]": 5,
+        "unbalanced_latex": 11,
+        "unbalanced_()": 7,
+        "prev_odd_ending": 10,
+        "unbalanced_{}": 4
+      }
+    },
+    "model||super_clevr_en_20240402_int": {
+      "totals": {
+        "multi_records": 913,
+        "single_records": 87,
+        "chunks": 3989,
+        "boundaries": 3076
+      },
+      "counts": {
+        "next_starts_continuation": 254,
+        "prev_no_terminal_punct": 68,
+        "unbalanced_fence": 3,
+        "next_starts_operator": 4,
+        "prev_ends_on_operator": 1
+      }
+    },
+    "model||super_clevr_en_20240402_yorn": {
+      "totals": {
+        "multi_records": 803,
+        "single_records": 197,
+        "chunks": 3550,
+        "boundaries": 2747
+      },
+      "counts": {
+        "prev_no_terminal_punct": 47,
+        "next_starts_continuation": 115,
+        "next_starts_operator": 13
+      }
+    },
+    "model||unigeo_calc_en_20240402_extracted_open_ended_only": {
+      "totals": {
+        "multi_records": 969,
+        "single_records": 31,
+        "chunks": 5981,
+        "boundaries": 5012
+      },
+      "counts": {
+        "next_starts_continuation": 131,
+        "prev_no_terminal_punct": 17,
+        "prev_odd_ending": 66,
+        "next_starts_operator": 4,
+        "mid_sentence_pair": 7,
+        "prev_ends_on_operator": 1,
+        "unbalanced_fence": 1,
+        "unbalanced_[]": 1,
+        "unbalanced_latex": 1
+      }
+    },
+    "model||vqav2_en_20240402_int": {
+      "totals": {
+        "multi_records": 933,
+        "single_records": 67,
+        "chunks": 3239,
+        "boundaries": 2306
+      },
+      "counts": {
+        "next_starts_continuation": 93,
+        "prev_no_terminal_punct": 13,
+        "unbalanced_$": 2,
+        "next_starts_operator": 2,
+        "prev_ends_on_operator": 1
+      }
+    }
+  }
+}

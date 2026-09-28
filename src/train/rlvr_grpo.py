@@ -222,7 +222,7 @@ def build_verl_command(
         f"actor_rollout_ref.actor.use_kl_loss=True",
         f"actor_rollout_ref.actor.entropy_coeff=0",
         f"actor_rollout_ref.actor.strategy=fsdp",
-        f"actor_rollout_ref.actor.gradient_checkpointing={str(args.gradient_checkpointing)}",
+        f"actor_rollout_ref.model.enable_gradient_checkpointing={str(args.gradient_checkpointing)}",
         f"actor_rollout_ref.rollout.name=vllm",
         f"actor_rollout_ref.rollout.n={args.rollout_n}",
         f"actor_rollout_ref.rollout.tensor_model_parallel_size={args.rollout_tp_size}",

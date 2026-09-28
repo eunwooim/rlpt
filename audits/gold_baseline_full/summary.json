@@ -1,0 +1,53 @@
+{
+  "path": "/scratch/sghos104/rlpt/canonical.jsonl",
+  "lines_scanned": 9478315,
+  "unparseable": 0,
+  "by_method": {
+    "GOLD": {
+      "totals": {
+        "multi_records": 495756,
+        "single_records": 8982559,
+        "chunks": 3356413,
+        "boundaries": 2860657
+      },
+      "counts": {
+        "prev_no_terminal_punct": 49761,
+        "next_starts_continuation": 263645,
+        "prev_ends_on_operator": 24124,
+        "next_starts_operator": 22982,
+        "prev_odd_ending": 79442,
+        "mid_sentence_pair": 3451,
+        "unbalanced_()": 15016,
+        "unbalanced_[]": 11702,
+        "unbalanced_latex": 12780,
+        "unbalanced_$": 8142,
+        "unbalanced_{}": 1186,
+        "unbalanced_fence": 247
+      }
+    }
+  },
+  "by_method_source": {
+    "GOLD||OpenGVLab/VisualPRM400K-v1.1": {
+      "totals": {
+        "multi_records": 495756,
+        "single_records": 8982559,
+        "chunks": 3356413,
+        "boundaries": 2860657
+      },
+      "counts": {
+        "prev_no_terminal_punct": 49761,
+        "next_starts_continuation": 263645,
+        "prev_ends_on_operator": 24124,
+        "next_starts_operator": 22982,
+        "prev_odd_ending": 79442,
+        "mid_sentence_pair": 3451,
+        "unbalanced_()": 15016,
+        "unbalanced_[]": 11702,
+        "unbalanced_latex": 12780,
+        "unbalanced_$": 8142,
+        "unbalanced_{}": 1186,
+        "unbalanced_fence": 247
+      }
+    }
+  }
+}

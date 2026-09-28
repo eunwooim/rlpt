@@ -1,0 +1,354 @@
+[
+  {
+    "text": "Since CAD is perpendicular to FAE, triangle FAE is a right triangle. \n   \\[\n   AB = 18\n   \\]\n   We know that triangles FCA and ABC are right triangles. \n   Since CAD is 60\u00b0 and FEA is 40\u00b0 and we use trigonometric ratios to find exact radii distances.\n   \n   Let the radius of DAC be \\( r \\):\n   \\[\n   (1/2) r \\times r = 100.48 \\Rightarrow \\frac{r^2 \\pi}{360} = 100.48 / 2.\n   \\]\n\n   Let:\n   \\[\n   r = \\sqrt{(100.48 \\times 360) / (3.14)} = 72.35\n   \\]",
+    "anchors": [
+      [
+        "AB",
+        "18"
+      ],
+      [
+        "r",
+        "sqrt((100.48 * 360) / (3.14))"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "Next, we substitute \\( a = \\sqrt{28} \\) into the perimeter equation:\n\\[\n3c + 14\\sqrt{28} = 72\n\\]\nNow, solve for \\( c \\) by isolating it on one side:\n\\[\n3c = 72 - 14\\sqrt{28} \\implies c = \\frac{72 - 14\\sqrt{28}}{3} \\]\n\\[\nc = 24 - \\frac{14\\sqrt{28}}{3}\n\\]",
+    "anchors": [
+      [
+        "a",
+        "sqrt(28)"
+      ],
+      [
+        "c",
+        "72"
+      ],
+      [
+        "c",
+        "24 - ((14sqrt(28))/(3))"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "4. **Calculate the perimeter**:\n   - \\(AB = 12\\)\n   - \\(BC = 12\\)\n   - \\(CE\\) and \\(ED\\) (sides of the equilateral triangle) each equal \\(s = 12\\), since all three sides of an equilateral triangle are equal in length and each corresponds to the original rectangle side.\n   - \\(DA = 12\\)",
+    "anchors": [
+      [
+        "AB",
+        "12"
+      ],
+      [
+        "BC",
+        "12"
+      ],
+      [
+        "s",
+        "12"
+      ],
+      [
+        "DA",
+        "12"
+      ]
+    ],
+    "n_anchor_components": 4
+  },
+  {
+    "text": "To find the side length of the sector-shaped EHI, follow these steps:\n\n1. **Identify the relevant geometric information**:\n   - AB = 88\n   - Angle IHE = 60\u00b0\n   - EHI is a sector shape",
+    "anchors": [
+      [
+        "AB",
+        "88"
+      ],
+      [
+        "IHE",
+        "((60)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "We already calculated the length of the arc BC:\n\\[ \\text{Length of arc BC} = 56 \\cdot \\frac{2\\pi}{3} \\]\n\n- Length of each radius AB and AC:\n\\[ AB = 28 \\]",
+    "anchors": [
+      [
+        "Length_of_arc_BC_",
+        "56 * ((2pi)/(3))"
+      ],
+      [
+        "AB",
+        "28"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "To find the perimeter of parallelogram ECFG, we need to determine the lengths of its sides.\n\nGiven:\n- \\( AB \\) (which is part of parallelogram ABCD) = 1.\n- \\( FC = \\sqrt{3} \\)\n- \\( \\angle DEC = 30^\\circ \\)\n- \\( \\angle DCE = \\frac{\\pi}{2} \\)",
+    "anchors": [
+      [
+        "AB",
+        "1."
+      ],
+      [
+        "FC",
+        "sqrt(3)"
+      ],
+      [
+        "DEC",
+        "((30)*pi/180)"
+      ],
+      [
+        "DCE",
+        "((pi)/(2))"
+      ]
+    ],
+    "n_anchor_components": 4
+  },
+  {
+    "text": "1. ABCD \u56db\u4e2a\u70b9\u5171\u5706\uff0c\u4e14BC\u662f\u76f4\u5f84\u3002\u8fd9\u610f\u5473\u7740\u2220ABC=90\u5ea6\uff0c\u56e0\u4e3a\u76f4\u5f84\u6240\u5bf9\u7684\u5706\u5fc3\u89d2\u662f90\u5ea6\u3002\n2. \u6839\u636e\u5706\u5468\u89d2\u5b9a\u7406\uff0c\u76f4\u5f84\u6240\u5bf9\u7684\u5706\u5468\u89d2\u7b49\u4e8e\u8be5\u76f4\u89d2\u4e09\u89d2\u5f62\u7684\u5bf9\u89d2\u7ebf\u7684\u4e00\u534a\u3002\n3. \u5df2\u77e5\u2220D=36\u5ea6\uff0c\u6240\u4ee5\u2220BAC=\u2220D=36\u5ea6\u3002\n4. \u56e0\u4e3a\u2220ABC=90\u5ea6\uff0c\u2220BAC=36\u5ea6\uff0c\u6240\u4ee5\u2220BCA=90-36=54\u5ea6\u3002",
+    "anchors": [
+      [
+        "angle_ABC",
+        "90"
+      ],
+      [
+        "angle_D",
+        "36"
+      ],
+      [
+        "angle_D",
+        "36"
+      ],
+      [
+        "angle_ABC",
+        "90"
+      ],
+      [
+        "angle_BAC",
+        "36"
+      ],
+      [
+        "angle_BCA",
+        "90-36"
+      ]
+    ],
+    "n_anchor_components": 3
+  },
+  {
+    "text": "4. **Substitute the known values**:\n   - \\(AD = 3\\)\n   - \\(OA = 6\\)\n   - So, \\(3^2 + OD^2 = 6^2\\)\n   - \\(9 + OD^2 = 36\\)\n   - \\(OD^2 = 36 - 9 = 27\\)\n   - \\(OD = \\sqrt{27} = 3\\sqrt{3}\\)",
+    "anchors": [
+      [
+        "AD",
+        "3"
+      ],
+      [
+        "OA",
+        "6"
+      ],
+      [
+        "OD",
+        "6**2"
+      ],
+      [
+        "OD",
+        "36"
+      ],
+      [
+        "OD",
+        "36 - 9"
+      ],
+      [
+        "OD",
+        "sqrt(27)"
+      ]
+    ],
+    "n_anchor_components": 3
+  },
+  {
+    "text": "2. **Understand the Geometry:**\n   - The triangle formed by points \\(A\\), \\(B\\), and \\(O\\) is a right triangle with \\(\\angle B = 90^\\circ\\).\n   - The straightedge creates a right angle with the line \\(DC\\) at point \\(O\\), so \\(\\angle DOC = 90^\\circ\\).",
+    "anchors": [
+      [
+        "B",
+        "((90)*pi/180)"
+      ],
+      [
+        "DOC",
+        "((90)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "Where the radius \\( r = 1 \\):\n\n\\[\ns = \\sqrt{2}\n\\]",
+    "anchors": [
+      [
+        "r",
+        "1"
+      ],
+      [
+        "s",
+        "sqrt(2)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "3. **\u6c42\u2220CPB\u7684\u5ea6\u6570**\uff1a\n   - \u2220CPB\u662f\u25b3PCB\u7684\u5185\u89d2\uff0c\u800c\u8be5\u89d2\u53ef\u4ee5\u5206\u89e3\u4e3a\u5207\u7ebf\u2220CAP\u4e0e\u534a\u5f84\u548c\u76f4\u5f84\u6240\u6784\u6210\u7684\u5916\u89d2\u4e4b\u95f4\u7684\u5173\u7cfb\u3002\n   - \u6839\u636e\u5207\u7ebf\u6027\u8d28\uff0c\u2220CPB\u7b49\u4e8e\u5176\u5207\u7ebf\u6240\u5bf9\u7684\u5706\u5468\u89d2\u2220CAO\uff08\u56e0\u4e3aCA\u662f\u5207\u7ebf\uff09\u7684\u8865\u89d2\u3002\n   - \u2220CAO = \u2220ACB = 90\u00b0\uff0c\u6240\u4ee5\u2220CPB = 90\u00b0 - \u2220CAP\u3002\n   - \u5df2\u77e5\u2220CAP = 35\u00b0\uff0c\u6240\u4ee5\u2220CPB = 90\u00b0 - 35\u00b0 = 55\u00b0\u3002",
+    "anchors": [
+      [
+        "angle_ACB",
+        "((90)*pi/180)"
+      ],
+      [
+        "angle_CAP",
+        "((35)*pi/180)"
+      ],
+      [
+        "angle_CPB",
+        "((90)*pi/180) - ((35)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "1. Given that quadrilateral ABCD is inscribed in circle O, the opposite angles of the quadrilateral add up to 180\u00b0 because they are subtended by the same arc.\n2. We are given that \u2220BCD = 120\u00b0. The opposite angle in terms of arc is \u2220BAD.\n3. In any quadrilateral, the sum of all interior angles is 360\u00b0. So for quadrilateral ABCD, we have:\n   \\[\n   \\angle BAD + \\angle BCD + \\angle CAB + \\angle DAB = 360\u00b0\n   \\]\n4. Since \u2220BCD = 120\u00b0 and the opposite angle (\u2220BAD) spans the same arc, we have:\n   \\[\n   \\angle BAD = 180\u00b0 - 120\u00b0 = 60\u00b0\n   \\]\n5. Now, angle \u2220BOD is the central angle that subtends the arc opposite to angle \u2220BAD.\n6. Central angle \u2220BOD is twice the inscribed angle \u2220BAD (since opposite angles in an inscribed quadrilateral add up to 180\u00b0). Hence,\n   \\[\n   \\angle BOD = 2 \\times \\angle BAD = 2 \\times 60\u00b0 = 120\u00b0\n   \\]",
+    "anchors": [
+      [
+        "angle_BCD",
+        "((120)*pi/180)"
+      ],
+      [
+        "angle_BCD",
+        "((120)*pi/180)"
+      ],
+      [
+        "BAD",
+        "((180)*pi/180) - ((120)*pi/180)"
+      ],
+      [
+        "BAD",
+        "2 * ((60)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "2. We are given:\n   \\[\n   \\text{Arc AB} = 130^\\circ\n   \\]\n   and the angle outside the circle:\n   \\[\n   \\angle A = 45^\\circ\n   \\]",
+    "anchors": [
+      [
+        "Arc_AB_",
+        "((130)*pi/180)"
+      ],
+      [
+        "A",
+        "((45)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "4. Given \u2220BOD = 50\u00b0, this would mean:\n   - \u2220EOD = 50\u00b0 + 90\u00b0 = 140\u00b0.",
+    "anchors": [
+      [
+        "angle_BOD",
+        "((50)*pi/180)"
+      ],
+      [
+        "angle_EOD",
+        "((50)*pi/180) + ((90)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "2. **Label the Dimensions**: \n   - Since ABCD is a rectangle with AB = 7 and FC = 11, we need to find the relationship between these dimensions to find the length of GF.",
+    "anchors": [
+      [
+        "AB",
+        "7"
+      ],
+      [
+        "FC",
+        "11"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "5. **Express the lengths relevant to \\( BC \\) (using similar triangles or the Pythagorean theorem):**\n   - Since \\( BD = 3 \\) and \\( DC = 2 \\), calculate:\n     \\[\n     AB = \\sqrt{BD^2 + AD^2} = \\sqrt{3^2 + AD^2}\n     \\]\n     \\[\n     AC = \\sqrt{CD^2 + AD^2} = \\sqrt{2^2 + AD^2}\n     \\]",
+    "anchors": [
+      [
+        "BD",
+        "3"
+      ],
+      [
+        "DC",
+        "2"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "2. **Identify Key Measurements:**\n   - \\(AB = 90\\).\n   - \\(EG = 81\\).",
+    "anchors": [
+      [
+        "AB",
+        "90"
+      ],
+      [
+        "EG",
+        "81"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "2. **Calculate the lengths of \\(DC\\) and \\(CE\\):**\n   - Since \\(DCE\\) is an isosceles triangle with \\(DC = CE\\), \\(AE\\) must be a perpendicular bisector of \\(DC\\) and \\(EC\\).\n   - In \\(Rt \\triangle EFC\\), \\(FH\\) is one side and \\(FE = 90^\\circ\\) (since it is perpendicular to \\(FH\\)).\n   - Thus, \\(EF = \\frac{FH}{\\cos(90^\\circ - 30^\\circ)} = \\frac{68}{\\frac{\\sqrt{3}}{2}} = \\frac{136}{\\sqrt{3}}\\).",
+    "anchors": [
+      [
+        "FE",
+        "((90)*pi/180)"
+      ],
+      [
+        "FH",
+        "((68)/(((sqrt(3))/(2))))"
+      ]
+    ],
+    "n_anchor_components": 2
+  },
+  {
+    "text": "2. **Sector Analysis:**\n   - Since \\( \\triangle ABC \\) is a 30-60-90 triangle, \\( BC = \\frac{110\\sqrt{3}}{3} \\).\n   - The arc \\( DBC \\) forms the sector, where \\( \\angle ACB = 60\u00b0 \\) and \\( BDC = 180\u00b0 - 90\u00b0 - 60\u00b0 = 30\u00b0 \\).\n   - Since \\( \\angle ACB = 60\u00b0 \\) and \\( \\angle CBBDC = 30\u00b0 \\), segment \\( BD \\) subtends 30\u00b0 at \\( C \\).",
+    "anchors": [
+      [
+        "BC",
+        "((110sqrt(3))/(3))"
+      ],
+      [
+        "ACB",
+        "((60)*pi/180)"
+      ],
+      [
+        "BDC",
+        "((180)*pi/180) - ((90)*pi/180) - ((60)*pi/180)"
+      ],
+      [
+        "ACB",
+        "((60)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 3
+  },
+  {
+    "text": "2. **\u4f7f\u7528\u89d2\u5ea6\u7684\u6027\u8d28**\uff1a\n   - \u2220DBO \u548c \u2220AOC \u662f\u4e92\u8865\u89d2\uff0c\u56e0\u4e3a\u5b83\u4eec\u5f62\u6210\u4e00\u4e2a\u76f4\u89d2\u3002\u4e5f\u5c31\u662f\u8bf4\uff0c\u5b83\u4eec\u7684\u89d2\u5ea6\u548c\u4e3a180\u00b0\u3002\n   - \u5df2\u77e5 \u2220DBO = 70\u00b0\uff0c\u8ba1\u7b97 \u2220AOC\uff1a\n     \\[\n     \\angle AOC = 180\u00b0 - 70\u00b0 = 110\u00b0\n     \\]",
+    "anchors": [
+      [
+        "angle_DBO",
+        "((70)*pi/180)"
+      ],
+      [
+        "AOC",
+        "((180)*pi/180) - ((70)*pi/180)"
+      ]
+    ],
+    "n_anchor_components": 2
+  }
+]

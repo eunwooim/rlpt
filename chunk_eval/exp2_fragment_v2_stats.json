@@ -1,0 +1,9 @@
+{
+  "records": 20000,
+  "split": 106537,
+  "short": 36074,
+  "no_boundary": 12,
+  "residual_before_marker_pct": 0.0,
+  "residual_after_closer_pct": 0.0,
+  "pass": true
+}

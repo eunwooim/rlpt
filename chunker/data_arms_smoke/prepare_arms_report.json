@@ -1,0 +1,39 @@
+{
+  "n_lines": 9478315,
+  "frozen_questions": 20818,
+  "frozen_records_skipped": 237502,
+  "multi_records": 2000,
+  "multi_windows": 2000,
+  "singles_sampled": 2000,
+  "singles_clean": 274,
+  "arms": {
+    "keep": {
+      "train_windows": 4301,
+      "single_records": 2000,
+      "label1": 9878,
+      "label0": 100948,
+      "ratio_0_per_1": 10.22
+    },
+    "drop": {
+      "train_windows": 2000,
+      "single_records": 0,
+      "label1": 9878,
+      "label0": 39034,
+      "ratio_0_per_1": 3.95
+    },
+    "clean": {
+      "train_windows": 2280,
+      "single_records": 274,
+      "label1": 9878,
+      "label0": 40519,
+      "ratio_0_per_1": 4.1
+    },
+    "mask": {
+      "train_windows": 4301,
+      "single_records": 2000,
+      "label1": 9878,
+      "label0": 80611,
+      "ratio_0_per_1": 8.16
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "n_list_records": 6370908,
+  "sampled": 20000,
+  "resolution_mix_after": {
+    "para": 19879,
+    "falls_to_model": 121
+  },
+  "chunks_per_record_before": {
+    "mean": 10.11275,
+    "p50": 8,
+    "p90": 19
+  },
+  "chunks_per_record_after": {
+    "mean": 7.5001,
+    "p50": 7,
+    "p90": 12
+  },
+  "total_chunks_before_sample": 202255,
+  "total_chunks_after_sample": 150002,
+  "after_token_len": {
+    "mean": 39.7019906401248,
+    "p50": 30,
+    "p90": 81,
+    "p99": 184,
+    "pct_gt_220": 0.563325822322369
+  }
+}

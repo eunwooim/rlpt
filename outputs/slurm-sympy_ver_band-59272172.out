@@ -1,0 +1,13 @@
+sympy 1.14.0; input=../../data/visualprm_v11_filtered/stage1_band_sample.jsonl
+15000 traces to verify
+2000/15000 {'PASS': 1375, 'FAIL_LOW_CONFIDENCE': 8, 'EXPLORATORY': 43, 'FAIL': 9, 'SKIPPED_NO_SURFACE': 565}
+4000/15000 {'PASS': 1630, 'FAIL_LOW_CONFIDENCE': 8, 'EXPLORATORY': 43, 'FAIL': 9, 'SKIPPED_NO_SURFACE': 2310}
+<string>:1: SyntaxWarning: 'tuple' object is not callable; perhaps you missed a comma?
+<string>:1: SyntaxWarning: 'tuple' object is not callable; perhaps you missed a comma?
+<string>:1: SyntaxWarning: 'tuple' object is not callable; perhaps you missed a comma?
+6000/15000 {'PASS': 2940, 'FAIL_LOW_CONFIDENCE': 38, 'EXPLORATORY': 161, 'FAIL': 194, 'SKIPPED_NO_SURFACE': 2667}
+8000/15000 {'PASS': 3402, 'FAIL_LOW_CONFIDENCE': 59, 'EXPLORATORY': 223, 'FAIL': 295, 'SKIPPED_NO_SURFACE': 4021}
+10000/15000 {'PASS': 3464, 'FAIL_LOW_CONFIDENCE': 235, 'EXPLORATORY': 331, 'FAIL': 1055, 'SKIPPED_NO_SURFACE': 4915}
+12000/15000 {'PASS': 3531, 'FAIL_LOW_CONFIDENCE': 397, 'EXPLORATORY': 555, 'FAIL': 2602, 'SKIPPED_NO_SURFACE': 4915}
+14000/15000 {'PASS': 3948, 'FAIL_LOW_CONFIDENCE': 542, 'EXPLORATORY': 756, 'FAIL': 3444, 'SKIPPED_NO_SURFACE': 5310}
+DONE {'PASS': 4113, 'FAIL_LOW_CONFIDENCE': 543, 'EXPLORATORY': 768, 'FAIL': 3467, 'SKIPPED_NO_SURFACE': 6109}

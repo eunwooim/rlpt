@@ -1,0 +1,54 @@
+sympy version: 1.14.0
+sampling 150/source (seed=0) from data/visualprm_v11_filtered/stage2_kept_tau0.85.jsonl
+4 sources, 600 traces sampled
+[annotations/geo170k_extracted_full.jsonl] steps=885 claims=1278 ok=1238 fail=40
+[annotations/geoqa+_en_20240402_extracted_open_ended_only.jsonl] steps=862 claims=1153 ok=1100 fail=53
+<string>:1: SyntaxWarning: 'tuple' object is not callable; perhaps you missed a comma?
+<string>:1: SyntaxWarning: 'tuple' object is not callable; perhaps you missed a comma?
+[annotations/geoqa+_extracted_en_version.jsonl] steps=887 claims=1188 ok=1111 fail=77
+[annotations/unigeo_calc_en_20240402_extracted_open_ended_only.jsonl] steps=974 claims=1473 ok=1421 fail=52
+wrote data/visualprm_v11_filtered/sympy_audit/text_fix_check/extractability_table.md
+sympy version: 1.14.0
+sampling 150/source (seed=0) from data/visualprm_v11_filtered/stage2_kept_tau0.85.jsonl
+38 sources, 5622 traces sampled
+[annotations/CLEVR_math_en_20240402_extracted.jsonl] steps=494 claims=71 ok=71 fail=0
+[annotations/MathV360K_prompts.jsonl] steps=644 claims=102 ok=100 fail=2
+[annotations/SROIE_information_extraction_multi_turn_20240620_extracted.jsonl] steps=481 claims=22 ok=22 fail=0
+[annotations/ai2d_train_12k_en_20240410_extracted.jsonl] steps=597 claims=0 ok=0 fail=0
+[annotations/chartqa_trainval_30k_w_csv_en_20240402_extracted.jsonl] steps=544 claims=18 ok=18 fail=0
+[annotations/cocorem_exist_yorn_en_20241016.jsonl] steps=267 claims=0 ok=0 fail=0
+[annotations/docvqa_train_56k_en_20240402_extracted.jsonl] steps=437 claims=0 ok=0 fail=0
+[annotations/dvqa_en_20240402_extracted_int_only.jsonl] steps=581 claims=54 ok=54 fail=0
+[annotations/figureqa_en_20240402_extracted.jsonl] steps=420 claims=23 ok=23 fail=0
+[annotations/geo170k_extracted_full.jsonl] steps=885 claims=1278 ok=1238 fail=40
+[annotations/geometry3k_en_20240402_extracted.jsonl] steps=1047 claims=1329 ok=1259 fail=70
+[annotations/geometry3k_en_20240402_extracted_open_ended_only.jsonl] steps=1025 claims=1269 ok=1162 fail=107
+[annotations/geomverse_extracted.jsonl] steps=715 claims=1109 ok=1093 fail=16
+[annotations/geoqa+_en_20240402_extracted_open_ended_only.jsonl] steps=862 claims=1153 ok=1100 fail=53
+<string>:1: SyntaxWarning: 'tuple' object is not callable; perhaps you missed a comma?
+<string>:1: SyntaxWarning: 'tuple' object is not callable; perhaps you missed a comma?
+[annotations/geoqa+_extracted_en_version.jsonl] steps=887 claims=1188 ok=1111 fail=77
+[annotations/geos_en_20240402_extracted.jsonl] steps=1091 claims=1377 ok=1240 fail=137
+[annotations/geos_en_20240402_extracted_open_ended_only.jsonl] steps=582 claims=765 ok=711 fail=54
+[annotations/iconqa_train_extracted.jsonl] steps=573 claims=39 ok=38 fail=1
+[annotations/infographics_20240403_qa_20240407_v2_extracted.jsonl] steps=470 claims=2 ok=2 fail=0
+[annotations/koniq10k_en_20240403.jsonl] steps=587 claims=0 ok=0 fail=0
+[annotations/m3cot_train_extracted.jsonl] steps=728 claims=78 ok=75 fail=3
+[annotations/mapqa_suv_en_20240402_extracted.jsonl] steps=492 claims=0 ok=0 fail=0
+[annotations/mavis_function_abs.jsonl] steps=1408 claims=3734 ok=3718 fail=16
+[annotations/mavis_function_cos.jsonl] steps=1163 claims=2695 ok=2640 fail=55
+[annotations/mavis_function_log.jsonl] steps=1930 claims=7596 ok=7487 fail=109
+[annotations/mavis_function_poly.jsonl] steps=1138 claims=2887 ok=2858 fail=29
+[annotations/mavis_function_sin.jsonl] steps=1151 claims=2763 ok=2694 fail=69
+[annotations/mavis_function_tan.jsonl] steps=1003 claims=2579 ok=2443 fail=136
+[annotations/mavis_geo_depth0_text_dominant_vision_dominant_en.jsonl] steps=815 claims=907 ok=896 fail=11
+[annotations/mavis_geo_depth1_text_dominant_vision_dominant_en.jsonl] steps=809 claims=1022 ok=1004 fail=18
+[annotations/mavis_geo_depth2_text_dominant_vision_dominant_en.jsonl] steps=795 claims=1184 ok=1151 fail=33
+[annotations/mavis_geo_depth3_text_dominant_vision_dominant_en.jsonl] steps=726 claims=1166 ok=1123 fail=43
+[annotations/nlvr2_en_20240910.jsonl] steps=394 claims=2 ok=2 fail=0
+[annotations/scienceqa_multi_choice_en_20240402_extracted.jsonl] steps=669 claims=16 ok=16 fail=0
+[annotations/super_clevr_en_20240402_int.jsonl] steps=374 claims=2 ok=2 fail=0
+[annotations/super_clevr_en_20240402_yorn.jsonl] steps=244 claims=0 ok=0 fail=0
+[annotations/unigeo_calc_en_20240402_extracted_open_ended_only.jsonl] steps=974 claims=1473 ok=1421 fail=52
+[annotations/vqav2_en_20240402_int.jsonl] steps=343 claims=1 ok=1 fail=0
+wrote data/visualprm_v11_filtered/sympy_audit/extractability_table.md

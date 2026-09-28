@@ -1,0 +1,21 @@
+--- example 1 (dangling_start, marker/step) ---
+So babies are such a joy! Here’s some advice about how to care for him without being able to shower:
+
+--- example 2 (dangling_start, marker/step) ---
+So that will depend on whether you want to make a “solid” lotion bar, or a “liquid” lotion bar.  In either case, it will depend on whether you want to have a “firm” or “liquid” lotion.  This will also affect how much coconut oil you’ll need, and which of the two recipes you choose.  Here’s an example recipe for a firm solid lotion:
+
+Ingredients:
+
+-   2 tbsp almond oil (or any other carrier oil)
+-   1 tbsp cocoa butter
+-   1 tbsp beeswax
+
+--- example 3 (dangling_start, marker/step) ---
+Which of the two mountains had less sedimentary rock?
+
+--- example 4 (dangling_start, marker/step) ---
+Which of the two mountains had less sedimentary rock?
+
+--- example 5 (dangling_start, marker/step) ---
+Which of the two mountains had less sedimentary rock?
+

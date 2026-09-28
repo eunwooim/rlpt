@@ -170,6 +170,9 @@ def get_tqdm() -> Any:
 
 def load_hf_dataset(args: Any) -> Any:
     if str(args.dataset_name).startswith("OpenGVLab/VisualPRM400K"):
+        filtered_jsonl = os.environ.get("RLPT_FILTERED_JSONL")
+        if filtered_jsonl:
+            return load_filtered_visualprm_jsonl_source(args, filtered_jsonl)
         return load_visualprm_zip_source(args)
 
     datasets = import_or_raise(
@@ -258,6 +261,79 @@ def load_visualprm_zip_source(args: Any) -> VisualPRMZipSource:
     )
 
 
+class FilteredVisualPRMJsonlSource(VisualPRMZipSource):
+    """VisualPRM source backed by a filtered trace-id list instead of annotations.zip.
+
+    The filtered jsonl only decides WHICH traces are in the pool via its
+    (source_file, line_index) columns; every returned record is the FULL raw
+    annotation row read from the local raw dump, so prompts, responses, and
+    reward ground truth are byte-identical to the unfiltered loading path.
+    Subclasses VisualPRMZipSource so scaled_dataset applies the same
+    seeded-sample selection semantics.
+    """
+
+    def __init__(self, filtered_jsonl: Path, raw_annos_root: Path, dataset_name: str,
+                 dataset_config: str | None, split: str) -> None:
+        self.filtered_jsonl = Path(filtered_jsonl)
+        self.raw_annos_root = Path(raw_annos_root)
+        self.dataset_name = dataset_name
+        self.dataset_config = dataset_config
+        self.split = split
+        self.trace_ids: list[tuple[str, int]] = []
+        with self.filtered_jsonl.open(encoding="utf-8") as f:
+            for line in f:
+                if line.strip():
+                    row = json.loads(line)
+                    self.trace_ids.append((row["source_file"], int(row["line_index"])))
+        self.total_rows = len(self.trace_ids)
+
+    def select_indices(self, indices: list[int]) -> list[dict[str, Any]]:
+        by_source: dict[str, dict[int, int]] = {}
+        for position in indices:
+            source_file, line_index = self.trace_ids[position]
+            by_source.setdefault(source_file, {})[line_index] = position
+        rows_by_position: dict[int, dict[str, Any]] = {}
+        tqdm = get_tqdm()
+        with tqdm(total=len(indices), desc="Selecting filtered VisualPRM rows", unit="row") as progress:
+            for source_file in sorted(by_source):
+                wanted = by_source[source_file]
+                with (self.raw_annos_root / source_file).open(encoding="utf-8") as f:
+                    for line_index, raw_line in enumerate(f):
+                        if line_index in wanted:
+                            row = json.loads(raw_line)
+                            row.setdefault("source", source_file)
+                            rows_by_position[wanted[line_index]] = row
+                            progress.update(1)
+        missing = [position for position in indices if position not in rows_by_position]
+        if missing:
+            raise ValueError(
+                f"{len(missing)} filtered trace ids not found in raw annotations under "
+                f"{self.raw_annos_root} (first: {self.trace_ids[missing[0]]})"
+            )
+        return [rows_by_position[position] for position in indices]
+
+
+def load_filtered_visualprm_jsonl_source(args: Any, filtered_jsonl: str) -> FilteredVisualPRMJsonlSource:
+    if getattr(args, "dataset_split", "train") != "train":
+        raise ValueError(f"{args.dataset_name} only exposes the train split, got: {args.dataset_split}")
+    filtered_path = Path(filtered_jsonl)
+    if not filtered_path.exists():
+        raise FileNotFoundError(f"RLPT_FILTERED_JSONL does not exist: {filtered_path}")
+    raw_annos_root = Path(
+        os.environ.get("RLPT_RAW_ANNOS_ROOT", str(REPO_ROOT / "data" / "visualprm_v11_raw" / "annos"))
+    )
+    if not (raw_annos_root / "annotations").is_dir():
+        raise FileNotFoundError(f"Raw VisualPRM annotations not found under: {raw_annos_root}")
+    print(f"Loading filtered VisualPRM trace list from {filtered_path} (raw records from {raw_annos_root})", flush=True)
+    return FilteredVisualPRMJsonlSource(
+        filtered_jsonl=filtered_path,
+        raw_annos_root=raw_annos_root,
+        dataset_name=args.dataset_name,
+        dataset_config=getattr(args, "dataset_config", None),
+        split=getattr(args, "dataset_split", "train"),
+    )
+
+
 def download_visualprm_repo_file(dataset_name: str, filename: str) -> Path:
     download_module = import_or_raise(
         "datasets.download.download_manager",
@@ -306,6 +382,10 @@ def resolve_zip_member(archive: zipfile.ZipFile, image_name: str, dataset_name: 
             candidates.extend([stripped, "images/" + stripped])
         if not image_name.startswith("images/"):
             candidates.append("images/" + image_name)
+        else:
+            # nlvr2 rows reference "images/train-*.png" but the archive nests them
+            # under "images/nlvr2/images/train-*.png".
+            candidates.append("images/nlvr2/" + image_name)
     elif str(dataset_name) == "Xkev/LLaVA-CoT-100k":
         candidates.extend([image_name.lstrip("/"), "images/" + image_name.lstrip("/")])
 
@@ -320,6 +400,29 @@ def resolve_zip_member(archive: zipfile.ZipFile, image_name: str, dataset_name: 
         except KeyError:
             continue
     return None
+
+
+# Qwen2.5-VL spends one prompt token per 28x28 pixel block and veRL refuses to truncate
+# multimodal prompts past rollout.prompt_length (2048). Budgeted so a two-image row
+# still leaves room for the question text.
+MATERIALIZE_MAX_IMAGE_PIXELS = int(os.environ.get("RLVR_MAX_IMAGE_PIXELS", str(640 * 28 * 28)))
+
+
+def write_bounded_image(data: bytes, target: Path) -> None:
+    from io import BytesIO
+
+    from PIL import Image
+
+    with Image.open(BytesIO(data)) as image:
+        total = image.width * image.height
+        if total <= MATERIALIZE_MAX_IMAGE_PIXELS:
+            target.write_bytes(data)
+            return
+        scale = (MATERIALIZE_MAX_IMAGE_PIXELS / total) ** 0.5
+        resized = image.convert("RGB").resize(
+            (max(28, int(image.width * scale)), max(28, int(image.height * scale)))
+        )
+    resized.save(target)
 
 
 def materialize_visualprm_images(rows: list[dict[str, Any]], args: Any, output_dir: str | Path) -> int:
@@ -354,15 +457,18 @@ def materialize_visualprm_images(rows: list[dict[str, Any]], args: Any, output_d
             target.resolve().relative_to(target_root.resolve())
             target.parent.mkdir(parents=True, exist_ok=True)
             if not target.exists():
-                with archive.open(member_name) as src, target.open("wb") as dst:
-                    shutil.copyfileobj(src, dst)
+                with archive.open(member_name) as src:
+                    write_bounded_image(src.read(), target)
             materialized[image_name] = str(target)
 
     for row in rows:
         materialized_images = [materialized[image] for image in row_image_values(row) if isinstance(image, str) and image in materialized]
         if materialized_images:
             row["image"] = materialized_images[0]
-            row.pop("images", None)
+            if len(materialized_images) > 1:
+                row["images"] = materialized_images
+            else:
+                row.pop("images", None)
     return len(materialized)
 
 

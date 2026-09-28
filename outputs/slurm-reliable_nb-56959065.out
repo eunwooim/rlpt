@@ -1,0 +1,83 @@
+[reliable_nb] host=sg004 job=56959065 start=Tue Jun 23 16:47:50 MST 2026
+GPU 0: NVIDIA A100-SXM4-80GB (UUID: GPU-65eaea3b-4a09-d6da-fbf2-3159610ead11)
+cuda available: True
+Some weights of the model checkpoint at microsoft/deberta-large-mnli were not used when initializing DebertaForSequenceClassification: ['config']
+- This IS expected if you are initializing DebertaForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing DebertaForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+{
+  "datasets": [
+    "sugarcrepe",
+    "sugarcrepepp",
+    "negbench"
+  ],
+  "load_errors": 0,
+  "loaded_scorers": [
+    "sbert",
+    "nli",
+    "bertscore"
+  ],
+  "num_cases": 35590,
+  "num_pairs": 84231,
+  "num_scores": 252693,
+  "output_dir": "src/outputs/reliable_full_negbench",
+  "requested_scorers": [
+    "sbert",
+    "nli",
+    "bertscore"
+  ],
+  "scorer_errors": 0
+}
+[reliable_nb] done=Tue Jun 23 17:05:55 MST 2026 exit_collect_below
+=== load_errors ===
+=== scorer_errors ===
+=== subcategory_counts ===
+dataset,subcategory,mode,num_cases,num_positive_pairs,num_negative_pairs
+negbench,COCO-MCQ-Neg,separation,5914,0,17742
+negbench,CheXpert control/negation task,separation,1380,0,1380
+negbench,HardNeg-Syn MCQ-Neg,separation,9997,0,29991
+negbench,MSR-VTT MCQ-Neg,separation,1000,0,3000
+negbench,VOC2007 MCQ-Neg,separation,5031,0,15093
+sugarcrepe,add_att,separation,692,0,692
+sugarcrepe,add_obj,separation,2062,0,2062
+sugarcrepe,replace_att,separation,788,0,788
+sugarcrepe,replace_obj,separation,1652,0,1652
+sugarcrepe,replace_rel,separation,1406,0,1406
+sugarcrepe,swap_att,separation,666,0,666
+sugarcrepe,swap_obj,separation,245,0,245
+sugarcrepepp,replace_attribute,ranking,788,788,788
+sugarcrepepp,replace_object,ranking,1652,1652,1652
+sugarcrepepp,replace_relation,ranking,1406,1406,1406
+sugarcrepepp,swap_atribute,ranking,666,666,666
+sugarcrepepp,swap_object,ranking,245,245,245
+=== scorer_overall ===
+dataset,scorer,score_field,ranking_acc,separation_fpr_at_0_6,mean_positive_score,mean_negative_score,mean_margin
+negbench,bertscore,bertscore_f1,,0.9966818438829866,,0.8372655297501693,-0.23726552975016932
+negbench,bertscore,bertscore_precision,,0.9967413623783591,,0.8393423826090407,-0.2393423826090407
+negbench,bertscore,bertscore_recall,,0.9958932238193019,,0.8361752923467495,-0.2361752923467495
+negbench,nli,C_ab,,0.9748087968336161,,0.9696775246605857,-0.3696775246605856
+negbench,nli,C_ba,,0.9647501711156742,,0.9586668983749312,-0.35866689837493126
+negbench,nli,E_ab,,0.002425378686426807,,0.0072147025857721234,0.5927852974142278
+negbench,nli,E_ba,,0.008421867095199834,,0.01643401426600967,0.5835659857339903
+negbench,nli,nli_score_coverage,,0.0012945272743505045,,0.0020770026914308007,0.5979229973085691
+negbench,nli,nli_score_equiv,,0.0011903699074487398,,0.00213766369139543,0.5978623363086045
+negbench,sbert,raw_score,,0.7531024015712883,,0.6983360546815022,-0.0983360546815022
+sugarcrepe,bertscore,bertscore_f1,,1.0,,0.9397238050027876,-0.33972380500278765
+sugarcrepe,bertscore,bertscore_precision,,1.0,,0.9326586477481292,-0.3326586477481292
+sugarcrepe,bertscore,bertscore_recall,,1.0,,0.9472585589967291,-0.347258558996729
+sugarcrepe,nli,C_ab,,0.5153774464119292,,0.5200969514142878,0.0799030485857122
+sugarcrepe,nli,C_ba,,0.4902143522833178,,0.49535644121062783,0.10464355878937215
+sugarcrepe,nli,E_ab,,0.08108108108108109,,0.09192581353603164,0.5080741864639683
+sugarcrepe,nli,E_ba,,0.46451870589801625,,0.47092446260681753,0.12907553739318242
+sugarcrepe,nli,nli_score_coverage,,0.06909865530555186,,0.17866512850127064,0.42133487149872934
+sugarcrepe,nli,nli_score_equiv,,0.06909865530555186,,0.25108711752853596,0.348912882471464
+sugarcrepe,sbert,raw_score,,0.974437491678871,,0.8582002961961744,-0.2582002961961745
+sugarcrepepp,bertscore,bertscore_f1,0.14021442085347907,,0.9007574301694194,0.9433684799721104,-0.04261104980269087
+sugarcrepepp,bertscore,bertscore_precision,0.12781164599537523,,0.8930267141425161,0.942860450480499,-0.04983373633798291
+sugarcrepepp,bertscore,bertscore_recall,0.18183729241118352,,0.9088745308142889,0.9440149645206932,-0.03514043370640426
+sugarcrepepp,nli,C_ab,0.012402774858103847,,0.011897487113447229,0.8018838543537402,-0.789986367240293
+sugarcrepepp,nli,C_ba,0.018288837502627706,,0.009285182734847039,0.769305136626323,-0.760019953891476
+sugarcrepepp,nli,E_ab,0.9829724616354846,,0.964421334811361,0.1361652806583713,0.8282560541529898
+sugarcrepepp,nli,E_ba,0.9751944502837923,,0.9605641374087345,0.18496832082685216,0.7755958165818824
+sugarcrepepp,nli,nli_score_coverage,0.9777170485600168,,0.957622929509675,0.1146043947133134,0.8430185347963616
+sugarcrepepp,nli,nli_score_equiv,0.9787681311751104,,0.9565718051980271,0.11985505640941516,0.836716748788612
+sugarcrepepp,sbert,raw_score,0.7248265713685096,,0.9293428301836278,0.8402131507069418,0.08912967947668606

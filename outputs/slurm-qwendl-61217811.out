@@ -1,0 +1,48 @@
+[qwendl] host=sc015 job=61217811 start=Thu Aug 13 04:31:51 MST 2026
+beegfs_nodev    3.7P  3.2P  501T  87% /scratch
+
+[qwen] ===== Qwen/Qwen2.5-VL-3B-Instruct =====
+[qwen] remote files: 14
+Fetching 14 files:   0%|          | 0/14 [00:00<?, ?it/s]Fetching 14 files:   7%|▋         | 1/14 [00:00<00:03,  3.54it/s]Fetching 14 files: 100%|██████████| 14/14 [00:00<00:00, 49.21it/s]
+[qwen] snapshot -> /scratch/sghos104/rlpt/data/hf_cache/hub/models--Qwen--Qwen2.5-VL-3B-Instruct/snapshots/66285546d2b821cf421d4f5eb2576359d3770cd3
+  PASS_GIT_SHA1               1,519  .gitattributes
+  PASS_GIT_SHA1               7,387  LICENSE
+  PASS_GIT_SHA1              18,276  README.md
+  PASS_GIT_SHA1               1,050  chat_template.json
+  PASS_GIT_SHA1               1,373  config.json
+  PASS_GIT_SHA1                 216  generation_config.json
+  PASS_GIT_SHA1           1,671,839  merges.txt
+  PASS                3,982,649,232  model-00001-of-00002.safetensors
+  PASS                3,526,688,744  model-00002-of-00002.safetensors
+  PASS_GIT_SHA1              65,448  model.safetensors.index.json
+  PASS_GIT_SHA1                 350  preprocessor_config.json
+  PASS_GIT_SHA1           7,031,645  tokenizer.json
+  PASS_GIT_SHA1               5,702  tokenizer_config.json
+  PASS_GIT_SHA1           2,776,833  vocab.json
+[qwen] Qwen/Qwen2.5-VL-3B-Instruct: 7.00 GiB | lfs sha256 ok=2 git sha1 ok=12 failures=0
+
+[qwen] ===== Qwen/Qwen2.5-VL-7B-Instruct =====
+[qwen] remote files: 16
+Fetching 16 files:   0%|          | 0/16 [00:00<?, ?it/s]Fetching 16 files:   6%|▋         | 1/16 [00:00<00:05,  2.85it/s]Fetching 16 files:  44%|████▍     | 7/16 [00:17<00:23,  2.58s/it]Fetching 16 files:  50%|█████     | 8/16 [00:18<00:18,  2.28s/it]Fetching 16 files: 100%|██████████| 16/16 [00:18<00:00,  1.14s/it]
+[qwen] snapshot -> /scratch/sghos104/rlpt/data/hf_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5
+  PASS_GIT_SHA1               1,519  .gitattributes
+  PASS_GIT_SHA1              18,574  README.md
+  PASS_GIT_SHA1               1,050  chat_template.json
+  PASS_GIT_SHA1               1,374  config.json
+  PASS_GIT_SHA1                 216  generation_config.json
+  PASS_GIT_SHA1           1,671,839  merges.txt
+  PASS                3,900,233,256  model-00001-of-00005.safetensors
+  PASS                3,864,726,320  model-00002-of-00005.safetensors
+  PASS                3,864,726,424  model-00003-of-00005.safetensors
+  PASS                3,864,733,680  model-00004-of-00005.safetensors
+  PASS                1,089,994,880  model-00005-of-00005.safetensors
+  PASS_GIT_SHA1              57,619  model.safetensors.index.json
+  PASS_GIT_SHA1                 350  preprocessor_config.json
+  PASS_GIT_SHA1           7,031,645  tokenizer.json
+  PASS_GIT_SHA1               5,702  tokenizer_config.json
+  PASS_GIT_SHA1           2,776,833  vocab.json
+[qwen] Qwen/Qwen2.5-VL-7B-Instruct: 15.46 GiB | lfs sha256 ok=5 git sha1 ok=11 failures=0
+
+[qwen] manifest -> /scratch/sghos104/rlpt/models/qwen_acquisition.json
+[qwen] DONE
+[qwendl] rc=0 end=Thu Aug 13 04:32:50 MST 2026

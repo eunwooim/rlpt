@@ -1,0 +1,15 @@
+--- a/grpo_arms/v3_trainer.py (strict: raise, as upstream DAPO)
++++ b/grpo_arms/v3_trainer.py (partial-batch fallback: warn + proceed)
+@@ -204,9 +204,10 @@
+                             continue  # generate another batch; no optimizer step yet
+                         partial = have < train_bs
+                         if partial:
+-                            raise ValueError(
++                            warnings.warn(
+                                 f"[filter_groups] max_num_gen_batches={fg_max_gen} reached with only {have} mixed prompts "
+-                                f"(< train_batch_size={train_bs}); Generated too many batches."
++                                f"(< train_batch_size={train_bs}); proceeding with a PARTIAL batch instead of raising.",
++                                stacklevel=1,
+                             )
+                         if not buffer:
+                             print(f"[filter_groups] step={self.global_steps}: no mixed group in {num_gen_batches} gen batches "

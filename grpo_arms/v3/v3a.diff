@@ -1,0 +1,13 @@
+2c2
+< #SBATCH --job-name=grpo_arm
+---
+> #SBATCH --job-name=v3_v3a
+16a17,24
+> # ===== v3 run "v3a" (2026-09-11): every run-specific value is set here so `diff grpo_arms/v3/v3a.sbatch grpo_arms/run_arm.sbatch`
+> # shows exactly what differs from the arm1v2 training sbatch. Everything below this block is run_arm.sbatch verbatim.
+> export ARM=1 MODEL=/scratch/sghos104/rlpt/src/outputs/train/coldstart_vprm_unf_3b/run_v1/checkpoints/checkpoint-25 REWARD=match_v2 SEG=native TAU=0.45 MAXRESP=2048 NGPU=2 GPUMEM=0.40 WATCHDOG=1
+> export REWARD_MODE=match
+> export OUTDIR=/scratch/sghos104/rlpt/grpo_arms/runs/arm1_3b_matchv3a_nostd
+> export STATUS_FILE=grpo_arms/V3_STATUS.md
+> export EXTRA="--max_steps 90 --save_freq 10 --test_freq 10 --extra_val_files /scratch/sghos104/rlpt/grpo_arms/data/vpb_dev.parquet --verl_extra_override trainer.max_actor_ckpt_to_keep=4 --verl_extra_override actor_rollout_ref.actor.ppo_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.ref.log_prob_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.rollout.log_prob_max_token_len_per_gpu=8192 --rollout_n 5 --verl_extra_override algorithm.norm_adv_by_std_in_grpo=False"
+> export RESUB="${RESUB:-0}"

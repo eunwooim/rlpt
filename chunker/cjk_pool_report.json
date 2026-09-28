@@ -1,0 +1,109 @@
+{
+  "n_lines": 9478315,
+  "multi_total": 495756,
+  "multi_by_language": {
+    "en": 482652,
+    "cjk": 13104
+  },
+  "cjk_multi_by_split": {
+    "train": 13103,
+    "val": 0,
+    "test": 1
+  },
+  "cjk_multi_total": 13104,
+  "checkpoint_seen_fraction_of_train_windows": 0.3644,
+  "n_train_cjk_multi_candidates": 13103,
+  "expected_unseen_survivors_by_group": 4505.356,
+  "smallest_candidate_groups": [
+    {
+      "qh": "b280523b677f3a58a33fe304",
+      "n_steps": 3,
+      "group_multi": 1,
+      "group_single": 0,
+      "group_records_in_train": 1,
+      "q_total_rollouts": 1,
+      "p_group_entirely_unseen": 0.635561
+    },
+    {
+      "qh": "98be469e6db994d1d650aa62",
+      "n_steps": 8,
+      "group_multi": 1,
+      "group_single": 0,
+      "group_records_in_train": 1,
+      "q_total_rollouts": 1,
+      "p_group_entirely_unseen": 0.635561
+    },
+    {
+      "qh": "156421b916e74f4428765358",
+      "n_steps": 7,
+      "group_multi": 1,
+      "group_single": 0,
+      "group_records_in_train": 1,
+      "q_total_rollouts": 1,
+      "p_group_entirely_unseen": 0.635561
+    },
+    {
+      "qh": "0aea8a7cb58e3ed4a17963a6",
+      "n_steps": 8,
+      "group_multi": 1,
+      "group_single": 0,
+      "group_records_in_train": 1,
+      "q_total_rollouts": 1,
+      "p_group_entirely_unseen": 0.635561
+    },
+    {
+      "qh": "be3f5930b5707b2603c6340e",
+      "n_steps": 6,
+      "group_multi": 1,
+      "group_single": 0,
+      "group_records_in_train": 1,
+      "q_total_rollouts": 1,
+      "p_group_entirely_unseen": 0.635561
+    },
+    {
+      "qh": "4e526d2b1821b76b0ad9e0eb",
+      "n_steps": 9,
+      "group_multi": 1,
+      "group_single": 0,
+      "group_records_in_train": 1,
+      "q_total_rollouts": 1,
+      "p_group_entirely_unseen": 0.635561
+    },
+    {
+      "qh": "fc3755b8f4c3e16c46238b0d",
+      "n_steps": 9,
+      "group_multi": 1,
+      "group_single": 0,
+      "group_records_in_train": 1,
+      "q_total_rollouts": 1,
+      "p_group_entirely_unseen": 0.635561
+    },
+    {
+      "qh": "51edf803b5e9fff9ef960292",
+      "n_steps": 4,
+      "group_multi": 1,
+      "group_single": 0,
+      "group_records_in_train": 1,
+      "q_total_rollouts": 1,
+      "p_group_entirely_unseen": 0.635561
+    },
+    {
+      "qh": "166816a6edde508cee79ae8e",
+      "n_steps": 8,
+      "group_multi": 1,
+      "group_single": 0,
+      "group_records_in_train": 1,
+      "q_total_rollouts": 1,
+      "p_group_entirely_unseen": 0.635561
+    },
+    {
+      "qh": "2e9b4a1d284879d1be6454dc",
+      "n_steps": 7,
+      "group_multi": 1,
+      "group_single": 0,
+      "group_records_in_train": 1,
+      "q_total_rollouts": 1,
+      "p_group_entirely_unseen": 0.635561
+    }
+  ]
+}

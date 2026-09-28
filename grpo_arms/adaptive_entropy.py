@@ -1,0 +1,166 @@
+"""adaptive_entropy.py — Skywork-OR1-style adaptive entropy coefficient for verl 0.8.0 GRPO, gated by ENTROPY_MODE (2026-09-18, run R).
+
+    ENTROPY_MODE=off       (default) this module changes nothing; the run behaves exactly like verl.trainer.main_ppo.
+    ENTROPY_MODE=adaptive  target entropy ENTROPY_TARGET (0.6); coefficient starts at 0 and after every optimizer step
+                           coeff <- clip(coeff + ENTROPY_LR (0.002) * (target - entropy_measured), 0, ENTROPY_COEFF_MAX (0.01))
+                           where entropy_measured is verl's `actor/entropy` for that step (token-mean entropy of the old-log-prob pass,
+                           i.e. the policy that generated the batch, measured before the update). The coefficient multiplies verl's
+                           existing entropy bonus (losses.ppo_loss: policy_loss -= coeff * entropy_loss), so coeff > 0 pushes entropy UP.
+
+Nothing in the rlpt-train env is edited. Two verl symbols are rebound at import time in the processes that matter:
+  * driver (Ray TaskRunner process): main_ppo.RayPPOTrainer -> AdaptiveEntropyTrainer, which measures the entropy in
+    _compute_old_log_prob, injects the live coefficient into the batch meta_info before _update_actor, updates it after the step,
+    logs actor/entropy_coeff (used this step), actor/entropy_coeff_next and actor/entropy_target on the step line, and appends
+    {step, entropy, coeff_used, coeff_next} to <default_local_dir>/entropy_coeff_log.jsonl (also how a resumed job restores the value).
+  * actor workers (Ray FSDP worker processes): engine_workers.ppo_loss -> adaptive_ppo_loss, which calls verl's ppo_loss
+    (config.entropy_coeff = 0 there, so it adds no entropy term) and then adds -(coeff) * entropy_loss with the coefficient carried
+    in the batch (NonTensorData survives the mini/micro-batch splits); it logs actor/entropy_coeff_applied so the driver-side and
+    worker-side values can be cross-checked in the log (the smoke test asserts they agree).
+Entry point: `python -m entropy_main <hydra overrides>` (grpo_arms/entropy_main.py; train_arm.py --entrypoint entropy_main) with
+actor_rollout_ref.actor.calculate_entropy=True so the entropy tensor is produced inside update_actor (verl only computes it there when
+calculate_entropy is set or the static entropy_coeff is non-zero).
+"""
+import json
+import os
+from functools import partial
+
+MODE = os.environ.get("ENTROPY_MODE", "off")
+TARGET = float(os.environ.get("ENTROPY_TARGET", "0.6"))
+LR = float(os.environ.get("ENTROPY_LR", "0.002"))
+CMAX = float(os.environ.get("ENTROPY_COEFF_MAX", "0.01"))
+CMIN = 0.0
+TAG = "[adaptive_entropy]"
+
+
+def clip_coeff(c):
+    return min(CMAX, max(CMIN, c))
+
+
+# ---------------------------------------------------------------------------------------------------------------------- worker side
+def adaptive_ppo_loss(config, model_output, data, dp_group=None):
+    """Drop-in for verl.workers.utils.losses.ppo_loss: same loss, plus the entropy bonus with the coefficient carried in `data`."""
+    from verl.trainer.ppo.core_algos import agg_loss
+    from verl.utils import tensordict_utils as tu
+    from verl.utils.metric import AggregationType, Metric
+    from verl.workers.utils.losses import ppo_loss
+    from verl.workers.utils.padding import no_padding_2_padding
+
+    loss, metrics = ppo_loss(config, model_output, data, dp_group)
+    coeff = tu.get(data, key="entropy_coeff", default=None)
+    entropy = model_output.get("entropy", None)
+    if coeff is None or entropy is None:
+        metrics["actor/entropy_coeff_applied"] = Metric(value=float(config.entropy_coeff), aggregation=AggregationType.MEAN)
+        return loss, metrics
+    coeff = float(coeff)
+    extra = coeff - float(config.entropy_coeff)  # ppo_loss already subtracted config.entropy_coeff * entropy_loss (0 in our runs)
+    if extra != 0.0:
+        entropy = no_padding_2_padding(entropy, data)
+        response_mask = data.select("response_mask").to_padded_tensor()["response_mask"].to(bool)
+        entropy_loss = agg_loss(loss_mat=entropy, loss_mask=response_mask, loss_agg_mode=config.loss_agg_mode, **config.global_batch_info)
+        loss = loss - extra * entropy_loss
+    metrics["actor/entropy_coeff_applied"] = Metric(value=coeff, aggregation=AggregationType.MEAN)
+    return loss, metrics
+
+
+# ---------------------------------------------------------------------------------------------------------------------- driver side
+def make_trainer_class():
+    from verl.trainer.ppo.core_algos import agg_loss
+    from verl.trainer.ppo.ray_trainer import RayPPOTrainer
+
+    class AdaptiveEntropyTrainer(RayPPOTrainer):
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            ac = self.config.actor_rollout_ref.actor
+            assert bool(ac.get("calculate_entropy", False)) or float(ac.entropy_coeff) != 0.0, (
+                f"{TAG} ENTROPY_MODE=adaptive needs actor_rollout_ref.actor.calculate_entropy=True, otherwise verl never computes "
+                "the entropy inside update_actor and the coefficient would multiply nothing")
+            self._ae_coeff = 0.0
+            self._ae_entropy = None
+            self._ae_path = os.path.join(self.config.trainer.default_local_dir, "entropy_coeff_log.jsonl")
+            print(f"{TAG} ENABLED target={TARGET} lr={LR} coeff_max={CMAX} log={self._ae_path}", flush=True)
+
+        def _load_checkpoint(self):
+            super()._load_checkpoint()
+            if self.global_steps > 0:
+                rows = []
+                if os.path.exists(self._ae_path):
+                    rows = [json.loads(l) for l in open(self._ae_path) if l.strip()]
+                hit = [r for r in rows if int(r["step"]) == int(self.global_steps)]
+                if hit:
+                    self._ae_coeff = clip_coeff(float(hit[-1]["coeff_next"]))
+                    print(f"{TAG} resumed at global_step {self.global_steps}: coefficient restored to {self._ae_coeff:.6f} "
+                          f"(coeff_next logged at step {self.global_steps})", flush=True)
+                else:
+                    print(f"{TAG} WARNING resumed at global_step {self.global_steps} but no log row for that step in {self._ae_path}; "
+                          f"coefficient restarts at 0", flush=True)
+
+        def _compute_old_log_prob(self, batch):
+            out, mfu = super()._compute_old_log_prob(batch)
+            ac = self.config.actor_rollout_ref.actor
+            ent = agg_loss(loss_mat=out.batch["entropys"], loss_mask=batch.batch["response_mask"],
+                           loss_agg_mode=ac.loss_agg_mode, loss_scale_factor=ac.loss_scale_factor)
+            self._ae_entropy = float(ent.detach().item())
+            return out, mfu
+
+        def _update_actor(self, batch):
+            coeff = self._ae_coeff
+            batch.meta_info["entropy_coeff"] = coeff
+            out = super()._update_actor(batch)
+            ent = self._ae_entropy
+            nxt = clip_coeff(coeff + LR * (TARGET - ent)) if ent is not None else coeff
+            m = out.meta_info["metrics"]
+            m["actor/entropy_coeff"] = coeff
+            m["actor/entropy_coeff_next"] = nxt
+            m["actor/entropy_target"] = TARGET
+            applied = m.get("actor/entropy_coeff_applied")
+            with open(self._ae_path, "a") as f:
+                f.write(json.dumps({"step": int(self.global_steps), "entropy": ent, "coeff_used": coeff, "coeff_next": nxt}) + "\n")
+            print(f"{TAG} step={self.global_steps} entropy={ent if ent is None else round(ent, 4)} coeff_used={coeff:.6f} "
+                  f"coeff_next={nxt:.6f} worker_applied={applied}", flush=True)
+            self._ae_coeff = nxt
+            self._ae_entropy = None
+            return out
+
+    return AdaptiveEntropyTrainer
+
+
+def install():
+    """Rebind the two verl symbols. Idempotent; a no-op unless ENTROPY_MODE=adaptive."""
+    if MODE != "adaptive":
+        return False
+    import verl.trainer.main_ppo as mp
+    import verl.workers.engine_workers as ew
+
+    if getattr(mp, "_adaptive_entropy_installed", False):
+        return True
+    mp.RayPPOTrainer = make_trainer_class()
+    mp._adaptive_entropy_installed = True
+    ew.ppo_loss = adaptive_ppo_loss  # ActorRolloutRefWorker.init_model builds partial(ppo_loss, config=...) from this module global
+    print(f"{TAG} installed in pid {os.getpid()} (trainer + ppo_loss)", flush=True)
+    return True
+
+
+install()
+
+if MODE == "adaptive":
+    import ray
+    from verl.trainer.main_ppo import TaskRunner
+    from verl.workers.engine_workers import ActorRolloutRefWorker
+
+    class AdaptiveEntropyWorker(ActorRolloutRefWorker):
+        """Identical to verl's worker; its module import runs install() inside every actor worker process."""
+
+    class AdaptiveEntropyTaskRunner(TaskRunner):
+        def add_actor_rollout_worker(self, config):
+            from verl.single_controller.ray import RayWorkerGroup
+            from verl.trainer.main_ppo import need_reference_policy
+            from verl.trainer.ppo.ray_trainer import Role
+
+            lora_rank = config.actor_rollout_ref.model.get("lora", {}).get("rank", 0)
+            if lora_rank <= 0:
+                lora_rank = config.actor_rollout_ref.model.get("lora_rank", 0)
+            ref_in_actor = lora_rank > 0 or config.actor_rollout_ref.model.get("lora_adapter_path") is not None
+            role = Role.ActorRolloutRef if (need_reference_policy(config) and not ref_in_actor) else Role.ActorRollout
+            self.role_worker_mapping[role] = ray.remote(AdaptiveEntropyWorker)
+            self.mapping[role] = "global_pool"
+            return AdaptiveEntropyWorker, RayWorkerGroup

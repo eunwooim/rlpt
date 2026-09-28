@@ -1,0 +1,55 @@
+[coldstart_sft_3b] host=sg039 job=62068026 start=Mon Aug 24 14:32:51 MST 2026
+GPU 0: NVIDIA A100-SXM4-80GB (UUID: GPU-569cb1c0-6daf-10ea-c019-69fe5c4d9c05)
+ROOT=/scratch/sghos104/rlpt
+OUTPUT_DIR=/scratch/sghos104/rlpt/src/outputs/train/coldstart_metamath_3b/run_v1
+COMMAND=/scratch/sghos104/envs/rlpt-train/bin/python -u src/train/sft.py --base_model Qwen/Qwen2.5-VL-3B-Instruct --dataset_name /scratch/sghos104/rlpt/data/metamath_coldstart/train_dir --dataset_split train --data_ratio 1 --max_seq_len 2048 --seed 42 --token_budget 2621440 --learning_rate 1e-5 --output_dir /scratch/sghos104/rlpt/src/outputs/train/coldstart_metamath_3b/run_v1 --report_to none --force --image_mode auto --per_device_train_batch_size 4 --gradient_accumulation_steps 32 --save_steps 50 --save_total_limit 3
+Loading training dataset
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 9933 examples [00:00, 74624.61 examples/s]Generating train split: 18179 examples [00:00, 102621.73 examples/s]
+Traceback (most recent call last):
+  File "/scratch/sghos104/envs/rlpt-train/lib/python3.11/site-packages/datasets/builder.py", line 858, in incomplete_dir
+    yield tmp_dir
+  File "/scratch/sghos104/envs/rlpt-train/lib/python3.11/site-packages/datasets/builder.py", line 903, in download_and_prepare
+    self._save_info()
+  File "/scratch/sghos104/envs/rlpt-train/lib/python3.11/site-packages/datasets/builder.py", line 973, in _save_info
+    self.info.write_to_directory(self._output_dir, storage_options=self._fs.storage_options)
+  File "/scratch/sghos104/envs/rlpt-train/lib/python3.11/site-packages/datasets/info.py", line 209, in write_to_directory
+    with fs.open(posixpath.join(dataset_info_dir, config.DATASET_INFO_FILENAME), "wb") as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/sghos104/envs/rlpt-train/lib/python3.11/site-packages/fsspec/spec.py", line 1352, in open
+    f = self._open(
+        ^^^^^^^^^^^
+  File "/scratch/sghos104/envs/rlpt-train/lib/python3.11/site-packages/fsspec/implementations/local.py", line 215, in _open
+    return LocalFileOpener(path, mode, fs=self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/sghos104/envs/rlpt-train/lib/python3.11/site-packages/fsspec/implementations/local.py", line 390, in __init__
+    self._open()
+  File "/scratch/sghos104/envs/rlpt-train/lib/python3.11/site-packages/fsspec/implementations/local.py", line 395, in _open
+    self.f = open(self.path, mode=self.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 121] Remote I/O error: '/scratch/sghos104/rlpt/data/hf_cache/datasets/train_dir/default/0.0.0/a883cff27859e4bb.incomplete/dataset_info.json'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scratch/sghos104/rlpt/src/train/sft.py", line 415, in <module>
+    main()
+  File "/scratch/sghos104/rlpt/src/train/sft.py", line 314, in main
+    raw_dataset = load_hf_dataset(args)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/sghos104/rlpt/src/train/train_common.py", line 185, in load_hf_dataset
+    return datasets.load_dataset(args.dataset_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/sghos104/envs/rlpt-train/lib/python3.11/site-packages/datasets/load.py", line 1718, in load_dataset
+    builder_instance.download_and_prepare(
+  File "/scratch/sghos104/envs/rlpt-train/lib/python3.11/site-packages/datasets/builder.py", line 881, in download_and_prepare
+    with incomplete_dir(self._output_dir) as tmp_output_dir:
+  File "/scratch/sghos104/envs/rlpt-train/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/scratch/sghos104/envs/rlpt-train/lib/python3.11/site-packages/datasets/builder.py", line 865, in incomplete_dir
+    shutil.rmtree(tmp_dir)
+  File "/scratch/sghos104/envs/rlpt-train/lib/python3.11/shutil.py", line 763, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/scratch/sghos104/envs/rlpt-train/lib/python3.11/shutil.py", line 761, in rmtree
+    os.rmdir(path, dir_fd=dir_fd)
+FileNotFoundError: [Errno 2] No such file or directory: '/scratch/sghos104/rlpt/data/hf_cache/datasets/train_dir/default/0.0.0/a883cff27859e4bb.incomplete'
+[coldstart_sft_3b] done=Mon Aug 24 14:33:43 MST 2026 rc=1

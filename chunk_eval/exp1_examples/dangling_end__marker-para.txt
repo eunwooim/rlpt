@@ -1,0 +1,90 @@
+--- example 1 (dangling_end, marker/para) ---
+Next, since we are dealing with three quarters, we divide the total by 3 to find the average:
+
+--- example 2 (dangling_end, marker/para) ---
+To find the total number of flowers, we add the number of flowers in each row:
+
+--- example 3 (dangling_end, marker/para) ---
+Thus, the total number of blue objects is:
+
+--- example 4 (dangling_end, marker/para) ---
+You can use environment variables to achieve this. You can set the timestamp variable in your build.sh and then export it so it can be used in other scripts. In your deploy.sh script, you can access the timestamp variable. Here is how you can do it:
+
+--- example 5 (dangling_end, marker/para) ---
+Finally, we need to determine the measure of ∠OCA. Since O is the center of the circle, and ∠OCA is an angle at the center, it is twice the angle subtended by the arc on the circle's circumference. Since the inscribed angle ∠ACB is 90°, the arc it subtends is also 90°. Hence, the central angle ∠OCA will also be half of the arc it subtends:
+
+--- example 6 (dangling_end, marker/para) ---
+By the properties of similar triangles, we know that the ratios of the corresponding sides are equal. Therefore, we have:
+
+--- example 7 (dangling_end, marker/para) ---
+Since the absolute value of a number is zero only if the number itself is zero, we can set the expression inside the absolute value equal to zero:
+
+--- example 8 (dangling_end, marker/para) ---
+To determine the number of active job seekers in the U.S. today, refer to the first section of the infographic, which states:
+
+--- example 9 (dangling_end, marker/para) ---
+Based on this observation:
+
+--- example 10 (dangling_end, marker/para) ---
+The question asks which animal's mouth is also adapted to eat plant matter. From the options provided:
+
+--- example 11 (dangling_end, marker/para) ---
+Your results:
+
+--- example 12 (dangling_end, marker/para) ---
+Solving for \( r^2 \):
+
+--- example 13 (dangling_end, marker/para) ---
+You can use a simple loop to find the shortest path between two nodes in a large graph. Just iterate through the graph, and if you find a connection between the nodes, check if it's the shortest path found so far. You can use the following Python code:
+
+--- example 14 (dangling_end, marker/para) ---
+Therefore, the value of Connecticut based on the colors and legend is:
+
+--- example 15 (dangling_end, marker/para) ---
+or, if you are using Yarn:
+
+--- example 16 (dangling_end, marker/para) ---
+Since the entire circle is divided into four equal parts, and each part is pink, the fraction of the shape that is pink is:
+
+--- example 17 (dangling_end, marker/para) ---
+Now, let's answer the question:
+
+--- example 18 (dangling_end, marker/para) ---
+Let's denote \( ZY \) as \( Z \) and \( YN \) as \( y \). Therefore, we have:
+
+--- example 19 (dangling_end, marker/para) ---
+Now, we can calculate the area:
+
+--- example 20 (dangling_end, marker/para) ---
+Giới thiệu quạt mini sạc pin cực kỳ tiện lợi:
+
+--- example 21 (dangling_end, marker/para) ---
+Calculate the product:
+
+--- example 22 (dangling_end, marker/para) ---
+The clock shows the time as 8:00. Since the options are A.M. (morning) and P.M. (evening), and the time 8:00 is typically associated with evening hours, we can conclude that the correct time is:
+
+--- example 23 (dangling_end, marker/para) ---
+将 $F_{m}$ 的平均值代入公式，求得 $F_{N}$:
+
+--- example 24 (dangling_end, marker/para) ---
+The Lessor agrees to lease to the Lessee the equipment listed below, of the type specified below, for the term specified below:
+
+--- example 25 (dangling_end, marker/para) ---
+Next, we know the height of the parallelogram is the perpendicular distance between the bases, and this height is related to the angle \( \beta \) by trigonometry. Specifically, the height is given by:
+
+--- example 26 (dangling_end, marker/para) ---
+To determine which animal's feet are also adapted for grabbing prey, let's analyze the options:
+
+--- example 27 (dangling_end, marker/para) ---
+Given this information, let's analyze the options:
+
+--- example 28 (dangling_end, marker/para) ---
+To determine which property matches the object in the image, let's analyze the given options:
+
+--- example 29 (dangling_end, marker/para) ---
+Given that the area is 108, the base is 23, and we need to find the height. Let’s denote the height as \( h \):
+
+--- example 30 (dangling_end, marker/para) ---
+Overlaying the image is a quote that reads:
+

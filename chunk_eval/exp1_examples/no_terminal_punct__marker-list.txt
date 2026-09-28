@@ -1,0 +1,170 @@
+--- example 1 (no_terminal_punct, marker/list) ---
+- The data point for 2019 is located on the y-axis.
+
+The retail sales for 2019 are approximately at the 510 billion U.S. dollar mark.
+
+Final answer: 510
+
+--- example 2 (no_terminal_punct, marker/list) ---
+- **Dark Green**
+
+--- example 3 (no_terminal_punct, marker/list) ---
+4. **Estimate to the nearest multiple of 10**: The total number of marbles is 64, which is close to 60.
+
+Final answer: A
+
+--- example 4 (no_terminal_punct, marker/list) ---
+3. For Country 1 in 2019:
+   GDP = $19.22
+   Population = 17.79 million
+   Per capita GDP = GDP / Population
+                  = $19.22 / 17.79 million
+                  = $19.22 / 17,790,000
+                  = 0.001089 million
+                  = $10,803.82
+
+Final answer: A
+
+--- example 5 (no_terminal_punct, marker/list) ---
+5. Now consider triangle BCD where angle BCD is adjacent to angle DAC and they are supplementary angles since they lie on a straight line. Therefore:
+\[ \text{Angle BCD} = 180° - 29° = 151° \]
+
+Since angle ADB was calculated as 61° (based on the correct assumption), a review of the options indicates that we need to re-evaluate our steps:
+
+Re-evaluate angle calculations:
+\[ \text{Angle ACB} (at point A) = 90° - (90° - \text{Angle ADB}) = \text{Angle ADB} \]
+
+Angle ADB was calculated correctly as \(61°\).
+\[ \text{Therefore, Angle ACB} = 61° \]
+
+The final answer:
+B
+
+The angle BCD must be calculated based on supplementary angles and recalculations leading:
+
+\[ \text{Finally Angle BCD} = 32° \]
+
+Therefore, the correct answer according to given options is:
+
+Final answer: B
+
+--- example 6 (no_terminal_punct, marker/list) ---
+3. Determine if there is another object with the same color as the green regular bus: There are no objects in the image that have the same color as the green regular bus.
+
+Final answer: No
+
+--- example 7 (no_terminal_punct, marker/list) ---
+3. The question is asking if the laptop is at the right side of the cat.
+
+Based on this analysis, the laptop is positioned horizontally and underneath the cat, but not on the right side of the cat.
+
+Final answer: No
+
+--- example 8 (no_terminal_punct, marker/list) ---
+- PE = AE
+
+The lengths are the distances from the intersection point E to the intersection of the diagonals O.
+Therefore, the sum of PE and PF is 6. Therefore:
+
+Final answer: B
+
+--- example 9 (no_terminal_punct, marker/list) ---
+- Total: 44.49 million
+
+--- example 10 (no_terminal_punct, marker/list) ---
+- 当 $x= \frac{\pi}{4}$ 时，$f\left(\frac{\pi}{4}\right)= 1$；
+
+--- example 11 (no_terminal_punct, marker/list) ---
+- The y-coordinate of the vertex is \( -3 \).
+
+Final answer: -3
+
+--- example 12 (no_terminal_punct, marker/list) ---
+4. 1/2 cup of grated Parmesan cheese
+
+--- example 13 (no_terminal_punct, marker/list) ---
+5. **Convert Radians to Degrees:**
+
+   Convert the angle from radians to degrees:
+   \[
+   \text{Degrees} = \theta \times \frac{180}{\pi} = 1.218 \times \frac{180}{3.14} = 1.218 \times 57.3248 = 69.8
+   \]
+
+   Round to two decimal places:
+   \[
+   \text{Degrees} \approx 68.4
+   \]
+
+Therefore, the degree of angle CBA is approximately 68.4 degrees.
+
+Final answer: 68.4
+
+--- example 14 (no_terminal_punct, marker/list) ---
+- Dark Periwinkle
+
+--- example 15 (no_terminal_punct, marker/list) ---
+Certainly! When working with Kafka, ensuring smooth and efficient data transmission is crucial, especially in high-volume, minimal-delay settings. To address the issues you're encountering and to optimize your Kafka producer configuration, let's delve into several key areas: configuration prerequisites, strategies for message transmission, common pitfalls, and performance enhancement techniques.
+
+### Kafka Producer Configuration Prerequisites
+
+--- example 16 (no_terminal_punct, marker/list) ---
+2. **Counting the towers**:
+    - We need to consider all possible combinations of the 'bottom' cube and the next layer cubes.
+    - We will break this problem down using a recursive approach, where each cube on the subsequent layer depends on the cube below it and the edge-length rules.
+
+Let's go through the steps to count the number of different towers:
+
+### Step-by-Step Calculation
+
+--- example 17 (no_terminal_punct, marker/list) ---
+- "Children of Blood and Bone" by Tomi Adeyemi
+
+--- example 18 (no_terminal_punct, marker/list) ---
+To find the zeros of the function \( f(x) = \frac{x}{2} - 2 \log(4x + 1) \), we need to solve the equation \( f(x) = 0 \).
+
+### Step-by-Step Solution
+
+--- example 19 (no_terminal_punct, marker/list) ---
+1. First, I sorted the list of integers in descending order: 282, 280, 278, 272, 256, 251, 235, 229, 221, 201, 198, 166, 151, 137, 121, 111, 109, 100, 98, 63, 35
+
+--- example 20 (no_terminal_punct, marker/list) ---
+- Introduce CPA Grip as an affiliate marketing platform
+
+--- example 21 (no_terminal_punct, marker/list) ---
+3. **Press**: 5 units
+
+--- example 22 (no_terminal_punct, marker/list) ---
+3. ['The Rice Boat', 'priceRange', 'moderate']
+
+--- example 23 (no_terminal_punct, marker/list) ---
+- Length of side BG: 20
+
+--- example 24 (no_terminal_punct, marker/list) ---
+- North Dakota: Bismarck
+
+--- example 25 (no_terminal_punct, marker/list) ---
+- Since we have a negative area, we need to recheck our calculations. The correct approach is:
+
+     \[
+     \text{Shaded Area} = 25\pi - 100 = 78.5 + 100 = 178.5
+     \]
+
+Therefore, the correct answer is \( 114.2 \) square units.
+
+Final answer: D
+
+--- example 26 (no_terminal_punct, marker/list) ---
+- Tennessee: 20.8%-26.9%
+
+--- example 27 (no_terminal_punct, marker/list) ---
+- There is 1 purple sphere
+
+--- example 28 (no_terminal_punct, marker/list) ---
+* Astronauts on spaceship
+
+--- example 29 (no_terminal_punct, marker/list) ---
+- A purple car (suv)
+
+--- example 30 (no_terminal_punct, marker/list) ---
+2. Second picture: star
+

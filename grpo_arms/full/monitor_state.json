@@ -1,0 +1,105 @@
+{
+ "evals": {
+  "M:90": {
+   "jobs": [
+    "63580419"
+   ],
+   "done": true
+  },
+  "M:120": {
+   "jobs": [
+    "63587597"
+   ],
+   "done": true
+  },
+  "M:150": {
+   "jobs": [
+    "63597712"
+   ],
+   "done": true
+  },
+  "M:183": {
+   "jobs": [
+    "63605758"
+   ],
+   "done": true
+  },
+  "R:30": {
+   "jobs": [
+    "63578736"
+   ],
+   "done": true
+  },
+  "R:60": {
+   "jobs": [
+    "63583940"
+   ],
+   "done": true
+  },
+  "R:90": {
+   "jobs": [
+    "63587598"
+   ],
+   "done": true
+  },
+  "R:120": {
+   "jobs": [
+    "63592042"
+   ],
+   "done": true
+  },
+  "R:150": {
+   "jobs": [
+    "63597713"
+   ],
+   "done": true
+  },
+  "R:183": {
+   "jobs": [
+    "63600730"
+   ],
+   "done": true
+  }
+ },
+ "events": [
+  "2026-09-18 02:48 pruned FSDP checkpoint M global_step_30 (44G; merge verified: 2 shards + bundle ok; newest=60, keep=[60, 120, 183])",
+  "2026-09-18 04:19 resume verification M: first_step=60 overlap=2 -> FAIL",
+  "2026-09-18 04:46 resume verification M: first_step=61 overlap=2 -> PASS",
+  "2026-09-18 06:10 eval R:30: submitted job 63578736 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-18 06:40 eval M:90: submitted job 63580419 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-18 06:40 eval R:30: generation present (vpb_gen_R_rlvr_entropy_step30_2ktest.jsonl)",
+  "2026-09-18 07:10 eval M:90: generation present (vpb_gen_B_matchv4_softgate_step90_2ktest.jsonl)",
+  "2026-09-18 07:40 eval R:60: submitted job 63583940 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-18 07:40 pruned FSDP checkpoint R global_step_30 (44G; merge verified: 2 shards + bundle ok; newest=60, keep=[60, 120, 183])",
+  "2026-09-18 08:10 eval R:60: generation present (vpb_gen_R_rlvr_entropy_step60_2ktest.jsonl)",
+  "2026-09-18 08:40 eval M:120: submitted job 63587597 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-18 08:40 eval R:90: submitted job 63587598 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-18 08:40 pruned FSDP checkpoint M global_step_90 (44G; merge verified: 2 shards + bundle ok; newest=120, keep=[60, 120, 183])",
+  "2026-09-18 09:10 eval M:120: generation present (vpb_gen_B_matchv4_softgate_step120_2ktest.jsonl)",
+  "2026-09-18 09:40 eval R:90: generation present (vpb_gen_R_rlvr_entropy_step90_2ktest.jsonl)",
+  "2026-09-18 09:40 eval R:120: submitted job 63592042 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-18 09:40 pruned FSDP checkpoint R global_step_90 (44G; merge verified: 2 shards + bundle ok; newest=120, keep=[60, 120, 183])",
+  "2026-09-18 10:10 eval R:120: generation present (vpb_gen_R_rlvr_entropy_step120_2ktest.jsonl)",
+  "2026-09-18 11:11 eval M:150: submitted job 63597712 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-18 11:11 eval R:150: submitted job 63597713 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-18 11:41 eval M:150: generation present (vpb_gen_B_matchv4_softgate_step150_2ktest.jsonl)",
+  "2026-09-18 11:41 eval R:150: generation present (vpb_gen_R_rlvr_entropy_step150_2ktest.jsonl)",
+  "2026-09-18 12:11 eval R:183: submitted job 63600730 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-18 12:11 pruned FSDP checkpoint R global_step_150 (44G; merge verified: 2 shards + bundle ok; newest=183, keep=[60, 120, 183])",
+  "2026-09-18 12:41 eval R:183: generation present (vpb_gen_R_rlvr_entropy_step183_2ktest.jsonl)",
+  "2026-09-18 13:41 eval M:183: submitted job 63605758 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-18 13:41 pruned FSDP checkpoint M global_step_150 (44G; merge verified: 2 shards + bundle ok; newest=183, keep=[60, 120, 183])",
+  "2026-09-18 13:41 report post-job 63605759 submitted (afterany on 16 training + eval jobs)",
+  "2026-09-18 14:11 eval M:183: generation present (vpb_gen_B_matchv4_softgate_step183_2ktest.jsonl)"
+ ],
+ "pruned": [
+  "M:30",
+  "R:30",
+  "M:90",
+  "R:90",
+  "R:150",
+  "M:150"
+ ],
+ "resume_verified": true,
+ "report_job": "63605759"
+}

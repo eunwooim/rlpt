@@ -1,0 +1,27 @@
+{
+  "path": "/scratch/sghos104/rlpt/canonical.jsonl",
+  "lines_scanned": 200000,
+  "unparseable": 0,
+  "by_method": {
+    "GOLD": {
+      "totals": {
+        "multi_records": 0,
+        "single_records": 200000,
+        "chunks": 0,
+        "boundaries": 0
+      },
+      "counts": {}
+    }
+  },
+  "by_method_source": {
+    "GOLD||OpenGVLab/VisualPRM400K-v1.1": {
+      "totals": {
+        "multi_records": 0,
+        "single_records": 200000,
+        "chunks": 0,
+        "boundaries": 0
+      },
+      "counts": {}
+    }
+  }
+}

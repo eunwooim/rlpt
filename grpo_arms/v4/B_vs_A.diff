@@ -1,0 +1,16 @@
+2c2
+< #SBATCH --job-name=v4_A_ctrl
+---
+> #SBATCH --job-name=v4_B_match
+17c17
+< # ===== v4 run "A_ctrl_v4" (2026-09-13, account grp_bshettah, conservative optimizer): every run-specific value is set here so `diff grpo_arms/v3/ctrl.sbatch grpo_arms/run_arm.sbatch`
+---
+> # ===== v4 run "B_matchv4_softgate" (2026-09-13, account grp_bshettah, conservative optimizer): every run-specific value is set here so `diff grpo_arms/v3/ctrl.sbatch grpo_arms/run_arm.sbatch`
+20,22c20,22
+< export REWARD_MODE=answer_only
+< export GATE_MODE=hard
+< export OUTDIR=/scratch/sghos104/rlpt/grpo_arms/runs/arm1_3b_ctrl_v4
+---
+> export REWARD_MODE=match
+> export GATE_MODE=soft
+> export OUTDIR=/scratch/sghos104/rlpt/grpo_arms/runs/arm1_3b_matchv4_softgate

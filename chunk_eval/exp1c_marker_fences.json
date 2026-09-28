@@ -1,0 +1,279 @@
+{
+  "buckets": {
+    "marker/step": {
+      "recs_with_fence": 122261,
+      "source_unbalanced": 2085,
+      "recs_infence_boundary": 118584,
+      "infence_boundaries": 453847
+    },
+    "marker/list": {
+      "recs_with_fence": 61532,
+      "source_unbalanced": 4563,
+      "recs_infence_boundary": 2547,
+      "infence_boundaries": 13435
+    },
+    "marker/para": {
+      "recs_with_fence": 87488,
+      "source_unbalanced": 4918,
+      "recs_infence_boundary": 66649,
+      "infence_boundaries": 342771
+    },
+    "model": {
+      "recs_with_fence": 6661,
+      "source_unbalanced": 151,
+      "recs_infence_boundary": 0,
+      "infence_boundaries": 0
+    },
+    "model_skipped_nonprose": {
+      "recs_with_fence": 7001,
+      "source_unbalanced": 875,
+      "recs_infence_boundary": 0,
+      "infence_boundaries": 0
+    },
+    "gold": {
+      "recs_with_fence": 1051,
+      "source_unbalanced": 93,
+      "recs_infence_boundary": 105,
+      "infence_boundaries": 223
+    }
+  },
+  "examples": [
+    {
+      "sid": "visualprm_68e1f5cd8165870ceeac",
+      "tier": "list",
+      "marks": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "first_bad_chunk": "10. Smaller blue cube\n\nNow adding the 2 gray cubes:\n\n```"
+    },
+    {
+      "sid": "visualprm_68e1f5cd8165870ceeac",
+      "tier": "list",
+      "marks": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "first_bad_chunk": "10. Smaller blue cube\n\nNow adding the 2 gray cubes:\n\n```"
+    },
+    {
+      "sid": "visualprm_2a1cd82fddc7c6fad5e9",
+      "tier": "para",
+      "marks": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        2
+      ],
+      "first_bad_chunk": "```\n# Python program to count the small purple matte objects\nnum_objects = 1  # initial count"
+    },
+    {
+      "sid": "visualprm_895400a3f70663605aa2",
+      "tier": "para",
+      "marks": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "first_bad_chunk": "```\n// Create an Angular app\nng new angular-app"
+    },
+    {
+      "sid": "visualprm_895400a3f70663605aa2",
+      "tier": "para",
+      "marks": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "first_bad_chunk": "```\n// Create an Angular app\nng new angular-app"
+    },
+    {
+      "sid": "visualprm_c1f9ec13c5e52e3f80ef",
+      "tier": "para",
+      "marks": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "first_bad_chunk": "```javascript\nconst rolling_max_min_trio = (numbers) => {\n    let result_set = new Set();\n    let sorted_nums = numbers.slice().sort((a, b) => a - b);\n    let min_val = sorted_nums[0];\n    let max_val = sorted_nums[sorted_nums.length - 1];\n    let median = null;"
+    },
+    {
+      "sid": "visualprm_dca98f880dc89149435a",
+      "tier": "para",
+      "marks": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "first_bad_chunk": "Here is an example of a Python class that implements a doubly linked list with the specified methods:\n```\nclass Node:\n    def __init__(self, value):\n        self.value = value\n        self.next = None\n        self.prev = None"
+    },
+    {
+      "sid": "visualprm_5d02ca779d3022322ba1",
+      "tier": "para",
+      "marks": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        11
+      ],
+      "first_bad_chunk": "Here is an implementation of a doubly linked list in Python:\n```\nclass ListNode:\n    def __init__(self, val=0, prev=None, next=None):\n        self.val = val\n        self.prev = prev\n        self.next = next"
+    },
+    {
+      "sid": "visualprm_5b480de57c6a28f9e742",
+      "tier": "para",
+      "marks": [
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "first_bad_chunk": "To produce the string \"Greetings, Universe!\" in a reversed sequence on the system's output stream - the console, you can use the following code:\n```python\nstring = \"Greetings, Universe!\""
+    },
+    {
+      "sid": "visualprm_a3eb35df31a056110a72",
+      "tier": "para",
+      "marks": [
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "first_bad_chunk": "```\npublic class HelloWorld {"
+    },
+    {
+      "sid": "visualprm_d1679b1a9d92349bf723",
+      "tier": "para",
+      "marks": [
+        0,
+        1,
+        0
+      ],
+      "first_bad_chunk": "```python\nimport svglib.svglib0 import svg2rlg\nfrom reportlab.pdfbase.ttfonts import TTFont\nfrom reportlab.pdfgen import canvas"
+    },
+    {
+      "sid": "visualprm_d1679b1a9d92349bf723",
+      "tier": "para",
+      "marks": [
+        0,
+        1,
+        0
+      ],
+      "first_bad_chunk": "```python\nimport svglib.svglib0 import svg2rlg\nfrom reportlab.pdfbase.ttfonts import TTFont\nfrom reportlab.pdfgen import canvas"
+    }
+  ]
+}

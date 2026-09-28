@@ -1,0 +1,89 @@
+{
+  "tier_chunk_counts": {
+    "produced": {
+      "arithmetic": 6331096,
+      "geometry": 25983571,
+      "function": 5019767
+    },
+    "gold": {
+      "arithmetic": 217050,
+      "geometry": 952422,
+      "function": 662132
+    }
+  },
+  "quotas": {
+    "produced": {
+      "function": 13445,
+      "geometry": 69597,
+      "arithmetic": 16958
+    },
+    "gold": {
+      "function": 36150,
+      "geometry": 51999,
+      "arithmetic": 11850
+    }
+  },
+  "mathv360k_dropped_subsets": [],
+  "rates": {
+    "function/gold": {
+      "chunks": 36150,
+      "claims": 87546,
+      "parsed": 69907,
+      "with_anchor": 18317,
+      "with_2plus_anchors": 10145,
+      "weld_suspect": 3394,
+      "errors": 0,
+      "weld_rate": 0.0938865836791148
+    },
+    "function/produced": {
+      "chunks": 13445,
+      "claims": 30962,
+      "parsed": 25051,
+      "with_anchor": 5765,
+      "with_2plus_anchors": 2915,
+      "weld_suspect": 1105,
+      "errors": 0,
+      "weld_rate": 0.08218668650055783
+    },
+    "geometry/gold": {
+      "chunks": 51999,
+      "claims": 70554,
+      "parsed": 69930,
+      "with_anchor": 17836,
+      "with_2plus_anchors": 8286,
+      "weld_suspect": 4623,
+      "errors": 0,
+      "weld_rate": 0.08890555587607454
+    },
+    "geometry/produced": {
+      "chunks": 69597,
+      "claims": 60677,
+      "parsed": 60236,
+      "with_anchor": 16897,
+      "with_2plus_anchors": 5061,
+      "weld_suspect": 2324,
+      "errors": 0,
+      "weld_rate": 0.03339224391855971
+    },
+    "arithmetic/gold": {
+      "chunks": 11850,
+      "claims": 2226,
+      "parsed": 2205,
+      "with_anchor": 411,
+      "with_2plus_anchors": 172,
+      "weld_suspect": 96,
+      "errors": 0,
+      "weld_rate": 0.00810126582278481
+    },
+    "arithmetic/produced": {
+      "chunks": 16958,
+      "claims": 821,
+      "parsed": 820,
+      "with_anchor": 5,
+      "with_2plus_anchors": 1,
+      "weld_suspect": 0,
+      "errors": 0,
+      "weld_rate": 0.0
+    }
+  }
+}

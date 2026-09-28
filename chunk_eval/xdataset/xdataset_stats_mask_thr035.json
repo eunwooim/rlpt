@@ -1,0 +1,254 @@
+{
+  "config": {
+    "tag": "mask_thr035",
+    "prm_every": 1,
+    "pb_every": 1,
+    "vp_every": 1,
+    "model_dir": "/scratch/sghos104/rlpt/chunker/release/chunker-deberta-v3-small-v2-mask",
+    "threshold": 0.35,
+    "min_tokens": 8,
+    "max_tokens": 220,
+    "batch_tokens": 65536,
+    "dp_workers": 12,
+    "flush_every": 20000
+  },
+  "datasets": {
+    "prm800k": {
+      "overall": {
+        "records": 10007,
+        "macro_prec": 0.9814108446846792,
+        "macro_rec": 0.9108642810490529,
+        "macro_f1": 0.9408115466383198,
+        "micro_prec": 0.9792404352707488,
+        "coverage": 0.9289481499687651,
+        "density_ratio_mean": 0.9353337709884394,
+        "wdiff_mean": 0.02784052405322677,
+        "perfect_pct": 31.10822424302988
+      },
+      "by_bucket": {
+        "3-4": {
+          "records": 454,
+          "macro_prec": 0.9671439060205581,
+          "macro_rec": 0.8039647577092511,
+          "macro_f1": 0.8612781247142481,
+          "micro_prec": 0.9450651769087524,
+          "coverage": 0.8061953931691819,
+          "density_ratio_mean": 0.8509544787077826,
+          "wdiff_mean": 0.04986631177785613,
+          "perfect_pct": 39.4273127753304
+        },
+        "5-7": {
+          "records": 2759,
+          "macro_prec": 0.976852288704409,
+          "macro_rec": 0.8736861181587532,
+          "macro_f1": 0.9170318271904189,
+          "micro_prec": 0.9659170492568672,
+          "coverage": 0.8758202215480139,
+          "density_ratio_mean": 0.905013893922919,
+          "wdiff_mean": 0.03552116299847187,
+          "perfect_pct": 31.06197897789054
+        },
+        "8+": {
+          "records": 6794,
+          "macro_prec": 0.984215414320104,
+          "macro_rec": 0.9331055137559424,
+          "macro_f1": 0.9557830537784856,
+          "micro_prec": 0.9818821705820321,
+          "coverage": 0.9399866204463906,
+          "density_ratio_mean": 0.9532850131902633,
+          "wdiff_mean": 0.023249621716324654,
+          "perfect_pct": 30.57109214012364
+        }
+      },
+      "by_subset": {
+        "test": {
+          "records": 582,
+          "macro_prec": 0.9933973361050378,
+          "macro_rec": 0.8921792192857729,
+          "macro_f1": 0.9372733101355384,
+          "micro_prec": 0.9931439764936337,
+          "coverage": 0.9066523605150214,
+          "density_ratio_mean": 0.9003330157856025,
+          "wdiff_mean": 0.026727553444813992,
+          "perfect_pct": 19.93127147766323
+        },
+        "train": {
+          "records": 9425,
+          "macro_prec": 0.9806706708908703,
+          "macro_rec": 0.9120180960035601,
+          "macro_f1": 0.9410300350886771,
+          "micro_prec": 0.9784295131787906,
+          "coverage": 0.9303025365270762,
+          "density_ratio_mean": 0.9374950908322647,
+          "wdiff_mean": 0.027909250726340422,
+          "perfect_pct": 31.79840848806366
+        }
+      },
+      "ws_tokens": 1829623,
+      "wall_s": 57.803059816360474,
+      "gpu_s": 37.34833884239197
+    },
+    "processbench": {
+      "overall": {
+        "records": 3372,
+        "macro_prec": 0.6246590951638311,
+        "macro_rec": 0.9144978673248797,
+        "macro_f1": 0.7159167178802208,
+        "micro_prec": 0.5997481938907041,
+        "coverage": 0.8984238178633975,
+        "density_ratio_mean": 1.701092982615274,
+        "wdiff_mean": 0.2945101415718688,
+        "perfect_pct": 6.1387900355871885
+      },
+      "by_bucket": {
+        "3-4": {
+          "records": 586,
+          "macro_prec": 0.47193551674922996,
+          "macro_rec": 0.9027303754266212,
+          "macro_f1": 0.5885324673752508,
+          "micro_prec": 0.3983606557377049,
+          "coverage": 0.9067164179104478,
+          "density_ratio_mean": 2.304607508532423,
+          "wdiff_mean": 0.42662256570471196,
+          "perfect_pct": 4.436860068259386
+        },
+        "5-7": {
+          "records": 1442,
+          "macro_prec": 0.5836793842611073,
+          "macro_rec": 0.934408229311142,
+          "macro_f1": 0.6981922733151028,
+          "micro_prec": 0.5223503395987995,
+          "coverage": 0.9345767980782818,
+          "density_ratio_mean": 1.8077901063337956,
+          "wdiff_mean": 0.3229096371528249,
+          "perfect_pct": 5.825242718446602
+        },
+        "8+": {
+          "records": 1344,
+          "macro_prec": 0.7352162083131498,
+          "macro_rec": 0.8982664746672824,
+          "macro_f1": 0.7904746195608849,
+          "micro_prec": 0.7005341315959382,
+          "coverage": 0.8786071849234394,
+          "density_ratio_mean": 1.3234763422956632,
+          "wdiff_mean": 0.206437259749261,
+          "perfect_pct": 7.217261904761905
+        }
+      },
+      "by_subset": {
+        "gsm8k": {
+          "records": 395,
+          "macro_prec": 0.6515313167844813,
+          "macro_rec": 0.9147545984254845,
+          "macro_f1": 0.739084203756775,
+          "micro_prec": 0.6318181818181818,
+          "coverage": 0.9117471675611211,
+          "density_ratio_mean": 1.5893517453011123,
+          "wdiff_mean": 0.2420506353057585,
+          "perfect_pct": 9.620253164556962
+        },
+        "math": {
+          "records": 982,
+          "macro_prec": 0.6142775431883865,
+          "macro_rec": 0.9171125566737035,
+          "macro_f1": 0.7074889867707398,
+          "micro_prec": 0.584430719030416,
+          "coverage": 0.9139784946236559,
+          "density_ratio_mean": 1.7341551049855581,
+          "wdiff_mean": 0.3064745691982997,
+          "perfect_pct": 7.739307535641548
+        },
+        "olympiadbench": {
+          "records": 997,
+          "macro_prec": 0.6374988830873054,
+          "macro_rec": 0.9151856603464499,
+          "macro_f1": 0.7239831872398506,
+          "micro_prec": 0.6142718532239569,
+          "coverage": 0.890992835209826,
+          "density_ratio_mean": 1.6884270542960282,
+          "wdiff_mean": 0.2929092666684681,
+          "perfect_pct": 6.41925777331996
+        },
+        "omnimath": {
+          "records": 998,
+          "macro_prec": 0.6114114878893083,
+          "macro_rec": 0.9111363809844094,
+          "macro_f1": 0.7069814524260335,
+          "micro_prec": 0.5896924054078577,
+          "coverage": 0.8916175058307038,
+          "density_ratio_mean": 1.7254403925408894,
+          "wdiff_mean": 0.3050998302739218,
+          "perfect_pct": 2.905811623246493
+        }
+      },
+      "ws_tokens": 1170601,
+      "wall_s": 43.40027952194214,
+      "gpu_s": 26.611846446990967
+    },
+    "visualprm": {
+      "overall": {
+        "records": 495756,
+        "macro_prec": 0.8846041421796352,
+        "macro_rec": 0.7982824018315006,
+        "macro_f1": 0.8230802170152592,
+        "micro_prec": 0.8538294517931606,
+        "coverage": 0.8040327798823836,
+        "density_ratio_mean": 0.9493832614463245,
+        "wdiff_mean": 0.09892889887893735,
+        "perfect_pct": 29.391878262693744
+      },
+      "by_bucket": {
+        "2": {
+          "records": 34422,
+          "macro_prec": 0.7814207059217517,
+          "macro_rec": 0.8231363662773807,
+          "macro_f1": 0.7931288195145612,
+          "micro_prec": 0.8024810241305087,
+          "coverage": 0.8231363662773807,
+          "density_ratio_mean": 1.1844347534384434,
+          "wdiff_mean": 0.06816520706383564,
+          "perfect_pct": 75.05664981697751
+        },
+        "3-4": {
+          "records": 88873,
+          "macro_prec": 0.8898729353759847,
+          "macro_rec": 0.7734520045458125,
+          "macro_f1": 0.8046776241152811,
+          "micro_prec": 0.849518034122279,
+          "coverage": 0.7723336062504885,
+          "density_ratio_mean": 0.9299157009381361,
+          "wdiff_mean": 0.09282227939537167,
+          "perfect_pct": 38.868947824423614
+        },
+        "5-7": {
+          "records": 200990,
+          "macro_prec": 0.9093565340497987,
+          "macro_rec": 0.7987840191054282,
+          "macro_f1": 0.8331611543574545,
+          "micro_prec": 0.8645996781064585,
+          "coverage": 0.8007981887255843,
+          "density_ratio_mean": 0.9174801140702082,
+          "wdiff_mean": 0.09524965977507174,
+          "perfect_pct": 24.241504552465297
+        },
+        "8+": {
+          "records": 171471,
+          "macro_prec": 0.8735733762958741,
+          "macro_rec": 0.8055746476219147,
+          "macro_f1": 0.826814452233815,
+          "micro_prec": 0.8489021785333329,
+          "coverage": 0.8106282480928673,
+          "density_ratio_mean": 0.9558264456154484,
+          "wdiff_mean": 0.11257251526377914,
+          "perfect_pct": 21.349965883443847
+        }
+      },
+      "by_subset": {},
+      "ws_tokens": 88334117,
+      "wall_s": 2613.0392968654633,
+      "gpu_s": 1529.505482673645
+    }
+  },
+  "wall_s": 2716.483757019043,
+  "gpu_s_total": 1593.465667963028
+}

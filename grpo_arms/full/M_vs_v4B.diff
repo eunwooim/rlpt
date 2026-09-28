@@ -1,0 +1,18 @@
+2,3c2,3
+< #SBATCH --job-name=v4_B_match
+< #SBATCH --account=grp_bshettah
+---
+> #SBATCH --job-name=full_M_match
+> #SBATCH --account=grp_vgupt140
+17c17
+< # ===== v4 run "B_matchv4_softgate" (2026-09-13, account grp_bshettah, conservative optimizer): every run-specific value is set here so `diff grpo_arms/v3/ctrl.sbatch grpo_arms/run_arm.sbatch`
+---
+> # ===== FULL run "M" (2026-09-18): v4 B resumed in place from global_step_60 to 183, account grp_vgupt140, v4 optimizer unchanged: every run-specific value is set here so `diff grpo_arms/v3/ctrl.sbatch grpo_arms/run_arm.sbatch`
+21a22
+> export ENTROPY_MODE=off
+23,24c24,25
+< export STATUS_FILE=grpo_arms/V4_STATUS.md
+< export EXTRA="--max_steps 60 --save_freq 30 --test_freq 10 --learning_rate 1e-6 --extra_val_files /scratch/sghos104/rlpt/grpo_arms/data/vpb_dev.parquet --verl_extra_override actor_rollout_ref.actor.ppo_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.ref.log_prob_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.rollout.log_prob_max_token_len_per_gpu=8192 --rollout_n 5 --verl_extra_override actor_rollout_ref.actor.kl_loss_coef=0.01 --verl_extra_override actor_rollout_ref.actor.clip_ratio_low=0.2 --verl_extra_override actor_rollout_ref.actor.clip_ratio_high=0.28"
+---
+> export STATUS_FILE=grpo_arms/FULL_STATUS.md
+> export EXTRA="--max_steps 183 --save_freq 30 --test_freq 10 --learning_rate 1e-6 --extra_val_files /scratch/sghos104/rlpt/grpo_arms/data/vpb_dev.parquet --verl_extra_override actor_rollout_ref.actor.ppo_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.ref.log_prob_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.rollout.log_prob_max_token_len_per_gpu=8192 --rollout_n 5 --verl_extra_override actor_rollout_ref.actor.kl_loss_coef=0.01 --verl_extra_override actor_rollout_ref.actor.clip_ratio_low=0.2 --verl_extra_override actor_rollout_ref.actor.clip_ratio_high=0.28 --verl_extra_override trainer.max_actor_ckpt_to_keep=-1"

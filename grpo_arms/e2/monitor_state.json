@@ -1,0 +1,136 @@
+{
+ "evals": {
+  "M2:366": {
+   "jobs": [],
+   "done": false
+  },
+  "R2:366": {
+   "jobs": [
+    "63694618"
+   ],
+   "done": true
+  },
+  "M2:210": {
+   "jobs": [
+    "63685184"
+   ],
+   "done": true
+  },
+  "M2:240": {
+   "jobs": [
+    "63688728"
+   ],
+   "done": true
+  },
+  "M2:270": {
+   "jobs": [
+    "63694616"
+   ],
+   "done": true
+  },
+  "M2:300": {
+   "jobs": [
+    "63698881"
+   ],
+   "done": true
+  },
+  "M2:330": {
+   "jobs": [
+    "63704986"
+   ],
+   "done": true
+  },
+  "M2:360": {
+   "jobs": [],
+   "done": false
+  },
+  "R2:210": {
+   "jobs": [
+    "63684217"
+   ],
+   "done": true
+  },
+  "R2:240": {
+   "jobs": [
+    "63686939"
+   ],
+   "done": true
+  },
+  "R2:270": {
+   "jobs": [
+    "63688011"
+   ],
+   "done": true
+  },
+  "R2:300": {
+   "jobs": [
+    "63689655"
+   ],
+   "done": true
+  },
+  "R2:330": {
+   "jobs": [
+    "63692483"
+   ],
+   "done": true
+  },
+  "R2:360": {
+   "jobs": [
+    "63694617"
+   ],
+   "done": true
+  }
+ },
+ "events": [
+  "2026-09-19 21:16 resume verification M2: first_step=184 same_as_epoch1_step1=0 -> PASS",
+  "2026-09-19 22:16 resume verification R2: first_step=184 same_as_epoch1_step1=0 -> PASS",
+  "2026-09-19 23:04 eval R2:210: submitted job 63684217 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-19 23:04 pruned FSDP checkpoint R2 global_step_183 (44G; merge verified: duplicate of epoch-1 global_step_183 (original + hf_step_183 kept in the epoch-1 run dir); newest=210, keep=[240, 300, 366])",
+  "2026-09-19 23:34 eval M2:210: submitted job 63685184 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-19 23:34 eval R2:210: generation present (vpb_gen_R2_rlvr_e2_step210_2ktest.jsonl)",
+  "2026-09-19 23:34 pruned FSDP checkpoint M2 global_step_183 (44G; merge verified: duplicate of epoch-1 global_step_183 (original + hf_step_183 kept in the epoch-1 run dir); newest=210, keep=[240, 300, 366])",
+  "2026-09-20 00:04 eval M2:210: generation present (vpb_gen_M2_match_e2_step210_2ktest.jsonl)",
+  "2026-09-20 00:34 eval R2:240: submitted job 63686939 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-20 00:34 pruned FSDP checkpoint R2 global_step_210 (44G; merge verified: 2 shards + bundle ok; newest=240, keep=[240, 300, 366])",
+  "2026-09-20 01:04 eval R2:240: generation present (vpb_gen_R2_rlvr_e2_step240_2ktest.jsonl)",
+  "2026-09-20 01:34 eval R2:270: submitted job 63688011 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-20 02:04 eval M2:240: submitted job 63688728 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-20 02:04 eval R2:270: generation present (vpb_gen_R2_rlvr_e2_step270_2ktest.jsonl)",
+  "2026-09-20 02:04 pruned FSDP checkpoint M2 global_step_210 (44G; merge verified: 2 shards + bundle ok; newest=240, keep=[240, 300, 366])",
+  "2026-09-20 02:34 eval M2:240: generation present (vpb_gen_M2_match_e2_step240_2ktest.jsonl)",
+  "2026-09-20 02:34 eval R2:300: submitted job 63689655 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-20 02:34 pruned FSDP checkpoint R2 global_step_270 (44G; merge verified: 2 shards + bundle ok; newest=300, keep=[240, 300, 366])",
+  "2026-09-20 03:04 eval R2:300: generation present (vpb_gen_R2_rlvr_e2_step300_2ktest.jsonl)",
+  "2026-09-20 04:04 eval R2:330: submitted job 63692483 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-20 04:34 eval R2:330: generation present (vpb_gen_R2_rlvr_e2_step330_2ktest.jsonl)",
+  "2026-09-20 05:04 eval M2:270: submitted job 63694616 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-20 05:04 eval R2:360: submitted job 63694617 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-20 05:04 eval R2:366: submitted job 63694618 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-20 05:04 pruned FSDP checkpoint R2 global_step_330 (44G; merge verified: 2 shards + bundle ok; newest=366, keep=[240, 300, 366])",
+  "2026-09-20 05:34 eval M2:270: generation present (vpb_gen_M2_match_e2_step270_2ktest.jsonl)",
+  "2026-09-20 05:34 eval R2:360: generation present (vpb_gen_R2_rlvr_e2_step360_2ktest.jsonl)",
+  "2026-09-20 05:34 eval R2:366: generation present (vpb_gen_R2_rlvr_e2_step366_2ktest.jsonl)",
+  "2026-09-20 05:34 pruned FSDP checkpoint R2 global_step_360 (44G; merge verified: 2 shards + bundle ok; newest=366, keep=[240, 300, 366])",
+  "2026-09-20 07:34 eval M2:300: submitted job 63698881 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-20 07:34 pruned FSDP checkpoint M2 global_step_270 (44G; merge verified: 2 shards + bundle ok; newest=300, keep=[240, 300, 366])",
+  "2026-09-20 08:04 eval M2:300: generation present (vpb_gen_M2_match_e2_step300_2ktest.jsonl)",
+  "2026-09-20 10:34 eval M2:330: submitted job 63704986 (htc, gpu:1, 1 h, vpb_test 2048 tok)",
+  "2026-09-20 11:35 eval M2:330: generation present (vpb_gen_M2_match_e2_step330_2ktest.jsonl)",
+  "2026-09-20 13:35 pruned FSDP checkpoint M2 global_step_183 (44G; merge verified: duplicate of epoch-1 global_step_183 (original + hf_step_183 kept in the epoch-1 run dir); newest=330, keep=[240, 300, 366])"
+ ],
+ "pruned": [
+  "R2:183",
+  "M2:183",
+  "R2:210",
+  "M2:210",
+  "R2:270",
+  "R2:330",
+  "R2:360",
+  "M2:270",
+  "M2:183"
+ ],
+ "resume_verified": false,
+ "report_job": null,
+ "resume_verified_M2": true,
+ "resume_verified_R2": true
+}

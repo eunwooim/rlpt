@@ -1,0 +1,196 @@
+--- example 1 (unbalanced_delims, marker/list) ---
+- Alabama, Arkansas, Delaware, and Louisiana are less than $113.
+
+--- example 2 (unbalanced_delims, marker/list) ---
+1) blue rubber cylinder
+
+--- example 3 (unbalanced_delims, marker/list) ---
+* [insert name] - CFO
+
+The management team is experienced and knowledgeable in the pet industry. The management team is also passionate about providing high-quality products and services to pet owners.
+
+Financial Plan
+
+The company will require $100,000 in funding to open its store. The funding will be used to cover the costs of rent, inventory, marketing, and operating expenses. The company will generate revenue from the sale of products and services. The company expects to be profitable within two years of opening.
+
+Risks and Contingencies
+
+The main risks associated with this business plan are as follows:
+
+--- example 4 (unbalanced_delims, marker/list) ---
+5. Finally, they return these stocks to the broker, making a profit from the price difference.
+
+For example, an investor thinks a stock from a company, let's call it Company ABC, priced at $150 per share, is going to drop. The investor then short sells 10 shares of Company ABC. They make $1500 from this sale. Later, the price drops to $130 per share as predicted, and the investor buys back the 10 shares for $1300. The investor returns the shares to the broker, making a profit of $200 ($1500 - $1300). However, this strategy is risky. If the stock's price increases instead of decreasing, the investor can face losses.
+
+--- example 5 (unbalanced_delims, marker/list) ---
+2. The value for the year 2019 on the y-axis is directly above the bar for that year.
+
+By observing the bar and reading the value marked on the y-axis, it is clear that the total imports for 2019 are approximately $17 billion.
+
+Final answer: 1718.0
+
+--- example 6 (unbalanced_delims, marker/list) ---
+* Transportation: $1,500
+
+--- example 7 (unbalanced_delims, marker/list) ---
+2. There is also a mention of "$2B" in the same section, which refers to the value of total export earnings from the Australian livestock export industry. This is not relevant to the AUD value of the global trade.
+
+--- example 8 (unbalanced_delims, marker/list) ---
+74. There is a red cube (a seventy-fifth occurrence, which we should not count as it's the same object
+
+--- example 9 (unbalanced_delims, marker/list) ---
+- Using \( c = 6 \) from \( f'(x = 0) \):
+     \[
+     48a - 8b + 6 = 198 \Rightarrow 48a - 8b = 192 \Rightarrow 6a - b = 24
+     \]
+     Also, \( 108a + 12b + 6 = 438 \Rightarrow 108a + 12b = 432 \Rightarrow 9a + b = 36
+     \]
+
+--- example 10 (unbalanced_delims, marker/list) ---
+1. \(\triangle ABC\) is a right-angled triangle at \(C. \\
+
+--- example 11 (unbalanced_delims, marker/list) ---
+- Remaining objects: rubber sphere and wooden cylinder.
+
+Thus, the number of objects left after the subtractions:
+
+$ Final answer: 2
+
+--- example 12 (unbalanced_delims, marker/list) ---
+- A) True
+
+--- example 13 (unbalanced_delims, marker/list) ---
+- C) 11
+
+--- example 14 (unbalanced_delims, marker/list) ---
+6. 设抛物线 $f(x)=a^{x}(2 x)^{2}+2 x+2$ 与直线 $y=7 x-1$ 相交于 $A$ 和 $B$, 则 $\left\{\begin{array}{l}-6 < a < 0, \\ a^{-3}(7 a+6)<0, \\ a^{-9}(7 a-1)<0\end{array}\right.$ 等价于 $a$ 的取值范围是 $\mathrm{C}$ 
+(A) $(-\infty,-6)$.
+(B) $\left(\frac{1}{7}, 0\right)$
+(C) $\left(-\frac{6}{7},-6\right)$
+(D) The correct choice is: $\mathrm{B}$
+(E) $\left(-\frac{1}{7}, 0\right)$
+
+--- example 15 (unbalanced_delims, marker/list) ---
+2. Read the data point from the graph for 2018 on the vertical axis (gross domestic product in billion U.S. dollars).
+
+The graph shows the GDP values in billions of U.S. dollars over the years from 1986 to a projected 2026. For 2018, the relevant point on the graph is directly above the year 2018. The vertical line for 2018 aligns with a GDP value of approximately $14.18 billion.
+
+Final answer: 14.18
+
+--- example 16 (unbalanced_delims, marker/list) ---
+- The correct perimeter of the "cam" is \(
+
+--- example 17 (unbalanced_delims, marker/list) ---
+7. **Kinetic Energy and Temperature Relationship:**
+    - The average kinetic energy of the particles in a gas sample is proportional to its temperature according to the ideal gas law:
+    \[
+    \overline{KE} = \frac{3}{2} NkT
+    \]
+    where \(
+
+--- example 18 (unbalanced_delims, marker/list) ---
+2. **Financial Spending**: According to Scarborough research, 56% of Americans that made home improvements in the past 12 months spent $1,000 or more. This indicates that a significant portion of people spend money on home improvements, but it does not specify a particular reason.
+
+--- example 19 (unbalanced_delims, marker/list) ---
+3. \(AB = 4\)
+
+Given that \(CF = CE + EF = 2AE + EF\), and knowing the triangle similarity ratios:
+
+\[ \frac{EF}{AB} = \frac{CF}{FA} \]
+Since \( AB = 4 \):
+\[ \frac{EF}{4} = \frac{CF}{FA} \]
+
+Using \( CE = 2AE \) and the fact that triangles are similar:
+
+\[ CE = 2EA \]
+\[ 2EA + EF = EA + AB (EA + EF = 4)\]
+
+Since CF is split by the similarity ratio:
+
+\[ AE + EF = 3EA \]
+
+Given that \(AB\) is divided into segments of length \(2EA\) and \(EF\), and knowing that AB is split into a ratio of 2 parts:
+
+ \[ AE+EF = 3EA \]
+\[ 4 = 2EA + 1 EA + 1 EF \]
+\[ 2EA = 4 = EA + 2 \]
+
+So, we need to solve for \( EF \):
+
+\[ \frac{EF}{4} = \frac{2EA+EA}{4}\]
+\[ \frac{3EA}{4} = \frac{3}{\frac{4}{EA}} \]
+Solving these ratios:
+
+Combining, if \(AB\)= 4 units, then dividing AB to 4 segment is 4 = 1 + 1 = 2
+
+Thus, t
+
+--- example 20 (unbalanced_delims, marker/list) ---
+- D) 12
+
+--- example 21 (unbalanced_delims, marker/list) ---
+- Export Value: $1.37
+
+--- example 22 (unbalanced_delims, marker/list) ---
+- The increase is from "10M Filipinos."
+
+Therefore, the increase in OFW remittances in the Philippine economy is "$26 billion."
+
+Final answer: 26B
+
+--- example 23 (unbalanced_delims, marker/list) ---
+3. The remaining angle \( x \) is equal to:
+\[ 180 - 75 = 105°, but subtract it using triangle property \text{ 180} - 75 means 180 minus sum = \text{ angle to be found}\]
+
+The previous approach confirms the error in interpretation:
+   \[ x = 180 - 75 = \text{25, thus we need to subtract the sum to get correct triangle} angle}
+
+We recheck the sum property with:
+ \[180 -25 - 50 = 60^\circ 
+ \xrightarrow{} \text{correct value should be 180 minus correct remaining sum}
+
+Final answer:.. 75
+
+--- example 24 (unbalanced_delims, marker/list) ---
+- **Oklahoma**: $2,127,681,953
+
+--- example 25 (unbalanced_delims, marker/list) ---
+2) 6*b + 18 = -18
+     b = -6
+
+--- example 26 (unbalanced_delims, marker/list) ---
+- D) 4/8 (simplifies to 1/2, not a matching fraction)
+
+Since none of the given options match the simplified fraction, the correct fraction of the shape that is green is 10/12.
+
+Final answer: A
+
+--- example 27 (unbalanced_delims, marker/list) ---
+To whom it may concern,
+
+I am a Buddhist monk who has recently found a wallet in the temple's courtyard. The wallet contains $100 and a passport belonging to a tourist visiting from a neighboring country. I have attached the passport to this letter so that I can locate the tourist and return the wallet to them.
+
+As a monk, I believe that it is important to do the right thing and help others. Therefore, I have decided to follow a four-step process to return the wallet to its owner:
+
+--- example 28 (unbalanced_delims, marker/list) ---
+1. **Upper left image (dog**:
+
+--- example 29 (unbalanced_delims, marker/list) ---
+- A zero of \( f(x) = a \log(c + x) \) occurs when \( f(x) = 0 \):
+     \[
+     a \log(c + x) = 0 \implies log(c + x) = 0 \implies c + x = 1 \implies x = 1 - c
+     \]
+
+Now, substituting the known values or solving through algebraic methods to determine the exact values of \( a \) and \( c \):
+
+\[ Final answer: 1
+
+--- example 30 (unbalanced_delims, marker/list) ---
+From the details shared, I understand that you're planning a 10-day trip to Hawaii on a budget of $3000. Your preferences include outdoor activities like hiking and snorkeling, and you have a vegan dietary restriction. 
+
+Given your budget, I suggest you book your flight tickets in advance to get cheaper rates. You can find several budget-friendly accommodations online. 
+
+During your stay, don't miss out on visiting historical sites like the Pearl Harbor National Memorial and the Polynesian Cultural Center. You could also spend some days hiking on trails such as the Koko Crater Trail and the Manoa Falls Trail. 
+
+For snorkeling, Hanauma Bay Nature Preserve is a great option. There are a lot of vegan-friendly restaurants, like 'Ai Love Nalo and Peace Cafe, where you can try out some local veg
+

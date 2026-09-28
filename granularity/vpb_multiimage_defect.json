@@ -1,0 +1,427 @@
+{
+ "note": "VisualProcessBench records whose question references more distinct <imageN> placeholders than the record supplies images. Property of the published benchmark.",
+ "source": "/scratch/sghos104/rlpt/data/visualprocessbench/test.jsonl",
+ "records_total": 2866,
+ "n_defective": 25,
+ "records": [
+  {
+   "qid": "vpb_00000",
+   "line_index": 0,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 4,
+   "tags": [
+    "<image1>",
+    "<image2>",
+    "<image3>",
+    "<image6>"
+   ],
+   "images": [
+    "images/MathVision_MINI/15.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: When the ant <image1> walks from home <image2> along the arrows $\\rightarrow 3, \\uparrow 3, \\rightarrow 3, \\uparrow 1$, he gets to the ladybird <image3>.\nWhich animal does the ant <image1>"
+  },
+  {
+   "qid": "vpb_00046",
+   "line_index": 46,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 4,
+   "tags": [
+    "<image1>",
+    "<image2>",
+    "<image3>",
+    "<image6>"
+   ],
+   "images": [
+    "images/MathVision_MINI/15.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: When the ant <image1> walks from home <image2> along the arrows $\\rightarrow 3, \\uparrow 3, \\rightarrow 3, \\uparrow 1$, he gets to the ladybird <image3>.\nWhich animal does the ant <image1>"
+  },
+  {
+   "qid": "vpb_00149",
+   "line_index": 149,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 3,
+   "tags": [
+    "<image1>",
+    "<image2>",
+    "<image3>"
+   ],
+   "images": [
+    "images/MathVision_MINI/31.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: <image1>\nIn the picture above we see a cube in two different positions.\nThe six sides of the cube look like this:\n<image2>\nWhich side is opposite to <image3>?"
+  },
+  {
+   "qid": "vpb_00245",
+   "line_index": 245,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 2,
+   "tags": [
+    "<image1>",
+    "<image2>"
+   ],
+   "images": [
+    "images/MathVision_MINI/141.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: A piece of string is lying on the table. It is partially covered by three coins as seen in the figure. Under each coin the string is equally likely to pass over itself like this: <image1>\n"
+  },
+  {
+   "qid": "vpb_00491",
+   "line_index": 491,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 4,
+   "tags": [
+    "<image1>",
+    "<image2>",
+    "<image3>",
+    "<image6>"
+   ],
+   "images": [
+    "images/MathVision_MINI/15.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: When the ant <image1> walks from home <image2> along the arrows $\\rightarrow 3, \\uparrow 3, \\rightarrow 3, \\uparrow 1$, he gets to the ladybird <image3>.\nWhich animal does the ant <image1>"
+  },
+  {
+   "qid": "vpb_00802",
+   "line_index": 802,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 5,
+   "tags": [
+    "<image1>",
+    "<image2>",
+    "<image3>",
+    "<image4>",
+    "<image5>"
+   ],
+   "images": [
+    "images/MathVision_MINI/293.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Jorge's teacher asks him to plot all the ordered pairs $ (w, l)$ of positive integers for which $ w$ is the width and $ l$ is the length of a rectangle with area 12. What should his graph "
+  },
+  {
+   "qid": "vpb_00804",
+   "line_index": 804,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 2,
+   "tags": [
+    "<image1>",
+    "<image2>"
+   ],
+   "images": [
+    "images/MathVision_MINI/22.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Florian has 10 equally long metal strips with equally many holes.\n<image1>\nHe bolts the metal strips together in pairs. Now he has five long strips (see the diagram).\n<image2>\nWhich of the"
+  },
+  {
+   "qid": "vpb_01155",
+   "line_index": 1155,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 2,
+   "tags": [
+    "<image1>",
+    "<image2>"
+   ],
+   "images": [
+    "images/MathVision_MINI/141.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: A piece of string is lying on the table. It is partially covered by three coins as seen in the figure. Under each coin the string is equally likely to pass over itself like this: <image1>\n"
+  },
+  {
+   "qid": "vpb_01212",
+   "line_index": 1212,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 2,
+   "tags": [
+    "<image1>",
+    "<image2>"
+   ],
+   "images": [
+    "images/MathVision_MINI/99.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: In the diagram on the right we see the bird\u00f4-eye view and front elevation of a solid that is defined by flat surfaces (i.e. view from obove and the front respectively). Bird' s-Eye View (v"
+  },
+  {
+   "qid": "vpb_01317",
+   "line_index": 1317,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 3,
+   "tags": [
+    "<image1>",
+    "<image2>",
+    "<image3>"
+   ],
+   "images": [
+    "images/MathVision_MINI/31.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: <image1>\nIn the picture above we see a cube in two different positions.\nThe six sides of the cube look like this:\n<image2>\nWhich side is opposite to <image3>?"
+  },
+  {
+   "qid": "vpb_01408",
+   "line_index": 1408,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 4,
+   "tags": [
+    "<image1>",
+    "<image2>",
+    "<image3>",
+    "<image6>"
+   ],
+   "images": [
+    "images/MathVision_MINI/15.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: When the ant <image1> walks from home <image2> along the arrows $\\rightarrow 3, \\uparrow 3, \\rightarrow 3, \\uparrow 1$, he gets to the ladybird <image3>.\nWhich animal does the ant <image1>"
+  },
+  {
+   "qid": "vpb_01459",
+   "line_index": 1459,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 4,
+   "tags": [
+    "<image1>",
+    "<image2>",
+    "<image3>",
+    "<image6>"
+   ],
+   "images": [
+    "images/MathVision_MINI/15.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: When the ant <image1> walks from home <image2> along the arrows $\\rightarrow 3, \\uparrow 3, \\rightarrow 3, \\uparrow 1$, he gets to the ladybird <image3>.\nWhich animal does the ant <image1>"
+  },
+  {
+   "qid": "vpb_01641",
+   "line_index": 1641,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 5,
+   "tags": [
+    "<image2>",
+    "<image3>",
+    "<image4>",
+    "<image5>",
+    "<image6>"
+   ],
+   "images": [
+    "images/MathVision_MINI/291.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Tess runs counterclockwise around rectangular block JKLM. She lives at corner J. Which graph could represent her straight-line distance from home?\nChoices:\n(A) <image2>\n(B) <image3>\n(C) <i"
+  },
+  {
+   "qid": "vpb_01676",
+   "line_index": 1676,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 3,
+   "tags": [
+    "<image1>",
+    "<image2>",
+    "<image3>"
+   ],
+   "images": [
+    "images/MathVision_MINI/31.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: <image1>\nIn the picture above we see a cube in two different positions.\nThe six sides of the cube look like this:\n<image2>\nWhich side is opposite to <image3>?"
+  },
+  {
+   "qid": "vpb_01698",
+   "line_index": 1698,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 5,
+   "tags": [
+    "<image2>",
+    "<image3>",
+    "<image4>",
+    "<image5>",
+    "<image6>"
+   ],
+   "images": [
+    "images/MathVision_MINI/291.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Tess runs counterclockwise around rectangular block JKLM. She lives at corner J. Which graph could represent her straight-line distance from home?\nChoices:\n(A) <image2>\n(B) <image3>\n(C) <i"
+  },
+  {
+   "qid": "vpb_01844",
+   "line_index": 1844,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 5,
+   "tags": [
+    "<image1>",
+    "<image2>",
+    "<image3>",
+    "<image4>",
+    "<image5>"
+   ],
+   "images": [
+    "images/MathVision_MINI/293.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Jorge's teacher asks him to plot all the ordered pairs $ (w, l)$ of positive integers for which $ w$ is the width and $ l$ is the length of a rectangle with area 12. What should his graph "
+  },
+  {
+   "qid": "vpb_01941",
+   "line_index": 1941,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 3,
+   "tags": [
+    "<image1>",
+    "<image2>",
+    "<image3>"
+   ],
+   "images": [
+    "images/MathVision_MINI/31.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: <image1>\nIn the picture above we see a cube in two different positions.\nThe six sides of the cube look like this:\n<image2>\nWhich side is opposite to <image3>?"
+  },
+  {
+   "qid": "vpb_02020",
+   "line_index": 2020,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 5,
+   "tags": [
+    "<image2>",
+    "<image3>",
+    "<image4>",
+    "<image5>",
+    "<image6>"
+   ],
+   "images": [
+    "images/MathVision_MINI/291.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Tess runs counterclockwise around rectangular block JKLM. She lives at corner J. Which graph could represent her straight-line distance from home?\nChoices:\n(A) <image2>\n(B) <image3>\n(C) <i"
+  },
+  {
+   "qid": "vpb_02130",
+   "line_index": 2130,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 4,
+   "tags": [
+    "<image1>",
+    "<image2>",
+    "<image3>",
+    "<image6>"
+   ],
+   "images": [
+    "images/MathVision_MINI/15.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: When the ant <image1> walks from home <image2> along the arrows $\\rightarrow 3, \\uparrow 3, \\rightarrow 3, \\uparrow 1$, he gets to the ladybird <image3>.\nWhich animal does the ant <image1>"
+  },
+  {
+   "qid": "vpb_02236",
+   "line_index": 2236,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 5,
+   "tags": [
+    "<image2>",
+    "<image3>",
+    "<image4>",
+    "<image5>",
+    "<image6>"
+   ],
+   "images": [
+    "images/MathVision_MINI/291.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Tess runs counterclockwise around rectangular block JKLM. She lives at corner J. Which graph could represent her straight-line distance from home?\nChoices:\n(A) <image2>\n(B) <image3>\n(C) <i"
+  },
+  {
+   "qid": "vpb_02312",
+   "line_index": 2312,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 3,
+   "tags": [
+    "<image1>",
+    "<image2>",
+    "<image3>"
+   ],
+   "images": [
+    "images/MathVision_MINI/31.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: <image1>\nIn the picture above we see a cube in two different positions.\nThe six sides of the cube look like this:\n<image2>\nWhich side is opposite to <image3>?"
+  },
+  {
+   "qid": "vpb_02348",
+   "line_index": 2348,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 4,
+   "tags": [
+    "<image1>",
+    "<image2>",
+    "<image3>",
+    "<image6>"
+   ],
+   "images": [
+    "images/MathVision_MINI/15.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: When the ant <image1> walks from home <image2> along the arrows $\\rightarrow 3, \\uparrow 3, \\rightarrow 3, \\uparrow 1$, he gets to the ladybird <image3>.\nWhich animal does the ant <image1>"
+  },
+  {
+   "qid": "vpb_02594",
+   "line_index": 2594,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 5,
+   "tags": [
+    "<image1>",
+    "<image2>",
+    "<image3>",
+    "<image4>",
+    "<image5>"
+   ],
+   "images": [
+    "images/MathVision_MINI/293.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Jorge's teacher asks him to plot all the ordered pairs $ (w, l)$ of positive integers for which $ w$ is the width and $ l$ is the length of a rectangle with area 12. What should his graph "
+  },
+  {
+   "qid": "vpb_02632",
+   "line_index": 2632,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 3,
+   "tags": [
+    "<image1>",
+    "<image2>",
+    "<image3>"
+   ],
+   "images": [
+    "images/MathVision_MINI/31.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: <image1>\nIn the picture above we see a cube in two different positions.\nThe six sides of the cube look like this:\n<image2>\nWhich side is opposite to <image3>?"
+  },
+  {
+   "qid": "vpb_02844",
+   "line_index": 2844,
+   "data_source": "MathVision_MINI",
+   "n_images_supplied": 1,
+   "n_distinct_tags": 5,
+   "tags": [
+    "<image1>",
+    "<image2>",
+    "<image3>",
+    "<image4>",
+    "<image5>"
+   ],
+   "images": [
+    "images/MathVision_MINI/293.png"
+   ],
+   "question_head": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Jorge's teacher asks him to plot all the ordered pairs $ (w, l)$ of positive integers for which $ w$ is the width and $ l$ is the length of a rectangle with area 12. What should his graph "
+  }
+ ]
+}

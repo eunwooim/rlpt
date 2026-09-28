@@ -1,0 +1,206 @@
+#!/usr/bin/env python
+"""verl custom reward for the six-arm campaign.
+
+    R = 1*format + 2*match + 5*answer          (arms 1, 2, 4, 5; match = NLI bipartite)
+    R = 1*format + 2*prm_min + 5*answer        (arms 3, 6;      prm_min = VisualPRM min step score)
+
+Configured entirely through env (recorded per-arm in the job log header):
+    RLPT_ARM_REWARD   = match | vprm
+    RLPT_SEGMENTATION = chunker | marker            (match arms only)
+    RLPT_MATCH_TAU    = float                        (match arms only)
+    RLPT_SCORER_SOCKET = unix socket of score_server.py / vprm_server.py
+
+ground_truth (parquet reward_model.ground_truth) is a JSON string:
+    {"answer": .., "gold_steps": [..], "question": .., "image_path": ..}
+
+Answer extraction cascade: "Final answer:" (last) -> \\boxed{} (last) ->
+<answer> tags -> last non-empty line (fallback only, format=0). Correctness:
+normalized exact match, numeric tolerance (rel 1e-4), or MCQ letter match when
+the gold is a single letter. format = 1.0 iff an explicit final-answer marker
+was present (the prompt template demands "Final answer: ..").
+
+Stateless module; scoring models live behind the socket (models cannot load
+inside verl's reward worker — the sbert_embed_server constraint).
+"""
+import json
+import math
+import os
+import random
+import re
+import socket
+import time
+
+W_FORMAT, W_MATCH, W_ANSWER = 1.0, 2.0, 5.0
+
+_FINAL_RE = re.compile(r"final answer\s*[:\-]\s*(.+)", re.IGNORECASE)
+_BOXED_RE = re.compile(r"\\boxed\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}")
+_ANSWER_TAG_RE = re.compile(r"<answer>(.*?)</answer>", re.DOTALL | re.IGNORECASE)
+_LETTER_RE = re.compile(r"^\(?([a-z])\)?[.):]?(\s|$)", re.IGNORECASE)
+
+
+def extract_answer(text: str):
+    """-> (answer_text, has_explicit_marker)
+
+    An empty capture (e.g. a rollout ending in a bare "Final answer: " with
+    nothing after it — crashed job 62366864 at step ~101 via ""splitlines()[0])
+    falls through to the next pattern and earns no format credit.
+    """
+    text = str(text or "")
+    finals = _FINAL_RE.findall(text)
+    if finals:
+        ans = finals[-1].strip()
+        ans = ans.splitlines()[0].strip() if ans else ""
+        if ans:
+            return ans, True
+    boxed = _BOXED_RE.findall(text)
+    if boxed and boxed[-1].strip():
+        return boxed[-1].strip(), True
+    tags = _ANSWER_TAG_RE.findall(text)
+    if tags and tags[-1].strip():
+        return tags[-1].strip().splitlines()[0].strip(), True
+    lines = [l.strip() for l in text.splitlines() if l.strip()]
+    return (lines[-1] if lines else ""), False
+
+
+def _norm(s):
+    return re.sub(r"[^\w\s]", "", str(s)).strip().lower()
+
+
+def _number(s):
+    m = re.search(r"-?\d+(?:,\d{3})*(?:\.\d+)?", str(s))
+    if not m:
+        return None
+    try:
+        return float(m.group(0).replace(",", ""))
+    except ValueError:
+        return None
+
+
+def answer_correct(pred, gold):
+    if not pred:
+        return False
+    p, g = _norm(pred), _norm(gold)
+    if not g:
+        return False
+    if p == g:
+        return True
+    # MCQ letter: gold is a single letter -> accept "B", "(B)", "B.", "B) 42" etc.
+    if len(g) == 1 and g.isalpha():
+        m = _LETTER_RE.match(pred.strip())
+        if m and m.group(1).lower() == g:
+            return True
+    # numeric compare only when the gold is a pure number (avoid "12 apples" -> 12)
+    if re.fullmatch(r"\$?\s*-?\d+(?:,\d{3})*(?:\.\d+)?\s*%?", str(gold).strip()):
+        pn, gn = _number(pred), _number(gold)
+        if pn is not None and gn is not None:
+            tol = max(1e-6, abs(gn) * 1e-4)
+            return math.isclose(pn, gn, rel_tol=1e-4, abs_tol=tol)
+    return False
+
+
+def _call_server(payload: dict, retries: int = 8, timeout: float = 1800.0) -> dict:
+    sock_path = os.environ["RLPT_SCORER_SOCKET"]
+    last = None
+    for attempt in range(retries):
+        if attempt:
+            # verl's reward loop can throw hundreds of concurrent connects at
+            # the server; back off with jitter rather than failing fast
+            time.sleep(min(60.0, 2.0 ** attempt) + random.random())
+        try:
+            with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as c:
+                c.settimeout(timeout)
+                c.connect(sock_path)
+                c.sendall((json.dumps(payload) + "\n").encode("utf-8"))
+                buf = b""
+                while not buf.endswith(b"\n"):
+                    chunk = c.recv(1 << 20)
+                    if not chunk:
+                        break
+                    buf += chunk
+            resp = json.loads(buf.decode("utf-8"))
+            if "error" in resp:
+                raise RuntimeError(f"scorer error: {resp['error']}")
+            return resp
+        except Exception as exc:  # noqa: BLE001 — retry then surface
+            last = exc
+    raise RuntimeError(f"scoring server unreachable after {retries} tries: {last}")
+
+
+_TOK = None
+def _finish_reason(text: str):
+    """Truncation proxy: verl's reward hook has no stop reason; a response at the length ceiling is truncated."""
+    global _TOK
+    maxlen = int(os.environ.get("RLPT_MAX_RESPONSE_LENGTH", "0"))
+    if maxlen <= 0:
+        return None
+    if _TOK is None:
+        from transformers import AutoTokenizer
+        _TOK = AutoTokenizer.from_pretrained(os.environ.get("RLPT_TOKENIZER", "Qwen/Qwen2.5-VL-3B-Instruct"))
+    return "length" if len(_TOK.encode(text, add_special_tokens=False)) >= maxlen - 1 else "stop"
+
+
+def compute_score(data_source, solution_str, ground_truth, extra_info=None):
+    gt = json.loads(ground_truth)
+    mode = os.environ.get("RLPT_ARM_REWARD", "match")
+
+    pred, has_marker = extract_answer(solution_str)
+    fmt = 1.0 if has_marker else 0.0
+    ans = 1.0 if answer_correct(pred, gt["answer"]) else 0.0
+
+    if mode == "match_v2":
+        reward_mode = os.environ.get("REWARD_MODE", "match")          # v3: "match" | "answer_only"
+        gold_steps = gt.get("gold_steps") or []
+        if not gold_steps:
+            # v3 plumbing: reference-free val rows (data_source vpb_dev) carry no gold steps -> no scorer call;
+            # answer-only reward with the truncation gate so the logged 'answer'/'acc' mean is a plain accuracy.
+            gated = int(_finish_reason(solution_str) == "length" or not has_marker)
+            R = 0.0 if gated else W_ANSWER * ans + W_FORMAT * fmt
+            return {"score": R, "format": fmt, "answer": ans, "acc": 0.0 if gated else ans, "match": 0.0, "pun": 0.0,
+                    "gated": gated, "n_segments": 0, "n_dup": 0, "n_matched": 0, "match_precision": 0.0,
+                    "match_recall": 0.0, "inv_frac": 0.0}
+        resp = _call_server({
+            "op": "reward_v2",
+            "response": solution_str,
+            "gold_steps": gold_steps,
+            "gold_answer": str(gt["answer"]),
+            "finish_reason": _finish_reason(solution_str),
+            "mode": reward_mode,
+        })
+        # keep this module's numeric-equivalence answer checker for the answer term
+        R = float(resp["R"])
+        if not resp["gated"]:
+            R += W_ANSWER * (ans - float(resp["answer"]))
+        acc = 0.0 if resp["gated"] else ans                              # v3: filter_groups.metric=acc keys on this
+        out = {"score": R, "format": float(resp["format"]), "answer": ans, "acc": acc, "match": float(resp["match"]),
+               "pun": float(resp["pun"]), "gated": int(resp["gated"]), "n_segments": resp["n_segs"],
+               "n_dup": resp["n_dup"], "n_matched": resp["n_pairs"], "match_precision": resp["prec"],
+               "match_recall": resp["cov"], "inv_frac": resp["inv_frac"]}
+        return out
+    if mode == "match":
+        resp = _call_server({
+            "op": "match",
+            "response": solution_str,
+            "gold_steps": gt["gold_steps"],
+            "segmentation": os.environ["RLPT_SEGMENTATION"],
+            "tau": float(os.environ["RLPT_MATCH_TAU"]),
+        })
+        mid = resp["match"]
+        extras = {"n_segments": resp["n_segments"], "n_matched": resp["n_matched"],
+                  "match_precision": resp["precision"], "match_recall": resp["recall"]}
+    elif mode == "vprm":
+        resp = _call_server({
+            "op": "score",
+            "question": gt["question"],
+            "image_path": gt["image_path"],
+            "response": solution_str,
+        })
+        mid = resp["min_score"]
+        extras = {"n_segments": resp["n_steps"]}
+    else:
+        raise ValueError(f"RLPT_ARM_REWARD={mode!r}")
+
+    score = W_FORMAT * fmt + W_MATCH * mid + W_ANSWER * ans
+    out = {"score": score, "format": fmt, "answer": ans,
+           ("match" if mode == "match" else "prm_min"): mid}
+    out.update(extras)
+    return out

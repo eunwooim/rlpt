@@ -1,0 +1,33 @@
+{
+  "n_structured": 334411,
+  "arms": {
+    "A_step_para_model": {
+      "records": 334411,
+      "macro_f1": 0.9240580973897464,
+      "coverage": 0.9713303464184118,
+      "micro_prec": 0.820130735049789,
+      "density_ratio_mean": 1.1512614211644603,
+      "wdiff_mean": 0.0747658813251728,
+      "perfect_pct": 71.42946852824818,
+      "method_mix": {
+        "marker/para": 320065,
+        "marker/step": 14346
+      }
+    },
+    "B_step_model": {
+      "records": 334411,
+      "macro_f1": 0.7537139583800945,
+      "coverage": 0.7229238987023967,
+      "micro_prec": 0.8328942805067924,
+      "density_ratio_mean": 0.8944772231668525,
+      "wdiff_mean": 0.12927830764365922,
+      "perfect_pct": 15.378680725215379,
+      "method_mix": {
+        "marker/step": 14346,
+        "skip/code_fence": 74,
+        "skip/nonprose": 1683,
+        "model": 318308
+      }
+    }
+  }
+}

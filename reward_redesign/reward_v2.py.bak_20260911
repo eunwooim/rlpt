@@ -1,0 +1,225 @@
+#!/usr/bin/env python3
+"""reward_v2.py — RLPT reward, redesigned after the arm-1 inflate-then-repeat hack.
+
+    if no parsable "Final answer:"       -> R = 0 (answer gate; keep the rollout in the group)
+    segs   = dedupe(split on \\n\\n)      (near-duplicates -> unmatched mass, never matched)
+    s(i,j) = clip[0,1](0.5*E(i->j) + 0.5*E(j->i) - 1.0*max(C))   deberta-xlarge-mnli
+    M      = Hungarian one-to-one, pair kept iff s >= TAU_MATCH
+    cov    = matched gold mass / gold mass
+    prec   = matched rollout mass / TOTAL rollout mass          (mass = words; padding dilutes it)
+    match  = F_beta(prec, cov, 0.5) * min(1, 2*gold/rollout) * (1 - W_ORDER * inversion_frac)
+    pun    = max(0, unmatched rollout mass - PUN_TOL*gold mass) / gold mass
+    format = 1 iff MIN_SEGS..MAX_SEGS blank-line segments AND exactly one "Final answer:" line
+    R      = 5*answer + 2*match + 1*format - 1*pun
+
+`score_old` reproduces the arm-1 reward for A/B comparison: no gate, no dedupe, no pun,
+precision = matched pairs / n_segments, no order term.
+
+Run under chunker/env (transformers 5.14) — the env the NLI tau was calibrated in.
+Requires: torch, transformers, sentence-transformers, scipy, numpy.
+"""
+from __future__ import annotations
+import re
+from dataclasses import dataclass, asdict
+import numpy as np
+import torch
+from scipy.optimize import linear_sum_assignment
+
+# ---- weights and thresholds (all in one place so the red-team can sweep them) ----
+W_ANSWER, W_MATCH, W_FORMAT, W_PUN = 5.0, 2.0, 1.0, 1.0
+TAU_MATCH   = 0.45     # NLI pair gate (calibrated on merge/split perturbation curve)
+DEDUPE_COS  = 0.90     # SBERT-MiniLM cosine: >= this to an earlier segment -> duplicate
+PUN_TOL     = 0.50     # unmatched rollout mass up to PUN_TOL * gold mass is free
+BETA        = 0.5      # precision-dominant F-beta
+W_ORDER     = 0.25     # soft order penalty on the match term (fraction of inverted matched pairs)
+MIN_SEGS, MAX_SEGS = 2, 12
+NLI_MAX_TOKENS = 512   # premise longer than this -> segment counts as unmatched
+NLI_MODEL   = "microsoft/deberta-xlarge-mnli"
+SBERT_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+
+FINAL_RE = re.compile(r"(?im)^\s*(?:\*\*)?(?:final\s+)?answer(?:\*\*)?\s*:\s*(.+?)\s*$")
+THINK_RE = re.compile(r"</?think>")
+BOXED_RE = re.compile(r"\\boxed\{([^{}]+)\}")
+
+
+# ------------------------------------------------------------------ text utils
+def split_steps(text: str) -> tuple[list[str], list[str]]:
+    """Blank-line segments, with 'Final answer:' lines removed from matching. Returns (segs, answer_lines)."""
+    segs, answer_lines = [], []
+    text = THINK_RE.sub("\n\n", text)
+    for block in re.split(r"\n\s*\n", text):
+        block = block.strip()
+        if not block:
+            continue
+        kept = []
+        for line in block.split("\n"):
+            if FINAL_RE.match(line):
+                answer_lines.append(line.strip())
+            else:
+                kept.append(line)
+        body = "\n".join(kept).strip()
+        if body:
+            segs.append(body)
+    return segs, answer_lines
+
+
+def extract_final(text: str) -> str | None:
+    m = FINAL_RE.findall(text)
+    if m:
+        return m[-1].strip()
+    b = BOXED_RE.findall(text)
+    return b[-1].strip() if b else None
+
+
+def norm_answer(a: str | None) -> str | None:
+    if a is None:
+        return None
+    a = a.strip().rstrip(".").strip("$ ").replace(",", "").replace("\\boxed{", "").rstrip("}").lower()
+    a = re.sub(r"^\(([a-e])\)$", r"\1", a)          # (C) -> c
+    try:
+        return str(float(a))
+    except ValueError:
+        return a
+
+
+def mass(seg: str) -> int:
+    return max(1, len(seg.split()))
+
+
+def inversion_fraction(pairs: list[tuple[int, int]]) -> float:
+    """pairs = (rollout_idx, gold_idx); fraction of matched pairs out of gold order."""
+    if len(pairs) < 2:
+        return 0.0
+    gold_seq = [j for _, j in sorted(pairs)]
+    n, inv = len(gold_seq), 0
+    for a in range(n):
+        for b in range(a + 1, n):
+            if gold_seq[a] > gold_seq[b]:
+                inv += 1
+    return inv / (n * (n - 1) / 2)
+
+
+# ------------------------------------------------------------------ scorers
+class Scorers:
+    def __init__(self, device: str | None = None):
+        from transformers import AutoModelForSequenceClassification, AutoTokenizer
+        from sentence_transformers import SentenceTransformer
+        self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
+        self.tok = AutoTokenizer.from_pretrained(NLI_MODEL)
+        self.nli = AutoModelForSequenceClassification.from_pretrained(NLI_MODEL).to(self.device).eval()
+        id2label = {int(k): v.lower() for k, v in self.nli.config.id2label.items()}
+        self.i_ent = next(i for i, l in id2label.items() if l.startswith("entail"))
+        self.i_con = next(i for i, l in id2label.items() if l.startswith("contra"))
+        self.sbert = SentenceTransformer(SBERT_MODEL, device=self.device)
+
+    @torch.no_grad()
+    def _probs(self, premises: list[str], hyps: list[str], bs: int = 32) -> np.ndarray:
+        out = []
+        for k in range(0, len(premises), bs):
+            enc = self.tok(premises[k:k + bs], hyps[k:k + bs], truncation=True,
+                           max_length=NLI_MAX_TOKENS, padding=True, return_tensors="pt").to(self.device)
+            out.append(torch.softmax(self.nli(**enc).logits, -1).cpu().numpy())
+        return np.concatenate(out) if out else np.zeros((0, 3))
+
+    def nli_matrix(self, roll: list[str], gold: list[str]) -> np.ndarray:
+        """s[i,j] = clip(0.5*E(i->j) + 0.5*E(j->i) - max(C)); over-length rollout segments -> row of zeros."""
+        if not roll or not gold:
+            return np.zeros((len(roll), len(gold)))
+        ok = [len(self.tok.encode(r)) <= NLI_MAX_TOKENS for r in roll]
+        P, H = [], []
+        for r in roll:
+            for g in gold:
+                P.append(r); H.append(g)
+        fwd = self._probs(P, H).reshape(len(roll), len(gold), 3)   # i -> j
+        bwd = self._probs(H, P).reshape(len(roll), len(gold), 3)   # j -> i
+        e = 0.5 * fwd[..., self.i_ent] + 0.5 * bwd[..., self.i_ent]
+        c = np.maximum(fwd[..., self.i_con], bwd[..., self.i_con])
+        s = np.clip(e - c, 0.0, 1.0)
+        s[[i for i, o in enumerate(ok) if not o], :] = 0.0
+        return s
+
+    @torch.no_grad()
+    def dedupe(self, segs: list[str]) -> tuple[list[int], list[int]]:
+        """Return (kept_idx, dup_idx): a segment is a duplicate if cosine >= DEDUPE_COS to any EARLIER kept segment."""
+        if len(segs) < 2:
+            return list(range(len(segs))), []
+        emb = self.sbert.encode(segs, normalize_embeddings=True, convert_to_numpy=True)
+        kept, dup = [], []
+        for i in range(len(segs)):
+            if kept and float(np.max(emb[kept] @ emb[i])) >= DEDUPE_COS:
+                dup.append(i)
+            else:
+                kept.append(i)
+        return kept, dup
+
+
+# ------------------------------------------------------------------ reward
+@dataclass
+class Breakdown:
+    R: float; answer: int; match: float; format: int; pun: float
+    cov: float; prec: float; n_segs: int; n_dup: int; n_pairs: int
+    inv_frac: float; roll_mass: int; gold_mass: int; gated: bool; extracted: str | None
+
+
+def answer_at_end(rollout: str) -> bool:
+    lines = [l for l in THINK_RE.sub("\n", rollout).strip().split("\n") if l.strip()]
+    return bool(lines) and bool(FINAL_RE.match(lines[-1]) or BOXED_RE.search(lines[-1]))
+
+
+def score_new(rollout: str, gold_steps: list[str], gold_answer: str, S: Scorers, finish_reason: str | None = None) -> Breakdown:
+    ans = extract_final(rollout)
+    segs, ans_lines = split_steps(rollout)
+    gold = [THINK_RE.sub("", g).strip() for g in gold_steps if not FINAL_RE.match(g.strip())]
+    gold = [g for g in gold if g]
+    roll_mass, gold_mass = sum(mass(s) for s in segs), max(1, sum(mass(g) for g in gold))
+    # gates: no answer / truncated / answer not the final line (front-loaded answer + padding) -> R = 0
+    if ans is None or not segs or finish_reason == "length" or not answer_at_end(rollout):
+        return Breakdown(0.0, 0, 0.0, 0, 0.0, 0.0, 0.0, len(segs), 0, 0, 0.0, roll_mass, gold_mass, True, None)
+
+    answer = int(norm_answer(ans) == norm_answer(gold_answer))
+
+    kept, dup = S.dedupe(segs)
+    fmt = int(MIN_SEGS <= len(kept) <= MAX_SEGS and len(ans_lines) == 1)
+    s = S.nli_matrix([segs[i] for i in kept], gold)
+    pairs = []
+    if s.size:
+        ri, ci = linear_sum_assignment(-s)
+        pairs = [(kept[i], j) for i, j in zip(ri, ci) if s[i, j] >= TAU_MATCH]
+    m_roll = sum(min(mass(segs[i]), mass(gold[j])) for i, j in pairs)   # credit capped at gold partner mass
+    m_gold = sum(mass(gold[j]) for _, j in pairs)
+    cov, prec = m_gold / gold_mass, m_roll / max(1, roll_mass)
+    b2 = BETA ** 2
+    fb = (1 + b2) * prec * cov / (b2 * prec + cov) if (prec + cov) > 0 else 0.0
+    inv = inversion_fraction(pairs)
+    match = fb * min(1.0, 2.0 * gold_mass / max(1, roll_mass)) * (1.0 - W_ORDER * inv)
+    pun = max(0.0, (roll_mass - m_roll) - PUN_TOL * gold_mass) / gold_mass
+    R = W_ANSWER * answer + W_MATCH * match + W_FORMAT * fmt - W_PUN * pun
+    return Breakdown(R, answer, match, fmt, pun, cov, prec, len(segs), len(dup), len(pairs),
+                     inv, roll_mass, gold_mass, False, ans)
+
+
+def score_old(rollout: str, gold_steps: list[str], gold_answer: str, S: Scorers) -> Breakdown:
+    """Arm-1 reward: no gate, no dedupe, no pun, no order term; precision over segment COUNT."""
+    ans = extract_final(rollout)
+    segs, ans_lines = split_steps(rollout)
+    gold = [THINK_RE.sub("", g).strip() for g in gold_steps if not FINAL_RE.match(g.strip())]
+    gold = [g for g in gold if g]
+    roll_mass, gold_mass = sum(mass(s) for s in segs), max(1, sum(mass(g) for g in gold))
+    answer = int(ans is not None and norm_answer(ans) == norm_answer(gold_answer))
+    fmt = int(len(segs) >= 1 and len(ans_lines) >= 1)
+    s = S.nli_matrix(segs, gold)
+    pairs = []
+    if s.size:
+        ri, ci = linear_sum_assignment(-s)
+        pairs = [(i, j) for i, j in zip(ri, ci) if s[i, j] >= TAU_MATCH]
+    cov = len(pairs) / max(1, len(gold))
+    prec = len(pairs) / max(1, len(segs))
+    b2 = BETA ** 2
+    fb = (1 + b2) * prec * cov / (b2 * prec + cov) if (prec + cov) > 0 else 0.0
+    R = W_ANSWER * answer + W_MATCH * fb + W_FORMAT * fmt
+    return Breakdown(R, answer, fb, fmt, 0.0, cov, prec, len(segs), 0, len(pairs), 0.0,
+                     roll_mass, gold_mass, False, ans)
+
+
+def as_dict(b: Breakdown) -> dict:
+    return asdict(b)

@@ -1,0 +1,28 @@
+{
+  "kept": [
+    "A-OKVQA",
+    "AI2D",
+    "CLEVR-Math",
+    "ChartQA",
+    "DVQA",
+    "DocVQA",
+    "FigureQA",
+    "GEOS",
+    "GeoQA+",
+    "Geometry3K",
+    "IconQA",
+    "MapQA",
+    "PMC-VQA",
+    "PlotQA",
+    "ScienceQA",
+    "Super-CLEVR",
+    "TQA",
+    "TabMWP",
+    "TextVQA",
+    "UniGeo",
+    "VQA-AS",
+    "VQA2.0",
+    "VizWiz"
+  ],
+  "dropped_colliding": []
+}

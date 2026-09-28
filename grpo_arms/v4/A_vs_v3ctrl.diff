@@ -1,0 +1,19 @@
+2,3c2,3
+< #SBATCH --job-name=v3_ctrl
+< #SBATCH --account=grp_vgupt140
+---
+> #SBATCH --job-name=v4_A_ctrl
+> #SBATCH --account=grp_bshettah
+17c17
+< # ===== v3 run "ctrl" (2026-09-11): every run-specific value is set here so `diff grpo_arms/v3/ctrl.sbatch grpo_arms/run_arm.sbatch`
+---
+> # ===== v4 run "A_ctrl_v4" (2026-09-13, account grp_bshettah, conservative optimizer): every run-specific value is set here so `diff grpo_arms/v3/ctrl.sbatch grpo_arms/run_arm.sbatch`
+21,23c21,24
+< export OUTDIR=/scratch/sghos104/rlpt/grpo_arms/runs/arm1_3b_ctrl_answeronly
+< export STATUS_FILE=grpo_arms/V3_STATUS.md
+< export EXTRA="--max_steps 90 --save_freq 10 --test_freq 10 --extra_val_files /scratch/sghos104/rlpt/grpo_arms/data/vpb_dev.parquet --verl_extra_override trainer.max_actor_ckpt_to_keep=4 --verl_extra_override actor_rollout_ref.actor.ppo_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.ref.log_prob_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.rollout.log_prob_max_token_len_per_gpu=8192 --rollout_n 5"
+---
+> export GATE_MODE=hard
+> export OUTDIR=/scratch/sghos104/rlpt/grpo_arms/runs/arm1_3b_ctrl_v4
+> export STATUS_FILE=grpo_arms/V4_STATUS.md
+> export EXTRA="--max_steps 60 --save_freq 30 --test_freq 10 --learning_rate 1e-6 --extra_val_files /scratch/sghos104/rlpt/grpo_arms/data/vpb_dev.parquet --verl_extra_override actor_rollout_ref.actor.ppo_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.ref.log_prob_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.rollout.log_prob_max_token_len_per_gpu=8192 --rollout_n 5 --verl_extra_override actor_rollout_ref.actor.kl_loss_coef=0.01 --verl_extra_override actor_rollout_ref.actor.clip_ratio_low=0.2 --verl_extra_override actor_rollout_ref.actor.clip_ratio_high=0.28"

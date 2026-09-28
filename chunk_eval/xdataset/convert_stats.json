@@ -1,0 +1,97 @@
+{
+  "prm800k": {
+    "funnel": {
+      "train_total": 97782,
+      "finish_found_error": 66258,
+      "kept": 10007,
+      "finish_give_up": 2909,
+      "finish_bad_problem": 237,
+      "screening_question": 12654,
+      "dup_exact": 334,
+      "qc_question": 8097,
+      "lt3_steps": 19,
+      "unresolved_step": 29,
+      "test_total": 2762
+    },
+    "records": 10007,
+    "steps_per_solution": {
+      "n": 10007,
+      "mean": 10.75786949135605,
+      "p10": 5.0,
+      "p50": 9.0,
+      "p90": 18.0,
+      "p99": 28.94000000000051,
+      "max": 52.0
+    },
+    "step_tokens": {
+      "n": 107654,
+      "mean": 31.648893677893994,
+      "p10": 13.0,
+      "p50": 28.0,
+      "p90": 54.0,
+      "p99": 105.0,
+      "max": 864.0
+    },
+    "subset_mix": {
+      "train": 9425,
+      "test": 582
+    }
+  },
+  "processbench": {
+    "funnel": {
+      "gsm8k_total": 400,
+      "kept": 3372,
+      "lt3_steps": 28,
+      "math_total": 1000,
+      "olympiadbench_total": 1000,
+      "omnimath_total": 1000
+    },
+    "records": 3372,
+    "steps_per_solution": {
+      "n": 3372,
+      "mean": 7.604092526690391,
+      "p10": 4.0,
+      "p50": 7.0,
+      "p90": 12.0,
+      "p99": 23.0,
+      "max": 47.0
+    },
+    "step_tokens": {
+      "n": 25641,
+      "mean": 89.46273546273547,
+      "p10": 28.0,
+      "p50": 74.0,
+      "p90": 170.0,
+      "p99": 302.0,
+      "max": 734.0
+    },
+    "subset_mix": {
+      "gsm8k": 395,
+      "math": 982,
+      "olympiadbench": 997,
+      "omnimath": 998
+    }
+  },
+  "visualprm_gold_sample": {
+    "source": "/scratch/sghos104/rlpt/chunk_eval/exp2_populations/gold.jsonl",
+    "records": 20000,
+    "steps_per_solution": {
+      "n": 20000,
+      "mean": 7.13115,
+      "p10": 4.0,
+      "p50": 7.0,
+      "p90": 11.0,
+      "p99": 18.0,
+      "max": 42.0
+    },
+    "step_tokens": {
+      "n": 142623,
+      "mean": 46.79704535734068,
+      "p10": 10.0,
+      "p50": 35.0,
+      "p90": 96.0,
+      "p99": 211.0,
+      "max": 834.0
+    }
+  }
+}

@@ -1,0 +1,32 @@
+2c2
+< #SBATCH --job-name=full_R_rlvr
+---
+> #SBATCH --job-name=full_R_smoke
+4c4
+< #SBATCH --partition=public
+---
+> #SBATCH --partition=htc
+9,12c9,13
+< #SBATCH --cpus-per-task=16
+< #SBATCH --mem=320G
+< #SBATCH --gres=gpu:a100:2
+< #SBATCH --time=48:00:00
+---
+> #SBATCH --cpus-per-task=8
+> #SBATCH --mem=180G
+> #SBATCH --gres=gpu:a100:1
+> #SBATCH --exclude=scg001,scg002,scg003,scg004,sg048,sg049,sg050
+> #SBATCH --time=02:30:00
+19c20
+< export ARM=1 MODEL=/scratch/sghos104/rlpt/src/outputs/train/coldstart_vprm_unf_3b/run_v1/checkpoints/checkpoint-25 REWARD=match_v2 SEG=native TAU=0.45 MAXRESP=2048 NGPU=2 GPUMEM=0.40 WATCHDOG=1
+---
+> export ARM=1 MODEL=/scratch/sghos104/rlpt/src/outputs/train/coldstart_vprm_unf_3b/run_v1/checkpoints/checkpoint-25 REWARD=match_v2 SEG=native TAU=0.45 MAXRESP=512 NGPU=1 GPUMEM=0.30 WATCHDOG=0
+23,25c24,27
+< export OUTDIR=/scratch/sghos104/rlpt/grpo_arms/runs/arm1_3b_rlvr_entropy
+< export STATUS_FILE=grpo_arms/FULL_STATUS.md
+< export EXTRA="--max_steps 183 --save_freq 30 --test_freq 10 --learning_rate 1e-6 --extra_val_files /scratch/sghos104/rlpt/grpo_arms/data/vpb_dev.parquet --verl_extra_override actor_rollout_ref.actor.ppo_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.ref.log_prob_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.rollout.log_prob_max_token_len_per_gpu=8192 --rollout_n 5 --verl_extra_override actor_rollout_ref.actor.kl_loss_coef=0.01 --verl_extra_override actor_rollout_ref.actor.clip_ratio_low=0.2 --verl_extra_override actor_rollout_ref.actor.clip_ratio_high=0.28 --entrypoint entropy_main --verl_extra_override actor_rollout_ref.actor.calculate_entropy=True --verl_extra_override trainer.max_actor_ckpt_to_keep=-1"
+---
+> export ENTROPY_TARGET=3.0   # SMOKE ONLY: production target is 0.6 (default in adaptive_entropy.py)
+> export OUTDIR=/scratch/sghos104/rlpt/grpo_arms/runs/full_smoke_entropy
+> export STATUS_FILE=grpo_arms/full/smoke_status.md
+> export EXTRA="--max_steps 3 --save_freq 1000 --test_freq 1000 --max_train_samples 96 --verl_extra_override trainer.val_before_train=False --learning_rate 1e-6 --extra_val_files /scratch/sghos104/rlpt/grpo_arms/data/vpb_dev.parquet --verl_extra_override actor_rollout_ref.actor.ppo_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.ref.log_prob_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.rollout.log_prob_max_token_len_per_gpu=8192 --rollout_n 5 --verl_extra_override actor_rollout_ref.actor.kl_loss_coef=0.01 --verl_extra_override actor_rollout_ref.actor.clip_ratio_low=0.2 --verl_extra_override actor_rollout_ref.actor.clip_ratio_high=0.28 --entrypoint entropy_main --verl_extra_override actor_rollout_ref.actor.calculate_entropy=True --verl_extra_override trainer.max_actor_ckpt_to_keep=-1"

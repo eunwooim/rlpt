@@ -1,0 +1,25 @@
+VisualPRM steps sampled: 43,990
+VPB steps total        : 26,945
+
+distribution                              n    mean   p10   p50   p90    OVL     KS
+-----------------------------------------------------------------------------------
+VisualPRM400K (reference)            43,990    32.8     3    28    66     --     --
+Claude3-5V_Sonnet_20241022_tem07      6,370    21.0     5    17    42  0.702  0.222
+GPT4o_20241120_tem07                  6,631    23.8     3    18    51  0.760  0.189
+lmdeploy_internvl                     2,598    24.1     3    21    49  0.795  0.160
+lmdeploy_qvq                         11,346    99.1    18    78   209  0.518  0.484
+VPB (all policies pooled)            26,945    54.9     5    31   147  0.738  0.166
+
+OVL: 1.0 = identical distributions, 0.0 = disjoint. KS: max CDF gap.
+If the compact policies show OVL well above the pooled row, the 1.67x
+aggregate gap is confirmed as a QvQ artifact rather than a real
+benchmark-level difference.
+
+log-spaced 1..600 words/step       density
+VisualPRM400K                            ▆   █  ▁ ▁  ▁▁▁▁▁▂▄▂▅▅█▅█▇▇▇▆▇▆▅▄▄▃▂▁▁                
+Claude3-5V_Sonnet_20241022_tem07   ▂     ▃   ▁  ▃ ▃▃ █▇▆▄▄▃▇▂▇▇█▅█▇▅▇▅▅▃▂▁▁                    
+GPT4o_20241120_tem07               █     ▄   ▄  ▄ ▅▃ ▅▃▄▃▄▃▇▄▇▆█▆▇▅▅▇▇▆▅▄▃▂▁                   
+lmdeploy_internvl                            █    ▂  ▁▁▂▁▁▁▂▂▃▃▅▃▄▄▃▄▂▃▂▁▁▁                    
+lmdeploy_qvq                             ▁   ▂    ▂   ▁  ▁ ▁▁▂▂▃▂▃▃▄▅▅▆▇▇▇█▇▇▇██▇█▆█▇▆▅▂▁▁     
+
+-> overlap_stats.json

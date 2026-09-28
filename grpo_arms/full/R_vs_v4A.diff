@@ -1,0 +1,23 @@
+2,3c2,3
+< #SBATCH --job-name=v4_A_ctrl
+< #SBATCH --account=grp_bshettah
+---
+> #SBATCH --job-name=full_R_rlvr
+> #SBATCH --account=grp_vgupt140
+17c17
+< # ===== v4 run "A_ctrl_v4" (2026-09-13, account grp_bshettah, conservative optimizer): every run-specific value is set here so `diff grpo_arms/v3/ctrl.sbatch grpo_arms/run_arm.sbatch`
+---
+> # ===== FULL run "R" (2026-09-18): RLVR (answer-only, hard gates) from cs25 with ADAPTIVE ENTROPY, 183 steps, account grp_vgupt140, v4 optimizer: every run-specific value is set here so `diff grpo_arms/v3/ctrl.sbatch grpo_arms/run_arm.sbatch`
+22,24c22,25
+< export OUTDIR=/scratch/sghos104/rlpt/grpo_arms/runs/arm1_3b_ctrl_v4
+< export STATUS_FILE=grpo_arms/V4_STATUS.md
+< export EXTRA="--max_steps 60 --save_freq 30 --test_freq 10 --learning_rate 1e-6 --extra_val_files /scratch/sghos104/rlpt/grpo_arms/data/vpb_dev.parquet --verl_extra_override actor_rollout_ref.actor.ppo_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.ref.log_prob_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.rollout.log_prob_max_token_len_per_gpu=8192 --rollout_n 5 --verl_extra_override actor_rollout_ref.actor.kl_loss_coef=0.01 --verl_extra_override actor_rollout_ref.actor.clip_ratio_low=0.2 --verl_extra_override actor_rollout_ref.actor.clip_ratio_high=0.28"
+---
+> export ENTROPY_MODE=adaptive
+> export OUTDIR=/scratch/sghos104/rlpt/grpo_arms/runs/arm1_3b_rlvr_entropy
+> export STATUS_FILE=grpo_arms/FULL_STATUS.md
+> export EXTRA="--max_steps 183 --save_freq 30 --test_freq 10 --learning_rate 1e-6 --extra_val_files /scratch/sghos104/rlpt/grpo_arms/data/vpb_dev.parquet --verl_extra_override actor_rollout_ref.actor.ppo_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.ref.log_prob_max_token_len_per_gpu=8192 --verl_extra_override actor_rollout_ref.rollout.log_prob_max_token_len_per_gpu=8192 --rollout_n 5 --verl_extra_override actor_rollout_ref.actor.kl_loss_coef=0.01 --verl_extra_override actor_rollout_ref.actor.clip_ratio_low=0.2 --verl_extra_override actor_rollout_ref.actor.clip_ratio_high=0.28 --entrypoint entropy_main --verl_extra_override actor_rollout_ref.actor.calculate_entropy=True --verl_extra_override trainer.max_actor_ckpt_to_keep=-1"
+162c163
+<   pkill -u "$USER" -f "verl.trainer.main_ppo" 2>/dev/null
+---
+>   pkill -u "$USER" -f "verl.trainer.main_ppo|entropy_main" 2>/dev/null

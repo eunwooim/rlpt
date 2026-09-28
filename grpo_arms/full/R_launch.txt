@@ -1,0 +1,1 @@
+{"run": "R_rlvr_entropy", "train": "63570807", "resub": ["63570808", "63570809"], "wall": "10:00:00", "outdir": "/scratch/sghos104/rlpt/grpo_arms/runs/arm1_3b_rlvr_entropy", "account": "grp_vgupt140", "prev_train_logs": [], "launched": "2026-09-18 03:42"}

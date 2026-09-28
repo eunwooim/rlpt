@@ -1,0 +1,22 @@
+VisualProcessBench: 2,866 records
+
+policy models: {'GPT4o_20241120_tem07': 870, 'lmdeploy_qvq': 825, 'lmdeploy_internvl': 306, 'Claude3-5V_Sonnet_20241022_tem07': 865}
+data sources : {'MathVision_MINI': 712, 'MathVerse_MINI_Vision_Only': 1026, 'MMMU_DEV_VAL': 267, 'DynaMath': 570, 'WeMath': 291}
+label values : {'1': 16585, '-1': 7691, '0': 2674}
+
+VPB (all)                          recs  2,866  steps/rec  9.40 (p50  8)   words/step   54.8 (p50  31  p90  147)
+
+--- VPB by policy model ---
+  GPT4o_20241120_tem07             recs    870  steps/rec  7.62 (p50  6)   words/step   23.8 (p50  18  p90   51)
+  Claude3-5V_Sonnet_20241022_tem   recs    865  steps/rec  7.36 (p50  7)   words/step   21.0 (p50  17  p90   42)
+  lmdeploy_qvq                     recs    825  steps/rec 13.75 (p50 14)   words/step   99.1 (p50  78  p90  209)
+  lmdeploy_internvl                recs    306  steps/rec  8.51 (p50  8)   words/step   24.1 (p50  21  p90   49)
+
+========================================================================================
+VisualPRM400K (multi-step)         recs  6,735  steps/rec  6.53 (p50  7)   words/step   32.8 (p50  28  p90   66)
+VisualProcessBench (all)           recs  2,866  steps/rec  9.40 (p50  8)   words/step   54.8 (p50  31  p90  147)
+
+  ratio VPB/VPRM  words-per-step 1.67x   steps-per-record 1.44x
+
+Note: VisualPRM 32.8 words/step ~= 43-46 tokens, consistent with the
+46.8 tokens/step recorded in the xdataset REPORT. PRM800K was 31.6 tokens.

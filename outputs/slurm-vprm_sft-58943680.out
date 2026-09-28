@@ -1,0 +1,1024 @@
+[vprm_sft] host=sg030 job=58943680 start=Sun Jul 12 04:14:26 MST 2026
+GPU 0: NVIDIA A100-SXM4-80GB (UUID: GPU-9fc0fcdd-209f-8e03-fe3f-758f04a6e0c3)
+shim 2.6.0 | cuda True
+ROOT=/scratch/sghos104/rlpt
+OUTPUT_DIR=/scratch/sghos104/rlpt/src/outputs/train/visualprm_sft_first_baseline/run_20260712_041452
+COMMAND=/scratch/sghos104/envs/rlpt-train/bin/python -u src/train/sft.py --base_model Qwen/Qwen2.5-VL-3B-Instruct --dataset_name OpenGVLab/VisualPRM400K-v1.1-Raw --dataset_split train --data_ratio 0.01 --max_seq_len 4096 --seed 42 --token_budget 1000000 --learning_rate 1e-5 --output_dir /scratch/sghos104/rlpt/src/outputs/train/visualprm_sft_first_baseline/run_20260712_041452 --report_to none --dataset_config default --image_mode auto
+Loading training dataset
+Loading VisualPRM annotations from https://huggingface.co/datasets/OpenGVLab/VisualPRM400K-v1.1-Raw/resolve/main/annotations.zip
+Counting VisualPRM annotations:   0%|          | 0/38 [00:00<?, ?file/s]Counting VisualPRM annotations:   3%|▎         | 1/38 [00:00<00:09,  4.04file/s]Counting VisualPRM annotations:   5%|▌         | 2/38 [00:00<00:09,  3.65file/s]Counting VisualPRM annotations:   8%|▊         | 3/38 [00:00<00:10,  3.27file/s]Counting VisualPRM annotations:  11%|█         | 4/38 [00:01<00:12,  2.74file/s]Counting VisualPRM annotations:  13%|█▎        | 5/38 [00:01<00:11,  2.81file/s]Counting VisualPRM annotations:  16%|█▌        | 6/38 [00:01<00:09,  3.50file/s]Counting VisualPRM annotations:  18%|█▊        | 7/38 [00:02<00:08,  3.87file/s]Counting VisualPRM annotations:  21%|██        | 8/38 [00:02<00:09,  3.29file/s]Counting VisualPRM annotations:  24%|██▎       | 9/38 [00:02<00:08,  3.61file/s]Counting VisualPRM annotations:  26%|██▋       | 10/38 [00:02<00:07,  3.98file/s]Counting VisualPRM annotations:  29%|██▉       | 11/38 [00:03<00:06,  4.01file/s]Counting VisualPRM annotations:  32%|███▏      | 12/38 [00:03<00:05,  4.82file/s]Counting VisualPRM annotations:  34%|███▍      | 13/38 [00:03<00:05,  4.54file/s]Counting VisualPRM annotations:  37%|███▋      | 14/38 [00:03<00:04,  4.90file/s]Counting VisualPRM annotations:  39%|███▉      | 15/38 [00:03<00:04,  4.72file/s]Counting VisualPRM annotations:  47%|████▋     | 18/38 [00:04<00:03,  6.57file/s]Counting VisualPRM annotations:  50%|█████     | 19/38 [00:04<00:03,  6.33file/s]Counting VisualPRM annotations:  53%|█████▎    | 20/38 [00:04<00:03,  5.89file/s]Counting VisualPRM annotations:  55%|█████▌    | 21/38 [00:04<00:03,  4.80file/s]Counting VisualPRM annotations:  58%|█████▊    | 22/38 [00:05<00:03,  5.29file/s]Counting VisualPRM annotations:  61%|██████    | 23/38 [00:05<00:04,  3.72file/s]Counting VisualPRM annotations:  63%|██████▎   | 24/38 [00:05<00:03,  3.65file/s]Counting VisualPRM annotations:  66%|██████▌   | 25/38 [00:06<00:04,  3.08file/s]Counting VisualPRM annotations:  68%|██████▊   | 26/38 [00:06<00:04,  2.70file/s]Counting VisualPRM annotations:  71%|███████   | 27/38 [00:07<00:03,  2.87file/s]Counting VisualPRM annotations:  74%|███████▎  | 28/38 [00:07<00:03,  3.25file/s]Counting VisualPRM annotations:  76%|███████▋  | 29/38 [00:07<00:02,  3.56file/s]Counting VisualPRM annotations:  79%|███████▉  | 30/38 [00:07<00:01,  4.33file/s]Counting VisualPRM annotations:  84%|████████▍ | 32/38 [00:07<00:00,  6.20file/s]Counting VisualPRM annotations:  87%|████████▋ | 33/38 [00:07<00:00,  5.29file/s]Counting VisualPRM annotations:  89%|████████▉ | 34/38 [00:08<00:01,  3.65file/s]Counting VisualPRM annotations:  95%|█████████▍| 36/38 [00:08<00:00,  4.59file/s]Counting VisualPRM annotations:  97%|█████████▋| 37/38 [00:08<00:00,  5.12file/s]Counting VisualPRM annotations: 100%|██████████| 38/38 [00:09<00:00,  5.56file/s]Counting VisualPRM annotations: 100%|██████████| 38/38 [00:09<00:00,  4.20file/s]
+Selecting deterministic training subset
+Selecting VisualPRM rows:   0%|          | 0/5651 [00:00<?, ?row/s]Selecting VisualPRM rows:   2%|▏         | 135/5651 [00:00<00:04, 1322.57row/s]Selecting VisualPRM rows:   5%|▍         | 268/5651 [00:00<00:05, 1007.43row/s]Selecting VisualPRM rows:   7%|▋         | 374/5651 [00:00<00:05, 928.12row/s] Selecting VisualPRM rows:   8%|▊         | 470/5651 [00:00<00:05, 903.77row/s]Selecting VisualPRM rows:  10%|█         | 577/5651 [00:00<00:05, 944.03row/s]Selecting VisualPRM rows:  12%|█▏        | 673/5651 [00:00<00:05, 879.26row/s]Selecting VisualPRM rows:  14%|█▎        | 763/5651 [00:00<00:05, 842.91row/s]Selecting VisualPRM rows:  15%|█▌        | 848/5651 [00:00<00:06, 783.83row/s]Selecting VisualPRM rows:  17%|█▋        | 959/5651 [00:01<00:05, 867.45row/s]Selecting VisualPRM rows:  19%|█▉        | 1077/5651 [00:01<00:04, 953.94row/s]Selecting VisualPRM rows:  21%|██        | 1175/5651 [00:01<00:04, 897.92row/s]Selecting VisualPRM rows:  23%|██▎       | 1323/5651 [00:01<00:04, 1057.64row/s]Selecting VisualPRM rows:  26%|██▌       | 1453/5651 [00:01<00:03, 1124.66row/s]Selecting VisualPRM rows:  28%|██▊       | 1568/5651 [00:01<00:03, 1117.28row/s]Selecting VisualPRM rows:  30%|███       | 1697/5651 [00:01<00:03, 1165.33row/s]Selecting VisualPRM rows:  32%|███▏      | 1815/5651 [00:01<00:03, 1154.99row/s]Selecting VisualPRM rows:  34%|███▍      | 1932/5651 [00:01<00:03, 1048.91row/s]Selecting VisualPRM rows:  36%|███▌      | 2040/5651 [00:02<00:03, 931.70row/s] Selecting VisualPRM rows:  38%|███▊      | 2137/5651 [00:02<00:04, 770.05row/s]Selecting VisualPRM rows:  39%|███▉      | 2221/5651 [00:02<00:04, 702.76row/s]Selecting VisualPRM rows:  41%|████      | 2296/5651 [00:02<00:05, 664.56row/s]Selecting VisualPRM rows:  42%|████▏     | 2366/5651 [00:02<00:05, 576.32row/s]Selecting VisualPRM rows:  43%|████▎     | 2427/5651 [00:02<00:05, 558.01row/s]Selecting VisualPRM rows:  44%|████▍     | 2485/5651 [00:02<00:05, 559.22row/s]Selecting VisualPRM rows:  45%|████▌     | 2543/5651 [00:03<00:06, 478.08row/s]Selecting VisualPRM rows:  47%|████▋     | 2656/5651 [00:03<00:04, 627.61row/s]Selecting VisualPRM rows:  49%|████▉     | 2780/5651 [00:03<00:03, 778.37row/s]Selecting VisualPRM rows:  51%|█████     | 2866/5651 [00:03<00:03, 791.49row/s]Selecting VisualPRM rows:  53%|█████▎    | 2973/5651 [00:03<00:03, 865.42row/s]Selecting VisualPRM rows:  54%|█████▍    | 3065/5651 [00:03<00:03, 806.60row/s]Selecting VisualPRM rows:  56%|█████▌    | 3150/5651 [00:03<00:03, 746.91row/s]Selecting VisualPRM rows:  57%|█████▋    | 3228/5651 [00:03<00:03, 726.86row/s]Selecting VisualPRM rows:  59%|█████▊    | 3310/5651 [00:04<00:03, 744.37row/s]Selecting VisualPRM rows:  60%|██████    | 3406/5651 [00:04<00:02, 802.20row/s]Selecting VisualPRM rows:  62%|██████▏   | 3489/5651 [00:04<00:02, 734.45row/s]Selecting VisualPRM rows:  63%|██████▎   | 3565/5651 [00:04<00:03, 594.13row/s]Selecting VisualPRM rows:  64%|██████▍   | 3630/5651 [00:04<00:04, 467.46row/s]Selecting VisualPRM rows:  65%|██████▌   | 3684/5651 [00:04<00:04, 435.58row/s]Selecting VisualPRM rows:  66%|██████▌   | 3733/5651 [00:05<00:04, 385.83row/s]Selecting VisualPRM rows:  67%|██████▋   | 3784/5651 [00:05<00:04, 404.70row/s]Selecting VisualPRM rows:  68%|██████▊   | 3828/5651 [00:05<00:04, 399.48row/s]Selecting VisualPRM rows:  69%|██████▊   | 3871/5651 [00:05<00:05, 337.36row/s]Selecting VisualPRM rows:  70%|██████▉   | 3932/5651 [00:05<00:04, 392.13row/s]Selecting VisualPRM rows:  71%|███████   | 4008/5651 [00:05<00:03, 478.02row/s]Selecting VisualPRM rows:  72%|███████▏  | 4070/5651 [00:05<00:03, 509.25row/s]Selecting VisualPRM rows:  73%|███████▎  | 4125/5651 [00:05<00:03, 412.06row/s]Selecting VisualPRM rows:  74%|███████▍  | 4177/5651 [00:06<00:03, 436.79row/s]Selecting VisualPRM rows:  75%|███████▍  | 4226/5651 [00:06<00:03, 364.81row/s]Selecting VisualPRM rows:  76%|███████▌  | 4268/5651 [00:06<00:04, 331.09row/s]Selecting VisualPRM rows:  77%|███████▋  | 4374/5651 [00:06<00:02, 488.91row/s]Selecting VisualPRM rows:  78%|███████▊  | 4432/5651 [00:06<00:02, 475.08row/s]Selecting VisualPRM rows:  79%|███████▉  | 4486/5651 [00:06<00:02, 477.00row/s]Selecting VisualPRM rows:  80%|████████  | 4538/5651 [00:06<00:02, 473.97row/s]Selecting VisualPRM rows:  82%|████████▏ | 4632/5651 [00:06<00:01, 593.88row/s]Selecting VisualPRM rows:  84%|████████▎ | 4729/5651 [00:07<00:01, 690.27row/s]Selecting VisualPRM rows:  86%|████████▌ | 4836/5651 [00:07<00:01, 790.78row/s]Selecting VisualPRM rows:  87%|████████▋ | 4919/5651 [00:07<00:00, 773.88row/s]Selecting VisualPRM rows:  89%|████████▊ | 5004/5651 [00:07<00:00, 794.97row/s]Selecting VisualPRM rows:  90%|█████████ | 5086/5651 [00:07<00:00, 784.29row/s]Selecting VisualPRM rows:  91%|█████████▏| 5166/5651 [00:07<00:00, 723.02row/s]Selecting VisualPRM rows:  93%|█████████▎| 5279/5651 [00:07<00:00, 826.58row/s]Selecting VisualPRM rows:  95%|█████████▌| 5381/5651 [00:07<00:00, 876.43row/s]Selecting VisualPRM rows:  97%|█████████▋| 5471/5651 [00:07<00:00, 757.35row/s]Selecting VisualPRM rows: 100%|█████████▉| 5632/5651 [00:08<00:00, 972.65row/s]Selecting VisualPRM rows: 100%|██████████| 5651/5651 [00:08<00:00, 698.20row/s]
+Preparing image references
+Resolving VisualPRM images.zip for lazy image loading (5747 selected images)
+Downloading/resolving VisualPRM asset: https://huggingface.co/datasets/OpenGVLab/VisualPRM400K-v1.1-Raw/resolve/main/images.zip
+Resolving VisualPRM image members:   0%|          | 0/5747 [00:00<?, ?image/s]Resolving VisualPRM image members: 100%|██████████| 5747/5747 [00:00<00:00, 344534.47image/s]
+Dropped 364 VisualPRM image paths that were missing from images.zip
+/scratch/sghos104/envs/rlpt-train/lib/python3.11/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Loading processor: Qwen/Qwen2.5-VL-3B-Instruct
+The image processor of type `Qwen2VLImageProcessor` is now loaded as a fast processor by default, even if the model checkpoint was saved with a slow processor. This is a breaking change and may produce slightly different outputs. To continue using the slow processor, instantiate this class with `use_fast=False`. Note that this behavior will be extended to all models in a future release.
+Loading model: Qwen/Qwen2.5-VL-3B-Instruct
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:04<00:04,  4.80s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:07<00:00,  3.34s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:07<00:00,  3.56s/it]
+Training plan: rows=5651 max_steps=245 token_budget=1000000 max_seq_len=4096 per_device_batch=1 grad_accum=1
+⚙️  Running in WANDB offline mode
+[RANK 0] Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+Starting SFT training
+SFT optimizer steps:   0%|          | 0/245 [00:00<?, ?step/s]
+  0%|          | 0/245 [00:00<?, ?it/s][A`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`...
+SFT optimizer steps:   0%|          | 1/245 [00:07<30:16,  7.44s/step]
+  0%|          | 1/245 [00:07<30:16,  7.44s/it][ASFT optimizer steps:   0%|          | 1/245 [00:07<30:16,  7.44s/step, loss=6.37, learning_rate=0, grad_norm=444]                                                                                                                 
+                                               [A{'loss': 6.3692, 'grad_norm': 444.0, 'learning_rate': 0.0, 'epoch': 0.0}
+SFT optimizer steps:   0%|          | 1/245 [00:07<30:16,  7.44s/step, loss=6.37, learning_rate=0, grad_norm=444]
+  0%|          | 1/245 [00:07<30:16,  7.44s/it][ASFT optimizer steps:   1%|          | 2/245 [00:13<27:33,  6.80s/step, loss=6.37, learning_rate=0, grad_norm=444]
+  1%|          | 2/245 [00:13<27:33,  6.80s/it][ASFT optimizer steps:   1%|          | 2/245 [00:13<27:33,  6.80s/step, loss=2.34, learning_rate=1.25e-6, grad_norm=104]                                                                                                                       
+                                               [A{'loss': 2.3444, 'grad_norm': 103.5, 'learning_rate': 1.25e-06, 'epoch': 0.0}
+SFT optimizer steps:   1%|          | 2/245 [00:13<27:33,  6.80s/step, loss=2.34, learning_rate=1.25e-6, grad_norm=104]
+  1%|          | 2/245 [00:13<27:33,  6.80s/it][ASFT optimizer steps:   1%|          | 3/245 [00:15<18:14,  4.52s/step, loss=2.34, learning_rate=1.25e-6, grad_norm=104]
+  1%|          | 3/245 [00:15<18:14,  4.52s/it][ASFT optimizer steps:   1%|          | 3/245 [00:15<18:14,  4.52s/step, loss=12.3, learning_rate=2.5e-6, grad_norm=280]                                                                                                                       
+                                               [A{'loss': 12.2565, 'grad_norm': 280.0, 'learning_rate': 2.5e-06, 'epoch': 0.0}
+SFT optimizer steps:   1%|          | 3/245 [00:15<18:14,  4.52s/step, loss=12.3, learning_rate=2.5e-6, grad_norm=280]
+  1%|          | 3/245 [00:15<18:14,  4.52s/it][ASFT optimizer steps:   2%|▏         | 4/245 [00:17<13:55,  3.47s/step, loss=12.3, learning_rate=2.5e-6, grad_norm=280]
+  2%|▏         | 4/245 [00:17<13:55,  3.47s/it][ASFT optimizer steps:   2%|▏         | 4/245 [00:17<13:55,  3.47s/step, loss=9.44, learning_rate=3.75e-6, grad_norm=466]                                                                                                                       
+                                               [A{'loss': 9.4436, 'grad_norm': 466.0, 'learning_rate': 3.7500000000000005e-06, 'epoch': 0.0}
+SFT optimizer steps:   2%|▏         | 4/245 [00:17<13:55,  3.47s/step, loss=9.44, learning_rate=3.75e-6, grad_norm=466]
+  2%|▏         | 4/245 [00:17<13:55,  3.47s/it][ASFT optimizer steps:   2%|▏         | 5/245 [00:20<12:40,  3.17s/step, loss=9.44, learning_rate=3.75e-6, grad_norm=466]
+  2%|▏         | 5/245 [00:20<12:40,  3.17s/it][ASFT optimizer steps:   2%|▏         | 5/245 [00:20<12:40,  3.17s/step, loss=12, learning_rate=5e-6, grad_norm=177]                                                                                                                       
+                                               [A{'loss': 12.0398, 'grad_norm': 177.0, 'learning_rate': 5e-06, 'epoch': 0.0}
+SFT optimizer steps:   2%|▏         | 5/245 [00:20<12:40,  3.17s/step, loss=12, learning_rate=5e-6, grad_norm=177]
+  2%|▏         | 5/245 [00:20<12:40,  3.17s/it][ASFT optimizer steps:   2%|▏         | 6/245 [00:21<10:42,  2.69s/step, loss=12, learning_rate=5e-6, grad_norm=177]
+  2%|▏         | 6/245 [00:21<10:42,  2.69s/it][ASFT optimizer steps:   2%|▏         | 6/245 [00:21<10:42,  2.69s/step, loss=12.3, learning_rate=6.25e-6, grad_norm=150]                                                                                                                       
+                                               [A{'loss': 12.2967, 'grad_norm': 150.0, 'learning_rate': 6.25e-06, 'epoch': 0.0}
+SFT optimizer steps:   2%|▏         | 6/245 [00:21<10:42,  2.69s/step, loss=12.3, learning_rate=6.25e-6, grad_norm=150]
+  2%|▏         | 6/245 [00:21<10:42,  2.69s/it][ASFT optimizer steps:   3%|▎         | 7/245 [00:24<10:18,  2.60s/step, loss=12.3, learning_rate=6.25e-6, grad_norm=150]
+  3%|▎         | 7/245 [00:24<10:18,  2.60s/it][ASFT optimizer steps:   3%|▎         | 7/245 [00:24<10:18,  2.60s/step, loss=6.61, learning_rate=7.5e-6, grad_norm=111]                                                                                                                       
+                                               [A{'loss': 6.612, 'grad_norm': 111.0, 'learning_rate': 7.500000000000001e-06, 'epoch': 0.0}
+SFT optimizer steps:   3%|▎         | 7/245 [00:24<10:18,  2.60s/step, loss=6.61, learning_rate=7.5e-6, grad_norm=111]
+  3%|▎         | 7/245 [00:24<10:18,  2.60s/it][ASFT optimizer steps:   3%|▎         | 8/245 [00:26<09:25,  2.39s/step, loss=6.61, learning_rate=7.5e-6, grad_norm=111]
+  3%|▎         | 8/245 [00:26<09:25,  2.39s/it][ASFT optimizer steps:   3%|▎         | 8/245 [00:26<09:25,  2.39s/step, loss=10.8, learning_rate=8.75e-6, grad_norm=139]                                                                                                                       
+                                               [A{'loss': 10.8018, 'grad_norm': 139.0, 'learning_rate': 8.750000000000001e-06, 'epoch': 0.0}
+SFT optimizer steps:   3%|▎         | 8/245 [00:26<09:25,  2.39s/step, loss=10.8, learning_rate=8.75e-6, grad_norm=139]
+  3%|▎         | 8/245 [00:26<09:25,  2.39s/it][ASFT optimizer steps:   4%|▎         | 9/245 [00:28<08:48,  2.24s/step, loss=10.8, learning_rate=8.75e-6, grad_norm=139]
+  4%|▎         | 9/245 [00:28<08:48,  2.24s/it][ASFT optimizer steps:   4%|▎         | 9/245 [00:28<08:48,  2.24s/step, loss=13.5, learning_rate=1e-5, grad_norm=322]                                                                                                                       
+                                               [A{'loss': 13.528, 'grad_norm': 322.0, 'learning_rate': 1e-05, 'epoch': 0.0}
+SFT optimizer steps:   4%|▎         | 9/245 [00:28<08:48,  2.24s/step, loss=13.5, learning_rate=1e-5, grad_norm=322]
+  4%|▎         | 9/245 [00:28<08:48,  2.24s/it][ASFT optimizer steps:   4%|▍         | 10/245 [00:30<08:36,  2.20s/step, loss=13.5, learning_rate=1e-5, grad_norm=322]
+  4%|▍         | 10/245 [00:30<08:36,  2.20s/it][ASFT optimizer steps:   4%|▍         | 10/245 [00:30<08:36,  2.20s/step, loss=5.54, learning_rate=9.96e-6, grad_norm=75.5]                                                                                                                         
+                                                [A{'loss': 5.5417, 'grad_norm': 75.5, 'learning_rate': 9.957805907172996e-06, 'epoch': 0.0}
+SFT optimizer steps:   4%|▍         | 10/245 [00:30<08:36,  2.20s/step, loss=5.54, learning_rate=9.96e-6, grad_norm=75.5]
+  4%|▍         | 10/245 [00:30<08:36,  2.20s/it][ASFT optimizer steps:   4%|▍         | 11/245 [00:31<07:58,  2.04s/step, loss=5.54, learning_rate=9.96e-6, grad_norm=75.5]
+  4%|▍         | 11/245 [00:31<07:58,  2.04s/it][ASFT optimizer steps:   4%|▍         | 11/245 [00:31<07:58,  2.04s/step, loss=5.22, learning_rate=9.92e-6, grad_norm=98.5]                                                                                                                         
+                                                [A{'loss': 5.2215, 'grad_norm': 98.5, 'learning_rate': 9.915611814345992e-06, 'epoch': 0.0}
+SFT optimizer steps:   4%|▍         | 11/245 [00:31<07:58,  2.04s/step, loss=5.22, learning_rate=9.92e-6, grad_norm=98.5]
+  4%|▍         | 11/245 [00:31<07:58,  2.04s/it][ASFT optimizer steps:   5%|▍         | 12/245 [00:33<07:53,  2.03s/step, loss=5.22, learning_rate=9.92e-6, grad_norm=98.5]
+  5%|▍         | 12/245 [00:33<07:53,  2.03s/it][ASFT optimizer steps:   5%|▍         | 12/245 [00:33<07:53,  2.03s/step, loss=5.95, learning_rate=9.87e-6, grad_norm=114]                                                                                                                         
+                                                [A{'loss': 5.9524, 'grad_norm': 113.5, 'learning_rate': 9.87341772151899e-06, 'epoch': 0.0}
+SFT optimizer steps:   5%|▍         | 12/245 [00:33<07:53,  2.03s/step, loss=5.95, learning_rate=9.87e-6, grad_norm=114]
+  5%|▍         | 12/245 [00:33<07:53,  2.03s/it][ASFT optimizer steps:   5%|▌         | 13/245 [00:36<08:03,  2.08s/step, loss=5.95, learning_rate=9.87e-6, grad_norm=114]
+  5%|▌         | 13/245 [00:36<08:03,  2.08s/it][ASFT optimizer steps:   5%|▌         | 13/245 [00:36<08:03,  2.08s/step, loss=11.7, learning_rate=9.83e-6, grad_norm=142]                                                                                                                        
+                                                [A{'loss': 11.6771, 'grad_norm': 142.0, 'learning_rate': 9.831223628691983e-06, 'epoch': 0.0}
+SFT optimizer steps:   5%|▌         | 13/245 [00:36<08:03,  2.08s/step, loss=11.7, learning_rate=9.83e-6, grad_norm=142]
+  5%|▌         | 13/245 [00:36<08:03,  2.08s/it][ASFT optimizer steps:   6%|▌         | 14/245 [00:37<07:36,  1.98s/step, loss=11.7, learning_rate=9.83e-6, grad_norm=142]
+  6%|▌         | 14/245 [00:37<07:36,  1.98s/it][ASFT optimizer steps:   6%|▌         | 14/245 [00:37<07:36,  1.98s/step, loss=5.95, learning_rate=9.79e-6, grad_norm=71.5]                                                                                                                         
+                                                [A{'loss': 5.952, 'grad_norm': 71.5, 'learning_rate': 9.78902953586498e-06, 'epoch': 0.0}
+SFT optimizer steps:   6%|▌         | 14/245 [00:37<07:36,  1.98s/step, loss=5.95, learning_rate=9.79e-6, grad_norm=71.5]
+  6%|▌         | 14/245 [00:37<07:36,  1.98s/it][ASFT optimizer steps:   6%|▌         | 15/245 [00:40<08:28,  2.21s/step, loss=5.95, learning_rate=9.79e-6, grad_norm=71.5]
+  6%|▌         | 15/245 [00:40<08:28,  2.21s/it][ASFT optimizer steps:   6%|▌         | 15/245 [00:40<08:28,  2.21s/step, loss=15.2, learning_rate=9.75e-6, grad_norm=376]                                                                                                                         
+                                                [A{'loss': 15.2022, 'grad_norm': 376.0, 'learning_rate': 9.746835443037975e-06, 'epoch': 0.0}
+SFT optimizer steps:   6%|▌         | 15/245 [00:40<08:28,  2.21s/step, loss=15.2, learning_rate=9.75e-6, grad_norm=376]
+  6%|▌         | 15/245 [00:40<08:28,  2.21s/it][ASFT optimizer steps:   7%|▋         | 16/245 [00:42<07:59,  2.09s/step, loss=15.2, learning_rate=9.75e-6, grad_norm=376]
+  7%|▋         | 16/245 [00:42<07:59,  2.09s/it][ASFT optimizer steps:   7%|▋         | 16/245 [00:42<07:59,  2.09s/step, loss=2.79, learning_rate=9.7e-6, grad_norm=31.1]                                                                                                                        
+                                                [A{'loss': 2.7933, 'grad_norm': 31.125, 'learning_rate': 9.704641350210972e-06, 'epoch': 0.0}
+SFT optimizer steps:   7%|▋         | 16/245 [00:42<07:59,  2.09s/step, loss=2.79, learning_rate=9.7e-6, grad_norm=31.1]
+  7%|▋         | 16/245 [00:42<07:59,  2.09s/it][ASFT optimizer steps:   7%|▋         | 17/245 [00:44<07:48,  2.06s/step, loss=2.79, learning_rate=9.7e-6, grad_norm=31.1]
+  7%|▋         | 17/245 [00:44<07:48,  2.06s/it][ASFT optimizer steps:   7%|▋         | 17/245 [00:44<07:48,  2.06s/step, loss=7.3, learning_rate=9.66e-6, grad_norm=73]                                                                                                                        
+                                                [A{'loss': 7.3002, 'grad_norm': 73.0, 'learning_rate': 9.662447257383967e-06, 'epoch': 0.0}
+SFT optimizer steps:   7%|▋         | 17/245 [00:44<07:48,  2.06s/step, loss=7.3, learning_rate=9.66e-6, grad_norm=73]
+  7%|▋         | 17/245 [00:44<07:48,  2.06s/it][ASFT optimizer steps:   7%|▋         | 18/245 [00:47<08:30,  2.25s/step, loss=7.3, learning_rate=9.66e-6, grad_norm=73]
+  7%|▋         | 18/245 [00:47<08:30,  2.25s/it][ASFT optimizer steps:   7%|▋         | 18/245 [00:47<08:30,  2.25s/step, loss=10.7, learning_rate=9.62e-6, grad_norm=227]                                                                                                                        
+                                                [A{'loss': 10.7479, 'grad_norm': 227.0, 'learning_rate': 9.620253164556963e-06, 'epoch': 0.0}
+SFT optimizer steps:   7%|▋         | 18/245 [00:47<08:30,  2.25s/step, loss=10.7, learning_rate=9.62e-6, grad_norm=227]
+  7%|▋         | 18/245 [00:47<08:30,  2.25s/it][ASFT optimizer steps:   8%|▊         | 19/245 [00:49<08:08,  2.16s/step, loss=10.7, learning_rate=9.62e-6, grad_norm=227]
+  8%|▊         | 19/245 [00:49<08:08,  2.16s/it][ASFT optimizer steps:   8%|▊         | 19/245 [00:49<08:08,  2.16s/step, loss=12, learning_rate=9.58e-6, grad_norm=328]                                                                                                                        
+                                                [A{'loss': 12.0278, 'grad_norm': 328.0, 'learning_rate': 9.578059071729959e-06, 'epoch': 0.0}
+SFT optimizer steps:   8%|▊         | 19/245 [00:49<08:08,  2.16s/step, loss=12, learning_rate=9.58e-6, grad_norm=328]
+  8%|▊         | 19/245 [00:49<08:08,  2.16s/it][ASFT optimizer steps:   8%|▊         | 20/245 [00:50<07:47,  2.08s/step, loss=12, learning_rate=9.58e-6, grad_norm=328]
+  8%|▊         | 20/245 [00:50<07:47,  2.08s/it][ASFT optimizer steps:   8%|▊         | 20/245 [00:51<07:47,  2.08s/step, loss=8.21, learning_rate=9.54e-6, grad_norm=99.5]                                                                                                                         
+                                                [A{'loss': 8.206, 'grad_norm': 99.5, 'learning_rate': 9.535864978902954e-06, 'epoch': 0.0}
+SFT optimizer steps:   8%|▊         | 20/245 [00:51<07:47,  2.08s/step, loss=8.21, learning_rate=9.54e-6, grad_norm=99.5]
+  8%|▊         | 20/245 [00:51<07:47,  2.08s/it][ASFT optimizer steps:   9%|▊         | 21/245 [00:52<07:14,  1.94s/step, loss=8.21, learning_rate=9.54e-6, grad_norm=99.5]
+  9%|▊         | 21/245 [00:52<07:14,  1.94s/it][ASFT optimizer steps:   9%|▊         | 21/245 [00:52<07:14,  1.94s/step, loss=4.64, learning_rate=9.49e-6, grad_norm=78.5]                                                                                                                         
+                                                [A{'loss': 4.6374, 'grad_norm': 78.5, 'learning_rate': 9.49367088607595e-06, 'epoch': 0.0}
+SFT optimizer steps:   9%|▊         | 21/245 [00:52<07:14,  1.94s/step, loss=4.64, learning_rate=9.49e-6, grad_norm=78.5]
+  9%|▊         | 21/245 [00:52<07:14,  1.94s/it][ASFT optimizer steps:   9%|▉         | 22/245 [00:55<07:49,  2.11s/step, loss=4.64, learning_rate=9.49e-6, grad_norm=78.5]
+  9%|▉         | 22/245 [00:55<07:49,  2.11s/it][ASFT optimizer steps:   9%|▉         | 22/245 [00:55<07:49,  2.11s/step, loss=10.8, learning_rate=9.45e-6, grad_norm=306]                                                                                                                         
+                                                [A{'loss': 10.8076, 'grad_norm': 306.0, 'learning_rate': 9.451476793248946e-06, 'epoch': 0.0}
+SFT optimizer steps:   9%|▉         | 22/245 [00:55<07:49,  2.11s/step, loss=10.8, learning_rate=9.45e-6, grad_norm=306]
+  9%|▉         | 22/245 [00:55<07:49,  2.11s/it][ASFT optimizer steps:   9%|▉         | 23/245 [00:56<07:27,  2.02s/step, loss=10.8, learning_rate=9.45e-6, grad_norm=306]
+  9%|▉         | 23/245 [00:56<07:27,  2.02s/it][ASFT optimizer steps:   9%|▉         | 23/245 [00:56<07:27,  2.02s/step, loss=4.5, learning_rate=9.41e-6, grad_norm=47]                                                                                                                        
+                                                [A{'loss': 4.502, 'grad_norm': 47.0, 'learning_rate': 9.409282700421943e-06, 'epoch': 0.0}
+SFT optimizer steps:   9%|▉         | 23/245 [00:56<07:27,  2.02s/step, loss=4.5, learning_rate=9.41e-6, grad_norm=47]
+  9%|▉         | 23/245 [00:56<07:27,  2.02s/it][ASFT optimizer steps:  10%|▉         | 24/245 [00:58<07:09,  1.94s/step, loss=4.5, learning_rate=9.41e-6, grad_norm=47]
+ 10%|▉         | 24/245 [00:58<07:09,  1.94s/it][ASFT optimizer steps:  10%|▉         | 24/245 [00:58<07:09,  1.94s/step, loss=9.41, learning_rate=9.37e-6, grad_norm=165]                                                                                                                        
+                                                [A{'loss': 9.4057, 'grad_norm': 165.0, 'learning_rate': 9.367088607594937e-06, 'epoch': 0.0}
+SFT optimizer steps:  10%|▉         | 24/245 [00:58<07:09,  1.94s/step, loss=9.41, learning_rate=9.37e-6, grad_norm=165]
+ 10%|▉         | 24/245 [00:58<07:09,  1.94s/it][ASFT optimizer steps:  10%|█         | 25/245 [01:00<06:53,  1.88s/step, loss=9.41, learning_rate=9.37e-6, grad_norm=165]
+ 10%|█         | 25/245 [01:00<06:53,  1.88s/it][ASFT optimizer steps:  10%|█         | 25/245 [01:00<06:53,  1.88s/step, loss=7.68, learning_rate=9.32e-6, grad_norm=115]                                                                                                                        
+                                                [A{'loss': 7.6849, 'grad_norm': 115.0, 'learning_rate': 9.324894514767934e-06, 'epoch': 0.0}
+SFT optimizer steps:  10%|█         | 25/245 [01:00<06:53,  1.88s/step, loss=7.68, learning_rate=9.32e-6, grad_norm=115]
+ 10%|█         | 25/245 [01:00<06:53,  1.88s/it][ASFT optimizer steps:  11%|█         | 26/245 [01:02<06:49,  1.87s/step, loss=7.68, learning_rate=9.32e-6, grad_norm=115]
+ 11%|█         | 26/245 [01:02<06:49,  1.87s/it][ASFT optimizer steps:  11%|█         | 26/245 [01:02<06:49,  1.87s/step, loss=3.86, learning_rate=9.28e-6, grad_norm=43.5]                                                                                                                         
+                                                [A{'loss': 3.8627, 'grad_norm': 43.5, 'learning_rate': 9.28270042194093e-06, 'epoch': 0.0}
+SFT optimizer steps:  11%|█         | 26/245 [01:02<06:49,  1.87s/step, loss=3.86, learning_rate=9.28e-6, grad_norm=43.5]
+ 11%|█         | 26/245 [01:02<06:49,  1.87s/it][ASFT optimizer steps:  11%|█         | 27/245 [01:04<07:38,  2.10s/step, loss=3.86, learning_rate=9.28e-6, grad_norm=43.5]
+ 11%|█         | 27/245 [01:04<07:38,  2.10s/it][ASFT optimizer steps:  11%|█         | 27/245 [01:04<07:38,  2.10s/step, loss=11.9, learning_rate=9.24e-6, grad_norm=163]                                                                                                                         
+                                                [A{'loss': 11.9456, 'grad_norm': 163.0, 'learning_rate': 9.240506329113925e-06, 'epoch': 0.0}
+SFT optimizer steps:  11%|█         | 27/245 [01:04<07:38,  2.10s/step, loss=11.9, learning_rate=9.24e-6, grad_norm=163]
+ 11%|█         | 27/245 [01:04<07:38,  2.10s/it][ASFT optimizer steps:  11%|█▏        | 28/245 [01:07<08:19,  2.30s/step, loss=11.9, learning_rate=9.24e-6, grad_norm=163]
+ 11%|█▏        | 28/245 [01:07<08:19,  2.30s/it][ASFT optimizer steps:  11%|█▏        | 28/245 [01:07<08:19,  2.30s/step, loss=10.5, learning_rate=9.2e-6, grad_norm=186]                                                                                                                        
+                                                [A{'loss': 10.5132, 'grad_norm': 186.0, 'learning_rate': 9.198312236286921e-06, 'epoch': 0.0}
+SFT optimizer steps:  11%|█▏        | 28/245 [01:07<08:19,  2.30s/step, loss=10.5, learning_rate=9.2e-6, grad_norm=186]
+ 11%|█▏        | 28/245 [01:07<08:19,  2.30s/it][ASFT optimizer steps:  12%|█▏        | 29/245 [01:09<07:44,  2.15s/step, loss=10.5, learning_rate=9.2e-6, grad_norm=186]
+ 12%|█▏        | 29/245 [01:09<07:44,  2.15s/it][ASFT optimizer steps:  12%|█▏        | 29/245 [01:09<07:44,  2.15s/step, loss=2.85, learning_rate=9.16e-6, grad_norm=26]                                                                                                                       
+                                                [A{'loss': 2.8457, 'grad_norm': 26.0, 'learning_rate': 9.156118143459917e-06, 'epoch': 0.01}
+SFT optimizer steps:  12%|█▏        | 29/245 [01:09<07:44,  2.15s/step, loss=2.85, learning_rate=9.16e-6, grad_norm=26]
+ 12%|█▏        | 29/245 [01:09<07:44,  2.15s/it][ASFT optimizer steps:  12%|█▏        | 30/245 [01:11<07:13,  2.01s/step, loss=2.85, learning_rate=9.16e-6, grad_norm=26]
+ 12%|█▏        | 30/245 [01:11<07:13,  2.01s/it][ASFT optimizer steps:  12%|█▏        | 30/245 [01:11<07:13,  2.01s/step, loss=4.19, learning_rate=9.11e-6, grad_norm=44.2]                                                                                                                         
+                                                [A{'loss': 4.1875, 'grad_norm': 44.25, 'learning_rate': 9.113924050632912e-06, 'epoch': 0.01}
+SFT optimizer steps:  12%|█▏        | 30/245 [01:11<07:13,  2.01s/step, loss=4.19, learning_rate=9.11e-6, grad_norm=44.2]
+ 12%|█▏        | 30/245 [01:11<07:13,  2.01s/it][ASFT optimizer steps:  13%|█▎        | 31/245 [01:13<08:05,  2.27s/step, loss=4.19, learning_rate=9.11e-6, grad_norm=44.2]
+ 13%|█▎        | 31/245 [01:13<08:05,  2.27s/it][ASFT optimizer steps:  13%|█▎        | 31/245 [01:14<08:05,  2.27s/step, loss=9.86, learning_rate=9.07e-6, grad_norm=158]                                                                                                                         
+                                                [A{'loss': 9.8551, 'grad_norm': 158.0, 'learning_rate': 9.071729957805908e-06, 'epoch': 0.01}
+SFT optimizer steps:  13%|█▎        | 31/245 [01:14<08:05,  2.27s/step, loss=9.86, learning_rate=9.07e-6, grad_norm=158]
+ 13%|█▎        | 31/245 [01:14<08:05,  2.27s/it][ASFT optimizer steps:  13%|█▎        | 32/245 [01:15<07:44,  2.18s/step, loss=9.86, learning_rate=9.07e-6, grad_norm=158]
+ 13%|█▎        | 32/245 [01:15<07:44,  2.18s/it][ASFT optimizer steps:  13%|█▎        | 32/245 [01:16<07:44,  2.18s/step, loss=8.57, learning_rate=9.03e-6, grad_norm=224]                                                                                                                        
+                                                [A{'loss': 8.5714, 'grad_norm': 224.0, 'learning_rate': 9.029535864978903e-06, 'epoch': 0.01}
+SFT optimizer steps:  13%|█▎        | 32/245 [01:16<07:44,  2.18s/step, loss=8.57, learning_rate=9.03e-6, grad_norm=224]
+ 13%|█▎        | 32/245 [01:16<07:44,  2.18s/it][ASFT optimizer steps:  13%|█▎        | 33/245 [01:18<08:24,  2.38s/step, loss=8.57, learning_rate=9.03e-6, grad_norm=224]
+ 13%|█▎        | 33/245 [01:18<08:24,  2.38s/it][ASFT optimizer steps:  13%|█▎        | 33/245 [01:18<08:24,  2.38s/step, loss=8.03, learning_rate=8.99e-6, grad_norm=260]                                                                                                                        
+                                                [A{'loss': 8.0347, 'grad_norm': 260.0, 'learning_rate': 8.987341772151899e-06, 'epoch': 0.01}
+SFT optimizer steps:  13%|█▎        | 33/245 [01:18<08:24,  2.38s/step, loss=8.03, learning_rate=8.99e-6, grad_norm=260]
+ 13%|█▎        | 33/245 [01:18<08:24,  2.38s/it][ASFT optimizer steps:  14%|█▍        | 34/245 [01:20<07:51,  2.23s/step, loss=8.03, learning_rate=8.99e-6, grad_norm=260]
+ 14%|█▍        | 34/245 [01:20<07:51,  2.23s/it][ASFT optimizer steps:  14%|█▍        | 34/245 [01:20<07:51,  2.23s/step, loss=8.36, learning_rate=8.95e-6, grad_norm=87.5]                                                                                                                         
+                                                [A{'loss': 8.3606, 'grad_norm': 87.5, 'learning_rate': 8.945147679324895e-06, 'epoch': 0.01}
+SFT optimizer steps:  14%|█▍        | 34/245 [01:20<07:51,  2.23s/step, loss=8.36, learning_rate=8.95e-6, grad_norm=87.5]
+ 14%|█▍        | 34/245 [01:20<07:51,  2.23s/it][ASFT optimizer steps:  14%|█▍        | 35/245 [01:22<07:24,  2.12s/step, loss=8.36, learning_rate=8.95e-6, grad_norm=87.5]
+ 14%|█▍        | 35/245 [01:22<07:24,  2.12s/it][ASFT optimizer steps:  14%|█▍        | 35/245 [01:22<07:24,  2.12s/step, loss=2.83, learning_rate=8.9e-6, grad_norm=29.4]                                                                                                                         
+                                                [A{'loss': 2.8268, 'grad_norm': 29.375, 'learning_rate': 8.90295358649789e-06, 'epoch': 0.01}
+SFT optimizer steps:  14%|█▍        | 35/245 [01:22<07:24,  2.12s/step, loss=2.83, learning_rate=8.9e-6, grad_norm=29.4]
+ 14%|█▍        | 35/245 [01:22<07:24,  2.12s/it][ASFT optimizer steps:  15%|█▍        | 36/245 [01:24<07:11,  2.06s/step, loss=2.83, learning_rate=8.9e-6, grad_norm=29.4]
+ 15%|█▍        | 36/245 [01:24<07:11,  2.06s/it][ASFT optimizer steps:  15%|█▍        | 36/245 [01:24<07:11,  2.06s/step, loss=6.83, learning_rate=8.86e-6, grad_norm=133]                                                                                                                        
+                                                [A{'loss': 6.8276, 'grad_norm': 133.0, 'learning_rate': 8.860759493670886e-06, 'epoch': 0.01}
+SFT optimizer steps:  15%|█▍        | 36/245 [01:24<07:11,  2.06s/step, loss=6.83, learning_rate=8.86e-6, grad_norm=133]
+ 15%|█▍        | 36/245 [01:24<07:11,  2.06s/it][ASFT optimizer steps:  15%|█▌        | 37/245 [01:26<07:09,  2.06s/step, loss=6.83, learning_rate=8.86e-6, grad_norm=133]
+ 15%|█▌        | 37/245 [01:26<07:09,  2.06s/it][ASFT optimizer steps:  15%|█▌        | 37/245 [01:26<07:09,  2.06s/step, loss=2.53, learning_rate=8.82e-6, grad_norm=18.4]                                                                                                                         
+                                                [A{'loss': 2.5312, 'grad_norm': 18.375, 'learning_rate': 8.818565400843883e-06, 'epoch': 0.01}
+SFT optimizer steps:  15%|█▌        | 37/245 [01:26<07:09,  2.06s/step, loss=2.53, learning_rate=8.82e-6, grad_norm=18.4]
+ 15%|█▌        | 37/245 [01:26<07:09,  2.06s/it][ASFT optimizer steps:  16%|█▌        | 38/245 [01:28<06:42,  1.95s/step, loss=2.53, learning_rate=8.82e-6, grad_norm=18.4]
+ 16%|█▌        | 38/245 [01:28<06:42,  1.95s/it][ASFT optimizer steps:  16%|█▌        | 38/245 [01:28<06:42,  1.95s/step, loss=5.28, learning_rate=8.78e-6, grad_norm=61]                                                                                                                         
+                                                [A{'loss': 5.2753, 'grad_norm': 61.0, 'learning_rate': 8.776371308016879e-06, 'epoch': 0.01}
+SFT optimizer steps:  16%|█▌        | 38/245 [01:28<06:42,  1.95s/step, loss=5.28, learning_rate=8.78e-6, grad_norm=61]
+ 16%|█▌        | 38/245 [01:28<06:42,  1.95s/it][ASFT optimizer steps:  16%|█▌        | 39/245 [01:29<06:30,  1.90s/step, loss=5.28, learning_rate=8.78e-6, grad_norm=61]
+ 16%|█▌        | 39/245 [01:29<06:30,  1.90s/it][ASFT optimizer steps:  16%|█▌        | 39/245 [01:30<06:30,  1.90s/step, loss=1.96, learning_rate=8.73e-6, grad_norm=31.6]                                                                                                                         
+                                                [A{'loss': 1.9562, 'grad_norm': 31.625, 'learning_rate': 8.734177215189874e-06, 'epoch': 0.01}
+SFT optimizer steps:  16%|█▌        | 39/245 [01:30<06:30,  1.90s/step, loss=1.96, learning_rate=8.73e-6, grad_norm=31.6]
+ 16%|█▌        | 39/245 [01:30<06:30,  1.90s/it][ASFT optimizer steps:  16%|█▋        | 40/245 [01:31<06:20,  1.85s/step, loss=1.96, learning_rate=8.73e-6, grad_norm=31.6]
+ 16%|█▋        | 40/245 [01:31<06:20,  1.85s/it][ASFT optimizer steps:  16%|█▋        | 40/245 [01:31<06:20,  1.85s/step, loss=7.07, learning_rate=8.69e-6, grad_norm=81.5]                                                                                                                         
+                                                [A{'loss': 7.0687, 'grad_norm': 81.5, 'learning_rate': 8.69198312236287e-06, 'epoch': 0.01}
+SFT optimizer steps:  16%|█▋        | 40/245 [01:31<06:20,  1.85s/step, loss=7.07, learning_rate=8.69e-6, grad_norm=81.5]
+ 16%|█▋        | 40/245 [01:31<06:20,  1.85s/it][ASFT optimizer steps:  17%|█▋        | 41/245 [01:33<06:13,  1.83s/step, loss=7.07, learning_rate=8.69e-6, grad_norm=81.5]
+ 17%|█▋        | 41/245 [01:33<06:13,  1.83s/it][ASFT optimizer steps:  17%|█▋        | 41/245 [01:33<06:13,  1.83s/step, loss=6.75, learning_rate=8.65e-6, grad_norm=85]                                                                                                                         
+                                                [A{'loss': 6.7505, 'grad_norm': 85.0, 'learning_rate': 8.649789029535866e-06, 'epoch': 0.01}
+SFT optimizer steps:  17%|█▋        | 41/245 [01:33<06:13,  1.83s/step, loss=6.75, learning_rate=8.65e-6, grad_norm=85]
+ 17%|█▋        | 41/245 [01:33<06:13,  1.83s/it][ASFT optimizer steps:  17%|█▋        | 42/245 [01:35<06:19,  1.87s/step, loss=6.75, learning_rate=8.65e-6, grad_norm=85]
+ 17%|█▋        | 42/245 [01:35<06:19,  1.87s/it][ASFT optimizer steps:  17%|█▋        | 42/245 [01:35<06:19,  1.87s/step, loss=6.08, learning_rate=8.61e-6, grad_norm=65.5]                                                                                                                         
+                                                [A{'loss': 6.084, 'grad_norm': 65.5, 'learning_rate': 8.607594936708861e-06, 'epoch': 0.01}
+SFT optimizer steps:  17%|█▋        | 42/245 [01:35<06:19,  1.87s/step, loss=6.08, learning_rate=8.61e-6, grad_norm=65.5]
+ 17%|█▋        | 42/245 [01:35<06:19,  1.87s/it][ASFT optimizer steps:  18%|█▊        | 43/245 [01:37<06:00,  1.78s/step, loss=6.08, learning_rate=8.61e-6, grad_norm=65.5]
+ 18%|█▊        | 43/245 [01:37<06:00,  1.78s/it][ASFT optimizer steps:  18%|█▊        | 43/245 [01:37<06:00,  1.78s/step, loss=2.18, learning_rate=8.57e-6, grad_norm=26.9]                                                                                                                         
+                                                [A{'loss': 2.1838, 'grad_norm': 26.875, 'learning_rate': 8.565400843881857e-06, 'epoch': 0.01}
+SFT optimizer steps:  18%|█▊        | 43/245 [01:37<06:00,  1.78s/step, loss=2.18, learning_rate=8.57e-6, grad_norm=26.9]
+ 18%|█▊        | 43/245 [01:37<06:00,  1.78s/it][ASFT optimizer steps:  18%|█▊        | 44/245 [01:38<05:53,  1.76s/step, loss=2.18, learning_rate=8.57e-6, grad_norm=26.9]
+ 18%|█▊        | 44/245 [01:38<05:53,  1.76s/it][ASFT optimizer steps:  18%|█▊        | 44/245 [01:38<05:53,  1.76s/step, loss=3.98, learning_rate=8.52e-6, grad_norm=57.8]                                                                                                                         
+                                                [A{'loss': 3.9799, 'grad_norm': 57.75, 'learning_rate': 8.523206751054853e-06, 'epoch': 0.01}
+SFT optimizer steps:  18%|█▊        | 44/245 [01:38<05:53,  1.76s/step, loss=3.98, learning_rate=8.52e-6, grad_norm=57.8]
+ 18%|█▊        | 44/245 [01:38<05:53,  1.76s/it][ASFT optimizer steps:  18%|█▊        | 45/245 [01:41<06:58,  2.09s/step, loss=3.98, learning_rate=8.52e-6, grad_norm=57.8]
+ 18%|█▊        | 45/245 [01:41<06:58,  2.09s/it][ASFT optimizer steps:  18%|█▊        | 45/245 [01:41<06:58,  2.09s/step, loss=6.76, learning_rate=8.48e-6, grad_norm=96]                                                                                                                         
+                                                [A{'loss': 6.7569, 'grad_norm': 96.0, 'learning_rate': 8.481012658227848e-06, 'epoch': 0.01}
+SFT optimizer steps:  18%|█▊        | 45/245 [01:41<06:58,  2.09s/step, loss=6.76, learning_rate=8.48e-6, grad_norm=96]
+ 18%|█▊        | 45/245 [01:41<06:58,  2.09s/it][ASFT optimizer steps:  19%|█▉        | 46/245 [01:43<06:34,  1.98s/step, loss=6.76, learning_rate=8.48e-6, grad_norm=96]
+ 19%|█▉        | 46/245 [01:43<06:34,  1.98s/it][ASFT optimizer steps:  19%|█▉        | 46/245 [01:43<06:34,  1.98s/step, loss=5.94, learning_rate=8.44e-6, grad_norm=72]                                                                                                                       
+                                                [A{'loss': 5.9392, 'grad_norm': 72.0, 'learning_rate': 8.438818565400846e-06, 'epoch': 0.01}
+SFT optimizer steps:  19%|█▉        | 46/245 [01:43<06:34,  1.98s/step, loss=5.94, learning_rate=8.44e-6, grad_norm=72]
+ 19%|█▉        | 46/245 [01:43<06:34,  1.98s/it][ASFT optimizer steps:  19%|█▉        | 47/245 [01:45<06:49,  2.07s/step, loss=5.94, learning_rate=8.44e-6, grad_norm=72]
+ 19%|█▉        | 47/245 [01:45<06:49,  2.07s/it][ASFT optimizer steps:  19%|█▉        | 47/245 [01:45<06:49,  2.07s/step, loss=3.1, learning_rate=8.4e-6, grad_norm=32.2]                                                                                                                       
+                                                [A{'loss': 3.0996, 'grad_norm': 32.25, 'learning_rate': 8.39662447257384e-06, 'epoch': 0.01}
+SFT optimizer steps:  19%|█▉        | 47/245 [01:45<06:49,  2.07s/step, loss=3.1, learning_rate=8.4e-6, grad_norm=32.2]
+ 19%|█▉        | 47/245 [01:45<06:49,  2.07s/it][ASFT optimizer steps:  20%|█▉        | 48/245 [01:47<06:40,  2.03s/step, loss=3.1, learning_rate=8.4e-6, grad_norm=32.2]
+ 20%|█▉        | 48/245 [01:47<06:40,  2.03s/it][ASFT optimizer steps:  20%|█▉        | 48/245 [01:47<06:40,  2.03s/step, loss=5.71, learning_rate=8.35e-6, grad_norm=82]                                                                                                                       
+                                                [A{'loss': 5.7136, 'grad_norm': 82.0, 'learning_rate': 8.354430379746837e-06, 'epoch': 0.01}
+SFT optimizer steps:  20%|█▉        | 48/245 [01:47<06:40,  2.03s/step, loss=5.71, learning_rate=8.35e-6, grad_norm=82]
+ 20%|█▉        | 48/245 [01:47<06:40,  2.03s/it][ASFT optimizer steps:  20%|██        | 49/245 [01:49<06:16,  1.92s/step, loss=5.71, learning_rate=8.35e-6, grad_norm=82]
+ 20%|██        | 49/245 [01:49<06:16,  1.92s/it][ASFT optimizer steps:  20%|██        | 49/245 [01:49<06:16,  1.92s/step, loss=3.99, learning_rate=8.31e-6, grad_norm=47.8]                                                                                                                         
+                                                [A{'loss': 3.9923, 'grad_norm': 47.75, 'learning_rate': 8.31223628691983e-06, 'epoch': 0.01}
+SFT optimizer steps:  20%|██        | 49/245 [01:49<06:16,  1.92s/step, loss=3.99, learning_rate=8.31e-6, grad_norm=47.8]
+ 20%|██        | 49/245 [01:49<06:16,  1.92s/it][ASFT optimizer steps:  20%|██        | 50/245 [01:51<06:06,  1.88s/step, loss=3.99, learning_rate=8.31e-6, grad_norm=47.8]
+ 20%|██        | 50/245 [01:51<06:06,  1.88s/it][ASFT optimizer steps:  20%|██        | 50/245 [01:51<06:06,  1.88s/step, loss=2.22, learning_rate=8.27e-6, grad_norm=18.1]                                                                                                                         
+                                                [A{'loss': 2.2189, 'grad_norm': 18.125, 'learning_rate': 8.270042194092828e-06, 'epoch': 0.01}
+SFT optimizer steps:  20%|██        | 50/245 [01:51<06:06,  1.88s/step, loss=2.22, learning_rate=8.27e-6, grad_norm=18.1]
+ 20%|██        | 50/245 [01:51<06:06,  1.88s/it][ASFT optimizer steps:  21%|██        | 51/245 [01:52<06:09,  1.90s/step, loss=2.22, learning_rate=8.27e-6, grad_norm=18.1]
+ 21%|██        | 51/245 [01:52<06:09,  1.90s/it][ASFT optimizer steps:  21%|██        | 51/245 [01:53<06:09,  1.90s/step, loss=2.75, learning_rate=8.23e-6, grad_norm=41.2]                                                                                                                         
+                                                [A{'loss': 2.7499, 'grad_norm': 41.25, 'learning_rate': 8.227848101265824e-06, 'epoch': 0.01}
+SFT optimizer steps:  21%|██        | 51/245 [01:53<06:09,  1.90s/step, loss=2.75, learning_rate=8.23e-6, grad_norm=41.2]
+ 21%|██        | 51/245 [01:53<06:09,  1.90s/it][ASFT optimizer steps:  21%|██        | 52/245 [01:55<06:45,  2.10s/step, loss=2.75, learning_rate=8.23e-6, grad_norm=41.2]
+ 21%|██        | 52/245 [01:55<06:45,  2.10s/it][ASFT optimizer steps:  21%|██        | 52/245 [01:55<06:45,  2.10s/step, loss=6.2, learning_rate=8.19e-6, grad_norm=102]                                                                                                                         
+                                                [A{'loss': 6.2013, 'grad_norm': 102.0, 'learning_rate': 8.18565400843882e-06, 'epoch': 0.01}
+SFT optimizer steps:  21%|██        | 52/245 [01:55<06:45,  2.10s/step, loss=6.2, learning_rate=8.19e-6, grad_norm=102]
+ 21%|██        | 52/245 [01:55<06:45,  2.10s/it][ASFT optimizer steps:  22%|██▏       | 53/245 [01:57<06:35,  2.06s/step, loss=6.2, learning_rate=8.19e-6, grad_norm=102]
+ 22%|██▏       | 53/245 [01:57<06:35,  2.06s/it][ASFT optimizer steps:  22%|██▏       | 53/245 [01:57<06:35,  2.06s/step, loss=4.92, learning_rate=8.14e-6, grad_norm=63.5]                                                                                                                         
+                                                [A{'loss': 4.9243, 'grad_norm': 63.5, 'learning_rate': 8.143459915611815e-06, 'epoch': 0.01}
+SFT optimizer steps:  22%|██▏       | 53/245 [01:57<06:35,  2.06s/step, loss=4.92, learning_rate=8.14e-6, grad_norm=63.5]
+ 22%|██▏       | 53/245 [01:57<06:35,  2.06s/it][ASFT optimizer steps:  22%|██▏       | 54/245 [01:59<06:04,  1.91s/step, loss=4.92, learning_rate=8.14e-6, grad_norm=63.5]
+ 22%|██▏       | 54/245 [01:59<06:04,  1.91s/it][ASFT optimizer steps:  22%|██▏       | 54/245 [01:59<06:04,  1.91s/step, loss=1.69, learning_rate=8.1e-6, grad_norm=16.8]                                                                                                                         
+                                                [A{'loss': 1.6874, 'grad_norm': 16.75, 'learning_rate': 8.10126582278481e-06, 'epoch': 0.01}
+SFT optimizer steps:  22%|██▏       | 54/245 [01:59<06:04,  1.91s/step, loss=1.69, learning_rate=8.1e-6, grad_norm=16.8]
+ 22%|██▏       | 54/245 [01:59<06:04,  1.91s/it][ASFT optimizer steps:  22%|██▏       | 55/245 [02:01<06:37,  2.09s/step, loss=1.69, learning_rate=8.1e-6, grad_norm=16.8]
+ 22%|██▏       | 55/245 [02:01<06:37,  2.09s/it][ASFT optimizer steps:  22%|██▏       | 55/245 [02:01<06:37,  2.09s/step, loss=6.58, learning_rate=8.06e-6, grad_norm=110]                                                                                                                        
+                                                [A{'loss': 6.5753, 'grad_norm': 110.5, 'learning_rate': 8.059071729957806e-06, 'epoch': 0.01}
+SFT optimizer steps:  22%|██▏       | 55/245 [02:01<06:37,  2.09s/step, loss=6.58, learning_rate=8.06e-6, grad_norm=110]
+ 22%|██▏       | 55/245 [02:01<06:37,  2.09s/it][ASFT optimizer steps:  23%|██▎       | 56/245 [02:03<06:27,  2.05s/step, loss=6.58, learning_rate=8.06e-6, grad_norm=110]
+ 23%|██▎       | 56/245 [02:03<06:27,  2.05s/it][ASFT optimizer steps:  23%|██▎       | 56/245 [02:03<06:27,  2.05s/step, loss=5.22, learning_rate=8.02e-6, grad_norm=72.5]                                                                                                                         
+                                                [A{'loss': 5.2236, 'grad_norm': 72.5, 'learning_rate': 8.016877637130802e-06, 'epoch': 0.01}
+SFT optimizer steps:  23%|██▎       | 56/245 [02:03<06:27,  2.05s/step, loss=5.22, learning_rate=8.02e-6, grad_norm=72.5]
+ 23%|██▎       | 56/245 [02:03<06:27,  2.05s/it][ASFT optimizer steps:  23%|██▎       | 57/245 [02:05<05:57,  1.90s/step, loss=5.22, learning_rate=8.02e-6, grad_norm=72.5]
+ 23%|██▎       | 57/245 [02:05<05:57,  1.90s/it][ASFT optimizer steps:  23%|██▎       | 57/245 [02:05<05:57,  1.90s/step, loss=6.57, learning_rate=7.97e-6, grad_norm=124]                                                                                                                         
+                                                [A{'loss': 6.5732, 'grad_norm': 123.5, 'learning_rate': 7.974683544303799e-06, 'epoch': 0.01}
+SFT optimizer steps:  23%|██▎       | 57/245 [02:05<05:57,  1.90s/step, loss=6.57, learning_rate=7.97e-6, grad_norm=124]
+ 23%|██▎       | 57/245 [02:05<05:57,  1.90s/it][ASFT optimizer steps:  24%|██▎       | 58/245 [02:06<05:22,  1.73s/step, loss=6.57, learning_rate=7.97e-6, grad_norm=124]
+ 24%|██▎       | 58/245 [02:06<05:22,  1.73s/it][ASFT optimizer steps:  24%|██▎       | 58/245 [02:06<05:22,  1.73s/step, loss=1.9, learning_rate=7.93e-6, grad_norm=28]                                                                                                                        
+                                                [A{'loss': 1.8972, 'grad_norm': 28.0, 'learning_rate': 7.932489451476793e-06, 'epoch': 0.01}
+SFT optimizer steps:  24%|██▎       | 58/245 [02:06<05:22,  1.73s/step, loss=1.9, learning_rate=7.93e-6, grad_norm=28]
+ 24%|██▎       | 58/245 [02:06<05:22,  1.73s/it][ASFT optimizer steps:  24%|██▍       | 59/245 [02:08<05:17,  1.71s/step, loss=1.9, learning_rate=7.93e-6, grad_norm=28]
+ 24%|██▍       | 59/245 [02:08<05:17,  1.71s/it][ASFT optimizer steps:  24%|██▍       | 59/245 [02:08<05:17,  1.71s/step, loss=4.82, learning_rate=7.89e-6, grad_norm=88.5]                                                                                                                         
+                                                [A{'loss': 4.8203, 'grad_norm': 88.5, 'learning_rate': 7.89029535864979e-06, 'epoch': 0.01}
+SFT optimizer steps:  24%|██▍       | 59/245 [02:08<05:17,  1.71s/step, loss=4.82, learning_rate=7.89e-6, grad_norm=88.5]
+ 24%|██▍       | 59/245 [02:08<05:17,  1.71s/it][ASFT optimizer steps:  24%|██▍       | 60/245 [02:10<05:31,  1.79s/step, loss=4.82, learning_rate=7.89e-6, grad_norm=88.5]
+ 24%|██▍       | 60/245 [02:10<05:31,  1.79s/it][ASFT optimizer steps:  24%|██▍       | 60/245 [02:10<05:31,  1.79s/step, loss=4.14, learning_rate=7.85e-6, grad_norm=74]                                                                                                                         
+                                                [A{'loss': 4.1447, 'grad_norm': 74.0, 'learning_rate': 7.848101265822786e-06, 'epoch': 0.01}
+SFT optimizer steps:  24%|██▍       | 60/245 [02:10<05:31,  1.79s/step, loss=4.14, learning_rate=7.85e-6, grad_norm=74]
+ 24%|██▍       | 60/245 [02:10<05:31,  1.79s/it][ASFT optimizer steps:  25%|██▍       | 61/245 [02:11<05:29,  1.79s/step, loss=4.14, learning_rate=7.85e-6, grad_norm=74]
+ 25%|██▍       | 61/245 [02:11<05:29,  1.79s/it][ASFT optimizer steps:  25%|██▍       | 61/245 [02:11<05:29,  1.79s/step, loss=4.67, learning_rate=7.81e-6, grad_norm=83.5]                                                                                                                         
+                                                [A{'loss': 4.6715, 'grad_norm': 83.5, 'learning_rate': 7.805907172995782e-06, 'epoch': 0.01}
+SFT optimizer steps:  25%|██▍       | 61/245 [02:11<05:29,  1.79s/step, loss=4.67, learning_rate=7.81e-6, grad_norm=83.5]
+ 25%|██▍       | 61/245 [02:11<05:29,  1.79s/it][ASFT optimizer steps:  25%|██▌       | 62/245 [02:14<06:19,  2.08s/step, loss=4.67, learning_rate=7.81e-6, grad_norm=83.5]
+ 25%|██▌       | 62/245 [02:14<06:19,  2.08s/it][ASFT optimizer steps:  25%|██▌       | 62/245 [02:14<06:19,  2.08s/step, loss=6.3, learning_rate=7.76e-6, grad_norm=128]                                                                                                                         
+                                                [A{'loss': 6.2998, 'grad_norm': 128.0, 'learning_rate': 7.763713080168777e-06, 'epoch': 0.01}
+SFT optimizer steps:  25%|██▌       | 62/245 [02:14<06:19,  2.08s/step, loss=6.3, learning_rate=7.76e-6, grad_norm=128]
+ 25%|██▌       | 62/245 [02:14<06:19,  2.08s/it][ASFT optimizer steps:  26%|██▌       | 63/245 [02:16<05:57,  1.96s/step, loss=6.3, learning_rate=7.76e-6, grad_norm=128]
+ 26%|██▌       | 63/245 [02:16<05:57,  1.96s/it][ASFT optimizer steps:  26%|██▌       | 63/245 [02:16<05:57,  1.96s/step, loss=4.63, learning_rate=7.72e-6, grad_norm=90.5]                                                                                                                         
+                                                [A{'loss': 4.6286, 'grad_norm': 90.5, 'learning_rate': 7.721518987341773e-06, 'epoch': 0.01}
+SFT optimizer steps:  26%|██▌       | 63/245 [02:16<05:57,  1.96s/step, loss=4.63, learning_rate=7.72e-6, grad_norm=90.5]
+ 26%|██▌       | 63/245 [02:16<05:57,  1.96s/it][ASFT optimizer steps:  26%|██▌       | 64/245 [02:19<06:47,  2.25s/step, loss=4.63, learning_rate=7.72e-6, grad_norm=90.5]
+ 26%|██▌       | 64/245 [02:19<06:47,  2.25s/it][ASFT optimizer steps:  26%|██▌       | 64/245 [02:19<06:47,  2.25s/step, loss=4.79, learning_rate=7.68e-6, grad_norm=98.5]                                                                                                                         
+                                                [A{'loss': 4.7851, 'grad_norm': 98.5, 'learning_rate': 7.679324894514768e-06, 'epoch': 0.01}
+SFT optimizer steps:  26%|██▌       | 64/245 [02:19<06:47,  2.25s/step, loss=4.79, learning_rate=7.68e-6, grad_norm=98.5]
+ 26%|██▌       | 64/245 [02:19<06:47,  2.25s/it][ASFT optimizer steps:  27%|██▋       | 65/245 [02:20<06:16,  2.09s/step, loss=4.79, learning_rate=7.68e-6, grad_norm=98.5]
+ 27%|██▋       | 65/245 [02:20<06:16,  2.09s/it][ASFT optimizer steps:  27%|██▋       | 65/245 [02:20<06:16,  2.09s/step, loss=1.45, learning_rate=7.64e-6, grad_norm=6.12]                                                                                                                         
+                                                [A{'loss': 1.4527, 'grad_norm': 6.125, 'learning_rate': 7.637130801687764e-06, 'epoch': 0.01}
+SFT optimizer steps:  27%|██▋       | 65/245 [02:20<06:16,  2.09s/step, loss=1.45, learning_rate=7.64e-6, grad_norm=6.12]
+ 27%|██▋       | 65/245 [02:20<06:16,  2.09s/it][ASFT optimizer steps:  27%|██▋       | 66/245 [02:23<06:13,  2.09s/step, loss=1.45, learning_rate=7.64e-6, grad_norm=6.12]
+ 27%|██▋       | 66/245 [02:23<06:13,  2.09s/it][ASFT optimizer steps:  27%|██▋       | 66/245 [02:23<06:13,  2.09s/step, loss=1.94, learning_rate=7.59e-6, grad_norm=24.5]                                                                                                                         
+                                                [A{'loss': 1.9417, 'grad_norm': 24.5, 'learning_rate': 7.5949367088607605e-06, 'epoch': 0.01}
+SFT optimizer steps:  27%|██▋       | 66/245 [02:23<06:13,  2.09s/step, loss=1.94, learning_rate=7.59e-6, grad_norm=24.5]
+ 27%|██▋       | 66/245 [02:23<06:13,  2.09s/it][ASFT optimizer steps:  27%|██▋       | 67/245 [02:24<06:00,  2.02s/step, loss=1.94, learning_rate=7.59e-6, grad_norm=24.5]
+ 27%|██▋       | 67/245 [02:24<06:00,  2.02s/it][ASFT optimizer steps:  27%|██▋       | 67/245 [02:24<06:00,  2.02s/step, loss=4.03, learning_rate=7.55e-6, grad_norm=83.5]                                                                                                                         
+                                                [A{'loss': 4.0257, 'grad_norm': 83.5, 'learning_rate': 7.552742616033756e-06, 'epoch': 0.01}
+SFT optimizer steps:  27%|██▋       | 67/245 [02:24<06:00,  2.02s/step, loss=4.03, learning_rate=7.55e-6, grad_norm=83.5]
+ 27%|██▋       | 67/245 [02:24<06:00,  2.02s/it][ASFT optimizer steps:  28%|██▊       | 68/245 [02:26<05:31,  1.87s/step, loss=4.03, learning_rate=7.55e-6, grad_norm=83.5]
+ 28%|██▊       | 68/245 [02:26<05:31,  1.87s/it][ASFT optimizer steps:  28%|██▊       | 68/245 [02:26<05:31,  1.87s/step, loss=1.44, learning_rate=7.51e-6, grad_norm=21.9]                                                                                                                         
+                                                [A{'loss': 1.4404, 'grad_norm': 21.875, 'learning_rate': 7.510548523206752e-06, 'epoch': 0.01}
+SFT optimizer steps:  28%|██▊       | 68/245 [02:26<05:31,  1.87s/step, loss=1.44, learning_rate=7.51e-6, grad_norm=21.9]
+ 28%|██▊       | 68/245 [02:26<05:31,  1.87s/it][ASFT optimizer steps:  28%|██▊       | 69/245 [02:28<05:29,  1.87s/step, loss=1.44, learning_rate=7.51e-6, grad_norm=21.9]
+ 28%|██▊       | 69/245 [02:28<05:29,  1.87s/it][ASFT optimizer steps:  28%|██▊       | 69/245 [02:28<05:29,  1.87s/step, loss=3.65, learning_rate=7.47e-6, grad_norm=72]                                                                                                                         
+                                                [A{'loss': 3.654, 'grad_norm': 72.0, 'learning_rate': 7.468354430379747e-06, 'epoch': 0.01}
+SFT optimizer steps:  28%|██▊       | 69/245 [02:28<05:29,  1.87s/step, loss=3.65, learning_rate=7.47e-6, grad_norm=72]
+ 28%|██▊       | 69/245 [02:28<05:29,  1.87s/it][ASFT optimizer steps:  29%|██▊       | 70/245 [02:30<05:25,  1.86s/step, loss=3.65, learning_rate=7.47e-6, grad_norm=72]
+ 29%|██▊       | 70/245 [02:30<05:25,  1.86s/it][ASFT optimizer steps:  29%|██▊       | 70/245 [02:30<05:25,  1.86s/step, loss=5.44, learning_rate=7.43e-6, grad_norm=114]                                                                                                                        
+                                                [A{'loss': 5.4423, 'grad_norm': 114.5, 'learning_rate': 7.426160337552744e-06, 'epoch': 0.01}
+SFT optimizer steps:  29%|██▊       | 70/245 [02:30<05:25,  1.86s/step, loss=5.44, learning_rate=7.43e-6, grad_norm=114]
+ 29%|██▊       | 70/245 [02:30<05:25,  1.86s/it][ASFT optimizer steps:  29%|██▉       | 71/245 [02:32<05:38,  1.95s/step, loss=5.44, learning_rate=7.43e-6, grad_norm=114]
+ 29%|██▉       | 71/245 [02:32<05:38,  1.95s/it][ASFT optimizer steps:  29%|██▉       | 71/245 [02:32<05:38,  1.95s/step, loss=5.74, learning_rate=7.38e-6, grad_norm=230]                                                                                                                        
+                                                [A{'loss': 5.7387, 'grad_norm': 230.0, 'learning_rate': 7.3839662447257386e-06, 'epoch': 0.01}
+SFT optimizer steps:  29%|██▉       | 71/245 [02:32<05:38,  1.95s/step, loss=5.74, learning_rate=7.38e-6, grad_norm=230]
+ 29%|██▉       | 71/245 [02:32<05:38,  1.95s/it][ASFT optimizer steps:  29%|██▉       | 72/245 [02:35<06:54,  2.40s/step, loss=5.74, learning_rate=7.38e-6, grad_norm=230]
+ 29%|██▉       | 72/245 [02:35<06:54,  2.40s/it][ASFT optimizer steps:  29%|██▉       | 72/245 [02:35<06:54,  2.40s/step, loss=3.19, learning_rate=7.34e-6, grad_norm=61.8]                                                                                                                         
+                                                [A{'loss': 3.1943, 'grad_norm': 61.75, 'learning_rate': 7.341772151898735e-06, 'epoch': 0.01}
+SFT optimizer steps:  29%|██▉       | 72/245 [02:35<06:54,  2.40s/step, loss=3.19, learning_rate=7.34e-6, grad_norm=61.8]
+ 29%|██▉       | 72/245 [02:35<06:54,  2.40s/it][ASFT optimizer steps:  30%|██▉       | 73/245 [02:37<06:21,  2.22s/step, loss=3.19, learning_rate=7.34e-6, grad_norm=61.8]
+ 30%|██▉       | 73/245 [02:37<06:21,  2.22s/it][ASFT optimizer steps:  30%|██▉       | 73/245 [02:37<06:21,  2.22s/step, loss=4.44, learning_rate=7.3e-6, grad_norm=87.5]                                                                                                                         
+                                                [A{'loss': 4.4374, 'grad_norm': 87.5, 'learning_rate': 7.29957805907173e-06, 'epoch': 0.01}
+SFT optimizer steps:  30%|██▉       | 73/245 [02:37<06:21,  2.22s/step, loss=4.44, learning_rate=7.3e-6, grad_norm=87.5]
+ 30%|██▉       | 73/245 [02:37<06:21,  2.22s/it][ASFT optimizer steps:  30%|███       | 74/245 [02:39<05:47,  2.03s/step, loss=4.44, learning_rate=7.3e-6, grad_norm=87.5]
+ 30%|███       | 74/245 [02:39<05:47,  2.03s/it][ASFT optimizer steps:  30%|███       | 74/245 [02:39<05:47,  2.03s/step, loss=2.04, learning_rate=7.26e-6, grad_norm=36.2]                                                                                                                         
+                                                [A{'loss': 2.0366, 'grad_norm': 36.25, 'learning_rate': 7.257383966244726e-06, 'epoch': 0.01}
+SFT optimizer steps:  30%|███       | 74/245 [02:39<05:47,  2.03s/step, loss=2.04, learning_rate=7.26e-6, grad_norm=36.2]
+ 30%|███       | 74/245 [02:39<05:47,  2.03s/it][ASFT optimizer steps:  31%|███       | 75/245 [02:41<06:13,  2.20s/step, loss=2.04, learning_rate=7.26e-6, grad_norm=36.2]
+ 31%|███       | 75/245 [02:41<06:13,  2.20s/it][ASFT optimizer steps:  31%|███       | 75/245 [02:41<06:13,  2.20s/step, loss=5.92, learning_rate=7.22e-6, grad_norm=144]                                                                                                                         
+                                                [A{'loss': 5.9246, 'grad_norm': 144.0, 'learning_rate': 7.215189873417722e-06, 'epoch': 0.01}
+SFT optimizer steps:  31%|███       | 75/245 [02:41<06:13,  2.20s/step, loss=5.92, learning_rate=7.22e-6, grad_norm=144]
+ 31%|███       | 75/245 [02:41<06:13,  2.20s/it][ASFT optimizer steps:  31%|███       | 76/245 [02:44<06:34,  2.33s/step, loss=5.92, learning_rate=7.22e-6, grad_norm=144]
+ 31%|███       | 76/245 [02:44<06:34,  2.33s/it][ASFT optimizer steps:  31%|███       | 76/245 [02:44<06:34,  2.33s/step, loss=7.02, learning_rate=7.17e-6, grad_norm=161]                                                                                                                        
+                                                [A{'loss': 7.0241, 'grad_norm': 161.0, 'learning_rate': 7.172995780590718e-06, 'epoch': 0.01}
+SFT optimizer steps:  31%|███       | 76/245 [02:44<06:34,  2.33s/step, loss=7.02, learning_rate=7.17e-6, grad_norm=161]
+ 31%|███       | 76/245 [02:44<06:34,  2.33s/it][ASFT optimizer steps:  31%|███▏      | 77/245 [02:46<06:43,  2.40s/step, loss=7.02, learning_rate=7.17e-6, grad_norm=161]
+ 31%|███▏      | 77/245 [02:46<06:43,  2.40s/it][ASFT optimizer steps:  31%|███▏      | 77/245 [02:46<06:43,  2.40s/step, loss=6.67, learning_rate=7.13e-6, grad_norm=137]                                                                                                                        
+                                                [A{'loss': 6.6677, 'grad_norm': 137.0, 'learning_rate': 7.130801687763713e-06, 'epoch': 0.01}
+SFT optimizer steps:  31%|███▏      | 77/245 [02:46<06:43,  2.40s/step, loss=6.67, learning_rate=7.13e-6, grad_norm=137]
+ 31%|███▏      | 77/245 [02:46<06:43,  2.40s/it][ASFT optimizer steps:  32%|███▏      | 78/245 [02:48<06:25,  2.31s/step, loss=6.67, learning_rate=7.13e-6, grad_norm=137]
+ 32%|███▏      | 78/245 [02:48<06:25,  2.31s/it][ASFT optimizer steps:  32%|███▏      | 78/245 [02:49<06:25,  2.31s/step, loss=3.14, learning_rate=7.09e-6, grad_norm=70.5]                                                                                                                         
+                                                [A{'loss': 3.1397, 'grad_norm': 70.5, 'learning_rate': 7.08860759493671e-06, 'epoch': 0.01}
+SFT optimizer steps:  32%|███▏      | 78/245 [02:49<06:25,  2.31s/step, loss=3.14, learning_rate=7.09e-6, grad_norm=70.5]
+ 32%|███▏      | 78/245 [02:49<06:25,  2.31s/it][ASFT optimizer steps:  32%|███▏      | 79/245 [02:49<05:05,  1.84s/step, loss=3.14, learning_rate=7.09e-6, grad_norm=70.5]
+ 32%|███▏      | 79/245 [02:49<05:05,  1.84s/it][ASFT optimizer steps:  32%|███▏      | 79/245 [02:49<05:05,  1.84s/step, loss=3.3, learning_rate=7.05e-6, grad_norm=78]                                                                                                                         
+                                                [A{'loss': 3.3035, 'grad_norm': 78.0, 'learning_rate': 7.046413502109706e-06, 'epoch': 0.01}
+SFT optimizer steps:  32%|███▏      | 79/245 [02:49<05:05,  1.84s/step, loss=3.3, learning_rate=7.05e-6, grad_norm=78]
+ 32%|███▏      | 79/245 [02:49<05:05,  1.84s/it][ASFT optimizer steps:  33%|███▎      | 80/245 [02:51<04:38,  1.69s/step, loss=3.3, learning_rate=7.05e-6, grad_norm=78]
+ 33%|███▎      | 80/245 [02:51<04:38,  1.69s/it][ASFT optimizer steps:  33%|███▎      | 80/245 [02:51<04:38,  1.69s/step, loss=1.18, learning_rate=7e-6, grad_norm=14.4]                                                                                                                      
+                                                [A{'loss': 1.1843, 'grad_norm': 14.4375, 'learning_rate': 7.004219409282701e-06, 'epoch': 0.01}
+SFT optimizer steps:  33%|███▎      | 80/245 [02:51<04:38,  1.69s/step, loss=1.18, learning_rate=7e-6, grad_norm=14.4]
+ 33%|███▎      | 80/245 [02:51<04:38,  1.69s/it][ASFT optimizer steps:  33%|███▎      | 81/245 [02:52<04:46,  1.75s/step, loss=1.18, learning_rate=7e-6, grad_norm=14.4]
+ 33%|███▎      | 81/245 [02:52<04:46,  1.75s/it][ASFT optimizer steps:  33%|███▎      | 81/245 [02:53<04:46,  1.75s/step, loss=2.6, learning_rate=6.96e-6, grad_norm=55.5]                                                                                                                        
+                                                [A{'loss': 2.5992, 'grad_norm': 55.5, 'learning_rate': 6.962025316455697e-06, 'epoch': 0.01}
+SFT optimizer steps:  33%|███▎      | 81/245 [02:53<04:46,  1.75s/step, loss=2.6, learning_rate=6.96e-6, grad_norm=55.5]
+ 33%|███▎      | 81/245 [02:53<04:46,  1.75s/it][ASFT optimizer steps:  33%|███▎      | 82/245 [02:55<05:04,  1.87s/step, loss=2.6, learning_rate=6.96e-6, grad_norm=55.5]
+ 33%|███▎      | 82/245 [02:55<05:04,  1.87s/it][ASFT optimizer steps:  33%|███▎      | 82/245 [02:55<05:04,  1.87s/step, loss=4, learning_rate=6.92e-6, grad_norm=92.5]                                                                                                                        
+                                                [A{'loss': 3.996, 'grad_norm': 92.5, 'learning_rate': 6.919831223628692e-06, 'epoch': 0.01}
+SFT optimizer steps:  33%|███▎      | 82/245 [02:55<05:04,  1.87s/step, loss=4, learning_rate=6.92e-6, grad_norm=92.5]
+ 33%|███▎      | 82/245 [02:55<05:04,  1.87s/it][ASFT optimizer steps:  34%|███▍      | 83/245 [02:56<05:03,  1.88s/step, loss=4, learning_rate=6.92e-6, grad_norm=92.5]
+ 34%|███▍      | 83/245 [02:56<05:03,  1.88s/it][ASFT optimizer steps:  34%|███▍      | 83/245 [02:57<05:03,  1.88s/step, loss=5.39, learning_rate=6.88e-6, grad_norm=136]                                                                                                                        
+                                                [A{'loss': 5.3913, 'grad_norm': 136.0, 'learning_rate': 6.8776371308016885e-06, 'epoch': 0.01}
+SFT optimizer steps:  34%|███▍      | 83/245 [02:57<05:03,  1.88s/step, loss=5.39, learning_rate=6.88e-6, grad_norm=136]
+ 34%|███▍      | 83/245 [02:57<05:03,  1.88s/it][ASFT optimizer steps:  34%|███▍      | 84/245 [02:58<05:01,  1.87s/step, loss=5.39, learning_rate=6.88e-6, grad_norm=136]
+ 34%|███▍      | 84/245 [02:58<05:01,  1.87s/it][ASFT optimizer steps:  34%|███▍      | 84/245 [02:58<05:01,  1.87s/step, loss=3.98, learning_rate=6.84e-6, grad_norm=98]                                                                                                                        
+                                                [A{'loss': 3.9793, 'grad_norm': 98.0, 'learning_rate': 6.835443037974684e-06, 'epoch': 0.01}
+SFT optimizer steps:  34%|███▍      | 84/245 [02:58<05:01,  1.87s/step, loss=3.98, learning_rate=6.84e-6, grad_norm=98]
+ 34%|███▍      | 84/245 [02:58<05:01,  1.87s/it][ASFT optimizer steps:  35%|███▍      | 85/245 [03:00<05:00,  1.88s/step, loss=3.98, learning_rate=6.84e-6, grad_norm=98]
+ 35%|███▍      | 85/245 [03:00<05:00,  1.88s/it][ASFT optimizer steps:  35%|███▍      | 85/245 [03:00<05:00,  1.88s/step, loss=2.27, learning_rate=6.79e-6, grad_norm=51.8]                                                                                                                         
+                                                [A{'loss': 2.2711, 'grad_norm': 51.75, 'learning_rate': 6.79324894514768e-06, 'epoch': 0.02}
+SFT optimizer steps:  35%|███▍      | 85/245 [03:00<05:00,  1.88s/step, loss=2.27, learning_rate=6.79e-6, grad_norm=51.8]
+ 35%|███▍      | 85/245 [03:00<05:00,  1.88s/it][ASFT optimizer steps:  35%|███▌      | 86/245 [03:02<05:06,  1.93s/step, loss=2.27, learning_rate=6.79e-6, grad_norm=51.8]
+ 35%|███▌      | 86/245 [03:02<05:06,  1.93s/it][ASFT optimizer steps:  35%|███▌      | 86/245 [03:02<05:06,  1.93s/step, loss=4.71, learning_rate=6.75e-6, grad_norm=98.5]                                                                                                                         
+                                                [A{'loss': 4.7088, 'grad_norm': 98.5, 'learning_rate': 6.751054852320675e-06, 'epoch': 0.02}
+SFT optimizer steps:  35%|███▌      | 86/245 [03:02<05:06,  1.93s/step, loss=4.71, learning_rate=6.75e-6, grad_norm=98.5]
+ 35%|███▌      | 86/245 [03:02<05:06,  1.93s/it][ASFT optimizer steps:  36%|███▌      | 87/245 [03:04<05:06,  1.94s/step, loss=4.71, learning_rate=6.75e-6, grad_norm=98.5]
+ 36%|███▌      | 87/245 [03:04<05:06,  1.94s/it][ASFT optimizer steps:  36%|███▌      | 87/245 [03:04<05:06,  1.94s/step, loss=4.59, learning_rate=6.71e-6, grad_norm=107]                                                                                                                         
+                                                [A{'loss': 4.5947, 'grad_norm': 107.0, 'learning_rate': 6.708860759493672e-06, 'epoch': 0.02}
+SFT optimizer steps:  36%|███▌      | 87/245 [03:04<05:06,  1.94s/step, loss=4.59, learning_rate=6.71e-6, grad_norm=107]
+ 36%|███▌      | 87/245 [03:04<05:06,  1.94s/it][ASFT optimizer steps:  36%|███▌      | 88/245 [03:06<05:01,  1.92s/step, loss=4.59, learning_rate=6.71e-6, grad_norm=107]
+ 36%|███▌      | 88/245 [03:06<05:01,  1.92s/it][ASFT optimizer steps:  36%|███▌      | 88/245 [03:06<05:01,  1.92s/step, loss=3.43, learning_rate=6.67e-6, grad_norm=85]                                                                                                                        
+                                                [A{'loss': 3.4305, 'grad_norm': 85.0, 'learning_rate': 6.666666666666667e-06, 'epoch': 0.02}
+SFT optimizer steps:  36%|███▌      | 88/245 [03:06<05:01,  1.92s/step, loss=3.43, learning_rate=6.67e-6, grad_norm=85]
+ 36%|███▌      | 88/245 [03:06<05:01,  1.92s/it][ASFT optimizer steps:  36%|███▋      | 89/245 [03:09<05:43,  2.20s/step, loss=3.43, learning_rate=6.67e-6, grad_norm=85]
+ 36%|███▋      | 89/245 [03:09<05:43,  2.20s/it][ASFT optimizer steps:  36%|███▋      | 89/245 [03:09<05:43,  2.20s/step, loss=6.16, learning_rate=6.62e-6, grad_norm=147]                                                                                                                        
+                                                [A{'loss': 6.1623, 'grad_norm': 147.0, 'learning_rate': 6.624472573839663e-06, 'epoch': 0.02}
+SFT optimizer steps:  36%|███▋      | 89/245 [03:09<05:43,  2.20s/step, loss=6.16, learning_rate=6.62e-6, grad_norm=147]
+ 36%|███▋      | 89/245 [03:09<05:43,  2.20s/it][ASFT optimizer steps:  37%|███▋      | 90/245 [03:11<05:34,  2.16s/step, loss=6.16, learning_rate=6.62e-6, grad_norm=147]
+ 37%|███▋      | 90/245 [03:11<05:34,  2.16s/it][ASFT optimizer steps:  37%|███▋      | 90/245 [03:11<05:34,  2.16s/step, loss=3.81, learning_rate=6.58e-6, grad_norm=86.5]                                                                                                                         
+                                                [A{'loss': 3.811, 'grad_norm': 86.5, 'learning_rate': 6.582278481012659e-06, 'epoch': 0.02}
+SFT optimizer steps:  37%|███▋      | 90/245 [03:11<05:34,  2.16s/step, loss=3.81, learning_rate=6.58e-6, grad_norm=86.5]
+ 37%|███▋      | 90/245 [03:11<05:34,  2.16s/it][ASFT optimizer steps:  37%|███▋      | 91/245 [03:13<05:08,  2.01s/step, loss=3.81, learning_rate=6.58e-6, grad_norm=86.5]
+ 37%|███▋      | 91/245 [03:13<05:08,  2.01s/it][ASFT optimizer steps:  37%|███▋      | 91/245 [03:13<05:08,  2.01s/step, loss=3.81, learning_rate=6.54e-6, grad_norm=89]                                                                                                                         
+                                                [A{'loss': 3.8095, 'grad_norm': 89.0, 'learning_rate': 6.540084388185654e-06, 'epoch': 0.02}
+SFT optimizer steps:  37%|███▋      | 91/245 [03:13<05:08,  2.01s/step, loss=3.81, learning_rate=6.54e-6, grad_norm=89]
+ 37%|███▋      | 91/245 [03:13<05:08,  2.01s/it][ASFT optimizer steps:  38%|███▊      | 92/245 [03:15<05:07,  2.01s/step, loss=3.81, learning_rate=6.54e-6, grad_norm=89]
+ 38%|███▊      | 92/245 [03:15<05:07,  2.01s/it][ASFT optimizer steps:  38%|███▊      | 92/245 [03:15<05:07,  2.01s/step, loss=3.33, learning_rate=6.5e-6, grad_norm=78]                                                                                                                       
+                                                [A{'loss': 3.326, 'grad_norm': 78.0, 'learning_rate': 6.49789029535865e-06, 'epoch': 0.02}
+SFT optimizer steps:  38%|███▊      | 92/245 [03:15<05:07,  2.01s/step, loss=3.33, learning_rate=6.5e-6, grad_norm=78]
+ 38%|███▊      | 92/245 [03:15<05:07,  2.01s/it][ASFT optimizer steps:  38%|███▊      | 93/245 [03:16<04:48,  1.90s/step, loss=3.33, learning_rate=6.5e-6, grad_norm=78]
+ 38%|███▊      | 93/245 [03:16<04:48,  1.90s/it][ASFT optimizer steps:  38%|███▊      | 93/245 [03:16<04:48,  1.90s/step, loss=3.75, learning_rate=6.46e-6, grad_norm=92]                                                                                                                       
+                                                [A{'loss': 3.7504, 'grad_norm': 92.0, 'learning_rate': 6.4556962025316464e-06, 'epoch': 0.02}
+SFT optimizer steps:  38%|███▊      | 93/245 [03:16<04:48,  1.90s/step, loss=3.75, learning_rate=6.46e-6, grad_norm=92]
+ 38%|███▊      | 93/245 [03:16<04:48,  1.90s/it][ASFT optimizer steps:  38%|███▊      | 94/245 [03:18<04:52,  1.94s/step, loss=3.75, learning_rate=6.46e-6, grad_norm=92]
+ 38%|███▊      | 94/245 [03:18<04:52,  1.94s/it][ASFT optimizer steps:  38%|███▊      | 94/245 [03:18<04:52,  1.94s/step, loss=3.02, learning_rate=6.41e-6, grad_norm=73.5]                                                                                                                         
+                                                [A{'loss': 3.0212, 'grad_norm': 73.5, 'learning_rate': 6.413502109704642e-06, 'epoch': 0.02}
+SFT optimizer steps:  38%|███▊      | 94/245 [03:18<04:52,  1.94s/step, loss=3.02, learning_rate=6.41e-6, grad_norm=73.5]
+ 38%|███▊      | 94/245 [03:18<04:52,  1.94s/it][ASFT optimizer steps:  39%|███▉      | 95/245 [03:20<04:48,  1.92s/step, loss=3.02, learning_rate=6.41e-6, grad_norm=73.5]
+ 39%|███▉      | 95/245 [03:20<04:48,  1.92s/it][ASFT optimizer steps:  39%|███▉      | 95/245 [03:20<04:48,  1.92s/step, loss=2.16, learning_rate=6.37e-6, grad_norm=51.2]                                                                                                                         
+                                                [A{'loss': 2.1552, 'grad_norm': 51.25, 'learning_rate': 6.371308016877638e-06, 'epoch': 0.02}
+SFT optimizer steps:  39%|███▉      | 95/245 [03:20<04:48,  1.92s/step, loss=2.16, learning_rate=6.37e-6, grad_norm=51.2]
+ 39%|███▉      | 95/245 [03:20<04:48,  1.92s/it][ASFT optimizer steps:  39%|███▉      | 96/245 [03:22<04:43,  1.90s/step, loss=2.16, learning_rate=6.37e-6, grad_norm=51.2]
+ 39%|███▉      | 96/245 [03:22<04:43,  1.90s/it][ASFT optimizer steps:  39%|███▉      | 96/245 [03:22<04:43,  1.90s/step, loss=1.77, learning_rate=6.33e-6, grad_norm=29.5]                                                                                                                         
+                                                [A{'loss': 1.7664, 'grad_norm': 29.5, 'learning_rate': 6.329113924050634e-06, 'epoch': 0.02}
+SFT optimizer steps:  39%|███▉      | 96/245 [03:22<04:43,  1.90s/step, loss=1.77, learning_rate=6.33e-6, grad_norm=29.5]
+ 39%|███▉      | 96/245 [03:22<04:43,  1.90s/it][ASFT optimizer steps:  40%|███▉      | 97/245 [03:24<04:28,  1.81s/step, loss=1.77, learning_rate=6.33e-6, grad_norm=29.5]
+ 40%|███▉      | 97/245 [03:24<04:28,  1.81s/it][ASFT optimizer steps:  40%|███▉      | 97/245 [03:24<04:28,  1.81s/step, loss=3.09, learning_rate=6.29e-6, grad_norm=75]                                                                                                                         
+                                                [A{'loss': 3.0879, 'grad_norm': 75.0, 'learning_rate': 6.286919831223629e-06, 'epoch': 0.02}
+SFT optimizer steps:  40%|███▉      | 97/245 [03:24<04:28,  1.81s/step, loss=3.09, learning_rate=6.29e-6, grad_norm=75]
+ 40%|███▉      | 97/245 [03:24<04:28,  1.81s/it][ASFT optimizer steps:  40%|████      | 98/245 [03:26<04:25,  1.81s/step, loss=3.09, learning_rate=6.29e-6, grad_norm=75]
+ 40%|████      | 98/245 [03:26<04:25,  1.81s/it][ASFT optimizer steps:  40%|████      | 98/245 [03:26<04:25,  1.81s/step, loss=1.76, learning_rate=6.24e-6, grad_norm=22.9]                                                                                                                         
+                                                [A{'loss': 1.757, 'grad_norm': 22.875, 'learning_rate': 6.244725738396625e-06, 'epoch': 0.02}
+SFT optimizer steps:  40%|████      | 98/245 [03:26<04:25,  1.81s/step, loss=1.76, learning_rate=6.24e-6, grad_norm=22.9]
+ 40%|████      | 98/245 [03:26<04:25,  1.81s/it][ASFT optimizer steps:  40%|████      | 99/245 [03:27<04:28,  1.84s/step, loss=1.76, learning_rate=6.24e-6, grad_norm=22.9]
+ 40%|████      | 99/245 [03:27<04:28,  1.84s/it][ASFT optimizer steps:  40%|████      | 99/245 [03:28<04:28,  1.84s/step, loss=3.01, learning_rate=6.2e-6, grad_norm=79.5]                                                                                                                         
+                                                [A{'loss': 3.0138, 'grad_norm': 79.5, 'learning_rate': 6.20253164556962e-06, 'epoch': 0.02}
+SFT optimizer steps:  40%|████      | 99/245 [03:28<04:28,  1.84s/step, loss=3.01, learning_rate=6.2e-6, grad_norm=79.5]
+ 40%|████      | 99/245 [03:28<04:28,  1.84s/it][ASFT optimizer steps:  41%|████      | 100/245 [03:30<05:08,  2.13s/step, loss=3.01, learning_rate=6.2e-6, grad_norm=79.5]
+ 41%|████      | 100/245 [03:30<05:08,  2.13s/it][ASFT optimizer steps:  41%|████      | 100/245 [03:30<05:08,  2.13s/step, loss=5.62, learning_rate=6.16e-6, grad_norm=148]                                                                                                                         
+                                                 [A{'loss': 5.6173, 'grad_norm': 148.0, 'learning_rate': 6.160337552742617e-06, 'epoch': 0.02}
+SFT optimizer steps:  41%|████      | 100/245 [03:30<05:08,  2.13s/step, loss=5.62, learning_rate=6.16e-6, grad_norm=148]
+ 41%|████      | 100/245 [03:30<05:08,  2.13s/it][ASFT optimizer steps:  41%|████      | 101/245 [04:12<33:43, 14.05s/step, loss=5.62, learning_rate=6.16e-6, grad_norm=148]
+ 41%|████      | 101/245 [04:12<33:43, 14.05s/it][ASFT optimizer steps:  41%|████      | 101/245 [04:12<33:43, 14.05s/step, loss=1.31, learning_rate=6.12e-6, grad_norm=28.9]                                                                                                                          
+                                                 [A{'loss': 1.3071, 'grad_norm': 28.875, 'learning_rate': 6.118143459915612e-06, 'epoch': 0.02}
+SFT optimizer steps:  41%|████      | 101/245 [04:12<33:43, 14.05s/step, loss=1.31, learning_rate=6.12e-6, grad_norm=28.9]
+ 41%|████      | 101/245 [04:12<33:43, 14.05s/it][ASFT optimizer steps:  42%|████▏     | 102/245 [04:14<24:40, 10.35s/step, loss=1.31, learning_rate=6.12e-6, grad_norm=28.9]
+ 42%|████▏     | 102/245 [04:14<24:40, 10.35s/it][ASFT optimizer steps:  42%|████▏     | 102/245 [04:14<24:40, 10.35s/step, loss=3.1, learning_rate=6.08e-6, grad_norm=73.5]                                                                                                                          
+                                                 [A{'loss': 3.1041, 'grad_norm': 73.5, 'learning_rate': 6.075949367088608e-06, 'epoch': 0.02}
+SFT optimizer steps:  42%|████▏     | 102/245 [04:14<24:40, 10.35s/step, loss=3.1, learning_rate=6.08e-6, grad_norm=73.5]
+ 42%|████▏     | 102/245 [04:14<24:40, 10.35s/it][ASFT optimizer steps:  42%|████▏     | 103/245 [04:16<18:35,  7.85s/step, loss=3.1, learning_rate=6.08e-6, grad_norm=73.5]
+ 42%|████▏     | 103/245 [04:16<18:35,  7.85s/it][ASFT optimizer steps:  42%|████▏     | 103/245 [04:16<18:35,  7.85s/step, loss=3.45, learning_rate=6.03e-6, grad_norm=82]                                                                                                                         
+                                                 [A{'loss': 3.4549, 'grad_norm': 82.0, 'learning_rate': 6.0337552742616035e-06, 'epoch': 0.02}
+SFT optimizer steps:  42%|████▏     | 103/245 [04:16<18:35,  7.85s/step, loss=3.45, learning_rate=6.03e-6, grad_norm=82]
+ 42%|████▏     | 103/245 [04:16<18:35,  7.85s/it][ASFT optimizer steps:  42%|████▏     | 104/245 [04:18<14:17,  6.08s/step, loss=3.45, learning_rate=6.03e-6, grad_norm=82]
+ 42%|████▏     | 104/245 [04:18<14:17,  6.08s/it][ASFT optimizer steps:  42%|████▏     | 104/245 [04:18<14:17,  6.08s/step, loss=4.59, learning_rate=5.99e-6, grad_norm=127]                                                                                                                         
+                                                 [A{'loss': 4.5883, 'grad_norm': 127.0, 'learning_rate': 5.9915611814346e-06, 'epoch': 0.02}
+SFT optimizer steps:  42%|████▏     | 104/245 [04:18<14:17,  6.08s/step, loss=4.59, learning_rate=5.99e-6, grad_norm=127]
+ 42%|████▏     | 104/245 [04:18<14:17,  6.08s/it][ASFT optimizer steps:  43%|████▎     | 105/245 [04:21<12:27,  5.34s/step, loss=4.59, learning_rate=5.99e-6, grad_norm=127]
+ 43%|████▎     | 105/245 [04:21<12:27,  5.34s/it][ASFT optimizer steps:  43%|████▎     | 105/245 [04:22<12:27,  5.34s/step, loss=4.72, learning_rate=5.95e-6, grad_norm=122]                                                                                                                         
+                                                 [A{'loss': 4.7196, 'grad_norm': 121.5, 'learning_rate': 5.949367088607595e-06, 'epoch': 0.02}
+SFT optimizer steps:  43%|████▎     | 105/245 [04:22<12:27,  5.34s/step, loss=4.72, learning_rate=5.95e-6, grad_norm=122]
+ 43%|████▎     | 105/245 [04:22<12:27,  5.34s/it][ASFT optimizer steps:  43%|████▎     | 106/245 [04:24<10:10,  4.39s/step, loss=4.72, learning_rate=5.95e-6, grad_norm=122]
+ 43%|████▎     | 106/245 [04:24<10:10,  4.39s/it][ASFT optimizer steps:  43%|████▎     | 106/245 [04:24<10:10,  4.39s/step, loss=5.01, learning_rate=5.91e-6, grad_norm=133]                                                                                                                         
+                                                 [A{'loss': 5.0105, 'grad_norm': 133.0, 'learning_rate': 5.907172995780591e-06, 'epoch': 0.02}
+SFT optimizer steps:  43%|████▎     | 106/245 [04:24<10:10,  4.39s/step, loss=5.01, learning_rate=5.91e-6, grad_norm=133]
+ 43%|████▎     | 106/245 [04:24<10:10,  4.39s/it][ASFT optimizer steps:  44%|████▎     | 107/245 [04:25<08:17,  3.61s/step, loss=5.01, learning_rate=5.91e-6, grad_norm=133]
+ 44%|████▎     | 107/245 [04:25<08:17,  3.61s/it][ASFT optimizer steps:  44%|████▎     | 107/245 [04:25<08:17,  3.61s/step, loss=1.89, learning_rate=5.86e-6, grad_norm=15.6]                                                                                                                          
+                                                 [A{'loss': 1.8944, 'grad_norm': 15.625, 'learning_rate': 5.864978902953588e-06, 'epoch': 0.02}
+SFT optimizer steps:  44%|████▎     | 107/245 [04:25<08:17,  3.61s/step, loss=1.89, learning_rate=5.86e-6, grad_norm=15.6]
+ 44%|████▎     | 107/245 [04:25<08:17,  3.61s/it][ASFT optimizer steps:  44%|████▍     | 108/245 [04:27<07:03,  3.09s/step, loss=1.89, learning_rate=5.86e-6, grad_norm=15.6]
+ 44%|████▍     | 108/245 [04:27<07:03,  3.09s/it][ASFT optimizer steps:  44%|████▍     | 108/245 [04:27<07:03,  3.09s/step, loss=3.1, learning_rate=5.82e-6, grad_norm=73.5]                                                                                                                          
+                                                 [A{'loss': 3.1018, 'grad_norm': 73.5, 'learning_rate': 5.8227848101265824e-06, 'epoch': 0.02}
+SFT optimizer steps:  44%|████▍     | 108/245 [04:27<07:03,  3.09s/step, loss=3.1, learning_rate=5.82e-6, grad_norm=73.5]
+ 44%|████▍     | 108/245 [04:27<07:03,  3.09s/it][ASFT optimizer steps:  44%|████▍     | 109/245 [04:29<06:22,  2.81s/step, loss=3.1, learning_rate=5.82e-6, grad_norm=73.5]
+ 44%|████▍     | 109/245 [04:29<06:22,  2.81s/it][ASFT optimizer steps:  44%|████▍     | 109/245 [04:30<06:22,  2.81s/step, loss=3.02, learning_rate=5.78e-6, grad_norm=75]                                                                                                                         
+                                                 [A{'loss': 3.0206, 'grad_norm': 75.0, 'learning_rate': 5.780590717299579e-06, 'epoch': 0.02}
+SFT optimizer steps:  44%|████▍     | 109/245 [04:30<06:22,  2.81s/step, loss=3.02, learning_rate=5.78e-6, grad_norm=75]
+ 44%|████▍     | 109/245 [04:30<06:22,  2.81s/it][ASFT optimizer steps:  45%|████▍     | 110/245 [04:31<05:47,  2.57s/step, loss=3.02, learning_rate=5.78e-6, grad_norm=75]
+ 45%|████▍     | 110/245 [04:31<05:47,  2.57s/it][ASFT optimizer steps:  45%|████▍     | 110/245 [04:32<05:47,  2.57s/step, loss=1.92, learning_rate=5.74e-6, grad_norm=48.2]                                                                                                                          
+                                                 [A{'loss': 1.9212, 'grad_norm': 48.25, 'learning_rate': 5.7383966244725745e-06, 'epoch': 0.02}
+SFT optimizer steps:  45%|████▍     | 110/245 [04:32<05:47,  2.57s/step, loss=1.92, learning_rate=5.74e-6, grad_norm=48.2]
+ 45%|████▍     | 110/245 [04:32<05:47,  2.57s/it][ASFT optimizer steps:  45%|████▌     | 111/245 [04:34<05:26,  2.44s/step, loss=1.92, learning_rate=5.74e-6, grad_norm=48.2]
+ 45%|████▌     | 111/245 [04:34<05:26,  2.44s/it][ASFT optimizer steps:  45%|████▌     | 111/245 [04:34<05:26,  2.44s/step, loss=3.48, learning_rate=5.7e-6, grad_norm=102]                                                                                                                          
+                                                 [A{'loss': 3.4796, 'grad_norm': 101.5, 'learning_rate': 5.69620253164557e-06, 'epoch': 0.02}
+SFT optimizer steps:  45%|████▌     | 111/245 [04:34<05:26,  2.44s/step, loss=3.48, learning_rate=5.7e-6, grad_norm=102]
+ 45%|████▌     | 111/245 [04:34<05:26,  2.44s/it][ASFT optimizer steps:  46%|████▌     | 112/245 [04:35<05:00,  2.26s/step, loss=3.48, learning_rate=5.7e-6, grad_norm=102]
+ 46%|████▌     | 112/245 [04:35<05:00,  2.26s/it][ASFT optimizer steps:  46%|████▌     | 112/245 [04:35<05:00,  2.26s/step, loss=2.88, learning_rate=5.65e-6, grad_norm=79.5]                                                                                                                          
+                                                 [A{'loss': 2.8848, 'grad_norm': 79.5, 'learning_rate': 5.654008438818566e-06, 'epoch': 0.02}
+SFT optimizer steps:  46%|████▌     | 112/245 [04:35<05:00,  2.26s/step, loss=2.88, learning_rate=5.65e-6, grad_norm=79.5]
+ 46%|████▌     | 112/245 [04:35<05:00,  2.26s/it][ASFT optimizer steps:  46%|████▌     | 113/245 [04:38<05:04,  2.31s/step, loss=2.88, learning_rate=5.65e-6, grad_norm=79.5]
+ 46%|████▌     | 113/245 [04:38<05:04,  2.31s/it][ASFT optimizer steps:  46%|████▌     | 113/245 [04:38<05:04,  2.31s/step, loss=3.4, learning_rate=5.61e-6, grad_norm=94]                                                                                                                          
+                                                 [A{'loss': 3.4022, 'grad_norm': 94.0, 'learning_rate': 5.611814345991562e-06, 'epoch': 0.02}
+SFT optimizer steps:  46%|████▌     | 113/245 [04:38<05:04,  2.31s/step, loss=3.4, learning_rate=5.61e-6, grad_norm=94]
+ 46%|████▌     | 113/245 [04:38<05:04,  2.31s/it][ASFT optimizer steps:  47%|████▋     | 114/245 [04:40<04:43,  2.16s/step, loss=3.4, learning_rate=5.61e-6, grad_norm=94]
+ 47%|████▋     | 114/245 [04:40<04:43,  2.16s/it][ASFT optimizer steps:  47%|████▋     | 114/245 [04:40<04:43,  2.16s/step, loss=2.37, learning_rate=5.57e-6, grad_norm=63.8]                                                                                                                          
+                                                 [A{'loss': 2.3725, 'grad_norm': 63.75, 'learning_rate': 5.569620253164557e-06, 'epoch': 0.02}
+SFT optimizer steps:  47%|████▋     | 114/245 [04:40<04:43,  2.16s/step, loss=2.37, learning_rate=5.57e-6, grad_norm=63.8]
+ 47%|████▋     | 114/245 [04:40<04:43,  2.16s/it][ASFT optimizer steps:  47%|████▋     | 115/245 [04:42<04:31,  2.09s/step, loss=2.37, learning_rate=5.57e-6, grad_norm=63.8]
+ 47%|████▋     | 115/245 [04:42<04:31,  2.09s/it][ASFT optimizer steps:  47%|████▋     | 115/245 [04:42<04:31,  2.09s/step, loss=2.46, learning_rate=5.53e-6, grad_norm=58.8]                                                                                                                          
+                                                 [A{'loss': 2.457, 'grad_norm': 58.75, 'learning_rate': 5.5274261603375535e-06, 'epoch': 0.02}
+SFT optimizer steps:  47%|████▋     | 115/245 [04:42<04:31,  2.09s/step, loss=2.46, learning_rate=5.53e-6, grad_norm=58.8]
+ 47%|████▋     | 115/245 [04:42<04:31,  2.09s/it][ASFT optimizer steps:  47%|████▋     | 116/245 [04:43<04:18,  2.01s/step, loss=2.46, learning_rate=5.53e-6, grad_norm=58.8]
+ 47%|████▋     | 116/245 [04:43<04:18,  2.01s/it][ASFT optimizer steps:  47%|████▋     | 116/245 [04:43<04:18,  2.01s/step, loss=2.86, learning_rate=5.49e-6, grad_norm=85]                                                                                                                          
+                                                 [A{'loss': 2.8639, 'grad_norm': 85.0, 'learning_rate': 5.485232067510548e-06, 'epoch': 0.02}
+SFT optimizer steps:  47%|████▋     | 116/245 [04:43<04:18,  2.01s/step, loss=2.86, learning_rate=5.49e-6, grad_norm=85]
+ 47%|████▋     | 116/245 [04:43<04:18,  2.01s/it][ASFT optimizer steps:  48%|████▊     | 117/245 [04:45<04:01,  1.89s/step, loss=2.86, learning_rate=5.49e-6, grad_norm=85]
+ 48%|████▊     | 117/245 [04:45<04:01,  1.89s/it][ASFT optimizer steps:  48%|████▊     | 117/245 [04:45<04:01,  1.89s/step, loss=2.02, learning_rate=5.44e-6, grad_norm=32.2]                                                                                                                          
+                                                 [A{'loss': 2.0242, 'grad_norm': 32.25, 'learning_rate': 5.443037974683545e-06, 'epoch': 0.02}
+SFT optimizer steps:  48%|████▊     | 117/245 [04:45<04:01,  1.89s/step, loss=2.02, learning_rate=5.44e-6, grad_norm=32.2]
+ 48%|████▊     | 117/245 [04:45<04:01,  1.89s/it][ASFT optimizer steps:  48%|████▊     | 118/245 [04:48<04:46,  2.25s/step, loss=2.02, learning_rate=5.44e-6, grad_norm=32.2]
+ 48%|████▊     | 118/245 [04:48<04:46,  2.25s/it][ASFT optimizer steps:  48%|████▊     | 118/245 [04:48<04:46,  2.25s/step, loss=1.5, learning_rate=5.4e-6, grad_norm=29.9]                                                                                                                          
+                                                 [A{'loss': 1.4956, 'grad_norm': 29.875, 'learning_rate': 5.40084388185654e-06, 'epoch': 0.02}
+SFT optimizer steps:  48%|████▊     | 118/245 [04:48<04:46,  2.25s/step, loss=1.5, learning_rate=5.4e-6, grad_norm=29.9]
+ 48%|████▊     | 118/245 [04:48<04:46,  2.25s/it][ASFT optimizer steps:  49%|████▊     | 119/245 [04:51<04:54,  2.34s/step, loss=1.5, learning_rate=5.4e-6, grad_norm=29.9]
+ 49%|████▊     | 119/245 [04:51<04:54,  2.34s/it][ASFT optimizer steps:  49%|████▊     | 119/245 [04:51<04:54,  2.34s/step, loss=4.63, learning_rate=5.36e-6, grad_norm=127]                                                                                                                         
+                                                 [A{'loss': 4.6347, 'grad_norm': 127.0, 'learning_rate': 5.358649789029536e-06, 'epoch': 0.02}
+SFT optimizer steps:  49%|████▊     | 119/245 [04:51<04:54,  2.34s/step, loss=4.63, learning_rate=5.36e-6, grad_norm=127]
+ 49%|████▊     | 119/245 [04:51<04:54,  2.34s/it][ASFT optimizer steps:  49%|████▉     | 120/245 [04:52<04:31,  2.17s/step, loss=4.63, learning_rate=5.36e-6, grad_norm=127]
+ 49%|████▉     | 120/245 [04:52<04:31,  2.17s/it][ASFT optimizer steps:  49%|████▉     | 120/245 [04:52<04:31,  2.17s/step, loss=3.36, learning_rate=5.32e-6, grad_norm=95.5]                                                                                                                          
+                                                 [A{'loss': 3.3647, 'grad_norm': 95.5, 'learning_rate': 5.3164556962025316e-06, 'epoch': 0.02}
+SFT optimizer steps:  49%|████▉     | 120/245 [04:52<04:31,  2.17s/step, loss=3.36, learning_rate=5.32e-6, grad_norm=95.5]
+ 49%|████▉     | 120/245 [04:52<04:31,  2.17s/it][ASFT optimizer steps:  49%|████▉     | 121/245 [04:55<04:44,  2.30s/step, loss=3.36, learning_rate=5.32e-6, grad_norm=95.5]
+ 49%|████▉     | 121/245 [04:55<04:44,  2.30s/it][ASFT optimizer steps:  49%|████▉     | 121/245 [04:55<04:44,  2.30s/step, loss=5.17, learning_rate=5.27e-6, grad_norm=151]                                                                                                                          
+                                                 [A{'loss': 5.1679, 'grad_norm': 151.0, 'learning_rate': 5.274261603375528e-06, 'epoch': 0.02}
+SFT optimizer steps:  49%|████▉     | 121/245 [04:55<04:44,  2.30s/step, loss=5.17, learning_rate=5.27e-6, grad_norm=151]
+ 49%|████▉     | 121/245 [04:55<04:44,  2.30s/it][ASFT optimizer steps:  50%|████▉     | 122/245 [04:57<04:20,  2.11s/step, loss=5.17, learning_rate=5.27e-6, grad_norm=151]
+ 50%|████▉     | 122/245 [04:57<04:20,  2.11s/it][ASFT optimizer steps:  50%|████▉     | 122/245 [04:57<04:20,  2.11s/step, loss=3.61, learning_rate=5.23e-6, grad_norm=100]                                                                                                                         
+                                                 [A{'loss': 3.6064, 'grad_norm': 100.5, 'learning_rate': 5.2320675105485245e-06, 'epoch': 0.02}
+SFT optimizer steps:  50%|████▉     | 122/245 [04:57<04:20,  2.11s/step, loss=3.61, learning_rate=5.23e-6, grad_norm=100]
+ 50%|████▉     | 122/245 [04:57<04:20,  2.11s/it][ASFT optimizer steps:  50%|█████     | 123/245 [04:59<04:19,  2.13s/step, loss=3.61, learning_rate=5.23e-6, grad_norm=100]
+ 50%|█████     | 123/245 [04:59<04:19,  2.13s/it][ASFT optimizer steps:  50%|█████     | 123/245 [04:59<04:19,  2.13s/step, loss=3.84, learning_rate=5.19e-6, grad_norm=119]                                                                                                                         
+                                                 [A{'loss': 3.836, 'grad_norm': 119.0, 'learning_rate': 5.189873417721519e-06, 'epoch': 0.02}
+SFT optimizer steps:  50%|█████     | 123/245 [04:59<04:19,  2.13s/step, loss=3.84, learning_rate=5.19e-6, grad_norm=119]
+ 50%|█████     | 123/245 [04:59<04:19,  2.13s/it][ASFT optimizer steps:  51%|█████     | 124/245 [05:01<04:05,  2.03s/step, loss=3.84, learning_rate=5.19e-6, grad_norm=119]
+ 51%|█████     | 124/245 [05:01<04:05,  2.03s/it][ASFT optimizer steps:  51%|█████     | 124/245 [05:01<04:05,  2.03s/step, loss=3.24, learning_rate=5.15e-6, grad_norm=95]                                                                                                                         
+                                                 [A{'loss': 3.2354, 'grad_norm': 95.0, 'learning_rate': 5.147679324894516e-06, 'epoch': 0.02}
+SFT optimizer steps:  51%|█████     | 124/245 [05:01<04:05,  2.03s/step, loss=3.24, learning_rate=5.15e-6, grad_norm=95]
+ 51%|█████     | 124/245 [05:01<04:05,  2.03s/it][ASFT optimizer steps:  51%|█████     | 125/245 [05:03<04:03,  2.03s/step, loss=3.24, learning_rate=5.15e-6, grad_norm=95]
+ 51%|█████     | 125/245 [05:03<04:03,  2.03s/it][ASFT optimizer steps:  51%|█████     | 125/245 [05:03<04:03,  2.03s/step, loss=4.29, learning_rate=5.11e-6, grad_norm=142]                                                                                                                         
+                                                 [A{'loss': 4.2906, 'grad_norm': 142.0, 'learning_rate': 5.1054852320675105e-06, 'epoch': 0.02}
+SFT optimizer steps:  51%|█████     | 125/245 [05:03<04:03,  2.03s/step, loss=4.29, learning_rate=5.11e-6, grad_norm=142]
+ 51%|█████     | 125/245 [05:03<04:03,  2.03s/it][ASFT optimizer steps:  51%|█████▏    | 126/245 [05:04<03:49,  1.92s/step, loss=4.29, learning_rate=5.11e-6, grad_norm=142]
+ 51%|█████▏    | 126/245 [05:04<03:49,  1.92s/it][ASFT optimizer steps:  51%|█████▏    | 126/245 [05:04<03:49,  1.92s/step, loss=2.62, learning_rate=5.06e-6, grad_norm=64]                                                                                                                         
+                                                 [A{'loss': 2.6236, 'grad_norm': 64.0, 'learning_rate': 5.063291139240507e-06, 'epoch': 0.02}
+SFT optimizer steps:  51%|█████▏    | 126/245 [05:04<03:49,  1.92s/step, loss=2.62, learning_rate=5.06e-6, grad_norm=64]
+ 51%|█████▏    | 126/245 [05:04<03:49,  1.92s/it][ASFT optimizer steps:  52%|█████▏    | 127/245 [05:07<04:11,  2.13s/step, loss=2.62, learning_rate=5.06e-6, grad_norm=64]
+ 52%|█████▏    | 127/245 [05:07<04:11,  2.13s/it][ASFT optimizer steps:  52%|█████▏    | 127/245 [05:07<04:11,  2.13s/step, loss=4.31, learning_rate=5.02e-6, grad_norm=128]                                                                                                                         
+                                                 [A{'loss': 4.306, 'grad_norm': 127.5, 'learning_rate': 5.021097046413503e-06, 'epoch': 0.02}
+SFT optimizer steps:  52%|█████▏    | 127/245 [05:07<04:11,  2.13s/step, loss=4.31, learning_rate=5.02e-6, grad_norm=128]
+ 52%|█████▏    | 127/245 [05:07<04:11,  2.13s/it][ASFT optimizer steps:  52%|█████▏    | 128/245 [05:10<04:26,  2.27s/step, loss=4.31, learning_rate=5.02e-6, grad_norm=128]
+ 52%|█████▏    | 128/245 [05:10<04:26,  2.27s/it][ASFT optimizer steps:  52%|█████▏    | 128/245 [05:10<04:26,  2.27s/step, loss=4.66, learning_rate=4.98e-6, grad_norm=148]                                                                                                                         
+                                                 [A{'loss': 4.655, 'grad_norm': 148.0, 'learning_rate': 4.978902953586498e-06, 'epoch': 0.02}
+SFT optimizer steps:  52%|█████▏    | 128/245 [05:10<04:26,  2.27s/step, loss=4.66, learning_rate=4.98e-6, grad_norm=148]
+ 52%|█████▏    | 128/245 [05:10<04:26,  2.27s/it][ASFT optimizer steps:  53%|█████▎    | 129/245 [05:11<04:05,  2.12s/step, loss=4.66, learning_rate=4.98e-6, grad_norm=148]
+ 53%|█████▎    | 129/245 [05:11<04:05,  2.12s/it][ASFT optimizer steps:  53%|█████▎    | 129/245 [05:11<04:05,  2.12s/step, loss=1.31, learning_rate=4.94e-6, grad_norm=18.9]                                                                                                                          
+                                                 [A{'loss': 1.3112, 'grad_norm': 18.875, 'learning_rate': 4.936708860759495e-06, 'epoch': 0.02}
+SFT optimizer steps:  53%|█████▎    | 129/245 [05:11<04:05,  2.12s/step, loss=1.31, learning_rate=4.94e-6, grad_norm=18.9]
+ 53%|█████▎    | 129/245 [05:11<04:05,  2.12s/it][ASFT optimizer steps:  53%|█████▎    | 130/245 [05:13<03:49,  2.00s/step, loss=1.31, learning_rate=4.94e-6, grad_norm=18.9]
+ 53%|█████▎    | 130/245 [05:13<03:49,  2.00s/it][ASFT optimizer steps:  53%|█████▎    | 130/245 [05:13<03:49,  2.00s/step, loss=2.41, learning_rate=4.89e-6, grad_norm=65]                                                                                                                          
+                                                 [A{'loss': 2.4096, 'grad_norm': 65.0, 'learning_rate': 4.89451476793249e-06, 'epoch': 0.02}
+SFT optimizer steps:  53%|█████▎    | 130/245 [05:13<03:49,  2.00s/step, loss=2.41, learning_rate=4.89e-6, grad_norm=65]
+ 53%|█████▎    | 130/245 [05:13<03:49,  2.00s/it][ASFT optimizer steps:  53%|█████▎    | 131/245 [05:15<03:39,  1.93s/step, loss=2.41, learning_rate=4.89e-6, grad_norm=65]
+ 53%|█████▎    | 131/245 [05:15<03:39,  1.93s/it][ASFT optimizer steps:  53%|█████▎    | 131/245 [05:15<03:39,  1.93s/step, loss=2.82, learning_rate=4.85e-6, grad_norm=85.5]                                                                                                                          
+                                                 [A{'loss': 2.8172, 'grad_norm': 85.5, 'learning_rate': 4.852320675105486e-06, 'epoch': 0.02}
+SFT optimizer steps:  53%|█████▎    | 131/245 [05:15<03:39,  1.93s/step, loss=2.82, learning_rate=4.85e-6, grad_norm=85.5]
+ 53%|█████▎    | 131/245 [05:15<03:39,  1.93s/it][ASFT optimizer steps:  54%|█████▍    | 132/245 [05:18<04:10,  2.21s/step, loss=2.82, learning_rate=4.85e-6, grad_norm=85.5]
+ 54%|█████▍    | 132/245 [05:18<04:10,  2.21s/it][ASFT optimizer steps:  54%|█████▍    | 132/245 [05:18<04:10,  2.21s/step, loss=4.27, learning_rate=4.81e-6, grad_norm=136]                                                                                                                          
+                                                 [A{'loss': 4.2723, 'grad_norm': 136.0, 'learning_rate': 4.8101265822784815e-06, 'epoch': 0.02}
+SFT optimizer steps:  54%|█████▍    | 132/245 [05:18<04:10,  2.21s/step, loss=4.27, learning_rate=4.81e-6, grad_norm=136]
+ 54%|█████▍    | 132/245 [05:18<04:10,  2.21s/it][ASFT optimizer steps:  54%|█████▍    | 133/245 [05:19<03:48,  2.04s/step, loss=4.27, learning_rate=4.81e-6, grad_norm=136]
+ 54%|█████▍    | 133/245 [05:19<03:48,  2.04s/it][ASFT optimizer steps:  54%|█████▍    | 133/245 [05:19<03:48,  2.04s/step, loss=2.13, learning_rate=4.77e-6, grad_norm=48.2]                                                                                                                          
+                                                 [A{'loss': 2.1329, 'grad_norm': 48.25, 'learning_rate': 4.767932489451477e-06, 'epoch': 0.02}
+SFT optimizer steps:  54%|█████▍    | 133/245 [05:19<03:48,  2.04s/step, loss=2.13, learning_rate=4.77e-6, grad_norm=48.2]
+ 54%|█████▍    | 133/245 [05:19<03:48,  2.04s/it][ASFT optimizer steps:  55%|█████▍    | 134/245 [05:21<03:32,  1.92s/step, loss=2.13, learning_rate=4.77e-6, grad_norm=48.2]
+ 55%|█████▍    | 134/245 [05:21<03:32,  1.92s/it][ASFT optimizer steps:  55%|█████▍    | 134/245 [05:21<03:32,  1.92s/step, loss=2.65, learning_rate=4.73e-6, grad_norm=85]                                                                                                                          
+                                                 [A{'loss': 2.6462, 'grad_norm': 85.0, 'learning_rate': 4.725738396624473e-06, 'epoch': 0.02}
+SFT optimizer steps:  55%|█████▍    | 134/245 [05:21<03:32,  1.92s/step, loss=2.65, learning_rate=4.73e-6, grad_norm=85]
+ 55%|█████▍    | 134/245 [05:21<03:32,  1.92s/it][ASFT optimizer steps:  55%|█████▌    | 135/245 [05:23<03:42,  2.02s/step, loss=2.65, learning_rate=4.73e-6, grad_norm=85]
+ 55%|█████▌    | 135/245 [05:23<03:42,  2.02s/it][ASFT optimizer steps:  55%|█████▌    | 135/245 [05:23<03:42,  2.02s/step, loss=2.05, learning_rate=4.68e-6, grad_norm=49.8]                                                                                                                          
+                                                 [A{'loss': 2.0523, 'grad_norm': 49.75, 'learning_rate': 4.683544303797468e-06, 'epoch': 0.02}
+SFT optimizer steps:  55%|█████▌    | 135/245 [05:23<03:42,  2.02s/step, loss=2.05, learning_rate=4.68e-6, grad_norm=49.8]
+ 55%|█████▌    | 135/245 [05:23<03:42,  2.02s/it][ASFT optimizer steps:  56%|█████▌    | 136/245 [05:26<03:59,  2.20s/step, loss=2.05, learning_rate=4.68e-6, grad_norm=49.8]
+ 56%|█████▌    | 136/245 [05:26<03:59,  2.20s/it][ASFT optimizer steps:  56%|█████▌    | 136/245 [05:26<03:59,  2.20s/step, loss=4.4, learning_rate=4.64e-6, grad_norm=145]                                                                                                                          
+                                                 [A{'loss': 4.3994, 'grad_norm': 145.0, 'learning_rate': 4.641350210970465e-06, 'epoch': 0.02}
+SFT optimizer steps:  56%|█████▌    | 136/245 [05:26<03:59,  2.20s/step, loss=4.4, learning_rate=4.64e-6, grad_norm=145]
+ 56%|█████▌    | 136/245 [05:26<03:59,  2.20s/it][ASFT optimizer steps:  56%|█████▌    | 137/245 [05:28<03:50,  2.14s/step, loss=4.4, learning_rate=4.64e-6, grad_norm=145]
+ 56%|█████▌    | 137/245 [05:28<03:50,  2.14s/it][ASFT optimizer steps:  56%|█████▌    | 137/245 [05:28<03:50,  2.14s/step, loss=3.45, learning_rate=4.6e-6, grad_norm=114]                                                                                                                        
+                                                 [A{'loss': 3.4503, 'grad_norm': 114.0, 'learning_rate': 4.5991561181434605e-06, 'epoch': 0.02}
+SFT optimizer steps:  56%|█████▌    | 137/245 [05:28<03:50,  2.14s/step, loss=3.45, learning_rate=4.6e-6, grad_norm=114]
+ 56%|█████▌    | 137/245 [05:28<03:50,  2.14s/it][ASFT optimizer steps:  56%|█████▋    | 138/245 [05:28<02:58,  1.67s/step, loss=3.45, learning_rate=4.6e-6, grad_norm=114]
+ 56%|█████▋    | 138/245 [05:28<02:58,  1.67s/it][ASFT optimizer steps:  56%|█████▋    | 138/245 [05:28<02:58,  1.67s/step, loss=2.74, learning_rate=4.56e-6, grad_norm=92]                                                                                                                        
+                                                 [A{'loss': 2.7417, 'grad_norm': 92.0, 'learning_rate': 4.556962025316456e-06, 'epoch': 0.02}
+SFT optimizer steps:  56%|█████▋    | 138/245 [05:28<02:58,  1.67s/step, loss=2.74, learning_rate=4.56e-6, grad_norm=92]
+ 56%|█████▋    | 138/245 [05:28<02:58,  1.67s/it][ASFT optimizer steps:  57%|█████▋    | 139/245 [05:30<02:45,  1.56s/step, loss=2.74, learning_rate=4.56e-6, grad_norm=92]
+ 57%|█████▋    | 139/245 [05:30<02:45,  1.56s/it][ASFT optimizer steps:  57%|█████▋    | 139/245 [05:30<02:45,  1.56s/step, loss=1.01, learning_rate=4.51e-6, grad_norm=14.6]                                                                                                                          
+                                                 [A{'loss': 1.0139, 'grad_norm': 14.625, 'learning_rate': 4.514767932489452e-06, 'epoch': 0.02}
+SFT optimizer steps:  57%|█████▋    | 139/245 [05:30<02:45,  1.56s/step, loss=1.01, learning_rate=4.51e-6, grad_norm=14.6]
+ 57%|█████▋    | 139/245 [05:30<02:45,  1.56s/it][ASFT optimizer steps:  57%|█████▋    | 140/245 [05:31<02:48,  1.60s/step, loss=1.01, learning_rate=4.51e-6, grad_norm=14.6]
+ 57%|█████▋    | 140/245 [05:31<02:48,  1.60s/it][ASFT optimizer steps:  57%|█████▋    | 140/245 [05:32<02:48,  1.60s/step, loss=2.53, learning_rate=4.47e-6, grad_norm=76]                                                                                                                          
+                                                 [A{'loss': 2.5349, 'grad_norm': 76.0, 'learning_rate': 4.472573839662447e-06, 'epoch': 0.02}
+SFT optimizer steps:  57%|█████▋    | 140/245 [05:32<02:48,  1.60s/step, loss=2.53, learning_rate=4.47e-6, grad_norm=76]
+ 57%|█████▋    | 140/245 [05:32<02:48,  1.60s/it][ASFT optimizer steps:  58%|█████▊    | 141/245 [05:33<02:54,  1.68s/step, loss=2.53, learning_rate=4.47e-6, grad_norm=76]
+ 58%|█████▊    | 141/245 [05:33<02:54,  1.68s/it][ASFT optimizer steps:  58%|█████▊    | 141/245 [05:33<02:54,  1.68s/step, loss=2.2, learning_rate=4.43e-6, grad_norm=63]                                                                                                                        
+                                                 [A{'loss': 2.197, 'grad_norm': 63.0, 'learning_rate': 4.430379746835443e-06, 'epoch': 0.02}
+SFT optimizer steps:  58%|█████▊    | 141/245 [05:33<02:54,  1.68s/step, loss=2.2, learning_rate=4.43e-6, grad_norm=63]
+ 58%|█████▊    | 141/245 [05:33<02:54,  1.68s/it][ASFT optimizer steps:  58%|█████▊    | 142/245 [05:35<02:53,  1.68s/step, loss=2.2, learning_rate=4.43e-6, grad_norm=63]
+ 58%|█████▊    | 142/245 [05:35<02:53,  1.68s/it][ASFT optimizer steps:  58%|█████▊    | 142/245 [05:35<02:53,  1.68s/step, loss=2.37, learning_rate=4.39e-6, grad_norm=72.5]                                                                                                                          
+                                                 [A{'loss': 2.3742, 'grad_norm': 72.5, 'learning_rate': 4.3881856540084394e-06, 'epoch': 0.03}
+SFT optimizer steps:  58%|█████▊    | 142/245 [05:35<02:53,  1.68s/step, loss=2.37, learning_rate=4.39e-6, grad_norm=72.5]
+ 58%|█████▊    | 142/245 [05:35<02:53,  1.68s/it][ASFT optimizer steps:  58%|█████▊    | 143/245 [05:37<03:14,  1.90s/step, loss=2.37, learning_rate=4.39e-6, grad_norm=72.5]
+ 58%|█████▊    | 143/245 [05:37<03:14,  1.90s/it][ASFT optimizer steps:  58%|█████▊    | 143/245 [05:37<03:14,  1.90s/step, loss=3.8, learning_rate=4.35e-6, grad_norm=140]                                                                                                                          
+                                                 [A{'loss': 3.8037, 'grad_norm': 140.0, 'learning_rate': 4.345991561181435e-06, 'epoch': 0.03}
+SFT optimizer steps:  58%|█████▊    | 143/245 [05:37<03:14,  1.90s/step, loss=3.8, learning_rate=4.35e-6, grad_norm=140]
+ 58%|█████▊    | 143/245 [05:37<03:14,  1.90s/it][ASFT optimizer steps:  59%|█████▉    | 144/245 [05:40<03:21,  1.99s/step, loss=3.8, learning_rate=4.35e-6, grad_norm=140]
+ 59%|█████▉    | 144/245 [05:40<03:21,  1.99s/it][ASFT optimizer steps:  59%|█████▉    | 144/245 [05:40<03:21,  1.99s/step, loss=3.13, learning_rate=4.3e-6, grad_norm=104]                                                                                                                        
+                                                 [A{'loss': 3.1267, 'grad_norm': 103.5, 'learning_rate': 4.303797468354431e-06, 'epoch': 0.03}
+SFT optimizer steps:  59%|█████▉    | 144/245 [05:40<03:21,  1.99s/step, loss=3.13, learning_rate=4.3e-6, grad_norm=104]
+ 59%|█████▉    | 144/245 [05:40<03:21,  1.99s/it][ASFT optimizer steps:  59%|█████▉    | 145/245 [05:42<03:18,  1.98s/step, loss=3.13, learning_rate=4.3e-6, grad_norm=104]
+ 59%|█████▉    | 145/245 [05:42<03:18,  1.98s/it][ASFT optimizer steps:  59%|█████▉    | 145/245 [05:42<03:18,  1.98s/step, loss=3.59, learning_rate=4.26e-6, grad_norm=122]                                                                                                                         
+                                                 [A{'loss': 3.5868, 'grad_norm': 122.0, 'learning_rate': 4.261603375527426e-06, 'epoch': 0.03}
+SFT optimizer steps:  59%|█████▉    | 145/245 [05:42<03:18,  1.98s/step, loss=3.59, learning_rate=4.26e-6, grad_norm=122]
+ 59%|█████▉    | 145/245 [05:42<03:18,  1.98s/it][ASFT optimizer steps:  60%|█████▉    | 146/245 [05:43<03:12,  1.95s/step, loss=3.59, learning_rate=4.26e-6, grad_norm=122]
+ 60%|█████▉    | 146/245 [05:43<03:12,  1.95s/it][ASFT optimizer steps:  60%|█████▉    | 146/245 [05:43<03:12,  1.95s/step, loss=2.71, learning_rate=4.22e-6, grad_norm=87]                                                                                                                         
+                                                 [A{'loss': 2.71, 'grad_norm': 87.0, 'learning_rate': 4.219409282700423e-06, 'epoch': 0.03}
+SFT optimizer steps:  60%|█████▉    | 146/245 [05:43<03:12,  1.95s/step, loss=2.71, learning_rate=4.22e-6, grad_norm=87]
+ 60%|█████▉    | 146/245 [05:43<03:12,  1.95s/it][ASFT optimizer steps:  60%|██████    | 147/245 [05:46<03:15,  2.00s/step, loss=2.71, learning_rate=4.22e-6, grad_norm=87]
+ 60%|██████    | 147/245 [05:46<03:15,  2.00s/it][ASFT optimizer steps:  60%|██████    | 147/245 [05:46<03:15,  2.00s/step, loss=2.48, learning_rate=4.18e-6, grad_norm=87.5]                                                                                                                          
+                                                 [A{'loss': 2.4809, 'grad_norm': 87.5, 'learning_rate': 4.177215189873418e-06, 'epoch': 0.03}
+SFT optimizer steps:  60%|██████    | 147/245 [05:46<03:15,  2.00s/step, loss=2.48, learning_rate=4.18e-6, grad_norm=87.5]
+ 60%|██████    | 147/245 [05:46<03:15,  2.00s/it][ASFT optimizer steps:  60%|██████    | 148/245 [05:47<02:57,  1.83s/step, loss=2.48, learning_rate=4.18e-6, grad_norm=87.5]
+ 60%|██████    | 148/245 [05:47<02:57,  1.83s/it][ASFT optimizer steps:  60%|██████    | 148/245 [05:47<02:57,  1.83s/step, loss=4.28, learning_rate=4.14e-6, grad_norm=148]                                                                                                                          
+                                                 [A{'loss': 4.2791, 'grad_norm': 148.0, 'learning_rate': 4.135021097046414e-06, 'epoch': 0.03}
+SFT optimizer steps:  60%|██████    | 148/245 [05:47<02:57,  1.83s/step, loss=4.28, learning_rate=4.14e-6, grad_norm=148]
+ 60%|██████    | 148/245 [05:47<02:57,  1.83s/it][ASFT optimizer steps:  61%|██████    | 149/245 [05:48<02:41,  1.68s/step, loss=4.28, learning_rate=4.14e-6, grad_norm=148]
+ 61%|██████    | 149/245 [05:48<02:41,  1.68s/it][ASFT optimizer steps:  61%|██████    | 149/245 [05:48<02:41,  1.68s/step, loss=1.38, learning_rate=4.09e-6, grad_norm=13.4]                                                                                                                          
+                                                 [A{'loss': 1.3835, 'grad_norm': 13.375, 'learning_rate': 4.09282700421941e-06, 'epoch': 0.03}
+SFT optimizer steps:  61%|██████    | 149/245 [05:48<02:41,  1.68s/step, loss=1.38, learning_rate=4.09e-6, grad_norm=13.4]
+ 61%|██████    | 149/245 [05:48<02:41,  1.68s/it][ASFT optimizer steps:  61%|██████    | 150/245 [05:50<02:37,  1.65s/step, loss=1.38, learning_rate=4.09e-6, grad_norm=13.4]
+ 61%|██████    | 150/245 [05:50<02:37,  1.65s/it][ASFT optimizer steps:  61%|██████    | 150/245 [05:50<02:37,  1.65s/step, loss=1.18, learning_rate=4.05e-6, grad_norm=37.2]                                                                                                                          
+                                                 [A{'loss': 1.1849, 'grad_norm': 37.25, 'learning_rate': 4.050632911392405e-06, 'epoch': 0.03}
+SFT optimizer steps:  61%|██████    | 150/245 [05:50<02:37,  1.65s/step, loss=1.18, learning_rate=4.05e-6, grad_norm=37.2]
+ 61%|██████    | 150/245 [05:50<02:37,  1.65s/it][ASFT optimizer steps:  62%|██████▏   | 151/245 [05:52<02:41,  1.72s/step, loss=1.18, learning_rate=4.05e-6, grad_norm=37.2]
+ 62%|██████▏   | 151/245 [05:52<02:41,  1.72s/it][ASFT optimizer steps:  62%|██████▏   | 151/245 [05:52<02:41,  1.72s/step, loss=2.6, learning_rate=4.01e-6, grad_norm=89.5]                                                                                                                          
+                                                 [A{'loss': 2.603, 'grad_norm': 89.5, 'learning_rate': 4.008438818565401e-06, 'epoch': 0.03}
+SFT optimizer steps:  62%|██████▏   | 151/245 [05:52<02:41,  1.72s/step, loss=2.6, learning_rate=4.01e-6, grad_norm=89.5]
+ 62%|██████▏   | 151/245 [05:52<02:41,  1.72s/it][ASFT optimizer steps:  62%|██████▏   | 152/245 [05:53<02:39,  1.71s/step, loss=2.6, learning_rate=4.01e-6, grad_norm=89.5]
+ 62%|██████▏   | 152/245 [05:53<02:39,  1.71s/it][ASFT optimizer steps:  62%|██████▏   | 152/245 [05:54<02:39,  1.71s/step, loss=2.8, learning_rate=3.97e-6, grad_norm=101]                                                                                                                         
+                                                 [A{'loss': 2.804, 'grad_norm': 101.0, 'learning_rate': 3.9662447257383965e-06, 'epoch': 0.03}
+SFT optimizer steps:  62%|██████▏   | 152/245 [05:54<02:39,  1.71s/step, loss=2.8, learning_rate=3.97e-6, grad_norm=101]
+ 62%|██████▏   | 152/245 [05:54<02:39,  1.71s/it][ASFT optimizer steps:  62%|██████▏   | 153/245 [05:55<02:42,  1.76s/step, loss=2.8, learning_rate=3.97e-6, grad_norm=101]
+ 62%|██████▏   | 153/245 [05:55<02:42,  1.76s/it][ASFT optimizer steps:  62%|██████▏   | 153/245 [05:55<02:42,  1.76s/step, loss=2.58, learning_rate=3.92e-6, grad_norm=88]                                                                                                                        
+                                                 [A{'loss': 2.5829, 'grad_norm': 88.0, 'learning_rate': 3.924050632911393e-06, 'epoch': 0.03}
+SFT optimizer steps:  62%|██████▏   | 153/245 [05:55<02:42,  1.76s/step, loss=2.58, learning_rate=3.92e-6, grad_norm=88]
+ 62%|██████▏   | 153/245 [05:55<02:42,  1.76s/it][ASFT optimizer steps:  63%|██████▎   | 154/245 [05:58<02:54,  1.92s/step, loss=2.58, learning_rate=3.92e-6, grad_norm=88]
+ 63%|██████▎   | 154/245 [05:58<02:54,  1.92s/it][ASFT optimizer steps:  63%|██████▎   | 154/245 [05:58<02:54,  1.92s/step, loss=3.74, learning_rate=3.88e-6, grad_norm=130]                                                                                                                         
+                                                 [A{'loss': 3.7363, 'grad_norm': 130.0, 'learning_rate': 3.8818565400843886e-06, 'epoch': 0.03}
+SFT optimizer steps:  63%|██████▎   | 154/245 [05:58<02:54,  1.92s/step, loss=3.74, learning_rate=3.88e-6, grad_norm=130]
+ 63%|██████▎   | 154/245 [05:58<02:54,  1.92s/it][ASFT optimizer steps:  63%|██████▎   | 155/245 [06:00<03:12,  2.14s/step, loss=3.74, learning_rate=3.88e-6, grad_norm=130]
+ 63%|██████▎   | 155/245 [06:00<03:12,  2.14s/it][ASFT optimizer steps:  63%|██████▎   | 155/245 [06:00<03:12,  2.14s/step, loss=3.79, learning_rate=3.84e-6, grad_norm=137]                                                                                                                         
+                                                 [A{'loss': 3.7916, 'grad_norm': 137.0, 'learning_rate': 3.839662447257384e-06, 'epoch': 0.03}
+SFT optimizer steps:  63%|██████▎   | 155/245 [06:00<03:12,  2.14s/step, loss=3.79, learning_rate=3.84e-6, grad_norm=137]
+ 63%|██████▎   | 155/245 [06:00<03:12,  2.14s/it][ASFT optimizer steps:  64%|██████▎   | 156/245 [06:02<03:00,  2.03s/step, loss=3.79, learning_rate=3.84e-6, grad_norm=137]
+ 64%|██████▎   | 156/245 [06:02<03:00,  2.03s/it][ASFT optimizer steps:  64%|██████▎   | 156/245 [06:02<03:00,  2.03s/step, loss=1.07, learning_rate=3.8e-6, grad_norm=32.2]                                                                                                                         
+                                                 [A{'loss': 1.0732, 'grad_norm': 32.25, 'learning_rate': 3.7974683544303802e-06, 'epoch': 0.03}
+SFT optimizer steps:  64%|██████▎   | 156/245 [06:02<03:00,  2.03s/step, loss=1.07, learning_rate=3.8e-6, grad_norm=32.2]
+ 64%|██████▎   | 156/245 [06:02<03:00,  2.03s/it][ASFT optimizer steps:  64%|██████▍   | 157/245 [06:04<02:47,  1.91s/step, loss=1.07, learning_rate=3.8e-6, grad_norm=32.2]
+ 64%|██████▍   | 157/245 [06:04<02:47,  1.91s/it][ASFT optimizer steps:  64%|██████▍   | 157/245 [06:04<02:47,  1.91s/step, loss=1.07, learning_rate=3.76e-6, grad_norm=33.5]                                                                                                                          
+                                                 [A{'loss': 1.0743, 'grad_norm': 33.5, 'learning_rate': 3.755274261603376e-06, 'epoch': 0.03}
+SFT optimizer steps:  64%|██████▍   | 157/245 [06:04<02:47,  1.91s/step, loss=1.07, learning_rate=3.76e-6, grad_norm=33.5]
+ 64%|██████▍   | 157/245 [06:04<02:47,  1.91s/it][ASFT optimizer steps:  64%|██████▍   | 158/245 [06:06<03:02,  2.09s/step, loss=1.07, learning_rate=3.76e-6, grad_norm=33.5]
+ 64%|██████▍   | 158/245 [06:06<03:02,  2.09s/it][ASFT optimizer steps:  64%|██████▍   | 158/245 [06:06<03:02,  2.09s/step, loss=3.41, learning_rate=3.71e-6, grad_norm=134]                                                                                                                          
+                                                 [A{'loss': 3.4132, 'grad_norm': 134.0, 'learning_rate': 3.713080168776372e-06, 'epoch': 0.03}
+SFT optimizer steps:  64%|██████▍   | 158/245 [06:06<03:02,  2.09s/step, loss=3.41, learning_rate=3.71e-6, grad_norm=134]
+ 64%|██████▍   | 158/245 [06:06<03:02,  2.09s/it][ASFT optimizer steps:  65%|██████▍   | 159/245 [06:08<02:51,  2.00s/step, loss=3.41, learning_rate=3.71e-6, grad_norm=134]
+ 65%|██████▍   | 159/245 [06:08<02:51,  2.00s/it][ASFT optimizer steps:  65%|██████▍   | 159/245 [06:08<02:51,  2.00s/step, loss=1.73, learning_rate=3.67e-6, grad_norm=58.5]                                                                                                                          
+                                                 [A{'loss': 1.7266, 'grad_norm': 58.5, 'learning_rate': 3.6708860759493675e-06, 'epoch': 0.03}
+SFT optimizer steps:  65%|██████▍   | 159/245 [06:08<02:51,  2.00s/step, loss=1.73, learning_rate=3.67e-6, grad_norm=58.5]
+ 65%|██████▍   | 159/245 [06:08<02:51,  2.00s/it][ASFT optimizer steps:  65%|██████▌   | 160/245 [06:10<02:37,  1.85s/step, loss=1.73, learning_rate=3.67e-6, grad_norm=58.5]
+ 65%|██████▌   | 160/245 [06:10<02:37,  1.85s/it][ASFT optimizer steps:  65%|██████▌   | 160/245 [06:10<02:37,  1.85s/step, loss=0.813, learning_rate=3.63e-6, grad_norm=11.1]                                                                                                                           
+                                                 [A{'loss': 0.8131, 'grad_norm': 11.0625, 'learning_rate': 3.628691983122363e-06, 'epoch': 0.03}
+SFT optimizer steps:  65%|██████▌   | 160/245 [06:10<02:37,  1.85s/step, loss=0.813, learning_rate=3.63e-6, grad_norm=11.1]
+ 65%|██████▌   | 160/245 [06:10<02:37,  1.85s/it][ASFT optimizer steps:  66%|██████▌   | 161/245 [06:11<02:33,  1.82s/step, loss=0.813, learning_rate=3.63e-6, grad_norm=11.1]
+ 66%|██████▌   | 161/245 [06:11<02:33,  1.82s/it][ASFT optimizer steps:  66%|██████▌   | 161/245 [06:11<02:33,  1.82s/step, loss=0.641, learning_rate=3.59e-6, grad_norm=9.12]                                                                                                                           
+                                                 [A{'loss': 0.6411, 'grad_norm': 9.125, 'learning_rate': 3.586497890295359e-06, 'epoch': 0.03}
+SFT optimizer steps:  66%|██████▌   | 161/245 [06:11<02:33,  1.82s/step, loss=0.641, learning_rate=3.59e-6, grad_norm=9.12]
+ 66%|██████▌   | 161/245 [06:11<02:33,  1.82s/it][ASFT optimizer steps:  66%|██████▌   | 162/245 [06:13<02:39,  1.92s/step, loss=0.641, learning_rate=3.59e-6, grad_norm=9.12]
+ 66%|██████▌   | 162/245 [06:13<02:39,  1.92s/it][ASFT optimizer steps:  66%|██████▌   | 162/245 [06:13<02:39,  1.92s/step, loss=3.2, learning_rate=3.54e-6, grad_norm=118]                                                                                                                           
+                                                 [A{'loss': 3.197, 'grad_norm': 118.0, 'learning_rate': 3.544303797468355e-06, 'epoch': 0.03}
+SFT optimizer steps:  66%|██████▌   | 162/245 [06:13<02:39,  1.92s/step, loss=3.2, learning_rate=3.54e-6, grad_norm=118]
+ 66%|██████▌   | 162/245 [06:13<02:39,  1.92s/it][ASFT optimizer steps:  67%|██████▋   | 163/245 [06:15<02:40,  1.96s/step, loss=3.2, learning_rate=3.54e-6, grad_norm=118]
+ 67%|██████▋   | 163/245 [06:15<02:40,  1.96s/it][ASFT optimizer steps:  67%|██████▋   | 163/245 [06:16<02:40,  1.96s/step, loss=1.77, learning_rate=3.5e-6, grad_norm=62.5]                                                                                                                         
+                                                 [A{'loss': 1.7733, 'grad_norm': 62.5, 'learning_rate': 3.5021097046413504e-06, 'epoch': 0.03}
+SFT optimizer steps:  67%|██████▋   | 163/245 [06:16<02:40,  1.96s/step, loss=1.77, learning_rate=3.5e-6, grad_norm=62.5]
+ 67%|██████▋   | 163/245 [06:16<02:40,  1.96s/it][ASFT optimizer steps:  67%|██████▋   | 164/245 [06:17<02:35,  1.91s/step, loss=1.77, learning_rate=3.5e-6, grad_norm=62.5]
+ 67%|██████▋   | 164/245 [06:17<02:35,  1.91s/it][ASFT optimizer steps:  67%|██████▋   | 164/245 [06:17<02:35,  1.91s/step, loss=3.05, learning_rate=3.46e-6, grad_norm=118]                                                                                                                         
+                                                 [A{'loss': 3.0459, 'grad_norm': 117.5, 'learning_rate': 3.459915611814346e-06, 'epoch': 0.03}
+SFT optimizer steps:  67%|██████▋   | 164/245 [06:17<02:35,  1.91s/step, loss=3.05, learning_rate=3.46e-6, grad_norm=118]
+ 67%|██████▋   | 164/245 [06:17<02:35,  1.91s/it][ASFT optimizer steps:  67%|██████▋   | 165/245 [06:19<02:36,  1.96s/step, loss=3.05, learning_rate=3.46e-6, grad_norm=118]
+ 67%|██████▋   | 165/245 [06:19<02:36,  1.96s/it][ASFT optimizer steps:  67%|██████▋   | 165/245 [06:19<02:36,  1.96s/step, loss=1.92, learning_rate=3.42e-6, grad_norm=66]                                                                                                                         
+                                                 [A{'loss': 1.9163, 'grad_norm': 66.0, 'learning_rate': 3.417721518987342e-06, 'epoch': 0.03}
+SFT optimizer steps:  67%|██████▋   | 165/245 [06:19<02:36,  1.96s/step, loss=1.92, learning_rate=3.42e-6, grad_norm=66]
+ 67%|██████▋   | 165/245 [06:19<02:36,  1.96s/it][ASFT optimizer steps:  68%|██████▊   | 166/245 [06:21<02:30,  1.90s/step, loss=1.92, learning_rate=3.42e-6, grad_norm=66]
+ 68%|██████▊   | 166/245 [06:21<02:30,  1.90s/it][ASFT optimizer steps:  68%|██████▊   | 166/245 [06:21<02:30,  1.90s/step, loss=2.13, learning_rate=3.38e-6, grad_norm=80.5]                                                                                                                          
+                                                 [A{'loss': 2.1278, 'grad_norm': 80.5, 'learning_rate': 3.3755274261603377e-06, 'epoch': 0.03}
+SFT optimizer steps:  68%|██████▊   | 166/245 [06:21<02:30,  1.90s/step, loss=2.13, learning_rate=3.38e-6, grad_norm=80.5]
+ 68%|██████▊   | 166/245 [06:21<02:30,  1.90s/it][ASFT optimizer steps:  68%|██████▊   | 167/245 [06:23<02:31,  1.95s/step, loss=2.13, learning_rate=3.38e-6, grad_norm=80.5]
+ 68%|██████▊   | 167/245 [06:23<02:31,  1.95s/it][ASFT optimizer steps:  68%|██████▊   | 167/245 [06:23<02:31,  1.95s/step, loss=2.65, learning_rate=3.33e-6, grad_norm=102]                                                                                                                          
+                                                 [A{'loss': 2.6452, 'grad_norm': 102.0, 'learning_rate': 3.3333333333333333e-06, 'epoch': 0.03}
+SFT optimizer steps:  68%|██████▊   | 167/245 [06:23<02:31,  1.95s/step, loss=2.65, learning_rate=3.33e-6, grad_norm=102]
+ 68%|██████▊   | 167/245 [06:23<02:31,  1.95s/it][ASFT optimizer steps:  69%|██████▊   | 168/245 [06:25<02:27,  1.92s/step, loss=2.65, learning_rate=3.33e-6, grad_norm=102]
+ 69%|██████▊   | 168/245 [06:25<02:27,  1.92s/it][ASFT optimizer steps:  69%|██████▊   | 168/245 [06:25<02:27,  1.92s/step, loss=2.16, learning_rate=3.29e-6, grad_norm=82]                                                                                                                         
+                                                 [A{'loss': 2.1595, 'grad_norm': 82.0, 'learning_rate': 3.2911392405063294e-06, 'epoch': 0.03}
+SFT optimizer steps:  69%|██████▊   | 168/245 [06:25<02:27,  1.92s/step, loss=2.16, learning_rate=3.29e-6, grad_norm=82]
+ 69%|██████▊   | 168/245 [06:25<02:27,  1.92s/it][ASFT optimizer steps:  69%|██████▉   | 169/245 [06:27<02:36,  2.06s/step, loss=2.16, learning_rate=3.29e-6, grad_norm=82]
+ 69%|██████▉   | 169/245 [06:27<02:36,  2.06s/it][ASFT optimizer steps:  69%|██████▉   | 169/245 [06:27<02:36,  2.06s/step, loss=3.17, learning_rate=3.25e-6, grad_norm=101]                                                                                                                         
+                                                 [A{'loss': 3.171, 'grad_norm': 101.0, 'learning_rate': 3.248945147679325e-06, 'epoch': 0.03}
+SFT optimizer steps:  69%|██████▉   | 169/245 [06:27<02:36,  2.06s/step, loss=3.17, learning_rate=3.25e-6, grad_norm=101]
+ 69%|██████▉   | 169/245 [06:27<02:36,  2.06s/it][ASFT optimizer steps:  69%|██████▉   | 170/245 [06:29<02:34,  2.06s/step, loss=3.17, learning_rate=3.25e-6, grad_norm=101]
+ 69%|██████▉   | 170/245 [06:29<02:34,  2.06s/it][ASFT optimizer steps:  69%|██████▉   | 170/245 [06:30<02:34,  2.06s/step, loss=1.7, learning_rate=3.21e-6, grad_norm=60.8]                                                                                                                         
+                                                 [A{'loss': 1.6974, 'grad_norm': 60.75, 'learning_rate': 3.206751054852321e-06, 'epoch': 0.03}
+SFT optimizer steps:  69%|██████▉   | 170/245 [06:30<02:34,  2.06s/step, loss=1.7, learning_rate=3.21e-6, grad_norm=60.8]
+ 69%|██████▉   | 170/245 [06:30<02:34,  2.06s/it][ASFT optimizer steps:  70%|██████▉   | 171/245 [06:31<02:21,  1.91s/step, loss=1.7, learning_rate=3.21e-6, grad_norm=60.8]
+ 70%|██████▉   | 171/245 [06:31<02:21,  1.91s/it][ASFT optimizer steps:  70%|██████▉   | 171/245 [06:31<02:21,  1.91s/step, loss=0.798, learning_rate=3.16e-6, grad_norm=11.7]                                                                                                                           
+                                                 [A{'loss': 0.7979, 'grad_norm': 11.6875, 'learning_rate': 3.164556962025317e-06, 'epoch': 0.03}
+SFT optimizer steps:  70%|██████▉   | 171/245 [06:31<02:21,  1.91s/step, loss=0.798, learning_rate=3.16e-6, grad_norm=11.7]
+ 70%|██████▉   | 171/245 [06:31<02:21,  1.91s/it][ASFT optimizer steps:  70%|███████   | 172/245 [06:33<02:29,  2.04s/step, loss=0.798, learning_rate=3.16e-6, grad_norm=11.7]
+ 70%|███████   | 172/245 [06:33<02:29,  2.04s/it][ASFT optimizer steps:  70%|███████   | 172/245 [06:33<02:29,  2.04s/step, loss=3.42, learning_rate=3.12e-6, grad_norm=139]                                                                                                                           
+                                                 [A{'loss': 3.4183, 'grad_norm': 139.0, 'learning_rate': 3.1223628691983127e-06, 'epoch': 0.03}
+SFT optimizer steps:  70%|███████   | 172/245 [06:33<02:29,  2.04s/step, loss=3.42, learning_rate=3.12e-6, grad_norm=139]
+ 70%|███████   | 172/245 [06:33<02:29,  2.04s/it][ASFT optimizer steps:  71%|███████   | 173/245 [06:35<02:20,  1.95s/step, loss=3.42, learning_rate=3.12e-6, grad_norm=139]
+ 71%|███████   | 173/245 [06:35<02:20,  1.95s/it][ASFT optimizer steps:  71%|███████   | 173/245 [06:35<02:20,  1.95s/step, loss=0.693, learning_rate=3.08e-6, grad_norm=9.62]                                                                                                                           
+                                                 [A{'loss': 0.6929, 'grad_norm': 9.625, 'learning_rate': 3.0801687763713083e-06, 'epoch': 0.03}
+SFT optimizer steps:  71%|███████   | 173/245 [06:35<02:20,  1.95s/step, loss=0.693, learning_rate=3.08e-6, grad_norm=9.62]
+ 71%|███████   | 173/245 [06:35<02:20,  1.95s/it][ASFT optimizer steps:  71%|███████   | 174/245 [06:37<02:12,  1.87s/step, loss=0.693, learning_rate=3.08e-6, grad_norm=9.62]
+ 71%|███████   | 174/245 [06:37<02:12,  1.87s/it][ASFT optimizer steps:  71%|███████   | 174/245 [06:37<02:12,  1.87s/step, loss=1.93, learning_rate=3.04e-6, grad_norm=67.5]                                                                                                                           
+                                                 [A{'loss': 1.933, 'grad_norm': 67.5, 'learning_rate': 3.037974683544304e-06, 'epoch': 0.03}
+SFT optimizer steps:  71%|███████   | 174/245 [06:37<02:12,  1.87s/step, loss=1.93, learning_rate=3.04e-6, grad_norm=67.5]
+ 71%|███████   | 174/245 [06:37<02:12,  1.87s/it][ASFT optimizer steps:  71%|███████▏  | 175/245 [06:39<02:08,  1.84s/step, loss=1.93, learning_rate=3.04e-6, grad_norm=67.5]
+ 71%|███████▏  | 175/245 [06:39<02:08,  1.84s/it][ASFT optimizer steps:  71%|███████▏  | 175/245 [06:39<02:08,  1.84s/step, loss=3.06, learning_rate=3e-6, grad_norm=104]                                                                                                                          
+                                                 [A{'loss': 3.0615, 'grad_norm': 104.5, 'learning_rate': 2.9957805907173e-06, 'epoch': 0.03}
+SFT optimizer steps:  71%|███████▏  | 175/245 [06:39<02:08,  1.84s/step, loss=3.06, learning_rate=3e-6, grad_norm=104]
+ 71%|███████▏  | 175/245 [06:39<02:08,  1.84s/it][ASFT optimizer steps:  72%|███████▏  | 176/245 [06:41<02:12,  1.92s/step, loss=3.06, learning_rate=3e-6, grad_norm=104]
+ 72%|███████▏  | 176/245 [06:41<02:12,  1.92s/it][ASFT optimizer steps:  72%|███████▏  | 176/245 [06:41<02:12,  1.92s/step, loss=1.88, learning_rate=2.95e-6, grad_norm=52.8]                                                                                                                          
+                                                 [A{'loss': 1.8797, 'grad_norm': 52.75, 'learning_rate': 2.9535864978902956e-06, 'epoch': 0.03}
+SFT optimizer steps:  72%|███████▏  | 176/245 [06:41<02:12,  1.92s/step, loss=1.88, learning_rate=2.95e-6, grad_norm=52.8]
+ 72%|███████▏  | 176/245 [06:41<02:12,  1.92s/it][ASFT optimizer steps:  72%|███████▏  | 177/245 [06:41<01:45,  1.55s/step, loss=1.88, learning_rate=2.95e-6, grad_norm=52.8]
+ 72%|███████▏  | 177/245 [06:41<01:45,  1.55s/it][ASFT optimizer steps:  72%|███████▏  | 177/245 [06:41<01:45,  1.55s/step, loss=2.46, learning_rate=2.91e-6, grad_norm=88.5]                                                                                                                          
+                                                 [A{'loss': 2.4566, 'grad_norm': 88.5, 'learning_rate': 2.9113924050632912e-06, 'epoch': 0.03}
+SFT optimizer steps:  72%|███████▏  | 177/245 [06:41<01:45,  1.55s/step, loss=2.46, learning_rate=2.91e-6, grad_norm=88.5]
+ 72%|███████▏  | 177/245 [06:41<01:45,  1.55s/it][ASFT optimizer steps:  73%|███████▎  | 178/245 [06:43<01:40,  1.50s/step, loss=2.46, learning_rate=2.91e-6, grad_norm=88.5]
+ 73%|███████▎  | 178/245 [06:43<01:40,  1.50s/it][ASFT optimizer steps:  73%|███████▎  | 178/245 [06:43<01:40,  1.50s/step, loss=0.959, learning_rate=2.87e-6, grad_norm=12.6]                                                                                                                           
+                                                 [A{'loss': 0.9587, 'grad_norm': 12.5625, 'learning_rate': 2.8691983122362873e-06, 'epoch': 0.03}
+SFT optimizer steps:  73%|███████▎  | 178/245 [06:43<01:40,  1.50s/step, loss=0.959, learning_rate=2.87e-6, grad_norm=12.6]
+ 73%|███████▎  | 178/245 [06:43<01:40,  1.50s/it][ASFT optimizer steps:  73%|███████▎  | 179/245 [06:45<02:01,  1.83s/step, loss=0.959, learning_rate=2.87e-6, grad_norm=12.6]
+ 73%|███████▎  | 179/245 [06:45<02:01,  1.83s/it][ASFT optimizer steps:  73%|███████▎  | 179/245 [06:45<02:01,  1.83s/step, loss=3.75, learning_rate=2.83e-6, grad_norm=180]                                                                                                                           
+                                                 [A{'loss': 3.7498, 'grad_norm': 180.0, 'learning_rate': 2.827004219409283e-06, 'epoch': 0.03}
+SFT optimizer steps:  73%|███████▎  | 179/245 [06:45<02:01,  1.83s/step, loss=3.75, learning_rate=2.83e-6, grad_norm=180]
+ 73%|███████▎  | 179/245 [06:45<02:01,  1.83s/it][ASFT optimizer steps:  73%|███████▎  | 180/245 [06:47<01:59,  1.84s/step, loss=3.75, learning_rate=2.83e-6, grad_norm=180]
+ 73%|███████▎  | 180/245 [06:47<01:59,  1.84s/it][ASFT optimizer steps:  73%|███████▎  | 180/245 [06:47<01:59,  1.84s/step, loss=2.65, learning_rate=2.78e-6, grad_norm=102]                                                                                                                         
+                                                 [A{'loss': 2.6483, 'grad_norm': 102.0, 'learning_rate': 2.7848101265822785e-06, 'epoch': 0.03}
+SFT optimizer steps:  73%|███████▎  | 180/245 [06:47<01:59,  1.84s/step, loss=2.65, learning_rate=2.78e-6, grad_norm=102]
+ 73%|███████▎  | 180/245 [06:47<01:59,  1.84s/it][ASFT optimizer steps:  74%|███████▍  | 181/245 [06:49<01:52,  1.76s/step, loss=2.65, learning_rate=2.78e-6, grad_norm=102]
+ 74%|███████▍  | 181/245 [06:49<01:52,  1.76s/it][ASFT optimizer steps:  74%|███████▍  | 181/245 [06:49<01:52,  1.76s/step, loss=1.28, learning_rate=2.74e-6, grad_norm=39.5]                                                                                                                          
+                                                 [A{'loss': 1.279, 'grad_norm': 39.5, 'learning_rate': 2.742616033755274e-06, 'epoch': 0.03}
+SFT optimizer steps:  74%|███████▍  | 181/245 [06:49<01:52,  1.76s/step, loss=1.28, learning_rate=2.74e-6, grad_norm=39.5]
+ 74%|███████▍  | 181/245 [06:49<01:52,  1.76s/it][ASFT optimizer steps:  74%|███████▍  | 182/245 [06:51<01:52,  1.79s/step, loss=1.28, learning_rate=2.74e-6, grad_norm=39.5]
+ 74%|███████▍  | 182/245 [06:51<01:52,  1.79s/it][ASFT optimizer steps:  74%|███████▍  | 182/245 [06:51<01:52,  1.79s/step, loss=2.15, learning_rate=2.7e-6, grad_norm=79]                                                                                                                          
+                                                 [A{'loss': 2.1457, 'grad_norm': 79.0, 'learning_rate': 2.70042194092827e-06, 'epoch': 0.03}
+SFT optimizer steps:  74%|███████▍  | 182/245 [06:51<01:52,  1.79s/step, loss=2.15, learning_rate=2.7e-6, grad_norm=79]
+ 74%|███████▍  | 182/245 [06:51<01:52,  1.79s/it][ASFT optimizer steps:  75%|███████▍  | 183/245 [06:52<01:52,  1.82s/step, loss=2.15, learning_rate=2.7e-6, grad_norm=79]
+ 75%|███████▍  | 183/245 [06:52<01:52,  1.82s/it][ASFT optimizer steps:  75%|███████▍  | 183/245 [06:53<01:52,  1.82s/step, loss=1.75, learning_rate=2.66e-6, grad_norm=59]                                                                                                                        
+                                                 [A{'loss': 1.748, 'grad_norm': 59.0, 'learning_rate': 2.6582278481012658e-06, 'epoch': 0.03}
+SFT optimizer steps:  75%|███████▍  | 183/245 [06:53<01:52,  1.82s/step, loss=1.75, learning_rate=2.66e-6, grad_norm=59]
+ 75%|███████▍  | 183/245 [06:53<01:52,  1.82s/it][ASFT optimizer steps:  75%|███████▌  | 184/245 [06:54<01:49,  1.80s/step, loss=1.75, learning_rate=2.66e-6, grad_norm=59]
+ 75%|███████▌  | 184/245 [06:54<01:49,  1.80s/it][ASFT optimizer steps:  75%|███████▌  | 184/245 [06:54<01:49,  1.80s/step, loss=1.21, learning_rate=2.62e-6, grad_norm=20.6]                                                                                                                          
+                                                 [A{'loss': 1.2058, 'grad_norm': 20.625, 'learning_rate': 2.6160337552742622e-06, 'epoch': 0.03}
+SFT optimizer steps:  75%|███████▌  | 184/245 [06:54<01:49,  1.80s/step, loss=1.21, learning_rate=2.62e-6, grad_norm=20.6]
+ 75%|███████▌  | 184/245 [06:54<01:49,  1.80s/it][ASFT optimizer steps:  76%|███████▌  | 185/245 [06:56<01:50,  1.83s/step, loss=1.21, learning_rate=2.62e-6, grad_norm=20.6]
+ 76%|███████▌  | 185/245 [06:56<01:50,  1.83s/it][ASFT optimizer steps:  76%|███████▌  | 185/245 [06:56<01:50,  1.83s/step, loss=1.57, learning_rate=2.57e-6, grad_norm=39.8]                                                                                                                          
+                                                 [A{'loss': 1.5653, 'grad_norm': 39.75, 'learning_rate': 2.573839662447258e-06, 'epoch': 0.03}
+SFT optimizer steps:  76%|███████▌  | 185/245 [06:56<01:50,  1.83s/step, loss=1.57, learning_rate=2.57e-6, grad_norm=39.8]
+ 76%|███████▌  | 185/245 [06:56<01:50,  1.83s/it][ASFT optimizer steps:  76%|███████▌  | 186/245 [06:58<01:48,  1.84s/step, loss=1.57, learning_rate=2.57e-6, grad_norm=39.8]
+ 76%|███████▌  | 186/245 [06:58<01:48,  1.84s/it][ASFT optimizer steps:  76%|███████▌  | 186/245 [06:58<01:48,  1.84s/step, loss=1.94, learning_rate=2.53e-6, grad_norm=62]                                                                                                                          
+                                                 [A{'loss': 1.9379, 'grad_norm': 62.0, 'learning_rate': 2.5316455696202535e-06, 'epoch': 0.03}
+SFT optimizer steps:  76%|███████▌  | 186/245 [06:58<01:48,  1.84s/step, loss=1.94, learning_rate=2.53e-6, grad_norm=62]
+ 76%|███████▌  | 186/245 [06:58<01:48,  1.84s/it][ASFT optimizer steps:  76%|███████▋  | 187/245 [07:00<01:49,  1.89s/step, loss=1.94, learning_rate=2.53e-6, grad_norm=62]
+ 76%|███████▋  | 187/245 [07:00<01:49,  1.89s/it][ASFT optimizer steps:  76%|███████▋  | 187/245 [07:00<01:49,  1.89s/step, loss=2.34, learning_rate=2.49e-6, grad_norm=83]                                                                                                                        
+                                                 [A{'loss': 2.337, 'grad_norm': 83.0, 'learning_rate': 2.489451476793249e-06, 'epoch': 0.03}
+SFT optimizer steps:  76%|███████▋  | 187/245 [07:00<01:49,  1.89s/step, loss=2.34, learning_rate=2.49e-6, grad_norm=83]
+ 76%|███████▋  | 187/245 [07:00<01:49,  1.89s/it][ASFT optimizer steps:  77%|███████▋  | 188/245 [07:02<01:49,  1.92s/step, loss=2.34, learning_rate=2.49e-6, grad_norm=83]
+ 77%|███████▋  | 188/245 [07:02<01:49,  1.92s/it][ASFT optimizer steps:  77%|███████▋  | 188/245 [07:02<01:49,  1.92s/step, loss=2.75, learning_rate=2.45e-6, grad_norm=99.5]                                                                                                                          
+                                                 [A{'loss': 2.7504, 'grad_norm': 99.5, 'learning_rate': 2.447257383966245e-06, 'epoch': 0.03}
+SFT optimizer steps:  77%|███████▋  | 188/245 [07:02<01:49,  1.92s/step, loss=2.75, learning_rate=2.45e-6, grad_norm=99.5]
+ 77%|███████▋  | 188/245 [07:02<01:49,  1.92s/it][ASFT optimizer steps:  77%|███████▋  | 189/245 [07:04<01:51,  1.99s/step, loss=2.75, learning_rate=2.45e-6, grad_norm=99.5]
+ 77%|███████▋  | 189/245 [07:04<01:51,  1.99s/it][ASFT optimizer steps:  77%|███████▋  | 189/245 [07:04<01:51,  1.99s/step, loss=3.09, learning_rate=2.41e-6, grad_norm=122]                                                                                                                          
+                                                 [A{'loss': 3.0918, 'grad_norm': 122.0, 'learning_rate': 2.4050632911392408e-06, 'epoch': 0.03}
+SFT optimizer steps:  77%|███████▋  | 189/245 [07:04<01:51,  1.99s/step, loss=3.09, learning_rate=2.41e-6, grad_norm=122]
+ 77%|███████▋  | 189/245 [07:04<01:51,  1.99s/it][ASFT optimizer steps:  78%|███████▊  | 190/245 [07:07<02:03,  2.25s/step, loss=3.09, learning_rate=2.41e-6, grad_norm=122]
+ 78%|███████▊  | 190/245 [07:07<02:03,  2.25s/it][ASFT optimizer steps:  78%|███████▊  | 190/245 [07:07<02:03,  2.25s/step, loss=2.91, learning_rate=2.36e-6, grad_norm=120]                                                                                                                         
+                                                 [A{'loss': 2.9103, 'grad_norm': 120.5, 'learning_rate': 2.3628691983122364e-06, 'epoch': 0.03}
+SFT optimizer steps:  78%|███████▊  | 190/245 [07:07<02:03,  2.25s/step, loss=2.91, learning_rate=2.36e-6, grad_norm=120]
+ 78%|███████▊  | 190/245 [07:07<02:03,  2.25s/it][ASFT optimizer steps:  78%|███████▊  | 191/245 [07:08<01:35,  1.77s/step, loss=2.91, learning_rate=2.36e-6, grad_norm=120]
+ 78%|███████▊  | 191/245 [07:08<01:35,  1.77s/it][ASFT optimizer steps:  78%|███████▊  | 191/245 [07:08<01:35,  1.77s/step, loss=3.07, learning_rate=2.32e-6, grad_norm=111]                                                                                                                         
+                                                 [A{'loss': 3.0663, 'grad_norm': 111.0, 'learning_rate': 2.3206751054852324e-06, 'epoch': 0.03}
+SFT optimizer steps:  78%|███████▊  | 191/245 [07:08<01:35,  1.77s/step, loss=3.07, learning_rate=2.32e-6, grad_norm=111]
+ 78%|███████▊  | 191/245 [07:08<01:35,  1.77s/it][ASFT optimizer steps:  78%|███████▊  | 192/245 [07:09<01:26,  1.63s/step, loss=3.07, learning_rate=2.32e-6, grad_norm=111]
+ 78%|███████▊  | 192/245 [07:09<01:26,  1.63s/it][ASFT optimizer steps:  78%|███████▊  | 192/245 [07:09<01:26,  1.63s/step, loss=0.969, learning_rate=2.28e-6, grad_norm=10.1]                                                                                                                           
+                                                 [A{'loss': 0.9689, 'grad_norm': 10.0625, 'learning_rate': 2.278481012658228e-06, 'epoch': 0.03}
+SFT optimizer steps:  78%|███████▊  | 192/245 [07:09<01:26,  1.63s/step, loss=0.969, learning_rate=2.28e-6, grad_norm=10.1]
+ 78%|███████▊  | 192/245 [07:09<01:26,  1.63s/it][ASFT optimizer steps:  79%|███████▉  | 193/245 [07:11<01:30,  1.75s/step, loss=0.969, learning_rate=2.28e-6, grad_norm=10.1]
+ 79%|███████▉  | 193/245 [07:11<01:30,  1.75s/it][ASFT optimizer steps:  79%|███████▉  | 193/245 [07:11<01:30,  1.75s/step, loss=2.51, learning_rate=2.24e-6, grad_norm=75.5]                                                                                                                           
+                                                 [A{'loss': 2.5121, 'grad_norm': 75.5, 'learning_rate': 2.2362869198312237e-06, 'epoch': 0.03}
+SFT optimizer steps:  79%|███████▉  | 193/245 [07:11<01:30,  1.75s/step, loss=2.51, learning_rate=2.24e-6, grad_norm=75.5]
+ 79%|███████▉  | 193/245 [07:11<01:30,  1.75s/it][ASFT optimizer steps:  79%|███████▉  | 194/245 [07:13<01:29,  1.76s/step, loss=2.51, learning_rate=2.24e-6, grad_norm=75.5]
+ 79%|███████▉  | 194/245 [07:13<01:29,  1.76s/it][ASFT optimizer steps:  79%|███████▉  | 194/245 [07:13<01:29,  1.76s/step, loss=2.36, learning_rate=2.19e-6, grad_norm=88]                                                                                                                          
+                                                 [A{'loss': 2.3644, 'grad_norm': 88.0, 'learning_rate': 2.1940928270042197e-06, 'epoch': 0.03}
+SFT optimizer steps:  79%|███████▉  | 194/245 [07:13<01:29,  1.76s/step, loss=2.36, learning_rate=2.19e-6, grad_norm=88]
+ 79%|███████▉  | 194/245 [07:13<01:29,  1.76s/it][ASFT optimizer steps:  80%|███████▉  | 195/245 [07:15<01:31,  1.84s/step, loss=2.36, learning_rate=2.19e-6, grad_norm=88]
+ 80%|███████▉  | 195/245 [07:15<01:31,  1.84s/it][ASFT optimizer steps:  80%|███████▉  | 195/245 [07:15<01:31,  1.84s/step, loss=2.45, learning_rate=2.15e-6, grad_norm=92.5]                                                                                                                          
+                                                 [A{'loss': 2.4502, 'grad_norm': 92.5, 'learning_rate': 2.1518987341772153e-06, 'epoch': 0.03}
+SFT optimizer steps:  80%|███████▉  | 195/245 [07:15<01:31,  1.84s/step, loss=2.45, learning_rate=2.15e-6, grad_norm=92.5]
+ 80%|███████▉  | 195/245 [07:15<01:31,  1.84s/it][ASFT optimizer steps:  80%|████████  | 196/245 [07:15<01:09,  1.43s/step, loss=2.45, learning_rate=2.15e-6, grad_norm=92.5]
+ 80%|████████  | 196/245 [07:15<01:09,  1.43s/it][ASFT optimizer steps:  80%|████████  | 196/245 [07:15<01:09,  1.43s/step, loss=1.6, learning_rate=2.11e-6, grad_norm=28.6]                                                                                                                          
+                                                 [A{'loss': 1.6014, 'grad_norm': 28.625, 'learning_rate': 2.1097046413502114e-06, 'epoch': 0.03}
+SFT optimizer steps:  80%|████████  | 196/245 [07:15<01:09,  1.43s/step, loss=1.6, learning_rate=2.11e-6, grad_norm=28.6]
+ 80%|████████  | 196/245 [07:15<01:09,  1.43s/it][ASFT optimizer steps:  80%|████████  | 197/245 [07:17<01:11,  1.49s/step, loss=1.6, learning_rate=2.11e-6, grad_norm=28.6]
+ 80%|████████  | 197/245 [07:17<01:11,  1.49s/it][ASFT optimizer steps:  80%|████████  | 197/245 [07:17<01:11,  1.49s/step, loss=1.16, learning_rate=2.07e-6, grad_norm=13.5]                                                                                                                          
+                                                 [A{'loss': 1.1601, 'grad_norm': 13.5, 'learning_rate': 2.067510548523207e-06, 'epoch': 0.03}
+SFT optimizer steps:  80%|████████  | 197/245 [07:17<01:11,  1.49s/step, loss=1.16, learning_rate=2.07e-6, grad_norm=13.5]
+ 80%|████████  | 197/245 [07:17<01:11,  1.49s/it][ASFT optimizer steps:  81%|████████  | 198/245 [07:19<01:22,  1.76s/step, loss=1.16, learning_rate=2.07e-6, grad_norm=13.5]
+ 81%|████████  | 198/245 [07:19<01:22,  1.76s/it][ASFT optimizer steps:  81%|████████  | 198/245 [07:19<01:22,  1.76s/step, loss=2.93, learning_rate=2.03e-6, grad_norm=120]                                                                                                                          
+                                                 [A{'loss': 2.9294, 'grad_norm': 120.5, 'learning_rate': 2.0253164556962026e-06, 'epoch': 0.04}
+SFT optimizer steps:  81%|████████  | 198/245 [07:19<01:22,  1.76s/step, loss=2.93, learning_rate=2.03e-6, grad_norm=120]
+ 81%|████████  | 198/245 [07:19<01:22,  1.76s/it][ASFT optimizer steps:  81%|████████  | 199/245 [07:22<01:34,  2.05s/step, loss=2.93, learning_rate=2.03e-6, grad_norm=120]
+ 81%|████████  | 199/245 [07:22<01:34,  2.05s/it][ASFT optimizer steps:  81%|████████  | 199/245 [07:22<01:34,  2.05s/step, loss=2.78, learning_rate=1.98e-6, grad_norm=118]                                                                                                                         
+                                                 [A{'loss': 2.7756, 'grad_norm': 118.5, 'learning_rate': 1.9831223628691982e-06, 'epoch': 0.04}
+SFT optimizer steps:  81%|████████  | 199/245 [07:22<01:34,  2.05s/step, loss=2.78, learning_rate=1.98e-6, grad_norm=118]
+ 81%|████████  | 199/245 [07:22<01:34,  2.05s/it][ASFT optimizer steps:  82%|████████▏ | 200/245 [07:24<01:29,  1.99s/step, loss=2.78, learning_rate=1.98e-6, grad_norm=118]
+ 82%|████████▏ | 200/245 [07:24<01:29,  1.99s/it][ASFT optimizer steps:  82%|████████▏ | 200/245 [07:24<01:29,  1.99s/step, loss=2.49, learning_rate=1.94e-6, grad_norm=84]                                                                                                                         
+                                                 [A{'loss': 2.4864, 'grad_norm': 84.0, 'learning_rate': 1.9409282700421943e-06, 'epoch': 0.04}
+SFT optimizer steps:  82%|████████▏ | 200/245 [07:24<01:29,  1.99s/step, loss=2.49, learning_rate=1.94e-6, grad_norm=84]
+ 82%|████████▏ | 200/245 [07:24<01:29,  1.99s/it][ASFT optimizer steps:  82%|████████▏ | 201/245 [08:01<09:17, 12.67s/step, loss=2.49, learning_rate=1.94e-6, grad_norm=84]
+ 82%|████████▏ | 201/245 [08:01<09:17, 12.67s/it][ASFT optimizer steps:  82%|████████▏ | 201/245 [08:02<09:17, 12.67s/step, loss=1.88, learning_rate=1.9e-6, grad_norm=46.5]                                                                                                                         
+                                                 [A{'loss': 1.8766, 'grad_norm': 46.5, 'learning_rate': 1.8987341772151901e-06, 'epoch': 0.04}
+SFT optimizer steps:  82%|████████▏ | 201/245 [08:02<09:17, 12.67s/step, loss=1.88, learning_rate=1.9e-6, grad_norm=46.5]
+ 82%|████████▏ | 201/245 [08:02<09:17, 12.67s/it][ASFT optimizer steps:  82%|████████▏ | 202/245 [08:03<06:44,  9.40s/step, loss=1.88, learning_rate=1.9e-6, grad_norm=46.5]
+ 82%|████████▏ | 202/245 [08:03<06:44,  9.40s/it][ASFT optimizer steps:  82%|████████▏ | 202/245 [08:03<06:44,  9.40s/step, loss=2.82, learning_rate=1.86e-6, grad_norm=113]                                                                                                                         
+                                                 [A{'loss': 2.8203, 'grad_norm': 113.0, 'learning_rate': 1.856540084388186e-06, 'epoch': 0.04}
+SFT optimizer steps:  82%|████████▏ | 202/245 [08:03<06:44,  9.40s/step, loss=2.82, learning_rate=1.86e-6, grad_norm=113]
+ 82%|████████▏ | 202/245 [08:03<06:44,  9.40s/it][ASFT optimizer steps:  83%|████████▎ | 203/245 [08:05<05:01,  7.17s/step, loss=2.82, learning_rate=1.86e-6, grad_norm=113]
+ 83%|████████▎ | 203/245 [08:05<05:01,  7.17s/it][ASFT optimizer steps:  83%|████████▎ | 203/245 [08:05<05:01,  7.17s/step, loss=2.33, learning_rate=1.81e-6, grad_norm=93.5]                                                                                                                          
+                                                 [A{'loss': 2.3271, 'grad_norm': 93.5, 'learning_rate': 1.8143459915611816e-06, 'epoch': 0.04}
+SFT optimizer steps:  83%|████████▎ | 203/245 [08:05<05:01,  7.17s/step, loss=2.33, learning_rate=1.81e-6, grad_norm=93.5]
+ 83%|████████▎ | 203/245 [08:05<05:01,  7.17s/it][ASFT optimizer steps:  83%|████████▎ | 204/245 [08:07<03:52,  5.67s/step, loss=2.33, learning_rate=1.81e-6, grad_norm=93.5]
+ 83%|████████▎ | 204/245 [08:07<03:52,  5.67s/it][ASFT optimizer steps:  83%|████████▎ | 204/245 [08:07<03:52,  5.67s/step, loss=2.88, learning_rate=1.77e-6, grad_norm=112]                                                                                                                          
+                                                 [A{'loss': 2.8772, 'grad_norm': 112.5, 'learning_rate': 1.7721518987341774e-06, 'epoch': 0.04}
+SFT optimizer steps:  83%|████████▎ | 204/245 [08:07<03:52,  5.67s/step, loss=2.88, learning_rate=1.77e-6, grad_norm=112]
+ 83%|████████▎ | 204/245 [08:07<03:52,  5.67s/it][ASFT optimizer steps:  84%|████████▎ | 205/245 [08:09<02:59,  4.49s/step, loss=2.88, learning_rate=1.77e-6, grad_norm=112]
+ 84%|████████▎ | 205/245 [08:09<02:59,  4.49s/it][ASFT optimizer steps:  84%|████████▎ | 205/245 [08:09<02:59,  4.49s/step, loss=1.5, learning_rate=1.73e-6, grad_norm=44]                                                                                                                         
+                                                 [A{'loss': 1.5036, 'grad_norm': 44.0, 'learning_rate': 1.729957805907173e-06, 'epoch': 0.04}
+SFT optimizer steps:  84%|████████▎ | 205/245 [08:09<02:59,  4.49s/step, loss=1.5, learning_rate=1.73e-6, grad_norm=44]
+ 84%|████████▎ | 205/245 [08:09<02:59,  4.49s/it][ASFT optimizer steps:  84%|████████▍ | 206/245 [08:12<02:35,  3.98s/step, loss=1.5, learning_rate=1.73e-6, grad_norm=44]
+ 84%|████████▍ | 206/245 [08:12<02:35,  3.98s/it][ASFT optimizer steps:  84%|████████▍ | 206/245 [08:12<02:35,  3.98s/step, loss=3.42, learning_rate=1.69e-6, grad_norm=136]                                                                                                                         
+                                                 [A{'loss': 3.4217, 'grad_norm': 136.0, 'learning_rate': 1.6877637130801689e-06, 'epoch': 0.04}
+SFT optimizer steps:  84%|████████▍ | 206/245 [08:12<02:35,  3.98s/step, loss=3.42, learning_rate=1.69e-6, grad_norm=136]
+ 84%|████████▍ | 206/245 [08:12<02:35,  3.98s/it][ASFT optimizer steps:  84%|████████▍ | 207/245 [08:14<02:04,  3.27s/step, loss=3.42, learning_rate=1.69e-6, grad_norm=136]
+ 84%|████████▍ | 207/245 [08:14<02:04,  3.27s/it][ASFT optimizer steps:  84%|████████▍ | 207/245 [08:14<02:04,  3.27s/step, loss=1.72, learning_rate=1.65e-6, grad_norm=45.5]                                                                                                                          
+                                                 [A{'loss': 1.7231, 'grad_norm': 45.5, 'learning_rate': 1.6455696202531647e-06, 'epoch': 0.04}
+SFT optimizer steps:  84%|████████▍ | 207/245 [08:14<02:04,  3.27s/step, loss=1.72, learning_rate=1.65e-6, grad_norm=45.5]
+ 84%|████████▍ | 207/245 [08:14<02:04,  3.27s/it][ASFT optimizer steps:  85%|████████▍ | 208/245 [08:16<01:48,  2.92s/step, loss=1.72, learning_rate=1.65e-6, grad_norm=45.5]
+ 85%|████████▍ | 208/245 [08:16<01:48,  2.92s/it][ASFT optimizer steps:  85%|████████▍ | 208/245 [08:16<01:48,  2.92s/step, loss=3.21, learning_rate=1.6e-6, grad_norm=124]                                                                                                                          
+                                                 [A{'loss': 3.2145, 'grad_norm': 124.5, 'learning_rate': 1.6033755274261605e-06, 'epoch': 0.04}
+SFT optimizer steps:  85%|████████▍ | 208/245 [08:16<01:48,  2.92s/step, loss=3.21, learning_rate=1.6e-6, grad_norm=124]
+ 85%|████████▍ | 208/245 [08:16<01:48,  2.92s/it][ASFT optimizer steps:  85%|████████▌ | 209/245 [08:17<01:30,  2.52s/step, loss=3.21, learning_rate=1.6e-6, grad_norm=124]
+ 85%|████████▌ | 209/245 [08:17<01:30,  2.52s/it][ASFT optimizer steps:  85%|████████▌ | 209/245 [08:17<01:30,  2.52s/step, loss=0.671, learning_rate=1.56e-6, grad_norm=20.6]                                                                                                                           
+                                                 [A{'loss': 0.6711, 'grad_norm': 20.625, 'learning_rate': 1.5611814345991563e-06, 'epoch': 0.04}
+SFT optimizer steps:  85%|████████▌ | 209/245 [08:17<01:30,  2.52s/step, loss=0.671, learning_rate=1.56e-6, grad_norm=20.6]
+ 85%|████████▌ | 209/245 [08:17<01:30,  2.52s/it][ASFT optimizer steps:  86%|████████▌ | 210/245 [08:20<01:30,  2.58s/step, loss=0.671, learning_rate=1.56e-6, grad_norm=20.6]
+ 86%|████████▌ | 210/245 [08:20<01:30,  2.58s/it][ASFT optimizer steps:  86%|████████▌ | 210/245 [08:20<01:30,  2.58s/step, loss=3.62, learning_rate=1.52e-6, grad_norm=143]                                                                                                                           
+                                                 [A{'loss': 3.6202, 'grad_norm': 143.0, 'learning_rate': 1.518987341772152e-06, 'epoch': 0.04}
+SFT optimizer steps:  86%|████████▌ | 210/245 [08:20<01:30,  2.58s/step, loss=3.62, learning_rate=1.52e-6, grad_norm=143]
+ 86%|████████▌ | 210/245 [08:20<01:30,  2.58s/it][ASFT optimizer steps:  86%|████████▌ | 211/245 [08:22<01:23,  2.45s/step, loss=3.62, learning_rate=1.52e-6, grad_norm=143]
+ 86%|████████▌ | 211/245 [08:22<01:23,  2.45s/it][ASFT optimizer steps:  86%|████████▌ | 211/245 [08:22<01:23,  2.45s/step, loss=2.62, learning_rate=1.48e-6, grad_norm=98.5]                                                                                                                          
+                                                 [A{'loss': 2.6166, 'grad_norm': 98.5, 'learning_rate': 1.4767932489451478e-06, 'epoch': 0.04}
+SFT optimizer steps:  86%|████████▌ | 211/245 [08:22<01:23,  2.45s/step, loss=2.62, learning_rate=1.48e-6, grad_norm=98.5]
+ 86%|████████▌ | 211/245 [08:22<01:23,  2.45s/it][ASFT optimizer steps:  87%|████████▋ | 212/245 [08:24<01:14,  2.26s/step, loss=2.62, learning_rate=1.48e-6, grad_norm=98.5]
+ 87%|████████▋ | 212/245 [08:24<01:14,  2.26s/it][ASFT optimizer steps:  87%|████████▋ | 212/245 [08:24<01:14,  2.26s/step, loss=2.81, learning_rate=1.43e-6, grad_norm=116]                                                                                                                          
+                                                 [A{'loss': 2.8079, 'grad_norm': 115.5, 'learning_rate': 1.4345991561181436e-06, 'epoch': 0.04}
+SFT optimizer steps:  87%|████████▋ | 212/245 [08:24<01:14,  2.26s/step, loss=2.81, learning_rate=1.43e-6, grad_norm=116]
+ 87%|████████▋ | 212/245 [08:24<01:14,  2.26s/it][ASFT optimizer steps:  87%|████████▋ | 213/245 [08:27<01:21,  2.55s/step, loss=2.81, learning_rate=1.43e-6, grad_norm=116]
+ 87%|████████▋ | 213/245 [08:27<01:21,  2.55s/it][ASFT optimizer steps:  87%|████████▋ | 213/245 [08:27<01:21,  2.55s/step, loss=2.79, learning_rate=1.39e-6, grad_norm=115]                                                                                                                         
+                                                 [A{'loss': 2.787, 'grad_norm': 115.0, 'learning_rate': 1.3924050632911392e-06, 'epoch': 0.04}
+SFT optimizer steps:  87%|████████▋ | 213/245 [08:27<01:21,  2.55s/step, loss=2.79, learning_rate=1.39e-6, grad_norm=115]
+ 87%|████████▋ | 213/245 [08:27<01:21,  2.55s/it][ASFT optimizer steps:  87%|████████▋ | 214/245 [08:29<01:13,  2.36s/step, loss=2.79, learning_rate=1.39e-6, grad_norm=115]
+ 87%|████████▋ | 214/245 [08:29<01:13,  2.36s/it][ASFT optimizer steps:  87%|████████▋ | 214/245 [08:29<01:13,  2.36s/step, loss=2.58, learning_rate=1.35e-6, grad_norm=48.8]                                                                                                                          
+                                                 [A{'loss': 2.576, 'grad_norm': 48.75, 'learning_rate': 1.350210970464135e-06, 'epoch': 0.04}
+SFT optimizer steps:  87%|████████▋ | 214/245 [08:29<01:13,  2.36s/step, loss=2.58, learning_rate=1.35e-6, grad_norm=48.8]
+ 87%|████████▋ | 214/245 [08:29<01:13,  2.36s/it][ASFT optimizer steps:  88%|████████▊ | 215/245 [08:31<01:06,  2.22s/step, loss=2.58, learning_rate=1.35e-6, grad_norm=48.8]
+ 88%|████████▊ | 215/245 [08:31<01:06,  2.22s/it][ASFT optimizer steps:  88%|████████▊ | 215/245 [08:31<01:06,  2.22s/step, loss=1.68, learning_rate=1.31e-6, grad_norm=49.2]                                                                                                                          
+                                                 [A{'loss': 1.6819, 'grad_norm': 49.25, 'learning_rate': 1.3080168776371311e-06, 'epoch': 0.04}
+SFT optimizer steps:  88%|████████▊ | 215/245 [08:31<01:06,  2.22s/step, loss=1.68, learning_rate=1.31e-6, grad_norm=49.2]
+ 88%|████████▊ | 215/245 [08:31<01:06,  2.22s/it][ASFT optimizer steps:  88%|████████▊ | 216/245 [08:33<01:03,  2.17s/step, loss=1.68, learning_rate=1.31e-6, grad_norm=49.2]
+ 88%|████████▊ | 216/245 [08:33<01:03,  2.17s/it][ASFT optimizer steps:  88%|████████▊ | 216/245 [08:33<01:03,  2.17s/step, loss=2.96, learning_rate=1.27e-6, grad_norm=114]                                                                                                                          
+                                                 [A{'loss': 2.9558, 'grad_norm': 113.5, 'learning_rate': 1.2658227848101267e-06, 'epoch': 0.04}
+SFT optimizer steps:  88%|████████▊ | 216/245 [08:33<01:03,  2.17s/step, loss=2.96, learning_rate=1.27e-6, grad_norm=114]
+ 88%|████████▊ | 216/245 [08:33<01:03,  2.17s/it][ASFT optimizer steps:  89%|████████▊ | 217/245 [08:35<00:58,  2.10s/step, loss=2.96, learning_rate=1.27e-6, grad_norm=114]
+ 89%|████████▊ | 217/245 [08:35<00:58,  2.10s/it][ASFT optimizer steps:  89%|████████▊ | 217/245 [08:35<00:58,  2.10s/step, loss=2.85, learning_rate=1.22e-6, grad_norm=118]                                                                                                                         
+                                                 [A{'loss': 2.8483, 'grad_norm': 118.0, 'learning_rate': 1.2236286919831226e-06, 'epoch': 0.04}
+SFT optimizer steps:  89%|████████▊ | 217/245 [08:35<00:58,  2.10s/step, loss=2.85, learning_rate=1.22e-6, grad_norm=118]
+ 89%|████████▊ | 217/245 [08:35<00:58,  2.10s/it][ASFT optimizer steps:  89%|████████▉ | 218/245 [08:36<00:52,  1.94s/step, loss=2.85, learning_rate=1.22e-6, grad_norm=118]
+ 89%|████████▉ | 218/245 [08:36<00:52,  1.94s/it][ASFT optimizer steps:  89%|████████▉ | 218/245 [08:37<00:52,  1.94s/step, loss=0.738, learning_rate=1.18e-6, grad_norm=11.4]                                                                                                                           
+                                                 [A{'loss': 0.738, 'grad_norm': 11.4375, 'learning_rate': 1.1814345991561182e-06, 'epoch': 0.04}
+SFT optimizer steps:  89%|████████▉ | 218/245 [08:37<00:52,  1.94s/step, loss=0.738, learning_rate=1.18e-6, grad_norm=11.4]
+ 89%|████████▉ | 218/245 [08:37<00:52,  1.94s/it][ASFT optimizer steps:  89%|████████▉ | 219/245 [08:39<00:55,  2.14s/step, loss=0.738, learning_rate=1.18e-6, grad_norm=11.4]
+ 89%|████████▉ | 219/245 [08:39<00:55,  2.14s/it][ASFT optimizer steps:  89%|████████▉ | 219/245 [08:39<00:55,  2.14s/step, loss=3.1, learning_rate=1.14e-6, grad_norm=116]                                                                                                                           
+                                                 [A{'loss': 3.1048, 'grad_norm': 116.5, 'learning_rate': 1.139240506329114e-06, 'epoch': 0.04}
+SFT optimizer steps:  89%|████████▉ | 219/245 [08:39<00:55,  2.14s/step, loss=3.1, learning_rate=1.14e-6, grad_norm=116]
+ 89%|████████▉ | 219/245 [08:39<00:55,  2.14s/it][ASFT optimizer steps:  90%|████████▉ | 220/245 [08:42<00:56,  2.27s/step, loss=3.1, learning_rate=1.14e-6, grad_norm=116]
+ 90%|████████▉ | 220/245 [08:42<00:56,  2.27s/it][ASFT optimizer steps:  90%|████████▉ | 220/245 [08:42<00:56,  2.27s/step, loss=3.03, learning_rate=1.1e-6, grad_norm=99.5]                                                                                                                         
+                                                 [A{'loss': 3.0271, 'grad_norm': 99.5, 'learning_rate': 1.0970464135021099e-06, 'epoch': 0.04}
+SFT optimizer steps:  90%|████████▉ | 220/245 [08:42<00:56,  2.27s/step, loss=3.03, learning_rate=1.1e-6, grad_norm=99.5]
+ 90%|████████▉ | 220/245 [08:42<00:56,  2.27s/it][ASFT optimizer steps:  90%|█████████ | 221/245 [08:43<00:51,  2.13s/step, loss=3.03, learning_rate=1.1e-6, grad_norm=99.5]
+ 90%|█████████ | 221/245 [08:43<00:51,  2.13s/it][ASFT optimizer steps:  90%|█████████ | 221/245 [08:44<00:51,  2.13s/step, loss=2.89, learning_rate=1.05e-6, grad_norm=120]                                                                                                                         
+                                                 [A{'loss': 2.8893, 'grad_norm': 119.5, 'learning_rate': 1.0548523206751057e-06, 'epoch': 0.04}
+SFT optimizer steps:  90%|█████████ | 221/245 [08:44<00:51,  2.13s/step, loss=2.89, learning_rate=1.05e-6, grad_norm=120]
+ 90%|█████████ | 221/245 [08:44<00:51,  2.13s/it][ASFT optimizer steps:  91%|█████████ | 222/245 [08:45<00:46,  2.00s/step, loss=2.89, learning_rate=1.05e-6, grad_norm=120]
+ 91%|█████████ | 222/245 [08:45<00:46,  2.00s/it][ASFT optimizer steps:  91%|█████████ | 222/245 [08:45<00:46,  2.00s/step, loss=0.856, learning_rate=1.01e-6, grad_norm=11.6]                                                                                                                           
+                                                 [A{'loss': 0.856, 'grad_norm': 11.625, 'learning_rate': 1.0126582278481013e-06, 'epoch': 0.04}
+SFT optimizer steps:  91%|█████████ | 222/245 [08:45<00:46,  2.00s/step, loss=0.856, learning_rate=1.01e-6, grad_norm=11.6]
+ 91%|█████████ | 222/245 [08:45<00:46,  2.00s/it][ASFT optimizer steps:  91%|█████████ | 223/245 [08:47<00:44,  2.01s/step, loss=0.856, learning_rate=1.01e-6, grad_norm=11.6]
+ 91%|█████████ | 223/245 [08:47<00:44,  2.01s/it][ASFT optimizer steps:  91%|█████████ | 223/245 [08:47<00:44,  2.01s/step, loss=2.67, learning_rate=9.7e-7, grad_norm=106]                                                                                                                           
+                                                 [A{'loss': 2.6743, 'grad_norm': 106.0, 'learning_rate': 9.704641350210971e-07, 'epoch': 0.04}
+SFT optimizer steps:  91%|█████████ | 223/245 [08:47<00:44,  2.01s/step, loss=2.67, learning_rate=9.7e-7, grad_norm=106]
+ 91%|█████████ | 223/245 [08:47<00:44,  2.01s/it][ASFT optimizer steps:  91%|█████████▏| 224/245 [08:50<00:47,  2.25s/step, loss=2.67, learning_rate=9.7e-7, grad_norm=106]
+ 91%|█████████▏| 224/245 [08:50<00:47,  2.25s/it][ASFT optimizer steps:  91%|█████████▏| 224/245 [08:50<00:47,  2.25s/step, loss=3.58, learning_rate=9.28e-7, grad_norm=145]                                                                                                                         
+                                                 [A{'loss': 3.5822, 'grad_norm': 145.0, 'learning_rate': 9.28270042194093e-07, 'epoch': 0.04}
+SFT optimizer steps:  91%|█████████▏| 224/245 [08:50<00:47,  2.25s/step, loss=3.58, learning_rate=9.28e-7, grad_norm=145]
+ 91%|█████████▏| 224/245 [08:50<00:47,  2.25s/it][ASFT optimizer steps:  92%|█████████▏| 225/245 [08:52<00:41,  2.08s/step, loss=3.58, learning_rate=9.28e-7, grad_norm=145]
+ 92%|█████████▏| 225/245 [08:52<00:41,  2.08s/it][ASFT optimizer steps:  92%|█████████▏| 225/245 [08:52<00:41,  2.08s/step, loss=1.13, learning_rate=8.86e-7, grad_norm=28.2]                                                                                                                          
+                                                 [A{'loss': 1.1335, 'grad_norm': 28.25, 'learning_rate': 8.860759493670887e-07, 'epoch': 0.04}
+SFT optimizer steps:  92%|█████████▏| 225/245 [08:52<00:41,  2.08s/step, loss=1.13, learning_rate=8.86e-7, grad_norm=28.2]
+ 92%|█████████▏| 225/245 [08:52<00:41,  2.08s/it][ASFT optimizer steps:  92%|█████████▏| 226/245 [08:54<00:43,  2.28s/step, loss=1.13, learning_rate=8.86e-7, grad_norm=28.2]
+ 92%|█████████▏| 226/245 [08:54<00:43,  2.28s/it][ASFT optimizer steps:  92%|█████████▏| 226/245 [08:54<00:43,  2.28s/step, loss=3.1, learning_rate=8.44e-7, grad_norm=130]                                                                                                                          
+                                                 [A{'loss': 3.1, 'grad_norm': 130.0, 'learning_rate': 8.438818565400844e-07, 'epoch': 0.04}
+SFT optimizer steps:  92%|█████████▏| 226/245 [08:54<00:43,  2.28s/step, loss=3.1, learning_rate=8.44e-7, grad_norm=130]
+ 92%|█████████▏| 226/245 [08:54<00:43,  2.28s/it][ASFT optimizer steps:  93%|█████████▎| 227/245 [08:56<00:37,  2.09s/step, loss=3.1, learning_rate=8.44e-7, grad_norm=130]
+ 93%|█████████▎| 227/245 [08:56<00:37,  2.09s/it][ASFT optimizer steps:  93%|█████████▎| 227/245 [08:56<00:37,  2.09s/step, loss=2.02, learning_rate=8.02e-7, grad_norm=79.5]                                                                                                                          
+                                                 [A{'loss': 2.0233, 'grad_norm': 79.5, 'learning_rate': 8.016877637130803e-07, 'epoch': 0.04}
+SFT optimizer steps:  93%|█████████▎| 227/245 [08:56<00:37,  2.09s/step, loss=2.02, learning_rate=8.02e-7, grad_norm=79.5]
+ 93%|█████████▎| 227/245 [08:56<00:37,  2.09s/it][ASFT optimizer steps:  93%|█████████▎| 228/245 [08:58<00:36,  2.13s/step, loss=2.02, learning_rate=8.02e-7, grad_norm=79.5]
+ 93%|█████████▎| 228/245 [08:58<00:36,  2.13s/it][ASFT optimizer steps:  93%|█████████▎| 228/245 [08:58<00:36,  2.13s/step, loss=1.87, learning_rate=7.59e-7, grad_norm=69.5]                                                                                                                          
+                                                 [A{'loss': 1.8692, 'grad_norm': 69.5, 'learning_rate': 7.59493670886076e-07, 'epoch': 0.04}
+SFT optimizer steps:  93%|█████████▎| 228/245 [08:58<00:36,  2.13s/step, loss=1.87, learning_rate=7.59e-7, grad_norm=69.5]
+ 93%|█████████▎| 228/245 [08:58<00:36,  2.13s/it][ASFT optimizer steps:  93%|█████████▎| 229/245 [09:00<00:30,  1.92s/step, loss=1.87, learning_rate=7.59e-7, grad_norm=69.5]
+ 93%|█████████▎| 229/245 [09:00<00:30,  1.92s/it][ASFT optimizer steps:  93%|█████████▎| 229/245 [09:00<00:30,  1.92s/step, loss=3.18, learning_rate=7.17e-7, grad_norm=141]                                                                                                                          
+                                                 [A{'loss': 3.1787, 'grad_norm': 141.0, 'learning_rate': 7.172995780590718e-07, 'epoch': 0.04}
+SFT optimizer steps:  93%|█████████▎| 229/245 [09:00<00:30,  1.92s/step, loss=3.18, learning_rate=7.17e-7, grad_norm=141]
+ 93%|█████████▎| 229/245 [09:00<00:30,  1.92s/it][ASFT optimizer steps:  94%|█████████▍| 230/245 [09:01<00:26,  1.74s/step, loss=3.18, learning_rate=7.17e-7, grad_norm=141]
+ 94%|█████████▍| 230/245 [09:01<00:26,  1.74s/it][ASFT optimizer steps:  94%|█████████▍| 230/245 [09:01<00:26,  1.74s/step, loss=1.55, learning_rate=6.75e-7, grad_norm=12.3]                                                                                                                          
+                                                 [A{'loss': 1.5542, 'grad_norm': 12.3125, 'learning_rate': 6.751054852320675e-07, 'epoch': 0.04}
+SFT optimizer steps:  94%|█████████▍| 230/245 [09:01<00:26,  1.74s/step, loss=1.55, learning_rate=6.75e-7, grad_norm=12.3]
+ 94%|█████████▍| 230/245 [09:01<00:26,  1.74s/it][ASFT optimizer steps:  94%|█████████▍| 231/245 [09:03<00:25,  1.81s/step, loss=1.55, learning_rate=6.75e-7, grad_norm=12.3]
+ 94%|█████████▍| 231/245 [09:03<00:25,  1.81s/it][ASFT optimizer steps:  94%|█████████▍| 231/245 [09:03<00:25,  1.81s/step, loss=2.54, learning_rate=6.33e-7, grad_norm=85.5]                                                                                                                          
+                                                 [A{'loss': 2.5379, 'grad_norm': 85.5, 'learning_rate': 6.329113924050634e-07, 'epoch': 0.04}
+SFT optimizer steps:  94%|█████████▍| 231/245 [09:03<00:25,  1.81s/step, loss=2.54, learning_rate=6.33e-7, grad_norm=85.5]
+ 94%|█████████▍| 231/245 [09:03<00:25,  1.81s/it][ASFT optimizer steps:  95%|█████████▍| 232/245 [09:06<00:26,  2.06s/step, loss=2.54, learning_rate=6.33e-7, grad_norm=85.5]
+ 95%|█████████▍| 232/245 [09:06<00:26,  2.06s/it][ASFT optimizer steps:  95%|█████████▍| 232/245 [09:06<00:26,  2.06s/step, loss=2.84, learning_rate=5.91e-7, grad_norm=126]                                                                                                                          
+                                                 [A{'loss': 2.8401, 'grad_norm': 125.5, 'learning_rate': 5.907172995780591e-07, 'epoch': 0.04}
+SFT optimizer steps:  95%|█████████▍| 232/245 [09:06<00:26,  2.06s/step, loss=2.84, learning_rate=5.91e-7, grad_norm=126]
+ 95%|█████████▍| 232/245 [09:06<00:26,  2.06s/it][ASFT optimizer steps:  95%|█████████▌| 233/245 [09:08<00:26,  2.19s/step, loss=2.84, learning_rate=5.91e-7, grad_norm=126]
+ 95%|█████████▌| 233/245 [09:08<00:26,  2.19s/it][ASFT optimizer steps:  95%|█████████▌| 233/245 [09:08<00:26,  2.19s/step, loss=3.54, learning_rate=5.49e-7, grad_norm=136]                                                                                                                         
+                                                 [A{'loss': 3.5397, 'grad_norm': 136.0, 'learning_rate': 5.485232067510549e-07, 'epoch': 0.04}
+SFT optimizer steps:  95%|█████████▌| 233/245 [09:08<00:26,  2.19s/step, loss=3.54, learning_rate=5.49e-7, grad_norm=136]
+ 95%|█████████▌| 233/245 [09:08<00:26,  2.19s/it][ASFT optimizer steps:  96%|█████████▌| 234/245 [09:10<00:22,  2.07s/step, loss=3.54, learning_rate=5.49e-7, grad_norm=136]
+ 96%|█████████▌| 234/245 [09:10<00:22,  2.07s/it][ASFT optimizer steps:  96%|█████████▌| 234/245 [09:10<00:22,  2.07s/step, loss=0.884, learning_rate=5.06e-7, grad_norm=19.1]                                                                                                                           
+                                                 [A{'loss': 0.8837, 'grad_norm': 19.125, 'learning_rate': 5.063291139240507e-07, 'epoch': 0.04}
+SFT optimizer steps:  96%|█████████▌| 234/245 [09:10<00:22,  2.07s/step, loss=0.884, learning_rate=5.06e-7, grad_norm=19.1]
+ 96%|█████████▌| 234/245 [09:10<00:22,  2.07s/it][ASFT optimizer steps:  96%|█████████▌| 235/245 [09:12<00:19,  1.95s/step, loss=0.884, learning_rate=5.06e-7, grad_norm=19.1]
+ 96%|█████████▌| 235/245 [09:12<00:19,  1.95s/it][ASFT optimizer steps:  96%|█████████▌| 235/245 [09:12<00:19,  1.95s/step, loss=2.09, learning_rate=4.64e-7, grad_norm=73]                                                                                                                           
+                                                 [A{'loss': 2.0925, 'grad_norm': 73.0, 'learning_rate': 4.641350210970465e-07, 'epoch': 0.04}
+SFT optimizer steps:  96%|█████████▌| 235/245 [09:12<00:19,  1.95s/step, loss=2.09, learning_rate=4.64e-7, grad_norm=73]
+ 96%|█████████▌| 235/245 [09:12<00:19,  1.95s/it][ASFT optimizer steps:  96%|█████████▋| 236/245 [09:13<00:17,  1.91s/step, loss=2.09, learning_rate=4.64e-7, grad_norm=73]
+ 96%|█████████▋| 236/245 [09:13<00:17,  1.91s/it][ASFT optimizer steps:  96%|█████████▋| 236/245 [09:14<00:17,  1.91s/step, loss=1.6, learning_rate=4.22e-7, grad_norm=63.2]                                                                                                                         
+                                                 [A{'loss': 1.6022, 'grad_norm': 63.25, 'learning_rate': 4.219409282700422e-07, 'epoch': 0.04}
+SFT optimizer steps:  96%|█████████▋| 236/245 [09:14<00:17,  1.91s/step, loss=1.6, learning_rate=4.22e-7, grad_norm=63.2]
+ 96%|█████████▋| 236/245 [09:14<00:17,  1.91s/it][ASFT optimizer steps:  97%|█████████▋| 237/245 [09:15<00:15,  1.91s/step, loss=1.6, learning_rate=4.22e-7, grad_norm=63.2]
+ 97%|█████████▋| 237/245 [09:15<00:15,  1.91s/it][ASFT optimizer steps:  97%|█████████▋| 237/245 [09:15<00:15,  1.91s/step, loss=2.03, learning_rate=3.8e-7, grad_norm=81]                                                                                                                         
+                                                 [A{'loss': 2.0327, 'grad_norm': 81.0, 'learning_rate': 3.79746835443038e-07, 'epoch': 0.04}
+SFT optimizer steps:  97%|█████████▋| 237/245 [09:15<00:15,  1.91s/step, loss=2.03, learning_rate=3.8e-7, grad_norm=81]
+ 97%|█████████▋| 237/245 [09:15<00:15,  1.91s/it][ASFT optimizer steps:  97%|█████████▋| 238/245 [09:17<00:13,  1.88s/step, loss=2.03, learning_rate=3.8e-7, grad_norm=81]
+ 97%|█████████▋| 238/245 [09:17<00:13,  1.88s/it][ASFT optimizer steps:  97%|█████████▋| 238/245 [09:17<00:13,  1.88s/step, loss=2.52, learning_rate=3.38e-7, grad_norm=100]                                                                                                                         
+                                                 [A{'loss': 2.5172, 'grad_norm': 100.5, 'learning_rate': 3.3755274261603377e-07, 'epoch': 0.04}
+SFT optimizer steps:  97%|█████████▋| 238/245 [09:17<00:13,  1.88s/step, loss=2.52, learning_rate=3.38e-7, grad_norm=100]
+ 97%|█████████▋| 238/245 [09:17<00:13,  1.88s/it][ASFT optimizer steps:  98%|█████████▊| 239/245 [09:19<00:10,  1.78s/step, loss=2.52, learning_rate=3.38e-7, grad_norm=100]
+ 98%|█████████▊| 239/245 [09:19<00:10,  1.78s/it][ASFT optimizer steps:  98%|█████████▊| 239/245 [09:19<00:10,  1.78s/step, loss=1.81, learning_rate=2.95e-7, grad_norm=48.5]                                                                                                                          
+                                                 [A{'loss': 1.8142, 'grad_norm': 48.5, 'learning_rate': 2.9535864978902955e-07, 'epoch': 0.04}
+SFT optimizer steps:  98%|█████████▊| 239/245 [09:19<00:10,  1.78s/step, loss=1.81, learning_rate=2.95e-7, grad_norm=48.5]
+ 98%|█████████▊| 239/245 [09:19<00:10,  1.78s/it][ASFT optimizer steps:  98%|█████████▊| 240/245 [09:21<00:09,  1.88s/step, loss=1.81, learning_rate=2.95e-7, grad_norm=48.5]
+ 98%|█████████▊| 240/245 [09:21<00:09,  1.88s/it][ASFT optimizer steps:  98%|█████████▊| 240/245 [09:21<00:09,  1.88s/step, loss=3.15, learning_rate=2.53e-7, grad_norm=115]                                                                                                                          
+                                                 [A{'loss': 3.1465, 'grad_norm': 115.0, 'learning_rate': 2.5316455696202533e-07, 'epoch': 0.04}
+SFT optimizer steps:  98%|█████████▊| 240/245 [09:21<00:09,  1.88s/step, loss=3.15, learning_rate=2.53e-7, grad_norm=115]
+ 98%|█████████▊| 240/245 [09:21<00:09,  1.88s/it][ASFT optimizer steps:  98%|█████████▊| 241/245 [09:23<00:08,  2.09s/step, loss=3.15, learning_rate=2.53e-7, grad_norm=115]
+ 98%|█████████▊| 241/245 [09:23<00:08,  2.09s/it][ASFT optimizer steps:  98%|█████████▊| 241/245 [09:23<00:08,  2.09s/step, loss=3.06, learning_rate=2.11e-7, grad_norm=137]                                                                                                                         
+                                                 [A{'loss': 3.0624, 'grad_norm': 137.0, 'learning_rate': 2.109704641350211e-07, 'epoch': 0.04}
+SFT optimizer steps:  98%|█████████▊| 241/245 [09:23<00:08,  2.09s/step, loss=3.06, learning_rate=2.11e-7, grad_norm=137]
+ 98%|█████████▊| 241/245 [09:23<00:08,  2.09s/it][ASFT optimizer steps:  99%|█████████▉| 242/245 [09:25<00:06,  2.02s/step, loss=3.06, learning_rate=2.11e-7, grad_norm=137]
+ 99%|█████████▉| 242/245 [09:25<00:06,  2.02s/it][ASFT optimizer steps:  99%|█████████▉| 242/245 [09:25<00:06,  2.02s/step, loss=2.74, learning_rate=1.69e-7, grad_norm=84]                                                                                                                         
+                                                 [A{'loss': 2.7423, 'grad_norm': 84.0, 'learning_rate': 1.6877637130801689e-07, 'epoch': 0.04}
+SFT optimizer steps:  99%|█████████▉| 242/245 [09:25<00:06,  2.02s/step, loss=2.74, learning_rate=1.69e-7, grad_norm=84]
+ 99%|█████████▉| 242/245 [09:25<00:06,  2.02s/it][ASFT optimizer steps:  99%|█████████▉| 243/245 [09:27<00:03,  1.94s/step, loss=2.74, learning_rate=1.69e-7, grad_norm=84]
+ 99%|█████████▉| 243/245 [09:27<00:03,  1.94s/it][ASFT optimizer steps:  99%|█████████▉| 243/245 [09:27<00:03,  1.94s/step, loss=0.716, learning_rate=1.27e-7, grad_norm=10.5]                                                                                                                           
+                                                 [A{'loss': 0.7163, 'grad_norm': 10.5, 'learning_rate': 1.2658227848101266e-07, 'epoch': 0.04}
+SFT optimizer steps:  99%|█████████▉| 243/245 [09:27<00:03,  1.94s/step, loss=0.716, learning_rate=1.27e-7, grad_norm=10.5]
+ 99%|█████████▉| 243/245 [09:27<00:03,  1.94s/it][ASFT optimizer steps: 100%|█████████▉| 244/245 [09:29<00:01,  1.92s/step, loss=0.716, learning_rate=1.27e-7, grad_norm=10.5]
+100%|█████████▉| 244/245 [09:29<00:01,  1.92s/it][ASFT optimizer steps: 100%|█████████▉| 244/245 [09:29<00:01,  1.92s/step, loss=1.6, learning_rate=8.44e-8, grad_norm=62.8]                                                                                                                           
+                                                 [A{'loss': 1.5959, 'grad_norm': 62.75, 'learning_rate': 8.438818565400844e-08, 'epoch': 0.04}
+SFT optimizer steps: 100%|█████████▉| 244/245 [09:29<00:01,  1.92s/step, loss=1.6, learning_rate=8.44e-8, grad_norm=62.8]
+100%|█████████▉| 244/245 [09:29<00:01,  1.92s/it][ASFT optimizer steps: 100%|██████████| 245/245 [09:32<00:00,  2.18s/step, loss=1.6, learning_rate=8.44e-8, grad_norm=62.8]
+100%|██████████| 245/245 [09:32<00:00,  2.18s/it][ASFT optimizer steps: 100%|██████████| 245/245 [09:32<00:00,  2.18s/step, loss=2.86, learning_rate=4.22e-8, grad_norm=125]                                                                                                                         
+                                                 [A{'loss': 2.8562, 'grad_norm': 125.0, 'learning_rate': 4.219409282700422e-08, 'epoch': 0.04}
+SFT optimizer steps: 100%|██████████| 245/245 [09:32<00:00,  2.18s/step, loss=2.86, learning_rate=4.22e-8, grad_norm=125]
+100%|██████████| 245/245 [09:32<00:00,  2.18s/it][A                                                                                                                         
+                                                 [A{'train_runtime': 611.8654, 'train_samples_per_second': 0.4, 'train_steps_per_second': 0.4, 'train_loss': 3.7608870163255808, 'epoch': 0.04}
+SFT optimizer steps: 100%|██████████| 245/245 [10:11<00:00,  2.18s/step, loss=2.86, learning_rate=4.22e-8, grad_norm=125]
+100%|██████████| 245/245 [10:11<00:00,  2.18s/it][ASFT optimizer steps: 100%|██████████| 245/245 [10:11<00:00,  2.50s/step, loss=2.86, learning_rate=4.22e-8, grad_norm=125]
+100%|██████████| 245/245 [10:11<00:00,  2.50s/it]
+***** train metrics *****
+  epoch                    =     0.0434
+  total_flos               =  3930084GF
+  train_loss               =     3.7609
+  train_runtime            = 0:10:11.86
+  train_samples            =       5651
+  train_samples_per_second =        0.4
+  train_steps_per_second   =        0.4
+SFT complete: /scratch/sghos104/rlpt/src/outputs/train/visualprm_sft_first_baseline/run_20260712_041452
+[vprm_sft] done=Sun Jul 12 04:28:04 MST 2026 rc=0

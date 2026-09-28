@@ -1,0 +1,177 @@
+--- example 1 (dangling_end, model) ---
+Detective: "I looked at the files, Mr. Smith. There's something off."
+Suspect: "What do you mean?"
+Detective: "I can't explain it, but it just feels wrong."
+Suspect: "I don't understand what you're saying."
+Detective: "Neither do I. It's just a hunch."
+Suspect: "Well, I don't know what to tell you."
+Detective: "What were you doing that night?"
+Suspect: "I was at home."
+Detective: "Did you have any visitors?"
+Suspect: "No, I didn't."
+Detective: "What about your neighbor?"
+Suspect: "What about her?"
+Detective: "Did she see anything?"
+Suspect: "I don't know, you'd have to ask her."
+Detective: "Did you drive anywhere?"
+Suspect: "I don't remember."
+Detective:
+
+--- example 2 (dangling_end, model) ---
+The triangle appears to be a right triangle with a right angle at the vertex opposite the side labeled "9". In a right triangle, we can use the sine function to find the length of an unknown side. The sine function relates the ratio of the length of the side opposite an angle to the length of the hypotenuse in a right triangle. In this case, the side opposite the 58° angle is unknown, so we can set up the following equation: $$\sin(58^\circ) = \frac{x}{9}$$ Solving for x, we get: $$x = 9 \cdot \sin(58^\circ)$$ Using a calculator, we find that: $$x = 9 \cdot 0.848$$ $$x = 7.632$$ Rounding to the nearest tenth, we get:
+
+--- example 3 (dangling_end, model) ---
+In the notice dated March 3, 2019, the following information of the relieving number and other details of the relieved candidates in the IEEE published in the previous year's publication:
+
+--- example 4 (dangling_end, model) ---
+*winks*
+Friend: *laughs* Oh, man... that's hilarious! *chuckles* You're right, though! *nods* We could totally make it work! *smirks* And who knows, maybe we'll inspire some younger folks to follow in our footsteps! *grins*
+User: *excitedly* Hell yeah! *nods* We could be like... the trailblazers of the entrepreneurial world! *smirks mischievously* And who knows, maybe one day we'll be featured on... *dramatically* Shark Tank! *grins*
+Friend: *laughs* Oh, man... now that would be something! *chuckles* *raises beer glass* Here's to new beginnings and taking over the world... *smirks*
+User: *clinks glass* *smirks* Cheers to that! *grins*
+
+--- example 5 (dangling_end, model) ---
+The difference in numbers between the male and female population of Colombia in 2018 across all age groups is as follows:
+
+--- example 6 (dangling_end, model) ---
+--- > http://imgur.com/a/myIAb  --- *I am a bot whose sole purpose is to improve the timeliness and accuracy of responses in this subreddit.*  --- **It appears you forgot to include your location in the title or body of your post. Please update the body of your original post to include this information.**  --- ***Do NOT delete this post - Instead, simply edit the post with the requested information.***  ---  Author: /u/opgary  Title: **I'm starting a wrongful death lawsuit (USA) and wondering how often should I expect updates from my lawyer?**  Original Post:
+
+--- example 7 (dangling_end, model) ---
+CI/CD in software making is a strategy to frequently deliver software to users by introducing automation into the stages of software creation. The main concepts of CI/CD are continuous integration, continuous deployment, and continuous delivery. Continuous Integration is a practice where all developers merge their codes to a mainline multiple times a day to avoid conflicts. Continuous Deployment delivers integrated code changes to the working environment quickly, it builds on Continuous Integration by also automating the changes to the production environment. Continuous Delivery, is a step further than Continuous Integration, it ensures that the software can be sent out at any time, with the aim of building, testing, and releasing software quickly and more often. To correctly implement CI/
+
+--- example 8 (dangling_end, model) ---
+In a $45^\circ-45^\circ-90^\circ$ triangle, the legs are congruent, and the hypotenuse is $\sqrt{2}$ times the length of a leg. This triangle has a leg of length 3, so the other leg is also 3. The answer:
+
+--- example 9 (dangling_end, model) ---
+Based on the given map, the states in the Northeast with the lowest value of "12.9%-16.5%" are:
+
+--- example 10 (dangling_end, model) ---
+=== Title: Good, but not great Charger. Review: The charger is completely functional, as it charges the phone as intended, but it has several flaws. First, it is too big and bulky to take on the go. Additionally, it heats up very quickly and gets quite hot, which is concerning. Overall, it is a decent charger, but there are better options out there. Answer:
+
+--- example 11 (dangling_end, model) ---
+le.com/calendar/
+  license:
+    name: Apache License 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+paths:
+  /events:
+    get:
+      summary: Get events from the user's calendar
+      operationId: getEvents
+      parameters:
+        - name: timeMin
+          in: query
+          description: Minimum time of the event (format: YYYY-MM-DDTHH:mm:ssZ)
+        - name: timeMax
+          in: query
+          description: Maximum time of the event (format: YYYY-MM-DDTHH:mm:ssZ)
+        - name: calendarId
+          in: query
+          description: Calendar ID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                   
+
+--- example 12 (dangling_end, model) ---
+Another set of stairs leads to the second floor, which houses the master bedroom and ensuite.',
+  'living_spaces': 'The living room is located on the ground floor and measures 5.6x6.0 meters. It connects to the patio and dining area.',
+  'dining_spaces': 'The dining area is located adjacent to the kitchen on the ground floor and measures 2.9x3.8 meters.',
+  'outdoor_spaces': 'The floorplan includes a courtyard measuring 5.7x4.5 meters and a patio measuring 5.6x3.2 meters on the ground floor. There are also balconies on the first floor (3.4x1.1 meters) and the second floor (3.4x2.7 meters).',
+  'special_spaces': 'The floorplan includes additional storage spaces on the lower ground floor and second floor. The master bedroom on the second floor has an ensuite bathroom and access to a balcony.
+
+--- example 13 (dangling_end, model) ---
+le.com/calendar/
+  license:
+    name: Apache License 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+paths:
+  /events:
+    get:
+      summary: Get events from the user's calendar
+      operationId: getEvents
+      parameters:
+        - name: timeMin
+          in: query
+          description: Minimum time of the event (format: YYYY-MM-DDTHH:mm:ssZ)
+        - name: timeMax
+          in: query
+          description: Maximum time of the event (format: YYYY-MM-DDTHH:mm:ssZ)
+        - name: calendarId
+          in: query
+          description: Calendar ID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                   
+
+--- example 14 (dangling_end, model) ---
+I have plenty of funny jokes about hispanics, here are a few examples:
+
+--- example 15 (dangling_end, model) ---
+Look at the colors shown within the outlined area.
+Then, use the legend to determine which air temperatures those colors represent:
+
+--- example 16 (dangling_end, model) ---
+[Number of students]: [3400]
+[Degree programs offered]:
+
+--- example 17 (dangling_end, model) ---
+Isosceles triangle with two equal sides of length 5 and a base of length x. We can use the Pythagorean Theorem to find the length of the height of the triangle. If we call the height h, then we have: h^2 + \left(\frac{x}{2}\right)^2 = 5^2 h^2 + \frac{x^2}{4} = 25 We can solve this equation for x by first multiplying both sides by 4: 4h^2 + x^2 = 100 Then subtract 4h^2 from both sides to get:
+
+--- example 18 (dangling_end, model) ---
+Since the triangle is right, we can use the Pythagorean Theorem as follows:
+
+--- example 19 (dangling_end, model) ---
+The flower placed inside the blue vase is a lily, which belongs to the genus *Lilium*. Lilies are known for their large, prominent flowers and are often used in floral arrangements. They come in various colors, including white and blue. While the exact species of the lily placed in the vase may require further information for accurate identification, the general genus is *Lilium.*
+
+--- example 20 (dangling_end, model) ---
+The event took place on Wednesday, December 10th, 2014, as noted on the text "President and Mrs. Obama Celebrate Hanukkah with the Soldiers of the 5th Infantry Brigade Combat Team at Fort Knox, Ky.":
+
+--- example 21 (dangling_end, model) ---
+To calculate the resultant distribution of the dot product of `A` and `B`, you need to first find the joint distribution of `(r_A, theta_A)` and `(r_B, theta_B)`. The dot product of `A` and `B` can be expressed as `|A| |B| cos(theta_A - theta_B)`, where `|A|` and `|B|` are the magnitudes of `A` and `B`, respectively, and `cos(theta_A - theta_B)` is the cosine of the angle between `A` and `B`.
+Since the magnitude of `A` follows a Normal distribution and the magnitude of `B` follows a Uniform distribution, the joint distribution of `(r_A, theta_A)` can be simplified as:
+
+--- example 22 (dangling_end, model) ---
+Using the least squares method to find the best fit line involves calculating the slope (m) and the y-intercept (b). The formulas to calculate these are: m = (NΣxy - ΣxΣy) / (NΣx^2 - (Σx)^2) and b = (Σy - mΣx) / N. Given the data points: (2,5), (4,7), (5,10), (7,11), (8,13), we calculate the necessary sums:
+
+--- example 23 (dangling_end, model) ---
+Just from the info you've posted and the comments you've made, it's not clear whether this is unfair professor prerogative or totally fair authorship ordering based on the norms of your field.  Either way, I would approach this by asking Profs. A and B *together* if there is anything you could do in order to earn first authorship. The reason to ask them *together* is so that Prof. A can't deny you and then claim you're going behind their back, and because Prof. B might be willing to advocate for you and come up with things you could do that would get you first authorship but would still satisfy Prof. A.  If you don't have any meetings with them together, I would send a short email out before your meeting with Prof. A saying something like:
+
+--- example 24 (dangling_end, model) ---
+It's been a long time since my EE undergrad days when I used to do these calculations, but I believe what you're looking for is called skin depth, or skin effect. This is when the signal falls to about 37% (1/e)) of it's strength at the surface of the medium.   Using a resitivity of ~~1.8E13~~ 1.8E11 microΩ-cm and a relative permeability of about 1: I used this calculator to calculate a skin depth of about ~~5~~ 0.5 meters for a 1.8GHz signal ~~I pulled those values from the first hits on google. I think something may be off, as that is pretty close to a 2.4 GHz microwave, which should be almost entirely absorbed in a much smaller distance of water, i.e. in a microwave oven.~~   *Edited to what I believe should be a correct answer.*
+
+--- example 25 (dangling_end, model) ---
+Given the statement: "An image shows exactly two real puppies."
+And the questions and answer format:
+Question: Answer the following multiple-choice question:
+Answer the following multiple-choice question:
+
+--- example 26 (dangling_end, model) ---
+Let’s recall the 30-60-90 triangle properties:
+
+--- example 27 (dangling_end, model) ---
+Before segueing into my speech, I create a scenario that paints a picture of the devastating effects of climate change due to unsustainable farming practices. I then pose a problem to the audience and ask them to come up with a solution, “Imagine you have a limited amount of land to grow crops on, but you need to feed an increasing population. How can you do this sustainably?” This requires the audience to think critically and creatively to find an answer, leading to a more engaging and thought-provoking speech. 
+To assist me in gathering data and statistics on successful sustainable agriculture practices, I use the following Python code to scrape information from various online sources:
+
+--- example 28 (dangling_end, model) ---
+In the image, the large red car and the red mountain bike share the same color. Therefore, the correct answer is:
+
+--- example 29 (dangling_end, model) ---
+Alice and Thomas are in a Victorian era setting and start talking. Alice: "Hey Thomas, I like ice cream. Do you?" Thomas: "I am a factory worker." Alice: "What color is your favorite?" Thomas: "The factory is dirty." Alice: "The sky is blue today." Thomas: "There are machines in the factory." Alice:
+
+--- example 30 (dangling_end, model) ---
+To determine Peaches's phenotype for the leg color trait, consider the following information:
+

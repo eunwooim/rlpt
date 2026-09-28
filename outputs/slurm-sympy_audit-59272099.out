@@ -1,0 +1,44 @@
+[sympy_audit] host=sc053 job=59272099 start=Sun Jul 19 03:43:15 MST 2026
+sympy version: 1.14.0
+sampling 150/source (seed=0) from data/visualprm_v11_filtered/stage2_kept_tau0.85.jsonl
+38 sources, 5622 traces sampled
+[annotations/CLEVR_math_en_20240402_extracted.jsonl] steps=494 claims=71 ok=70 fail=1
+[annotations/MathV360K_prompts.jsonl] steps=644 claims=69 ok=66 fail=3
+[annotations/SROIE_information_extraction_multi_turn_20240620_extracted.jsonl] steps=481 claims=14 ok=8 fail=6
+[annotations/ai2d_train_12k_en_20240410_extracted.jsonl] steps=597 claims=0 ok=0 fail=0
+[annotations/chartqa_trainval_30k_w_csv_en_20240402_extracted.jsonl] steps=544 claims=18 ok=18 fail=0
+[annotations/cocorem_exist_yorn_en_20241016.jsonl] steps=267 claims=0 ok=0 fail=0
+[annotations/docvqa_train_56k_en_20240402_extracted.jsonl] steps=437 claims=0 ok=0 fail=0
+[annotations/dvqa_en_20240402_extracted_int_only.jsonl] steps=581 claims=49 ok=49 fail=0
+[annotations/figureqa_en_20240402_extracted.jsonl] steps=420 claims=22 ok=21 fail=1
+[annotations/geo170k_extracted_full.jsonl] steps=885 claims=588 ok=526 fail=62
+[annotations/geometry3k_en_20240402_extracted.jsonl] steps=1047 claims=1012 ok=972 fail=40
+[annotations/geometry3k_en_20240402_extracted_open_ended_only.jsonl] steps=1025 claims=960 ok=919 fail=41
+[annotations/geomverse_extracted.jsonl] steps=715 claims=892 ok=859 fail=33
+[annotations/geoqa+_en_20240402_extracted_open_ended_only.jsonl] steps=862 claims=454 ok=409 fail=45
+[annotations/geoqa+_extracted_en_version.jsonl] steps=887 claims=443 ok=396 fail=47
+[annotations/geos_en_20240402_extracted.jsonl] steps=1091 claims=830 ok=758 fail=72
+[annotations/geos_en_20240402_extracted_open_ended_only.jsonl] steps=582 claims=484 ok=453 fail=31
+[annotations/iconqa_train_extracted.jsonl] steps=573 claims=25 ok=23 fail=2
+[annotations/infographics_20240403_qa_20240407_v2_extracted.jsonl] steps=470 claims=2 ok=2 fail=0
+[annotations/koniq10k_en_20240403.jsonl] steps=587 claims=0 ok=0 fail=0
+[annotations/m3cot_train_extracted.jsonl] steps=728 claims=18 ok=17 fail=1
+[annotations/mapqa_suv_en_20240402_extracted.jsonl] steps=492 claims=0 ok=0 fail=0
+[annotations/mavis_function_abs.jsonl] steps=1408 claims=3728 ok=3706 fail=22
+[annotations/mavis_function_cos.jsonl] steps=1163 claims=2744 ok=2677 fail=67
+[annotations/mavis_function_log.jsonl] steps=1930 claims=7602 ok=7474 fail=128
+[annotations/mavis_function_poly.jsonl] steps=1138 claims=2866 ok=2824 fail=42
+[annotations/mavis_function_sin.jsonl] steps=1151 claims=2777 ok=2701 fail=76
+[annotations/mavis_function_tan.jsonl] steps=1003 claims=2677 ok=2532 fail=145
+[annotations/mavis_geo_depth0_text_dominant_vision_dominant_en.jsonl] steps=815 claims=364 ok=343 fail=21
+[annotations/mavis_geo_depth1_text_dominant_vision_dominant_en.jsonl] steps=809 claims=362 ok=341 fail=21
+[annotations/mavis_geo_depth2_text_dominant_vision_dominant_en.jsonl] steps=795 claims=348 ok=328 fail=20
+[annotations/mavis_geo_depth3_text_dominant_vision_dominant_en.jsonl] steps=726 claims=328 ok=313 fail=15
+[annotations/nlvr2_en_20240910.jsonl] steps=394 claims=2 ok=2 fail=0
+[annotations/scienceqa_multi_choice_en_20240402_extracted.jsonl] steps=669 claims=7 ok=7 fail=0
+[annotations/super_clevr_en_20240402_int.jsonl] steps=374 claims=2 ok=2 fail=0
+[annotations/super_clevr_en_20240402_yorn.jsonl] steps=244 claims=0 ok=0 fail=0
+[annotations/unigeo_calc_en_20240402_extracted_open_ended_only.jsonl] steps=974 claims=689 ok=615 fail=74
+[annotations/vqav2_en_20240402_int.jsonl] steps=343 claims=1 ok=1 fail=0
+wrote data/visualprm_v11_filtered/sympy_audit/extractability_table.md
+[sympy_audit] done=Sun Jul 19 03:43:49 MST 2026 rc=0

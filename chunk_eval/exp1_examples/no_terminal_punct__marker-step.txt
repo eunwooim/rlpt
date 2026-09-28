@@ -1,0 +1,357 @@
+--- example 1 (no_terminal_punct, marker/step) ---
+### Step 3: Find the Angle \( \angle BCA \)
+
+In the right triangle \( ABC \):
+- \( AC = 20 \) (hypotenuse)
+- \( AB = 9 \) (opposite to \( \angle BCA \))
+
+Use the sine function to find \( \angle BCA \):
+
+\[
+\sin(\angle BCA) = \frac{\text{opposite}}{\text{hypotenuse}} = \frac{9}{20}
+\]
+
+Calculate \( \angle BCA \):
+
+\[
+\angle BCA = \arcsin(0.45) \approx 26.74^\circ
+\]
+
+Therefore, the degree of \( \angle BCA \) is approximately 26.74.
+
+Final answer: 26.74
+
+--- example 2 (no_terminal_punct, marker/step) ---
+First, identify the subject, verb, and object in each sentence.
+
+Sentence A: "He was stung by the puppy"
+- Subject: "He"
+- Verb: "was stung"
+- Object: "the puppy"
+
+Sentence B: "He was stung by a bee"
+- Subject: "He"
+- Verb: "was stung"
+- Object: "a bee"
+
+Next, fill in the blank with the answer:
+Sentence A: "Who was stung?", Object: "the puppy"
+Sentence B: "What was he stung by?", Object: "a bee"
+
+--- example 3 (no_terminal_punct, marker/step) ---
+Step 1: First we should extract the data corresponding to the container mentioned in the image.
+|Container|Type of Liquid Inside|Liquid Temperature (°C)|
+|:---:|:---:|:---:|
+|Container B|water|36|
+|Container E|water|82|
+|Container A|water|21|
+
+--- example 4 (no_terminal_punct, marker/step) ---
+Step 2: Determine the truth value based on the information.
+     - The statement given is "The left image contains no more than one seal." Since the observation confirms that there is only one seal in the image, the statement is true.
+
+Final answer: A
+
+--- example 5 (no_terminal_punct, marker/step) ---
+Step 3: Compare these characteristics with the options given:
+- A. Connecticut: Located further to the east, does not match the highlighted area.
+- B. New York: Matches the highlighted area in terms of shape and position.
+- C. Pennsylvania: Located to the south of the highlighted area, does not match.
+- D. New Jersey: Located to the southeast of the highlighted area, does not match.
+
+Final answer: B
+
+--- example 6 (no_terminal_punct, marker/step) ---
+Step 4: Identifying the measure of angle DBC by subtracting two similar properties of symmetrical intersections, that is BD = BA and tangental from B = 65° and B - 50° will be our 25°
+
+Putting the pieces together, the measure of angle BDC must be:
+\[ 115° - 65° = 50°, and angle C will be symmetrical 65°
+
+Final answer: A
+
+--- example 7 (no_terminal_punct, marker/step) ---
+Step 2: Verifying the company name:
+- The name "UNIHAKKA INTERNATIONAL SDN BHD" is clearly visible on the receipt.
+
+Final answer: UNIHAKKA INTERNATIONAL SDN BHD
+
+--- example 8 (no_terminal_punct, marker/step) ---
+Step 3: Evaluate whether the teddy bear is on top of or in front of the cake.
+- Based on the observation, the teddy bear is in front of the cake, not on top of it.
+
+Final answer: No
+
+--- example 9 (no_terminal_punct, marker/step) ---
+Title: How to Make Your Own Body Scrub at Home - Naturally & Easily!
+
+Introduction:
+Discover the joy of creating your own body scrub using natural ingredients that are not only good for your skin but also environmentally friendly. In this step-by-step DIY tutorial, you'll learn how to make a luxurious body scrub tailored to your preferences. We'll guide you through the process, providing clear instructions, visually appealing images, and helpful tips for sourcing ingredients, measurements, and storage.
+
+Ingredients:
+
+1. *Base Ingredient* (Choose one):
+	* Coconut oil
+	* Olive oil
+	* Shea butter
+	* Cocoa butter
+	* Melted beeswax (for a harder scrub)
+2. *Sugar or Salt* (Choose one):
+	* White sugar
+	* Brown sugar
+	* Sea salt
+	* Epsom salt
+3. *Natural Additives* (Optional):
+	* Essential oils (e
+
+--- example 10 (no_terminal_punct, marker/step) ---
+Step 6: Lips (3:00-3:30)
+
+* For a natural fall makeup look, choose a flattering sh
+
+--- example 11 (no_terminal_punct, marker/step) ---
+Step 5: Now we know \( a = -1 \) and \( b = -1 \), we plug into \( ax + b = 0 \):
+\[ -x - 1 = 0 \]
+\[ x = -1 \]
+
+Finally,
+Final answer: -1
+
+--- example 12 (no_terminal_punct, marker/step) ---
+Step 3: Use the linear pair angles to find ∠ABE.
+Since ∠ABE and ∠CBE are linear pairs (they form a straight line), their measures add up to 180°:
+∠ABE + ∠CBE = 180°
+∠ABE + 90° = 180°
+∠ABE = 180° - 90°
+∠ABE = 90°
+Since ∠ABF = 60° (as calculated in Step 1), the measure of ∠ABE can be found by subtracting:
+∠ABE = 90° - 60°
+∠ABE = 30°
+
+Final answer: A
+
+--- example 13 (no_terminal_punct, marker/step) ---
+Step 1: Identify all the blocks in the image.
+- There are 6 blocks in the image:
+  1. A blue cube
+  2. A brown cube
+  3. A green cube
+  4. A larger green cube
+  5. A larger green cube
+  6. A red cube
+  7. A purple cube
+
+--- example 14 (no_terminal_punct, marker/step) ---
+Step 2: Look at the map to see which of these states fall into the highest value category (680681-782006).
+- New York: Light Blue (445621-529532)
+- Delaware: Light Blue (445621-529532)
+- Pennsylvania: Dark Blue (680681-782006)
+
+From the map, Pennsylvania is the only state among New Jersey's borders with the highest value category (680681-782006).
+
+Final answer: Pennsylvania
+
+--- example 15 (no_terminal_punct, marker/step) ---
+Step 1: Calculate the probability of Sandy visiting China but not Malaysia. Prob_visit_china = 20%, Prob_visit_malaysia = 60%, Prob_visit_china_and_malaysia = 20% * 60% = 12%
+
+--- example 16 (no_terminal_punct, marker/step) ---
+Step 2: Subtract the small brown cube from the list of objects.
+- The objects after removing the small brown cube are:
+  - A large blue cylinder
+  - A large yellow cube
+  - A large green cylinder
+  - A large teal sphere
+  - A small green cylinder
+  - A small red cylinder
+
+--- example 17 (no_terminal_punct, marker/step) ---
+Step 3: Gather Tools and Materials
+To install the new mailbox, you will need the following tools and materials:
+- Measuring tape
+- Shovel or post hole digger
+- Level
+- Screwdriver or power drill
+- Bag of quick-setting concrete mix
+- Water
+- Gravel or crushed stone
+- Wood stakes and string (optional)
+
+--- example 18 (no_terminal_punct, marker/step) ---
+Step 2: Examining the bars in this column:
+   - Your credit card companies: 12 (light gray)
+   - Government agencies: 11 (light gray)
+   - Your landline telephone company: 15 (light gray)
+   - Your cellular telephone company: 11 (light gray)
+   - Your email provider: 11 (light gray)
+   - Your cable TV company: 16 (light gray)
+   - Companies or stores you do business with: 10 (light gray)
+   - Your search engine provider: 15 (light gray)
+   - The online sites you use: 19 (light gray)
+   - The social media sites you use: 18 (light gray)
+   - The online advertisers who place ads on websites you use: 13 (light gray)
+
+All bars in this column, "Dont know," are colored light gray.
+
+Final answer: gray
+
+--- example 19 (no_terminal_punct, marker/step) ---
+### Step 1: Determine the total population of cities A, B, C, and D
+
+Add the population of each city:
+```
+1,000,000 (City A) + 5,000,000 (City B) + 800,000 (City C) + 7,000,000 (City D)
+```
+Total population: 13,800,000
+
+--- example 20 (no_terminal_punct, marker/step) ---
+Step 1: Identify the states that border Pennsylvania.
+- West Virginia
+- Ohio
+- New York
+- Maryland
+- Delaware
+
+--- example 21 (no_terminal_punct, marker/step) ---
+Step 2: Break down the components:
+- ∠CBO = 45°
+- ∠AOB =?
+
+Since we have these information:
+
+4. The angle ∠AOB = 360° - (45° + 15°). 
+Therefore,
+∠AOB = 360° - 60°
+Angle AOB = 300° - remaining angle
+
+Step3: Recognize that we need to identify the remaining angle from the two provided given angles.
+
+Let’s use the properties of circles and supplementary angles.
+
+Therefore:
+Final answer: 60°
+
+--- example 22 (no_terminal_punct, marker/step) ---
+### Step 4: Calculate the Angle \( \angle CBA \)
+
+The area of sector \( ABC \) is given as 25.12. The formula for the area of a sector is:
+\[
+\text{Area} = \frac{\theta}{360} \times \pi r^2
+\]
+
+Here, \( \theta \) is the angle in degrees, \( r = 9.46 \), and \( \pi \approx 3.14 \). Substituting the values, we get:
+\[
+25.12 = \frac{\theta}{360} \times 3.14 \times 9.46^2
+\]
+
+Calculate \( 9.46^2 \):
+\[
+9.46^2 = 89.4916
+\]
+
+Substitute back into the area equation:
+\[
+25.12 = \frac{\theta}{360} \times 3.14 \times 89.4916
+\]
+
+Solving for \( \theta \):
+\[
+25.12 = \frac{\theta}{360} \times 281.988824
+\]
+\[
+\theta = \frac{25.12 \times 360}{281.988824}
+\]
+
+Calculate:
+\[
+\theta \approx \frac{9043.2}{281.988824} \approx 32.06
+\]
+
+After rounding:
+\[
+\theta \approx 32.4
+\]
+
+Therefore, the degree of angle 
+
+--- example 23 (no_terminal_punct, marker/step) ---
+Step 5: Subtract the smaller angle from the circle: \( 360^\circ \) - \( (45^\circ) \) = \( 360^\circ - 30^\circ = 330^\circ \).
+
+Final answer: 60°
+
+--- example 24 (no_terminal_punct, marker/step) ---
+Step 1:
+- Nuts/Seeds
+
+--- example 25 (no_terminal_punct, marker/step) ---
+Step 3: Evaluate each option:
+- Frog: Preyed upon by the fox but also preys on grasshopper.
+- Owl: Preys on mouse and rabbit and is predated by the thrush.
+- Thrush: Preys on grasshopper and is predated by the owl.
+- Butterfly: Preys on green plants and is preyed upon by the frog.
+
+Thus, from the given options:
+- Frog preys on grasshopper and is preyed upon by the fox.
+- Owl preys on mouse and rabbit and is preyed upon by the thrush.
+- Thrush preys on grasshopper and is preyed upon by the owl.
+- Butterfly preys on green plants and is preyed upon by the frog.
+
+The frog is the best candidate to be both a predator and prey as it eats a food source (grasshopper) and is eaten by another (fox).
+
+Final answer: frog
+
+--- example 26 (no_terminal_punct, marker/step) ---
+Step 2: Compare the median to the value labeled "Dark Magenta" to see if it is the lowest.
+
+The value labeled "Dark Magenta" is approximately 90, which is higher than the median value of 65.
+
+Final answer: No
+
+--- example 27 (no_terminal_punct, marker/step) ---
+Step 3: Subtract the total weight lost from Calvin's starting weight to determine his final weight after a year.
+
+
+
+Answer:
+\boxed{Step 1: 1
+
+--- example 28 (no_terminal_punct, marker/step) ---
+### Step 3: Calculate the Perimeter of ABCD
+- ABCD consists of a rectangle (ABCD) and a semi-circle with diameter CD.
+- AB = 19.5, BC = 14.15
+
+Calculate the perimeter of ABCD:
+
+\[
+\text{Perimeter of Rectangle ABCD} = 2 \times 19.5 + 14.15
+\]
+\[
+\text{Length of semi-circle arc} = \frac{\pi \times 14.15}{2}
+\]
+
+Using \(\pi = 3.14\):
+
+\[
+\text{Length of semi-circle arc} = \frac{3.14 \times 14.15}{2} = \frac{44.43}{2} \approx 22.21
+\]
+
+Combine these lengths to find the total perimeter:
+
+\[
+\text{Perimeter of ABCD} = 39.0 + 14.15 + 22.21 = 75.36
+\]
+
+Final answer: 75.36
+
+--- example 29 (no_terminal_punct, marker/step) ---
+Step 2: Identify the number of shiny objects on the right side of the small purple metallic bicycle (including the small purple metallic bicycle as well).
+- The shiny objects on the right side of the small purple metallic bicycle include: 
+   - Two small airplanes (1 is green and 1 is purple)
+   - One small red biplane
+   - One small red motorcycle
+   - One large gray motorcycle (dirt bike)
+
+--- example 30 (no_terminal_punct, marker/step) ---
+Step 3: Determine whether the donut is close to the dog.
+- Given that the dog is on the left side and the donut is closer to the center, it appears that the donut is not actually close to the dog but is on the opposite side of the pink towel.
+
+Final answer: no
+

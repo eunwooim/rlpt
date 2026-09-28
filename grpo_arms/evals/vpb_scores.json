@@ -1,0 +1,678 @@
+[
+  {
+    "file": "vpb_gen_arm1_step183.jsonl",
+    "n": 2856,
+    "accuracy": 0.2549,
+    "format_marker_rate": 0.9951,
+    "per_source": {
+      "DynaMath": {
+        "n": 570,
+        "acc": 0.2649
+      },
+      "MMMU_DEV_VAL": {
+        "n": 257,
+        "acc": 0.3619
+      },
+      "MathVerse_MINI_Vision_Only": {
+        "n": 1026,
+        "acc": 0.2115
+      },
+      "MathVision_MINI": {
+        "n": 712,
+        "acc": 0.1952
+      },
+      "WeMath": {
+        "n": 291,
+        "acc": 0.4399
+      }
+    }
+  },
+  {
+    "file": "vpb_gen_arm1v2_step140.jsonl",
+    "n": 2856,
+    "accuracy": 0.2349,
+    "format_marker_rate": 0.994,
+    "per_source": {
+      "DynaMath": {
+        "n": 570,
+        "acc": 0.2333
+      },
+      "MMMU_DEV_VAL": {
+        "n": 257,
+        "acc": 0.3852
+      },
+      "MathVerse_MINI_Vision_Only": {
+        "n": 1026,
+        "acc": 0.1657
+      },
+      "MathVision_MINI": {
+        "n": 712,
+        "acc": 0.2079
+      },
+      "WeMath": {
+        "n": 291,
+        "acc": 0.4158
+      }
+    }
+  },
+  {
+    "file": "vpb_gen_arm1v2_step140_2k.jsonl",
+    "n": 2856,
+    "accuracy": 0.2272,
+    "format_marker_rate": 1.0,
+    "per_source": {
+      "DynaMath": {
+        "n": 570,
+        "acc": 0.2333
+      },
+      "MMMU_DEV_VAL": {
+        "n": 257,
+        "acc": 0.3696
+      },
+      "MathVerse_MINI_Vision_Only": {
+        "n": 1026,
+        "acc": 0.1598
+      },
+      "MathVision_MINI": {
+        "n": 712,
+        "acc": 0.191
+      },
+      "WeMath": {
+        "n": 291,
+        "acc": 0.4158
+      }
+    }
+  },
+  {
+    "file": "vpb_gen_arm1v2_step160.jsonl",
+    "n": 2856,
+    "accuracy": 0.1982,
+    "format_marker_rate": 0.8796,
+    "per_source": {
+      "DynaMath": {
+        "n": 570,
+        "acc": 0.1895
+      },
+      "MMMU_DEV_VAL": {
+        "n": 257,
+        "acc": 0.323
+      },
+      "MathVerse_MINI_Vision_Only": {
+        "n": 1026,
+        "acc": 0.1598
+      },
+      "MathVision_MINI": {
+        "n": 712,
+        "acc": 0.1348
+      },
+      "WeMath": {
+        "n": 291,
+        "acc": 0.3952
+      }
+    }
+  },
+  {
+    "file": "vpb_gen_arm1v2_step160_2k.jsonl",
+    "n": 2856,
+    "accuracy": 0.2185,
+    "format_marker_rate": 0.9923,
+    "per_source": {
+      "DynaMath": {
+        "n": 570,
+        "acc": 0.2088
+      },
+      "MMMU_DEV_VAL": {
+        "n": 257,
+        "acc": 0.393
+      },
+      "MathVerse_MINI_Vision_Only": {
+        "n": 1026,
+        "acc": 0.1754
+      },
+      "MathVision_MINI": {
+        "n": 712,
+        "acc": 0.1475
+      },
+      "WeMath": {
+        "n": 291,
+        "acc": 0.4089
+      }
+    }
+  },
+  {
+    "file": "vpb_gen_arm1v2_step180.jsonl",
+    "n": 2856,
+    "accuracy": 0.1572,
+    "format_marker_rate": 0.6737,
+    "per_source": {
+      "DynaMath": {
+        "n": 570,
+        "acc": 0.1667
+      },
+      "MMMU_DEV_VAL": {
+        "n": 257,
+        "acc": 0.1829
+      },
+      "MathVerse_MINI_Vision_Only": {
+        "n": 1026,
+        "acc": 0.1296
+      },
+      "MathVision_MINI": {
+        "n": 712,
+        "acc": 0.118
+      },
+      "WeMath": {
+        "n": 291,
+        "acc": 0.3093
+      }
+    }
+  },
+  {
+    "file": "vpb_gen_arm1v2_step180_2k.jsonl",
+    "n": 2856,
+    "accuracy": 0.2269,
+    "format_marker_rate": 1.0,
+    "per_source": {
+      "DynaMath": {
+        "n": 570,
+        "acc": 0.2123
+      },
+      "MMMU_DEV_VAL": {
+        "n": 257,
+        "acc": 0.3852
+      },
+      "MathVerse_MINI_Vision_Only": {
+        "n": 1026,
+        "acc": 0.1793
+      },
+      "MathVision_MINI": {
+        "n": 712,
+        "acc": 0.1615
+      },
+      "WeMath": {
+        "n": 291,
+        "acc": 0.4433
+      }
+    }
+  },
+  {
+    "file": "vpb_gen_arm1v2_step183.jsonl",
+    "n": 2856,
+    "accuracy": 0.159,
+    "format_marker_rate": 0.6887,
+    "per_source": {
+      "DynaMath": {
+        "n": 570,
+        "acc": 0.1667
+      },
+      "MMMU_DEV_VAL": {
+        "n": 257,
+        "acc": 0.2023
+      },
+      "MathVerse_MINI_Vision_Only": {
+        "n": 1026,
+        "acc": 0.1345
+      },
+      "MathVision_MINI": {
+        "n": 712,
+        "acc": 0.1067
+      },
+      "WeMath": {
+        "n": 291,
+        "acc": 0.3196
+      }
+    }
+  },
+  {
+    "file": "vpb_gen_arm1v2_step183_2k.jsonl",
+    "n": 2856,
+    "accuracy": 0.2328,
+    "format_marker_rate": 1.0,
+    "per_source": {
+      "DynaMath": {
+        "n": 570,
+        "acc": 0.207
+      },
+      "MMMU_DEV_VAL": {
+        "n": 257,
+        "acc": 0.393
+      },
+      "MathVerse_MINI_Vision_Only": {
+        "n": 1026,
+        "acc": 0.1745
+      },
+      "MathVision_MINI": {
+        "n": 712,
+        "acc": 0.191
+      },
+      "WeMath": {
+        "n": 291,
+        "acc": 0.4502
+      }
+    }
+  },
+  {
+    "file": "vpb_gen_base3b.jsonl",
+    "n": 2856,
+    "accuracy": 0.2952,
+    "format_marker_rate": 0.9163,
+    "per_source": {
+      "DynaMath": {
+        "n": 570,
+        "acc": 0.4105
+      },
+      "MMMU_DEV_VAL": {
+        "n": 257,
+        "acc": 0.3658
+      },
+      "MathVerse_MINI_Vision_Only": {
+        "n": 1026,
+        "acc": 0.229
+      },
+      "MathVision_MINI": {
+        "n": 712,
+        "acc": 0.198
+      },
+      "WeMath": {
+        "n": 291,
+        "acc": 0.4777
+      }
+    }
+  },
+  {
+    "file": "vpb_gen_base3b_2k.jsonl",
+    "n": 2856,
+    "accuracy": 0.3011,
+    "format_marker_rate": 0.9212,
+    "per_source": {
+      "DynaMath": {
+        "n": 570,
+        "acc": 0.4211
+      },
+      "MMMU_DEV_VAL": {
+        "n": 257,
+        "acc": 0.3541
+      },
+      "MathVerse_MINI_Vision_Only": {
+        "n": 1026,
+        "acc": 0.232
+      },
+      "MathVision_MINI": {
+        "n": 712,
+        "acc": 0.2051
+      },
+      "WeMath": {
+        "n": 291,
+        "acc": 0.4983
+      }
+    }
+  },
+  {
+    "file": "vpb_gen_cs25.jsonl",
+    "n": 2856,
+    "accuracy": 0.3183,
+    "format_marker_rate": 0.9408,
+    "per_source": {
+      "DynaMath": {
+        "n": 570,
+        "acc": 0.4509
+      },
+      "MMMU_DEV_VAL": {
+        "n": 257,
+        "acc": 0.4086
+      },
+      "MathVerse_MINI_Vision_Only": {
+        "n": 1026,
+        "acc": 0.2368
+      },
+      "MathVision_MINI": {
+        "n": 712,
+        "acc": 0.2037
+      },
+      "WeMath": {
+        "n": 291,
+        "acc": 0.5464
+      }
+    }
+  },
+  {
+    "file": "vpb_gen_cs25_2k.jsonl",
+    "n": 2856,
+    "accuracy": 0.3183,
+    "format_marker_rate": 0.9415,
+    "per_source": {
+      "DynaMath": {
+        "n": 570,
+        "acc": 0.4491
+      },
+      "MMMU_DEV_VAL": {
+        "n": 257,
+        "acc": 0.3969
+      },
+      "MathVerse_MINI_Vision_Only": {
+        "n": 1026,
+        "acc": 0.2407
+      },
+      "MathVision_MINI": {
+        "n": 712,
+        "acc": 0.2093
+      },
+      "WeMath": {
+        "n": 291,
+        "acc": 0.5326
+      }
+    }
+  },
+  {
+    "file": "vpb_gen_probe_arm1.jsonl",
+    "n": 185,
+    "accuracy": 0.5351,
+    "format_marker_rate": 0.9892,
+    "per_source": {
+      "CLEVR_math_en_20240402_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.2
+      },
+      "MathV360K_prompts.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "SROIE_information_extraction_multi_turn_20240620_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "ai2d_train_12k_en_20240410_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "chartqa_trainval_30k_w_csv_en_20240402_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "cocorem_exist_yorn_en_20241016.jsonl": {
+        "n": 5,
+        "acc": 1.0
+      },
+      "docvqa_train_56k_en_20240402_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.8
+      },
+      "dvqa_en_20240402_extracted_int_only.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "figureqa_en_20240402_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.8
+      },
+      "geo170k_extracted_full.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "geometry3k_en_20240402_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.4
+      },
+      "geometry3k_en_20240402_extracted_open_ended_only.jsonl": {
+        "n": 5,
+        "acc": 0.0
+      },
+      "geomverse_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.0
+      },
+      "geoqa+_en_20240402_extracted_open_ended_only.jsonl": {
+        "n": 5,
+        "acc": 0.4
+      },
+      "geoqa+_extracted_en_version.jsonl": {
+        "n": 5,
+        "acc": 0.2
+      },
+      "geos_en_20240402_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.2
+      },
+      "geos_en_20240402_extracted_open_ended_only.jsonl": {
+        "n": 5,
+        "acc": 0.0
+      },
+      "iconqa_train_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.8
+      },
+      "infographics_20240403_qa_20240407_v2_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.4
+      },
+      "koniq10k_en_20240403.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "m3cot_train_extracted.jsonl": {
+        "n": 5,
+        "acc": 1.0
+      },
+      "mapqa_suv_en_20240402_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "mavis_function_abs.jsonl": {
+        "n": 5,
+        "acc": 0.2
+      },
+      "mavis_function_cos.jsonl": {
+        "n": 5,
+        "acc": 0.4
+      },
+      "mavis_function_log.jsonl": {
+        "n": 5,
+        "acc": 0.2
+      },
+      "mavis_function_poly.jsonl": {
+        "n": 5,
+        "acc": 0.2
+      },
+      "mavis_function_sin.jsonl": {
+        "n": 5,
+        "acc": 0.4
+      },
+      "mavis_function_tan.jsonl": {
+        "n": 5,
+        "acc": 0.4
+      },
+      "mavis_geo_depth0_text_dominant_vision_dominant_en.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "mavis_geo_depth1_text_dominant_vision_dominant_en.jsonl": {
+        "n": 5,
+        "acc": 1.0
+      },
+      "mavis_geo_depth2_text_dominant_vision_dominant_en.jsonl": {
+        "n": 5,
+        "acc": 0.8
+      },
+      "mavis_geo_depth3_text_dominant_vision_dominant_en.jsonl": {
+        "n": 5,
+        "acc": 0.8
+      },
+      "scienceqa_multi_choice_en_20240402_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "super_clevr_en_20240402_int.jsonl": {
+        "n": 5,
+        "acc": 1.0
+      },
+      "super_clevr_en_20240402_yorn.jsonl": {
+        "n": 5,
+        "acc": 1.0
+      },
+      "unigeo_calc_en_20240402_extracted_open_ended_only.jsonl": {
+        "n": 5,
+        "acc": 0.2
+      },
+      "vqav2_en_20240402_int.jsonl": {
+        "n": 5,
+        "acc": 1.0
+      }
+    }
+  },
+  {
+    "file": "vpb_gen_probe_cs25.jsonl",
+    "n": 185,
+    "accuracy": 0.6432,
+    "format_marker_rate": 0.9405,
+    "per_source": {
+      "CLEVR_math_en_20240402_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "MathV360K_prompts.jsonl": {
+        "n": 5,
+        "acc": 0.8
+      },
+      "SROIE_information_extraction_multi_turn_20240620_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "ai2d_train_12k_en_20240410_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "chartqa_trainval_30k_w_csv_en_20240402_extracted.jsonl": {
+        "n": 5,
+        "acc": 1.0
+      },
+      "cocorem_exist_yorn_en_20241016.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "docvqa_train_56k_en_20240402_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.8
+      },
+      "dvqa_en_20240402_extracted_int_only.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "figureqa_en_20240402_extracted.jsonl": {
+        "n": 5,
+        "acc": 1.0
+      },
+      "geo170k_extracted_full.jsonl": {
+        "n": 5,
+        "acc": 0.4
+      },
+      "geometry3k_en_20240402_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "geometry3k_en_20240402_extracted_open_ended_only.jsonl": {
+        "n": 5,
+        "acc": 0.0
+      },
+      "geomverse_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.4
+      },
+      "geoqa+_en_20240402_extracted_open_ended_only.jsonl": {
+        "n": 5,
+        "acc": 0.8
+      },
+      "geoqa+_extracted_en_version.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "geos_en_20240402_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.4
+      },
+      "geos_en_20240402_extracted_open_ended_only.jsonl": {
+        "n": 5,
+        "acc": 0.2
+      },
+      "iconqa_train_extracted.jsonl": {
+        "n": 5,
+        "acc": 1.0
+      },
+      "infographics_20240403_qa_20240407_v2_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.4
+      },
+      "koniq10k_en_20240403.jsonl": {
+        "n": 5,
+        "acc": 0.8
+      },
+      "m3cot_train_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.8
+      },
+      "mapqa_suv_en_20240402_extracted.jsonl": {
+        "n": 5,
+        "acc": 0.8
+      },
+      "mavis_function_abs.jsonl": {
+        "n": 5,
+        "acc": 0.8
+      },
+      "mavis_function_cos.jsonl": {
+        "n": 5,
+        "acc": 0.4
+      },
+      "mavis_function_log.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "mavis_function_poly.jsonl": {
+        "n": 5,
+        "acc": 1.0
+      },
+      "mavis_function_sin.jsonl": {
+        "n": 5,
+        "acc": 0.8
+      },
+      "mavis_function_tan.jsonl": {
+        "n": 5,
+        "acc": 0.4
+      },
+      "mavis_geo_depth0_text_dominant_vision_dominant_en.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "mavis_geo_depth1_text_dominant_vision_dominant_en.jsonl": {
+        "n": 5,
+        "acc": 0.8
+      },
+      "mavis_geo_depth2_text_dominant_vision_dominant_en.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "mavis_geo_depth3_text_dominant_vision_dominant_en.jsonl": {
+        "n": 5,
+        "acc": 0.2
+      },
+      "scienceqa_multi_choice_en_20240402_extracted.jsonl": {
+        "n": 5,
+        "acc": 1.0
+      },
+      "super_clevr_en_20240402_int.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "super_clevr_en_20240402_yorn.jsonl": {
+        "n": 5,
+        "acc": 0.8
+      },
+      "unigeo_calc_en_20240402_extracted_open_ended_only.jsonl": {
+        "n": 5,
+        "acc": 0.6
+      },
+      "vqav2_en_20240402_int.jsonl": {
+        "n": 5,
+        "acc": 0.8
+      }
+    }
+  }
+]

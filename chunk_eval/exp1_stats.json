@@ -1,0 +1,350 @@
+{
+  "buckets": {
+    "marker/step": {
+      "chunks": 3291723,
+      "no_terminal_punct": 622355,
+      "no_terminal_punct_rate": 0.18906663774564264,
+      "unbalanced_delims": 390031,
+      "unbalanced_delims_rate": 0.11848840257822423,
+      "dangling_start": 5,
+      "dangling_start_rate": 1.518961346383034e-06,
+      "dangling_end": 139721,
+      "dangling_end_rate": 0.04244615965559678,
+      "ends_on_math": 388911,
+      "ends_on_math_rate": 0.11814815523663443,
+      "dangling_start_comma": 0,
+      "dangling_start_comma_rate": 0.0,
+      "one_char_chunk": 4,
+      "one_char_chunk_rate": 1.2151690771064273e-06
+    },
+    "marker/list": {
+      "chunks": 64904438,
+      "no_terminal_punct": 11188932,
+      "no_terminal_punct_rate": 0.17239086177743346,
+      "unbalanced_delims": 582749,
+      "unbalanced_delims_rate": 0.008978569385347732,
+      "dangling_start": 33648,
+      "dangling_start_rate": 0.0005184237170345732,
+      "dangling_end": 17291356,
+      "dangling_end_rate": 0.26641253715192786,
+      "ends_on_math": 3698539,
+      "ends_on_math_rate": 0.056984377555198924,
+      "dangling_start_comma": 887992,
+      "dangling_start_comma_rate": 0.013681529759182262,
+      "one_char_chunk": 307,
+      "one_char_chunk_rate": 4.730030941797847e-06
+    },
+    "marker/para": {
+      "chunks": 4988384,
+      "no_terminal_punct": 776490,
+      "no_terminal_punct_rate": 0.1556596284488123,
+      "unbalanced_delims": 248726,
+      "unbalanced_delims_rate": 0.04986103716153367,
+      "dangling_start": 23765,
+      "dangling_start_rate": 0.004764067882504635,
+      "dangling_end": 540181,
+      "dangling_end_rate": 0.10828777415692135,
+      "ends_on_math": 185285,
+      "ends_on_math_rate": 0.037143291294334996,
+      "dangling_start_comma": 106344,
+      "dangling_start_comma_rate": 0.021318326736674643,
+      "one_char_chunk": 3436,
+      "one_char_chunk_rate": 0.0006888002206726667
+    },
+    "model": {
+      "chunks": 1430761,
+      "no_terminal_punct": 244190,
+      "no_terminal_punct_rate": 0.17067141192693958,
+      "unbalanced_delims": 29403,
+      "unbalanced_delims_rate": 0.020550602092173326,
+      "dangling_start": 8581,
+      "dangling_start_rate": 0.005997507620070718,
+      "dangling_end": 18690,
+      "dangling_end_rate": 0.01306297837304763,
+      "ends_on_math": 14064,
+      "ends_on_math_rate": 0.009829733966749164,
+      "dangling_start_comma": 5754,
+      "dangling_start_comma_rate": 0.004021636038443877,
+      "one_char_chunk": 4388,
+      "one_char_chunk_rate": 0.0030668993633457997
+    },
+    "model_skipped_nonprose": {
+      "chunks": 26287,
+      "no_terminal_punct": 4561,
+      "no_terminal_punct_rate": 0.17350781755240233,
+      "unbalanced_delims": 2905,
+      "unbalanced_delims_rate": 0.11051089892342222,
+      "dangling_start": 12,
+      "dangling_start_rate": 0.0004564994103549283,
+      "dangling_end": 116,
+      "dangling_end_rate": 0.004412827633430974,
+      "ends_on_math": 5396,
+      "ends_on_math_rate": 0.2052725681895994,
+      "dangling_start_comma": 2,
+      "dangling_start_comma_rate": 7.608323505915471e-05,
+      "one_char_chunk": 3440,
+      "one_char_chunk_rate": 0.1308631643017461
+    },
+    "gold": {
+      "chunks": 3356413,
+      "no_terminal_punct": 351805,
+      "no_terminal_punct_rate": 0.10481576611698262,
+      "unbalanced_delims": 29673,
+      "unbalanced_delims_rate": 0.008840687960629399,
+      "dangling_start": 83948,
+      "dangling_start_rate": 0.02501122478074063,
+      "dangling_end": 360295,
+      "dangling_end_rate": 0.1073452522082354,
+      "ends_on_math": 136829,
+      "ends_on_math_rate": 0.04076643726502072,
+      "dangling_start_comma": 117861,
+      "dangling_start_comma_rate": 0.035115166101430305,
+      "one_char_chunk": 114,
+      "one_char_chunk_rate": 3.396483090728108e-05
+    }
+  },
+  "flag_defs": "Per-chunk boolean flags (deterministic, no models):\n  a) no_terminal_punct  \u2014 stripped chunk doesn't end in . ! ? : ; or a closing\n     math delimiter ($, \\], \\), }, ```). Chunks that instead end on a bare\n     equation/expression line (last char digit/letter/')' AND last line is\n     math-like) are counted as ends_on_math, NOT as violations.\n     Before flagging, trailing closers/quotes/markdown emphasis\n     (\" ' \u201d \u2019 ) ] * _) are stripped and the test re-run (so `**...answer.**`\n     or `(see fig.)` don't false-positive).\n  b) unbalanced_delims  \u2014 unbalanced (), [], {}, $...$ (parity), \\[...\\],\n     \\(...\\), ``` (parity) within the chunk. Plain-paren counts exclude the\n     escaped LaTeX forms.\n  c) dangling_start     \u2014 after list-marker strip, begins (case-insensitive)\n     with \"and \", \"which \", \"so \", \"therefore \", \"then \", \"gives \", \"yields \",\n     or a math operator + space (\"= \", \"+ \", \"- \"). Comma variants\n     (\"Therefore, ...\") are counted separately as dangling_start_comma and are\n     NOT part of the main flag (spec is token+space).\n  d) dangling_end       \u2014 ends on \":\" or a binary operator (=, +, *, /, ^)\n     after stripping trailing markdown-emphasis runs (**, __) of length >= 2.",
+  "prefix_census_top60": [
+    [
+      "<no-image>",
+      1966242
+    ],
+    [
+      "iconqa_data/iconqa",
+      665520
+    ],
+    [
+      "CLEVR_v1.0/images",
+      404895
+    ],
+    [
+      "train1/png",
+      392209
+    ],
+    [
+      "TRAIN/TRAIN_MIX",
+      276575
+    ],
+    [
+      "train/png",
+      230320
+    ],
+    [
+      "MapQA_U/images",
+      94149
+    ],
+    [
+      "MapQA_V/images",
+      88921
+    ],
+    [
+      "MapQA_S/images",
+      85999
+    ],
+    [
+      "coco2017/train2017",
+      70255
+    ],
+    [
+      "tabmwp/tables",
+      48296
+    ],
+    [
+      "gaokao/math2",
+      45830
+    ],
+    [
+      "ToMME/sharpness",
+      35104
+    ],
+    [
+      "ToMME/contrast",
+      33214
+    ],
+    [
+      "ToMME/brightness",
+      32235
+    ],
+    [
+      "ToMME/colorfulness",
+      29306
+    ],
+    [
+      "gaokao/physics",
+      20290
+    ],
+    [
+      "gaokao/chemistry",
+      19868
+    ],
+    [
+      "sharegpt4v/data",
+      16142
+    ],
+    [
+      "val/png",
+      15748
+    ],
+    [
+      "train/documents",
+      15307
+    ],
+    [
+      "RuleBaseGeo/depth2",
+      11805
+    ],
+    [
+      "RuleBaseGeo/depth1",
+      11777
+    ],
+    [
+      "RuleBaseGeo/depth0",
+      11513
+    ],
+    [
+      "RuleBaseGeo/depth3",
+      10944
+    ],
+    [
+      "gqa/images",
+      10820
+    ],
+    [
+      "TextVQA/train_images",
+      9472
+    ],
+    [
+      "ocrvqa/images",
+      6050
+    ],
+    [
+      "gaokao/politics",
+      5312
+    ],
+    [
+      "llava1.5_raw_images/00012",
+      4576
+    ],
+    [
+      "llava1.5_raw_images/00013",
+      4482
+    ],
+    [
+      "llava1.5_raw_images/00014",
+      3730
+    ],
+    [
+      "llava1.5_raw_images/00011",
+      2774
+    ],
+    [
+      "llava1.5_raw_images/00015",
+      2526
+    ],
+    [
+      "llava1.5_raw_images/00016",
+      2318
+    ],
+    [
+      "OpenDataLab___MovieNet/raw",
+      2262
+    ],
+    [
+      "OpenDataLab___Google_Landmarks_Dataset_v2/raw",
+      2158
+    ],
+    [
+      "TabMWP/images",
+      2083
+    ],
+    [
+      "llava1.5_raw_images/00020",
+      1984
+    ],
+    [
+      "IconQA/images",
+      1903
+    ],
+    [
+      "A-OKVQA/images",
+      1878
+    ],
+    [
+      "llava1.5_raw_images/00021",
+      1862
+    ],
+    [
+      "llava1.5_raw_images/00019",
+      1858
+    ],
+    [
+      "llava1.5_raw_images/00017",
+      1786
+    ],
+    [
+      "llava1.5_raw_images/00022",
+      1758
+    ],
+    [
+      "PMC-VQA/images",
+      1738
+    ],
+    [
+      "llava1.5_raw_images/00018",
+      1724
+    ],
+    [
+      "ART500K/Artists1",
+      1464
+    ],
+    [
+      "FigureQA/images",
+      1344
+    ],
+    [
+      "ScienceQA/images",
+      1207
+    ],
+    [
+      "GeoQA+/images",
+      1056
+    ],
+    [
+      "DVQA/images",
+      833
+    ],
+    [
+      "UniGeo/images",
+      829
+    ],
+    [
+      "Geometry3K/images",
+      758
+    ],
+    [
+      "ART500K/Artists2",
+      728
+    ],
+    [
+      "AI2D/images",
+      723
+    ],
+    [
+      "llava1.5_raw_images/00023",
+      704
+    ],
+    [
+      "TQA/images",
+      699
+    ],
+    [
+      "llava1.5_raw_images/00024",
+      652
+    ],
+    [
+      "CLEVR-Math/images",
+      610
+    ]
+  ],
+  "prefix_census_total_keys": 286850
+}

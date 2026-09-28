@@ -1,0 +1,203 @@
+--- example 1 (unbalanced_delims, gold) ---
+Step 4: **Relate known side lengths**:
+   - We know \( AB = 3.0 \) (base of \( \triangle ABC \)).
+   - We know \( BC = 2.0 \) (height of \( \triangle ABC \)).
+   - Because of similarity, if \( \( \frac{BC}{DE} = \frac{AB}{AD} \), and using lengths known,
+     - \( \frac{2.0}{DE} = \frac{3.0}{2.0} \).
+     - Solving for \( DE \): \( DE = 2.0 \).
+
+--- example 2 (unbalanced_delims, gold) ---
+2. Locate the bar corresponding to 2018 on the chart:
+   - The bar for 2018 is listed as $5,400.
+
+--- example 3 (unbalanced_delims, gold) ---
+- **Country 5 in 2022:**
+  - GDP = $12.0 billion
+  - Population = 5.47 million
+  - GDP per capita = $12.0 billion / 5.47 million = $2.194 billion per year per person
+
+--- example 4 (unbalanced_delims, gold) ---
+First, we need to identify what the highest value is from the given legend and which states fall under that category. The legend specifies that the highest range is "$6,058–7,301". Next, we look at the list of states in the map and identify which one falls under the 6,058–7,301 category. New York is labeled as being in that range. Based on the visual map, we can confirm New York is within the specified range. Therefore, the answer is yes:
+
+--- example 5 (unbalanced_delims, gold) ---
+1. Start by looking at the price per orange in the image.
+   - The sign above the box of oranges says, "3 oranges for $1.25."
+
+--- example 6 (unbalanced_delims, gold) ---
+We can solve with another approach if \( 2a - b = 2 \)
+\[ b = 2a - 2]
+
+### Final Parabola Conditions
+Using \((-6, 45) ) and derivative conditions (correctly verifying for simplicity)
+\[ 2a - 2 \]
+
+--- example 7 (unbalanced_delims, gold) ---
+Given that ABCD is a cyclic quadrilateral, \(\angle BOC \) forms angle on an arc, and \(\angle AOD = \frac{2 \times \theta}{2} = 72°.
+
+--- example 8 (unbalanced_delims, gold) ---
+3. **Simplify the expressions:**
+   - For simplicity, let's denote:
+     \[
+     u = 1.66 \times 10^{27} \, kg \quad (\text{atomic mass constant, } 1 \, u\)
+     \)
+     and \(\lambda = 1.67 \times 10^{-27} \, m^2 s^{-2} (\text{Reduced Planck constant})
+\]
+
+--- example 9 (unbalanced_delims, gold) ---
+Using interval notation, I write this as $(a + b, b]$.
+
+--- example 10 (unbalanced_delims, gold) ---
+3. **Equation Setup**:
+   - We have \( \angle HNM = 6y - 3 \).
+   - We know \( \angle HJN + \angle HNJ = 90^\circ \) due to the angle addition property.
+   - \( HJN = 4y + 23 \).
+   - So we can set up the equation:
+     \[
+     9y - 3 + \(4z + 14) = 90
+     \]
+
+--- example 11 (unbalanced_delims, gold) ---
+Therefore:
+\[ (6x + 14y) + 15x - 9y = 58° \]
+
+\[(x - x) + (14y) = 13]
+
+--- example 12 (unbalanced_delims, gold) ---
+Therefore the value of y is: \(y = 3
+
+Final answer: C
+
+--- example 13 (unbalanced_delims, gold) ---
+Since the cosine function \( \cos(\theta) \) achieves its maximum value of \( 1 \), we have:
+   \[
+   f(8k - 2) = 1
+   \]
+   This implies:
+   \[
+   a \cos(b(8k - 2) + c) = 1
+   \]
+   Given \( a, b \) are positive and \( c \) lies in \( (0, \pi] \), we find:
+   \[
+   a = 2 \quad \text{and} \quad b(8k - 2) + c = 0 \quad \text{or} \quad \pi
+   \]
+
+--- example 14 (unbalanced_delims, gold) ---
+So, plugging in $f(x)$ into $f$, I get
+\[f(f(x))=f(k(x))=
+\begin{cases}
+k(k(x)) &\text{if }k(x)>3, \\
+(k(x))^2-6k(x)+12&\text{if }k(x)\leq3.
+\end{cases}
+
+--- example 15 (unbalanced_delims, gold) ---
+We can solve for \( b \) by subtracting equation (1) from equation (2):
+\[ -7a + b - (4a + b) = 7 - 4 \]
+\[ -7a - 4a = 3 \]
+\[ -11a = 3 \]
+\[ a = -\frac{3}{11} \quad \text{(Increase in negativity, invalid as \( a \) is positive.)}
+
+Now we solve using equation (3):
+\[ 4a + b = 4 \]
+\[ -6a + b = 6 \]
+
+--- example 16 (unbalanced_delims, gold) ---
+In conclusion, the maximum value occurs at \( f\left(\frac{2 + \sqrt{13}}{3}\right) = 0.75 \approx 0.75.
+
+--- example 17 (unbalanced_delims, gold) ---
+- The text indicating the amount spent on hunting equipment is "$14,000,000,000".
+
+--- example 18 (unbalanced_delims, gold) ---
+Final answer: $252-546
+
+--- example 19 (unbalanced_delims, gold) ---
+\(
+    3y - 4 = 29
+   \implies
+    3y = 33
+   \implies
+    y = \frac{33}{3}
+   \implies
+    y = 11
+
+--- example 20 (unbalanced_delims, gold) ---
+The legend categorizes tax returns based on the following ranges:
+- Above $3,000
+- Between $3,799 and $5,900
+- Between $2,799 and $2,600
+
+--- example 21 (unbalanced_delims, gold) ---
+I get 385 = 5 x 77.
+[*: 5 is prime, so I circle it and write it on the side.
+
+--- example 22 (unbalanced_delims, gold) ---
+Examining the chart:
+- The Green Bay Packers are located at the bottom right, where the hotel room rate is clearly listed as $187.
+
+--- example 23 (unbalanced_delims, gold) ---
+Since $910-5,583 is less than $6,549-$14,063, we can conclude that New Mexico does not have a higher value than Wisconsin.
+
+--- example 24 (unbalanced_delims, gold) ---
+Therefore, the units digit can be any number that is also divisible by 3, such as 0, 3, 6, or 9.
+[* the greatest possible difference between two of these numbers is 9 - 0 = 9.
+
+--- example 25 (unbalanced_delims, gold) ---
+The ratio of the lengths along parallel lines is constant. Thus, we have:
+\[
+\frac{AB}{BC} = \frac{DE}{EF}
+\]
+Given that \( AB = 2.0 \) and \( BC = 3.0 \), we have:
+\[
+\frac{2}{3} = \frac{y}{EF}
+\]
+Since \( DF = 4.0 \), and \( EF \) is a part of \( DF \), we can write:
+\[
+EF = DF - DE = 4.0 - y
+\]
+Substituting \( EF \) into our proportionality equation gives:
+\[
+\frac{2}{3} = \frac{y}{4.0 - y}
+\]
+Cross-multiplying to solve for \( y \):
+\[
+2(4.0 - y) = 3y
+\]
+\[
+8.0 - 2y = 3y
+\]
+\[
+8.0 = 5y
+\]
+\[
+y = \frac{8.0}{5}
+\]
+So, the length of segment \( DE \) is:
+\[
+Answer: \boxed{C}
+
+--- example 26 (unbalanced_delims, gold) ---
+- The length of the arc of the sector CBA is \( \frac{\pi*L}{d} = 56/\pi \quad= arc length 17.99/2π.
+   
+   - From geometry, angle CBA = (π • 56/π)/2π = CBA 56 (since CG in the sector is 6/1 = 0.2π)
+
+--- example 27 (unbalanced_delims, gold) ---
+1. **Rule**:
+   - Dive: Value is in the range \([10^8, 10^9)\)
+   - Idea: Value is in the range \([10^5, 10^6)\)
+   - Club: Value is in the range \([10^6, 10^7)\)
+   - Band: Value is in the range \([10^8, 10^9)\)
+   
+   The smallest value for Rule appears in the category "idea."
+
+--- example 28 (unbalanced_delims, gold) ---
+Solving \( \angle QRS \) (denoted as \( R \)):
+\[ m \angle R = \cos^{-1} \left(\frac{547^2 + 593^2 - \left( QS^2 \right)}{2 \cdot 547 \cdot 593}\right)]
+
+--- example 29 (unbalanced_delims, gold) ---
+\]
+
+--- example 30 (unbalanced_delims, gold) ---
+6. **Final area calculation combination:**
+   - The small triangle's base height: \((15√3) * (15√3)/2 = 337.5 √3)
+   - Final area \(( \frac{1}{2} * 65 * h + \frac{1}{2} 56.02 56.02\)
+   - Final answer = 21125√3/2
+

@@ -1,0 +1,261 @@
+--- example 1 (no_terminal_punct, model_skipped_nonprose) ---
+| | 1 | a | 5 | -i | -6 |
+| --- | --- | --- | --- | --- | --- |
+| 1 | | 1 | a+1 | 5+a | 5i-a-1 |
+| 0 | | | 0 | a+1 | -i+a+1 |
+| 4 | | | | 4 | 4a+4 |
+| --- | --- | --- | --- | --- | --- |
+| | 1 | a+1 | 5 | 5i+5a+5 | (4a-1)+(5i-1) |
+
+--- example 2 (no_terminal_punct, model_skipped_nonprose) ---
+Here's an implementation of the function you described:
+```python
+import math
+import threading
+import time
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            return False
+    return True
+def sum_primes_in_subarrays(limit, subarrays):
+    subarray_sums = []
+    for start, end in subarrays:
+        subarray = list(range(start, end + 1))
+        results = [sum(set(range(start, end + 1)).difference([i for i in range(start, end + 1) if i < 100000])) for i in subarray]
+        subarray_sums.append(results)
+    subarray_sums.sort(key=lambda x: x[::-1])
+    return subarray_sums
+def sum_primes_in_multithreaded_way(limit, subarrays):
+    subarray_sums = []
+    num_threads = 4
+    threads = []
+    for start in subarrays
+
+--- example 3 (no_terminal_punct, model_skipped_nonprose) ---
+根据题意可得： \frac { PS } { SQ }=\frac { PT } { TS }=\frac { x } { 10 }=\frac { 5 } { 25 }=\frac { 1 } { 5 } ∴ST=5x=10×\frac { 1 } { 5 }=2 故选：D。
+
+--- example 4 (no_terminal_punct, model_skipped_nonprose) ---
+👼💦👨‍👩‍👧‍👦😡🚽👨‍👦🚾🙅‍♂️👩‍👧📣👩‍👦
+
+--- example 5 (no_terminal_punct, model_skipped_nonprose) ---
+|   -   | + | 0 | + |   +   |
+|-------|---|---|---|-------|
+| -inf  |   | 0 |   | +inf  |
+| 3x(25x^2+10x+4)   |   |   |   |   |
+
+--- example 6 (no_terminal_punct, model_skipped_nonprose) ---
+Here's a Java version of the code:
+```
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.nielsmans.image_classification.ImageClassification;
+import com.nielsmans.image_classification.ImageClassificationModel;
+import com.nielsmans.image_classification.ImageClassificationParameters;
+import com.nielsmans.image_classification.ImageClassificationResult;
+import com.nielsmans.image_classification.ImageClassificationResults;
+import com.nielsmans.image_classification.ImageClassificationUtils;
+import com.nielsmans.image_classification.ImageClassificationUtils.ImageClassificationCallback;
+import com.nielsmans.image_classification.ImageClassificationUtils.ImageClassificationCallback.ImageClassificationCallbackResult;
+import com.nielsmans.image_classification.ImageClassi
+
+--- example 7 (no_terminal_punct, model_skipped_nonprose) ---
+To use Ruby to analyze the impact of a language on global communication and cultural exchange, you can start by looking at the frequency and distribution of the language in different industries and fields. Here's an example of how you can use Ruby to analyze the usage of a particular language in science, politics, and entertainment:
+```ruby
+require 'open-uri'
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit amet nibh nec nisi malesuada sodales. Aenean bibendum odio id ligula feugiat, vel vestibulum nulla ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis in velit at odio semper maximus. Donec dictum, elit sit amet semper tincidunt, velit lorem malesuada quam, non dapibus libero nisl non justo. Nulla facilis
+
+--- example 8 (no_terminal_punct, model_skipped_nonprose) ---
+no
+----
+
+--- example 9 (no_terminal_punct, model_skipped_nonprose) ---
+A: 60°
+
+--- example 10 (no_terminal_punct, model_skipped_nonprose) ---
+B**
+
+--- example 11 (no_terminal_punct, model_skipped_nonprose) ---
+100%
+
+--- example 12 (no_terminal_punct, model_skipped_nonprose) ---
+trắng, #15c3cc4, #15c3d4f
+
+--- example 13 (no_terminal_punct, model_skipped_nonprose) ---
+(D)
+
+--- example 14 (no_terminal_punct, model_skipped_nonprose) ---
+🚗 // 
+🎂🍭🍩🍪🍪🌩💰
+💨🏎🚗🚗🚗🚗
+🚗🕌👨‍💻🔍💡👨‍💻🌚🏛📦🔍💡
+🚗💨🏎🕌🔍💡💨📦🌚🏛🎂🍭🍩🍪🍪🌩💰
+
+--- example 15 (no_terminal_punct, model_skipped_nonprose) ---
+[48, 188, 139, 87, 66, 70, 55, 141, 181, 128, 44, 187, 155, 117, 92, 97, 131, 136, 239, 228]
+
+--- example 16 (no_terminal_punct, model_skipped_nonprose) ---
+44%-126%
+
+--- example 17 (no_terminal_punct, model_skipped_nonprose) ---
+We have two right triangles. The first has side lengths of 15 and \[ z \] and the second has side lengths of 19 and \[ y \] (unknown). We know that \[ x \] is a right angle. We are looking for the length of \[ z \]. In a right triangle, the Pythagorean Theorem states that the sum of the squares of the lengths of the legs is equal to the square of the length of the hypotenuse. Therefore, we have the following equations: \[ x^2+z^2=15^2 \] \[ x^2+y^2=19^2 \] From the first equation, we can solve for \[ x^2 \] as follows: \[ x^2=15^2-z^2 \] Substituting this into the second equation, we get: \[ (15^2-z^2)+y^2=19^2 \] Simplifying, we have: \[ 225-z^2+y^2=361 \] Rearranging, we get: \[ y^2=361-225+z^2 \] \[ y^2=136+z^2 \] From the Pythagorean Theorem, we know that \[ y^2 + z^2 = 19^2 \] So we h
+
+--- example 18 (no_terminal_punct, model_skipped_nonprose) ---
+Name | Course | ID | Code Name | Starfleet Rank
+--------|----------|------|----------|------------
+Kashindi | 2nd Year | 1964315 | Rusty Nail | Ensign
+
+--- example 19 (no_terminal_punct, model_skipped_nonprose) ---
+18-3. 分子式为 $\mathrm{C}_{5} \mathrm{H}_{10} \mathrm{O}_{2}$ 的酯共有 ( ) 种。
+A. 6 B. 7 C. 9 D. 10 E. 8
+
+--- example 20 (no_terminal_punct, model_skipped_nonprose) ---
+Here's a SQL query that can be used to update the salary information of employees within a specific department in the'staff' table based on the salary increase rules:
+
+```sql
+UPDATE staff
+SET salary = 
+  CASE
+    WHEN salary < 50000 AND years_of_service < 5 THEN salary * 1.1
+    WHEN salary < 50000 AND years_of_service >= 5 THEN salary * 1.15
+    WHEN salary >= 50000 AND years_of_service < 10 THEN salary * 1.05
+    WHEN salary >= 50000 AND years_of_service >= 10 THEN salary * 1.07
+  END
+WHERE department ='specific_department'
+```
+
+Note that the specific department name should be replaced with the actual name of the department that needs to be updated.
+
+To execute the salary update operation in batches, we can use a loop to iterate over all departments that start with a spec
+
+--- example 21 (no_terminal_punct, model_skipped_nonprose) ---
+Certainly! Here's an example Scala code that uses the JavaFX library to create a heart-shaped logo with three different shades of red:
+```scala
+import javafx.application.Application
+import javafx.scene.Group
+import javafx.scene.Scene
+import javafx.scene.shape.{Circle, Rectangle}
+import javafx.stage.Stage
+object LoveLogo extends Application {
+  override def start(primaryStage: Stage): Unit = {
+    val heart = new Circle(100, 100, 80)
+    heart.setFill(javafx.scene.paint.Red)
+    heart.setStroke(javafx.scene.paint.Black)
+    val gradient = new javafx.scene.linear.Gradient(0, 0, 1, 1, javafx.scene.paint.Red, javafx.scene.paint.Yellow)
+    val border = new GradientReference(javafx.scene.paint.Red, javafx.scene.paint.Yellow)
+    heart.setStroke(gradient)
+    heart.setBorder(border)
+    val shad
+
+--- example 22 (no_terminal_punct, model_skipped_nonprose) ---
+\begin{array}{l}
+{6}^{2} + {8}^{2} = {x}^{2} \\
+{10}^{2} + {x}^{2} = {y}^{2} \\
+{10}^{2} + {6}^{2} + {8}^{2} = {y}^{2} \\
+{10}^{2} + {6}^{2} + {8}^{2} = {y}^{2} \\
+{10}^{2} + {6}^{2} + {8}^{2} = {y}^{2} \\
+{10}^{2} + {6}^{2} + {8}^{2} = {y}^{2} \\
+{10}^{2} + {6}^{2} + {8}^{2} = {y}^{2} \\
+{10}^{2} + {6}^{2} + {8}^{2} = {y}^{2} \\
+{10}^{2} + {6}^{2} + {8}^{2} = {y}^{2} \\
+{10}^{2} + {6}^{2} + {8}^{2} = {y}^{2} \\
+{10}^{2} + {6}^{2} + {8}^{2} = {y}^{2} \\
+{10}^{2} + {6}^{2} + {8}^{2} = {y}^{2} \\
+{10}^{2} + {6}^{2} + {8}^{2} = {y}^{2} \\
+{10}^{2} + {6}^{2} + {8}^{2} = {y}^{2} \\
+{10}^{2} + {6}^{2} + {8}^{2} = {y}^{2} \\
+{10}^{2} + {6}^{2} + {8}^{2} = {y}^{2} \\
+{10}^{2} + {6}^{2} + {8}^{2} = {y}^{2} \\
+{10}^{2} + {6}^{2} + {8}^{2} = {y}^{2} \\
+{10}^{2} + {6}^{2} + {8}^{2} = {y}^{2} \\
+{10}^{
+
+--- example 23 (no_terminal_punct, model_skipped_nonprose) ---
+.(D)
+
+--- example 24 (no_terminal_punct, model_skipped_nonprose) ---
+Here's a program that encrypts and decrypts user data using RSA encryption in Java:
+
+```java
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.security.KeyPairException;
+import java.security.NoSuchAlgorithmException;
+import java.util.Scanner;
+
+import javax.crypto.Cipher;
+
+public class RSACrypto {
+
+    private static char[] prompt = "Enter your message: ";
+    private static char[] keyStoragePrompt = "Save keys to file? (y/n): ";
+
+    private static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws Exception {
+
+        System.out.print(prompt);
+        String message = scanner.nextLine();
+
+        KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+        keyGen.initia
+
+--- example 25 (no_terminal_punct, model_skipped_nonprose) ---
+【解析】 $[-15,11] ; \because g(x)$ 是定义在 $R$ 上, 以 1 为周期的函数, $\therefore g(x+1)=g(x)$, 又 $\because$
+$f(x)=x+g(x), \quad \therefore f(x+1)=x+1+g(x+1)=x+g(x)+1, \quad \because$ 当 $x \in[3,4]$ 时, $f(x)=x+g(x)$ 的值域为 $[-2,5]$, 且 $x+1 \in[4,5], \therefore$ 当 $x \in[4,5]$ 时, $f(x)$ 的值域为 $[-1,6]$ 。以此类推当 $x \in[k, k+1]$ 时, $f(x)$ 的值域为 $[-k, k+5], k \in \mathbf{N}$, 所以当 $x \in[3,+\infty)$ 时, $f(x)$ 的值域为 $R$, 即 $f(x)$ 是最值 $0, \text { 因此有 } f(0)=0$, 又 $x \in[0,1], f$ $(x)$ 的值域为 $[-5,4]$, 且当 $x=0$ 时, $f(x)=-5, \therefore$ 当 $x \in \quad[0,+\infty)$ 时, $f(x)$ 的最小值为 $-5$., $\therefore\left(a,+\infty\right)$
+【答案】 $\mathbf{f}(x)$ 的最小值为 $-5$ 。
+
+--- example 26 (no_terminal_punct, model_skipped_nonprose) ---
+Certainly! Here's an example Scala code that uses the JavaFX library to create a heart-shaped logo with three different shades of red:
+```scala
+import javafx.application.Application
+import javafx.scene.Group
+import javafx.scene.Scene
+import javafx.scene.shape.{Circle, Rectangle}
+import javafx.stage.Stage
+object LoveLogo extends Application {
+  override def start(primaryStage: Stage): Unit = {
+    val heart = new Circle(100, 100, 80)
+    heart.setFill(javafx.scene.paint.Red)
+    heart.setStroke(javafx.scene.paint.Black)
+    val gradient = new javafx.scene.linear.Gradient(0, 0, 1, 1, javafx.scene.paint.Red, javafx.scene.paint.Yellow)
+    val border = new GradientReference(javafx.scene.paint.Red, javafx.scene.paint.Yellow)
+    heart.setStroke(gradient)
+    heart.setBorder(border)
+    val shad
+
+--- example 27 (no_terminal_punct, model_skipped_nonprose) ---
+a = (x + 2) // 3 
+        b = (x + 2) // 3 
+        if (a == x) {
+            b = 1
+        } else if (b == x) {
+            a = 1
+        }
+        return (a - b) // -3
+
+--- example 28 (no_terminal_punct, model_skipped_nonprose) ---
+| Index      | Number |
+|------------|---------|
+|     1     |         |
+|      2     |       2  |
+|            |         |
+|          2 |    2Panel |
+|          3 |    3Card |
+|            |         |
+|          4 |    4Table |
+|            |         |
+|     10     |         |
+|          5 |    5Sheet |
+|            |         |
+|          6 |    6Diag |
+
+--- example 29 (no_terminal_punct, model_skipped_nonprose) ---
+根据题意可得： \frac { PS } { SQ }=\frac { PT } { TS }=\frac { x } { 10 }=\frac { 5 } { 25 }=\frac { 1 } { 5 } ∴ST=5x=10×\frac { 1 } { 5 }=2 故选：D。
+
+--- example 30 (no_terminal_punct, model_skipped_nonprose) ---
+【解答】解:∵BC为圆O的切线,∴∠OBC=90°,∵OA=OC,∴∠OBC=∠OAB=90°,∴∠BOC=90°-∠BAC=61°,∴∠D=29°,所以∠B=(90-61)÷2=14°．
+

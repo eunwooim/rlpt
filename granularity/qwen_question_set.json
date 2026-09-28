@@ -1,0 +1,1830 @@
+{
+ "source": "/scratch/sghos104/rlpt/data/visualprocessbench/test.jsonl",
+ "image_root": "/scratch/sghos104/rlpt/data/visualprocessbench/images_extracted",
+ "n_questions": 200,
+ "seed": 0,
+ "eligibility_rule": "exactly 1 image supplied AND <=1 distinct <imageN> tag",
+ "eligible_pool": {
+  "MathVerse_MINI_Vision_Only": 1026,
+  "MathVision_MINI": 687,
+  "MMMU_DEV_VAL": 257,
+  "DynaMath": 570,
+  "WeMath": 291
+ },
+ "quota": {
+  "MathVerse_MINI_Vision_Only": 72,
+  "MathVision_MINI": 49,
+  "MMMU_DEV_VAL": 18,
+  "DynaMath": 40,
+  "WeMath": 21
+ },
+ "excluded": {
+  "tags_gt_images": 25,
+  "multi_image": 10
+ },
+ "records_total": 2866,
+ "tag_handling": "<imageN> stripped from question text at build time; image carried by the chat template image block",
+ "questions": [
+  {
+   "qid": "vpb_00031",
+   "line_index": 31,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/218.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Eva paddles around five buoys with her boat (see diagram). Which of the buoys does she paddle around in an anti-clockwise direction?\nChoices:\n(A) 1 and 4\n(B) 2, 3 and 5\n(C) 2 and 3\n(D) 1,4 and 5\n(E) 1 and 3",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Eva paddles around five buoys with her boat (see diagram). Which of the buoys does she paddle around in an anti-clockwise direction?\nChoices:\n(A) 1 and 4\n(B) 2, 3 and 5\n(C) 2 and 3\n(D) 1,4 and 5\n(E) 1 and 3",
+   "answer": "E"
+  },
+  {
+   "qid": "vpb_00035",
+   "line_index": 35,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/184.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: How many fish will have their heads pointing towards the ring when we straighten the line?",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: How many fish will have their heads pointing towards the ring when we straighten the line?",
+   "answer": "6"
+  },
+  {
+   "qid": "vpb_00055",
+   "line_index": 55,
+   "data_source": "WeMath",
+   "image": "images/WeMath/580.png",
+   "question": "Given that the circumference of the upper edge of a conical water container is 62.8 cm, what is the radius of its base circle in cm?\nA. 8\nB. 9\nC. 10\nD. Cannot be determined\nE. No correct answer",
+   "question_raw": "Given that the circumference of the upper edge of a conical water container is 62.8 cm, what is the radius of its base circle in cm?\nA. 8\nB. 9\nC. 10\nD. Cannot be determined\nE. No correct answer",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_00057",
+   "line_index": 57,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/692.png",
+   "question": "Part of the graph of f(x) = x^3 + bx^2 + cx + d is shown. What is c?",
+   "question_raw": "Part of the graph of f(x) = x^3 + bx^2 + cx + d is shown. What is c?",
+   "answer": "-25"
+  },
+  {
+   "qid": "vpb_00100",
+   "line_index": 100,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/2508.png",
+   "question": "A real estate agent looked into how many houses were sold in different cities. What is the range of the numbers?",
+   "question_raw": "A real estate agent looked into how many houses were sold in different cities. What is the range of the numbers?",
+   "answer": "16"
+  },
+  {
+   "qid": "vpb_00101",
+   "line_index": 101,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/146.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "D"
+  },
+  {
+   "qid": "vpb_00127",
+   "line_index": 127,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/112.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_00132",
+   "line_index": 132,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/509.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "$y \\geq-2 x-6$"
+  },
+  {
+   "qid": "vpb_00147",
+   "line_index": 147,
+   "data_source": "WeMath",
+   "image": "images/WeMath/145.png",
+   "question": "As shown in the figure, quadrilateral GBCD is an isosceles trapezoid, and quadrilateral ABCD is a parallelogram. What is the length of AB in cm?\nA. 10\nB. 7\nC. 8\nD. 9\nE. No correct answer",
+   "question_raw": "As shown in the figure, quadrilateral GBCD is an isosceles trapezoid, and quadrilateral ABCD is a parallelogram. What is the length of AB in cm?\nA. 10\nB. 7\nC. 8\nD. 9\nE. No correct answer",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_00154",
+   "line_index": 154,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/568.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "g(x)=x^2-3"
+  },
+  {
+   "qid": "vpb_00171",
+   "line_index": 171,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/236.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: The black-white caterpillar shown, rolls up to go to sleep. Which diagram could show the rolled-up caterpillar?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: The black-white caterpillar shown, rolls up to go to sleep. Which diagram could show the rolled-up caterpillar?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_00183",
+   "line_index": 183,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/63.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_00201",
+   "line_index": 201,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/83.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: In the diagram, $A B$ has length $1; \\angle A B C=\\angle A C D=90^{\\circ}$; $\\angle C A B=\\angle D A C=\\theta$. What is the length of $A D$?\nChoices:\n(A) $\\cos \\beta+\\tg \\beta$\n(B) $\\frac{1}{\\cos (2 \\beta)}$\n(C) $\\cos ^{2} \\beta$\n(D) $\\cos (2 \\beta)$\n(E) $\\frac{1}{\\cos ^{2} \\beta}$",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: In the diagram, $A B$ has length $1 ; \\angle A B C=\\angle A C D=90^{\\circ}$; $\\angle C A B=\\angle D A C=\\theta$. What is the length of $A D$?\nChoices:\n(A) $\\cos \\beta+\\tg \\beta$\n(B) $\\frac{1}{\\cos (2 \\beta)}$\n(C) $\\cos ^{2} \\beta$\n(D) $\\cos (2 \\beta)$\n(E) $\\frac{1}{\\cos ^{2} \\beta}$",
+   "answer": "E"
+  },
+  {
+   "qid": "vpb_00206",
+   "line_index": 206,
+   "data_source": "WeMath",
+   "image": "images/WeMath/1176.png",
+   "question": "In the diagram, triangle ABC is an equilateral triangle. What is the degree measure of angle C?\nA. 60\nB. 30\nC. 90\nD. No correct answer",
+   "question_raw": "In the diagram, triangle ABC is an equilateral triangle. What is the degree measure of angle C?\nA. 60\nB. 30\nC. 90\nD. No correct answer",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_00209",
+   "line_index": 209,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/73.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_00227",
+   "line_index": 227,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/2291.png",
+   "question": "The diagram shows weights of students. How many students are at least 40 kilograms weight but less than 70 kilograms weight?",
+   "question_raw": "The diagram shows weights of students. How many students are at least 40 kilograms weight but less than 70 kilograms weight?",
+   "answer": "11"
+  },
+  {
+   "qid": "vpb_00228",
+   "line_index": 228,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/436.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "\\frac{y^2}{9}-\\frac{(x+1)^2}{9}=1"
+  },
+  {
+   "qid": "vpb_00253",
+   "line_index": 253,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/82.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_00260",
+   "line_index": 260,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/168.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Heinzi the kangaroo has bought some toys. For this he gave 150 Kangoo-coins (KC) and received 20 kangoo-coins back. Just before leaving the shop he changed his mind, and exchanged one of the toys he had bought with another one. Therefore he received a further 5 kangoo-coins back from the shopkeeper. Which of the toys in the picture has Heinzi taken home with him?\nChoices:\n(A) Carriage and Aeroplane\n(B) Carriage and Bus\n(C) Carriage and Tram\n(D) Motorbike and Tram\n(E) Bus, Motorbike and Tram",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Heinzi the kangaroo has bought some toys. For this he gave 150 Kangoo-coins (KC) and received 20 kangoo-coins back. Just before leaving the shop he changed his mind, and exchanged one of the toys he had bought with another one. Therefore he received a further 5 kangoo-coins back from the shopkeeper. Which of the toys in the picture has Heinzi taken home with him?\nChoices:\n(A) Carriage and Aeroplane\n(B) Carriage and Bus\n(C) Carriage and Tram\n(D) Motorbike and Tram\n(E) Bus, Motorbike and Tram",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_00280",
+   "line_index": 280,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/258.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Inside a square of area $36 \\mathrm{~cm}^{2}$, there are shaded regions as shown. The total shaded area is $27 \\mathrm{~cm}^{2}$. What is the value of $p+q+r+s$? \nChoices:\n(A) $4 \\mathrm{~cm}$\n(B) $6 \\mathrm{~cm}$\n(C) $8 \\mathrm{~cm}$\n(D) $9 \\mathrm{~cm}$\n(E) $10 \\mathrm{~cm}$",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Inside a square of area $36 \\mathrm{~cm}^{2}$, there are shaded regions as shown. The total shaded area is $27 \\mathrm{~cm}^{2}$. What is the value of $p+q+r+s$ ? \nChoices:\n(A) $4 \\mathrm{~cm}$\n(B) $6 \\mathrm{~cm}$\n(C) $8 \\mathrm{~cm}$\n(D) $9 \\mathrm{~cm}$\n(E) $10 \\mathrm{~cm}$",
+   "answer": "D"
+  },
+  {
+   "qid": "vpb_00334",
+   "line_index": 334,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/393.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "Area $=9.4 \\mathrm{~cm}^{2}$"
+  },
+  {
+   "qid": "vpb_00337",
+   "line_index": 337,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/756.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_00338",
+   "line_index": 338,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/2508.png",
+   "question": "A real estate agent looked into how many houses were sold in different cities. What is the range of the numbers?",
+   "question_raw": "A real estate agent looked into how many houses were sold in different cities. What is the range of the numbers?",
+   "answer": "16"
+  },
+  {
+   "qid": "vpb_00360",
+   "line_index": 360,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/200.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Which of the following is made using more than one piece of string?\nChoices:\n(A) I, III, IV and V\n(B) III, IV and V\n(C) I, III and V\n(D) all\n(E) None of these answers",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Which of the following is made using more than one piece of string?\nChoices:\n(A) I, III, IV and V\n(B) III, IV and V\n(C) I, III and V\n(D) all\n(E) None of these answers",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_00369",
+   "line_index": 369,
+   "data_source": "MMMU_DEV_VAL",
+   "image": "images/MMMU_DEV_VAL/9095_1.jpg",
+   "question": "Two steel plates with Sy = 50 ksi are attached by 3/8-in. parallel-loaded fillet welds, as shown in Figure. E60 series welding rods are used, and good welding practice is followed. Each of the welds is 3 in. long. With a safety factor of 3, what maximum tensile load can be applied?<image 1>\nA. 11456lb\nB. 14700lb\nC. 12457lb\nD. 13000lb",
+   "question_raw": "Two steel plates with Sy = 50 ksi are attached by 3/8-in. parallel-loaded fillet welds, as shown in Figure. E60 series welding rods are used, and good welding practice is followed. Each of the welds is 3 in. long. With a safety factor of 3, what maximum tensile load can be applied?<image 1>\nA. 11456lb\nB. 14700lb\nC. 12457lb\nD. 13000lb",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_00370",
+   "line_index": 370,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/136.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_00379",
+   "line_index": 379,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/94.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_00386",
+   "line_index": 386,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/3102.png",
+   "question": "Find the area of the shaded part.",
+   "question_raw": "Find the area of the shaded part.",
+   "answer": "23.1173"
+  },
+  {
+   "qid": "vpb_00389",
+   "line_index": 389,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/133.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_00396",
+   "line_index": 396,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/582.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_00429",
+   "line_index": 429,
+   "data_source": "WeMath",
+   "image": "images/WeMath/1154.png",
+   "question": "The figure below is a composite shape consisting of a rectangle and a square. Angle 1 ( ) Angle 2.\nA. is greater than\nB. is equal to\nC. is less than\nD. No correct answer",
+   "question_raw": "The figure below is a composite shape consisting of a rectangle and a square. Angle 1 (    ) Angle 2.\nA. is greater than\nB. is equal to\nC. is less than\nD. No correct answer",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_00431",
+   "line_index": 431,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/452.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "(0,0)"
+  },
+  {
+   "qid": "vpb_00441",
+   "line_index": 441,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/323.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_00457",
+   "line_index": 457,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/3742.png",
+   "question": "Find the chromatic number of the following graph.",
+   "question_raw": "Find the chromatic number of the following graph.",
+   "answer": "8"
+  },
+  {
+   "qid": "vpb_00470",
+   "line_index": 470,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/213.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Benjamin writes a number into the first circle. He then carries out the calculations as instructed and each time writes down the results in the respective circles. How many of the six numbers are divisible by 3?",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Benjamin writes a number into the first circle. He then carries out the calculations as instructed and each time writes down the results in the respective circles. How many of the six numbers are divisible by 3?",
+   "answer": "2"
+  },
+  {
+   "qid": "vpb_00472",
+   "line_index": 472,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/3820.png",
+   "question": "What is the color of the normal distribution line with largest standard deviation? choice: (A) red (B) blue (C) green (D) orange",
+   "question_raw": "What is the color of the normal distribution line with largest standard deviation? choice: (A) red (B) blue (C) green (D) orange",
+   "answer": "D"
+  },
+  {
+   "qid": "vpb_00473",
+   "line_index": 473,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/124.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_00479",
+   "line_index": 479,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/2133.png",
+   "question": "What is the surface area of this pink right square pyramid?",
+   "question_raw": "What is the surface area of this pink right square pyramid?",
+   "answer": "305.9126"
+  },
+  {
+   "qid": "vpb_00488",
+   "line_index": 488,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/4883.png",
+   "question": "How many points are outside the triangle?",
+   "question_raw": "How many points are outside the triangle?",
+   "answer": "10"
+  },
+  {
+   "qid": "vpb_00495",
+   "line_index": 495,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/79.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_00509",
+   "line_index": 509,
+   "data_source": "MMMU_DEV_VAL",
+   "image": "images/MMMU_DEV_VAL/1581_1.jpg",
+   "question": "Evelyn De Morgan often used literary sources to inspire her artworks. Which book featuring mermaids might have inspired her painting <image 1>?\nA. The Water Babies by Charles Kingsley (1863)\nB. The Little Mermaid by Hans Christian Andersen (1836)\nC. Around the World in 80 Days by Jules Verne (1873)\nD. Moby-Dick by Herman Melville (1851)",
+   "question_raw": "Evelyn De Morgan often used literary sources to inspire her artworks. Which book featuring mermaids might have inspired her painting <image 1>?\nA. The Water Babies by Charles Kingsley (1863)\nB. The Little Mermaid by Hans Christian Andersen (1836)\nC. Around the World in 80 Days by Jules Verne (1873)\nD. Moby-Dick by Herman Melville (1851)",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_00535",
+   "line_index": 535,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/81.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: We are given three semi-circles as shown. $A B E F$ is a rectangle and the radius of each of the semi-circles is $2 \\mathrm{~cm}$. $E$ and $F$ are the centers of the bottom semi-circles. The area of the shaded region (in $\\mathrm{cm}^{2}$) is:",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: We are given three semi-circles as shown. $A B E F$ is a rectangle and the radius of each of the semi-circles is $2 \\mathrm{~cm}$. $E$ and $F$ are the centers of the bottom semi-circles. The area of the shaded region (in $\\mathrm{cm}^{2}$) is:",
+   "answer": "8"
+  },
+  {
+   "qid": "vpb_00544",
+   "line_index": 544,
+   "data_source": "MMMU_DEV_VAL",
+   "image": "images/MMMU_DEV_VAL/8626_1.jpg",
+   "question": "The process of spanning trees in <image 1> is a key concept of graph theory. Which diagram illustrates the construction of a breadth-first spanning tree?\nA. a\nB. b",
+   "question_raw": "The process of spanning trees in <image 1> is a key concept of graph theory. Which diagram illustrates the construction of a breadth-first spanning tree?\nA. a\nB. b",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_00559",
+   "line_index": 559,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/787.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "D"
+  },
+  {
+   "qid": "vpb_00560",
+   "line_index": 560,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/144.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_00599",
+   "line_index": 599,
+   "data_source": "MMMU_DEV_VAL",
+   "image": "images/MMMU_DEV_VAL/2389_1.jpg",
+   "question": "<image 1>What is this?\nA. Adrenergic synapse\nB. Cholinergic synapse\nC. Peripheral synapse\nD. Autonomic synapse",
+   "question_raw": "<image 1>What is this?\nA. Adrenergic synapse\nB. Cholinergic synapse\nC. Peripheral synapse\nD. Autonomic synapse",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_00625",
+   "line_index": 625,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/8.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: How many plums (see the picture) weigh as much as an apple?",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: How many plums (see the picture) weigh as much as an apple?",
+   "answer": "3"
+  },
+  {
+   "qid": "vpb_00635",
+   "line_index": 635,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/41.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_00644",
+   "line_index": 644,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/561.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_00651",
+   "line_index": 651,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/334.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "212\u00b0T"
+  },
+  {
+   "qid": "vpb_00668",
+   "line_index": 668,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/321.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_00670",
+   "line_index": 670,
+   "data_source": "WeMath",
+   "image": "images/WeMath/1100.png",
+   "question": "As shown in the diagram, to reach line l from point O in the shortest distance, one should ( )\nA. Walk along OC in the due north direction\nB. Walk along OB in the north by east direction\nC. Walk along OA in the east by north direction\nD. No correct answer",
+   "question_raw": "As shown in the diagram, to reach line l from point O in the shortest distance, one should ( )\nA. Walk along OC in the due north direction\nB. Walk along OB in the north by east direction\nC. Walk along OA in the east by north direction\nD. No correct answer",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_00677",
+   "line_index": 677,
+   "data_source": "MMMU_DEV_VAL",
+   "image": "images/MMMU_DEV_VAL/4192_1.jpg",
+   "question": "How many DEPTs can a COURSE be OFFERed by in the entity-relationship (ER) diagram in <image 1>?\nA. 0\nB. 1\nC. 2\nD. N\nE. None of the other answers",
+   "question_raw": "How many DEPTs can a COURSE be OFFERed by in the entity-relationship (ER) diagram in <image 1>?\nA. 0\nB. 1\nC. 2\nD. N\nE. None of the other answers",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_00681",
+   "line_index": 681,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/3160.png",
+   "question": "Find the missing number in the last node.",
+   "question_raw": "Find the missing number in the last node.",
+   "answer": "275"
+  },
+  {
+   "qid": "vpb_00682",
+   "line_index": 682,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/2376.png",
+   "question": "How many points are outside the ellipse?",
+   "question_raw": "How many points are outside the ellipse?",
+   "answer": "10"
+  },
+  {
+   "qid": "vpb_00702",
+   "line_index": 702,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/400.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "Area $=\\frac{147 \\pi}{4} \\mathrm{~cm}^{2}$"
+  },
+  {
+   "qid": "vpb_00703",
+   "line_index": 703,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/18.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_00706",
+   "line_index": 706,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/53.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Maria made a block using white cubes and colored cubes in equal amounts. How many of the white cubes cannot be seen in the picture?",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Maria made a block using white cubes and colored cubes in equal amounts. How many of the white cubes cannot be seen in the picture?",
+   "answer": "2"
+  },
+  {
+   "qid": "vpb_00719",
+   "line_index": 719,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/211.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: A furniture shop sells 3-seater, 2-seater and 1-seater sofas that each have an equally wide armrest on the left and the right hand side. Each seat is equally wide (see picture). Together with the armrests the 3-seater sofa is $220 \\mathrm{~cm}$ and the 2-seater sofa $160 \\mathrm{~cm}$ wide. How wide is the 1-seater sofa?\nChoices:\n(A) $60 \\mathrm{~cm}$\n(B) $80 \\mathrm{~cm}$\n(C) $90 \\mathrm{~cm}$\n(D) $100 \\mathrm{~cm}$\n(E) $120 \\mathrm{~cm}$",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: A furniture shop sells 3-seater, 2-seater and 1-seater sofas that each have an equally wide armrest on the left and the right hand side. Each seat is equally wide (see picture). Together with the armrests the 3-seater sofa is $220 \\mathrm{~cm}$ and the 2-seater sofa $160 \\mathrm{~cm}$ wide. How wide is the 1-seater sofa?\nChoices:\n(A) $60 \\mathrm{~cm}$\n(B) $80 \\mathrm{~cm}$\n(C) $90 \\mathrm{~cm}$\n(D) $100 \\mathrm{~cm}$\n(E) $120 \\mathrm{~cm}$",
+   "answer": "D"
+  },
+  {
+   "qid": "vpb_00722",
+   "line_index": 722,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/1997.png",
+   "question": "What is the value of a * b + c?",
+   "question_raw": "What is the value of a * b + c?",
+   "answer": "63"
+  },
+  {
+   "qid": "vpb_00730",
+   "line_index": 730,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/268.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Two squares with side 1 have a common vertex, and the edge of one of them lies along the diagonal of the other. What is the area of the overlap between the squares? \nChoices:\n(A) $\\sqrt{2}-1$\n(B) $\\frac{\\sqrt{2}}{2}$\n(C) $\\frac{\\sqrt{2}+1}{2}$\n(D) $\\sqrt{2}+1$\n(E) $\\sqrt{3}-\\sqrt{2}$",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Two squares with side 1 have a common vertex, and the edge of one of them lies along the diagonal of the other. What is the area of the overlap between the squares? \nChoices:\n(A) $\\sqrt{2}-1$\n(B) $\\frac{\\sqrt{2}}{2}$\n(C) $\\frac{\\sqrt{2}+1}{2}$\n(D) $\\sqrt{2}+1$\n(E) $\\sqrt{3}-\\sqrt{2}$",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_00735",
+   "line_index": 735,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/185.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_00759",
+   "line_index": 759,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/233.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: A bike lock has four wheels numbered with the digits 0 to 9 in order. Each of the four wheels is rotated by $180^{\\circ}$ from the code shown in the first diagram to get the correct code. What is the correct code for the bike lock?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: A bike lock has four wheels numbered with the digits 0 to 9 in order. Each of the four wheels is rotated by $180^{\\circ}$ from the code shown in the first diagram to get the correct code. What is the correct code for the bike lock?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_00769",
+   "line_index": 769,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/53.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Maria made a block using white cubes and colored cubes in equal amounts. How many of the white cubes cannot be seen in the picture?",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Maria made a block using white cubes and colored cubes in equal amounts. How many of the white cubes cannot be seen in the picture?",
+   "answer": "2"
+  },
+  {
+   "qid": "vpb_00789",
+   "line_index": 789,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/217.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: A triangular pyramid is built with 10 identical balls, like this. Each ball has one of the letters A, $B, C, D$ and $E$ on it. There are 2 balls marked with each letter. The picture shows 3 side views of the pyramid. What is the letter on the ball with the question mark?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: A triangular pyramid is built with 10 identical balls, like this <image1>. Each ball has one of the letters A, $B, C, D$ and $E$ on it. There are 2 balls marked with each letter. The picture shows 3 side views of the pyramid. What is the letter on the ball with the question mark?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_00821",
+   "line_index": 821,
+   "data_source": "WeMath",
+   "image": "images/WeMath/1651.png",
+   "question": "As shown in the diagram, if the side lengths of the trapezoid are measured with a ruler, then \u22201 equals ( )\u00b0.\nA. 30\nB. 120\nC. 60\nD. No correct answer",
+   "question_raw": "As shown in the diagram, if the side lengths of the trapezoid are measured with a ruler, then \u22201 equals ( )\u00b0.\nA. 30\nB. 120\nC. 60\nD. No correct answer",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_00830",
+   "line_index": 830,
+   "data_source": "MMMU_DEV_VAL",
+   "image": "images/MMMU_DEV_VAL/10362_1.jpg",
+   "question": "<image 1>The graph above shows the velocity versus time for an object moving in a straight line. At what time after t = 0 does the object again pass through its initial position?\nA. 1 s\nB. Between 1 and 2 s\nC. 2 s\nD. Between 2 and 3 s",
+   "question_raw": "<image 1>The graph above shows the velocity versus time for an object moving in a straight line. At what time after t = 0 does the object again pass through its initial position?\nA. 1 s\nB. Between 1 and 2 s\nC. 2 s\nD. Between 2 and 3 s",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_00833",
+   "line_index": 833,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/607.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "$\\frac{1}{2000}$"
+  },
+  {
+   "qid": "vpb_00840",
+   "line_index": 840,
+   "data_source": "WeMath",
+   "image": "images/WeMath/1618.png",
+   "question": "Given the dimensions of the rectangular cuboid as shown in the diagram, find the volume of the rectangular cuboid ( ).\nA. 90\nB. 100\nC. 120\nD. No correct answer",
+   "question_raw": "Given the dimensions of the rectangular cuboid as shown in the diagram, find the volume of the rectangular cuboid ( ).\nA. 90\nB. 100\nC. 120\nD. No correct answer",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_00857",
+   "line_index": 857,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/529.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "-5.35"
+  },
+  {
+   "qid": "vpb_00889",
+   "line_index": 889,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/6.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Mike has built a construction, shown in the upper picture, from equal cubes. Lily has taken several cubes out of it, thus Mike's construction became such as we see in the lower picture. How many cubes has Lily taken?",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Mike has built a construction, shown in the upper picture, from equal cubes. Lily has taken several cubes out of it, thus Mike's construction became such as we see in the lower picture. How many cubes has Lily taken?",
+   "answer": "7"
+  },
+  {
+   "qid": "vpb_00900",
+   "line_index": 900,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/251.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Five identical measuring jugs are filled with water. Four of them contain exactly the same amount of water. Which measuring jug contains a different amount?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Five identical measuring jugs are filled with water. Four of them contain exactly the same amount of water. Which measuring jug contains a different amount?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_00966",
+   "line_index": 966,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/389.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "$$r=7.00$$"
+  },
+  {
+   "qid": "vpb_00970",
+   "line_index": 970,
+   "data_source": "WeMath",
+   "image": "images/WeMath/96.png",
+   "question": "Placing a triangular ruler in the position shown in the figure, the two edges of the triangular ruler exactly coincide with the two edges of \u2220A. What is the measure of \u2220A? ( )\u00b0\nA. 45\nB. 60\nC. 30\nD. 90\nE. No correct answer",
+   "question_raw": "Placing a triangular ruler in the position shown in the figure, the two edges of the triangular ruler exactly coincide with the two edges of \u2220A. What is the measure of \u2220A? ( )\u00b0\nA. 45\nB. 60\nC. 30\nD. 90\nE. No correct answer",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_01019",
+   "line_index": 1019,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/486.png",
+   "question": "Matrices A, B, and C are given in the image. What is the trace of the matrix (A - B - C)?",
+   "question_raw": "Matrices A, B, and C are given in the image. What is the trace of the matrix (A - B - C)?",
+   "answer": "9"
+  },
+  {
+   "qid": "vpb_01032",
+   "line_index": 1032,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/203.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Four cogs are connected to each other as shown in the picture. The first has 30 teeth, the second 15, the third 60 and the fourth 10. How many turns will the last cog make for each full turn of the first cog?",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Four cogs are connected to each other as shown in the picture. The first has 30 teeth, the second 15, the third 60 and the fourth 10 . How many turns will the last cog make for each full turn of the first cog?",
+   "answer": "3"
+  },
+  {
+   "qid": "vpb_01039",
+   "line_index": 1039,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/568.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "g(x)=x^2-3"
+  },
+  {
+   "qid": "vpb_01049",
+   "line_index": 1049,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/464.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "(x+3)^2+(y+3)^2=9"
+  },
+  {
+   "qid": "vpb_01054",
+   "line_index": 1054,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/99.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "D"
+  },
+  {
+   "qid": "vpb_01064",
+   "line_index": 1064,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/558.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_01066",
+   "line_index": 1066,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/58.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_01074",
+   "line_index": 1074,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/347.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "285"
+  },
+  {
+   "qid": "vpb_01078",
+   "line_index": 1078,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/167.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Elisabeth sorts the following cards:\n\nWith each move she is allowed to swap any two cards with each other. What is the smallest number of moves she needs in order to get the word KANGAROO.",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Elisabeth sorts the following cards:\n<image1>\nWith each move she is allowed to swap any two cards with each other. What is the smallest number of moves she needs in order to get the word KANGAROO.",
+   "answer": "3"
+  },
+  {
+   "qid": "vpb_01098",
+   "line_index": 1098,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/404.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "Area $=1115.94 \\mathrm{~cm}^{2}$"
+  },
+  {
+   "qid": "vpb_01106",
+   "line_index": 1106,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/273.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Sepideh is making a magic multiplication square using the numbers 1, 2, 4, 5, 10, 20, 25, 50 and 100. The products of the numbers in each row, in each column and in the two diagonals should all be the same. In the figure you can see how she has started. Which number should Sepideh place in the cell with the question mark?",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Sepideh is making a magic multiplication square using the numbers 1, 2, 4, 5, 10, 20, 25, 50 and 100 . The products of the numbers in each row, in each column and in the two diagonals should all be the same. In the figure you can see how she has started. Which number should Sepideh place in the cell with the question mark?",
+   "answer": "4"
+  },
+  {
+   "qid": "vpb_01108",
+   "line_index": 1108,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/3473.png",
+   "question": "What is the intersection of sets A and B?\nA: [5, 7, 10, 13, 14, 16, 17, 19]\nB: [5, 7, 10, 14, 19]\nC: [13, 16, 17]\nD: [1, 6, 11, 15]",
+   "question_raw": "What is the intersection of sets A and B?\nA: [5, 7, 10, 13, 14, 16, 17, 19]\nB: [5, 7, 10, 14, 19]\nC: [13, 16, 17]\nD: [1, 6, 11, 15]",
+   "answer": "D"
+  },
+  {
+   "qid": "vpb_01110",
+   "line_index": 1110,
+   "data_source": "MMMU_DEV_VAL",
+   "image": "images/MMMU_DEV_VAL/6037_1.jpg",
+   "question": "Consider a three-factor APT model. The factors and associated risk premiums are <image 1>. Calculate expected rates of return on the following stock: A stock with average exposure to each factor (i.e., with b = 1 for each). The risk-free interest rate is 7%. \nA. 5%\nB. 7%\nC. 13%\nD. 15.5%",
+   "question_raw": "Consider a three-factor APT model. The factors and associated risk premiums are <image 1>. Calculate expected rates of return on the following stock: A stock with average exposure to each factor (i.e., with b = 1 for each). The risk-free interest rate is 7%. \nA. 5%\nB. 7%\nC. 13%\nD. 15.5%",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_01168",
+   "line_index": 1168,
+   "data_source": "WeMath",
+   "image": "images/WeMath/540.png",
+   "question": "The perimeter of rectangle ABCD is shown in the diagram. What is the perimeter of ABCD in centimeters?\nA. 12\nB. 1.2\nC. 120\nD. Cannot be determined\nE. No correct answer",
+   "question_raw": "The perimeter of rectangle ABCD is shown in the diagram. What is the perimeter of ABCD in centimeters?\nA. 12\nB. 1.2\nC. 120\nD. Cannot be determined\nE. No correct answer",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_01180",
+   "line_index": 1180,
+   "data_source": "MMMU_DEV_VAL",
+   "image": "images/MMMU_DEV_VAL/3417_1.jpg",
+   "question": "<image 1> The diagram above represents the idealized titration curve for the reaction of sodium oxalate ($Na_2C_2O_4$) with a strong acid like hydrochloric acid ($HCl$). E and F represent the pH at the endpoints. G and H will depend on the composition of the sample with the possibility that one may not be present. In addition to water, what are the predominant species in solution at E?\nA. $Na_2C_2O_4$ and $HCl$\nB. $Na^+$, $Cl^-$, and $HC_2O_4^-$\nC. C_2O_4^{2-} and $H^+$\nD. $Na^+$, $H^+$, and $C_2O_4^{2-}$",
+   "question_raw": "<image 1> The diagram above represents the idealized titration curve for the reaction of sodium oxalate ($Na_2C_2O_4$) with a strong acid like hydrochloric acid ($HCl$). E and F represent the pH at the endpoints. G and H will depend on the composition of the sample with the possibility that one may not be present. In addition to water, what are the predominant species in solution at E?\nA. $Na_2C_2O_4$ and $HCl$\nB. $Na^+$, $Cl^-$, and $HC_2O_4^-$\nC. C_2O_4^{2-} and $H^+$\nD. $Na^+$, $H^+$, and $C_2O_4^{2-}$",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_01185",
+   "line_index": 1185,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/66.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_01201",
+   "line_index": 1201,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/452.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "(0,0)"
+  },
+  {
+   "qid": "vpb_01225",
+   "line_index": 1225,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/383.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "17"
+  },
+  {
+   "qid": "vpb_01229",
+   "line_index": 1229,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/62.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_01230",
+   "line_index": 1230,
+   "data_source": "WeMath",
+   "image": "images/WeMath/1384.png",
+   "question": "As shown in the diagram, the sum of the interior angles of a quadrilateral is 360\u00b0. If \u22201 = 3\u22202 and \u22203 = \u22202, what is the measure of \u22201?\nA. 180\u00b0\nB. 54\u00b0\nC. 108\u00b0\nD. 72\u00b0\nE. No correct answer",
+   "question_raw": "As shown in the diagram, the sum of the interior angles of a quadrilateral is 360\u00b0. If \u22201 = 3\u22202 and \u22203 = \u22202, what is the measure of \u22201?\nA. 180\u00b0\nB. 54\u00b0\nC. 108\u00b0\nD. 72\u00b0\nE. No correct answer",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_01232",
+   "line_index": 1232,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/685.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "Volume $=367.57 \\mathrm{~cm}^{3}$"
+  },
+  {
+   "qid": "vpb_01234",
+   "line_index": 1234,
+   "data_source": "MMMU_DEV_VAL",
+   "image": "images/MMMU_DEV_VAL/10381_1.jpg",
+   "question": "Individuals diagnosed with cancer often experience significant amounts of stress. Some patients cope with stress by adopting unhealthy habits (like drinking, smoking, or withdrawing from social relationships), which can increase symptom severity and result in poor quality of life both during and after cancer treatment. Conversely, individuals who manage stress with healthy techniques can experience symptom relief and improved quality of life. A group of oncologists hope to promote healthy stress reduction and decide to focus their efforts on deep breathing. They postulate that a deep breathing exercise will induce the relaxation response, a physical state of deep rest that is the physiological opposite of a stress response (or fight or flight). They believe that when patients learn to breathe more slowly and deeply, their muscles will relax, blood pressure will decrease, and heart rates will slow down (all characteristics of the relaxation response). When testing the exercise with two patients they notice significant decreases in blood pressure, muscle tension, and heart rate. They conclude that the exercise could decrease select physical symptoms of stress. The oncologists decide to expand their testing, and develop several deep-breathing exercises to be delivered in a group format. They believe that the combined exercises will help patients cope during times of stress. The program consists of 30-minute guided group breathing classes that occur biweekly for 8 weeks. Patients are also asked to complete home deep breathing practices. To test their theory, they recruit 10 adult cancer patients to participate in their program. The patient group is homogenous in type and stage of cancer. All patients have recently received their cancer diagnosis. The patients are all between 45 and 55 years old (mean age 48.6) and there are equal numbers of men and women in the group. Each patient completes a stress symptom checklist both before and after the intervention. The stress symptoms checklist can be found in Table 1. The symptom checklist is divided into four categories, with six possible symptoms in each category. Patients are instructed to circle any and all symptoms they are currently experiencing. The results from the study can be found in Figure 1 <image 1>. Given the information in the passage and the results from Figure 1, which of the following is the least problematic aspect of the study?\nA. The oncologists recruited patients from a sample that was too homogenous, which makes the results of the program difficult to generalize.\nB. The oncologists did not control for group social support, which could lead to decreases in some of the emotional and cognitive symptoms of stress on the checklist.\nC. The oncologists used the stress checklist to measure stress, which did not provide a sensitive measurement of stress and had overlap between and within categories of symptoms.\nD. The oncologists did not control for side effects of cancer treatment, which could lead to increases in some of the behavioral and physical symptoms of stress on the checklist.",
+   "question_raw": "Individuals diagnosed with cancer often experience significant amounts of stress. Some patients cope with stress by adopting unhealthy habits (like drinking, smoking, or withdrawing from social relationships), which can increase symptom severity and result in poor quality of life both during and after cancer treatment. Conversely, individuals who manage stress with healthy techniques can experience symptom relief and improved quality of life. A group of oncologists hope to promote healthy stress reduction and decide to focus their efforts on deep breathing. They postulate that a deep breathing exercise will induce the relaxation response, a physical state of deep rest that is the physiological opposite of a stress response (or fight or flight). They believe that when patients learn to breathe more slowly and deeply, their muscles will relax, blood pressure will decrease, and heart rates will slow down (all characteristics of the relaxation response). When testing the exercise with two patients they notice significant decreases in blood pressure, muscle tension, and heart rate. They conclude that the exercise could decrease select physical symptoms of stress. The oncologists decide to expand their testing, and develop several deep-breathing exercises to be delivered in a group format. They believe that the combined exercises will help patients cope during times of stress. The program consists of 30-minute guided group breathing classes that occur biweekly for 8 weeks. Patients are also asked to complete home deep breathing practices. To test their theory, they recruit 10 adult cancer patients to participate in their program. The patient group is homogenous in type and stage of cancer. All patients have recently received their cancer diagnosis. The patients are all between 45 and 55 years old (mean age 48.6) and there are equal numbers of men and women in the group. Each patient completes a stress symptom checklist both before and after the intervention. The stress symptoms checklist can be found in Table 1. The symptom checklist is divided into four categories, with six possible symptoms in each category. Patients are instructed to circle any and all symptoms they are currently experiencing. The results from the study can be found in Figure 1 <image 1>. Given the information in the passage and the results from Figure 1, which of the following is the least problematic aspect of the study?\nA. The oncologists recruited patients from a sample that was too homogenous, which makes the results of the program difficult to generalize.\nB. The oncologists did not control for group social support, which could lead to decreases in some of the emotional and cognitive symptoms of stress on the checklist.\nC. The oncologists used the stress checklist to measure stress, which did not provide a sensitive measurement of stress and had overlap between and within categories of symptoms.\nD. The oncologists did not control for side effects of cancer treatment, which could lead to increases in some of the behavioral and physical symptoms of stress on the checklist.",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_01247",
+   "line_index": 1247,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/58.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Six different numbers, chosen from integers 1 to 9, are written on the faces of a cube, one number per face. The sum of the numbers on each pair of opposite faces is always the same. Which of the following numbers could have been written on the opposite side with the number 8?",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Six different numbers, chosen from integers 1 to 9 , are written on the faces of a cube, one number per face. The sum of the numbers on each pair of opposite faces is always the same. Which of the following numbers could have been written on the opposite side with the number 8 ?",
+   "answer": "3"
+  },
+  {
+   "qid": "vpb_01300",
+   "line_index": 1300,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/575.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_01306",
+   "line_index": 1306,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/4453.png",
+   "question": "The density plot below represents different datasets. Which dataset has the widest spread? Choices: (A) Dataset A (B) Dataset B (C) Dataset C (D) Dataset D",
+   "question_raw": "The density plot below represents different datasets. Which dataset has the widest spread? Choices: (A) Dataset A (B) Dataset B (C) Dataset C (D) Dataset D",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_01331",
+   "line_index": 1331,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/654.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "Surface Area $=2827.43 \\mathrm{~cm}^{2}$"
+  },
+  {
+   "qid": "vpb_01335",
+   "line_index": 1335,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/358.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "51.1"
+  },
+  {
+   "qid": "vpb_01351",
+   "line_index": 1351,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/995.png",
+   "question": "What is the value of a * b + c?",
+   "question_raw": "What is the value of a * b + c?",
+   "answer": "10"
+  },
+  {
+   "qid": "vpb_01355",
+   "line_index": 1355,
+   "data_source": "MMMU_DEV_VAL",
+   "image": "images/MMMU_DEV_VAL/9094_1.jpg",
+   "question": "Let the bolt in Figure P10.23 be made from cold-drawn steel. The bolt and the clamped plates are of the same length. Assume that the threads stop immediately above the nut.The clamped steel plates have a stiffness kc six times the bolt stiffness kb. The load fluctuates continuously between 0 and 8000 lb.(a) Find the minimum required value of initial preload to prevent loss of compression of the plates.(b) Find the minimum force in the plates for the fluctuating load when the preload is 8500 lb.<image 1>\nA. 7522lb,1643lb\nB. 6857lb,1643lb\nC. 7522lb,1728b\nD. 6857lb,1728lb",
+   "question_raw": "Let the bolt in Figure P10.23 be made from cold-drawn steel. The bolt and the clamped plates are of the same length. Assume that the threads stop immediately above the nut.The clamped steel plates have a stiffness kc six times the bolt stiffness kb. The load fluctuates continuously between 0 and 8000 lb.(a) Find the minimum required value of initial preload to prevent loss of compression of the plates.(b) Find the minimum force in the plates for the fluctuating load when the preload is 8500 lb.<image 1>\nA. 7522lb,1643lb\nB. 6857lb,1643lb\nC. 7522lb,1728b\nD. 6857lb,1728lb",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_01363",
+   "line_index": 1363,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/1880.png",
+   "question": "Which quarter had the highest average rainfall?",
+   "question_raw": "Which quarter had the highest average rainfall?",
+   "answer": "Q4"
+  },
+  {
+   "qid": "vpb_01385",
+   "line_index": 1385,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/44.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Which of the 5 pictures shows a part of this chain?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Which of the 5 pictures shows a part of this chain?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_01391",
+   "line_index": 1391,
+   "data_source": "MMMU_DEV_VAL",
+   "image": "images/MMMU_DEV_VAL/4178_1.jpg",
+   "question": "Given the adjacency matrix of a weighted undirected graph as follows, the total weight of its minimum spanning tree is:<image 1>\nA. 22\nB. 20\nC. 15\nD. 8",
+   "question_raw": "Given the adjacency matrix of a weighted undirected graph as follows, the total weight of its minimum spanning tree is:<image 1>\nA. 22\nB. 20\nC. 15\nD. 8",
+   "answer": "D"
+  },
+  {
+   "qid": "vpb_01412",
+   "line_index": 1412,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/11.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_01456",
+   "line_index": 1456,
+   "data_source": "WeMath",
+   "image": "images/WeMath/14.png",
+   "question": "As shown in the figure, the diagonals of square DFEO are OD and EF. What is the area of square DFEO? ( ) cm\u00b2\nA. 0.5\nB. 3\nC. 2\nD. 1\nE. No correct answer",
+   "question_raw": "As shown in the figure, the diagonals of square DFEO are OD and EF. What is the area of square DFEO? ( ) cm\u00b2\nA. 0.5\nB. 3\nC. 2\nD. 1\nE. No correct answer",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_01477",
+   "line_index": 1477,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/77.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_01482",
+   "line_index": 1482,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/73.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Each of the children Ali, Lea, Josef, Vittorio and Sophie get a birthday cake. The number on top of the cake shows how old the child is. Lea is two years older than Josef, but one year younger than Ali. Vittorio is the youngest. Which cake belongs to Sophie?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Each of the children Ali, Lea, Josef, Vittorio and Sophie get a birthday cake. The number on top of the cake shows how old the child is. Lea is two years older than Josef, but one year younger than Ali. Vittorio is the youngest. Which cake belongs to Sophie?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_01502",
+   "line_index": 1502,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/2659.png",
+   "question": "Find the missing number in the last node.",
+   "question_raw": "Find the missing number in the last node.",
+   "answer": "202"
+  },
+  {
+   "qid": "vpb_01503",
+   "line_index": 1503,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/301.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: If the point $(3,4)$ is reflected in the $x$-axis, what are the coordinates of its image?",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: If the point $(3,4)$ is reflected in the $x$-axis, what are the coordinates of its image?",
+   "answer": "(3,-4)"
+  },
+  {
+   "qid": "vpb_01504",
+   "line_index": 1504,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/544.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_01505",
+   "line_index": 1505,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/116.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_01550",
+   "line_index": 1550,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/100.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: The sum of the number in each line, column and diagonal in the \u0102magic square\u00f1on the right is always constant. Only two numbers are visible. Which number is missing in field $a$?\nChoices:\n(A) 16\n(B) 51\n(C) 54\n(D) 55\n(E) 110",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: The sum of the number in each line, column and diagonal in the \u0102magic square\u00f1on the right is always constant. Only two numbers are visible. Which number is missing in field $a$?\nChoices:\n(A) 16\n(B) 51\n(C) 54\n(D) 55\n(E) 110",
+   "answer": "D"
+  },
+  {
+   "qid": "vpb_01557",
+   "line_index": 1557,
+   "data_source": "WeMath",
+   "image": "images/WeMath/481.png",
+   "question": "In the square BEFG shown in the figure, what is the degree measure of \u2220CBG? \nA. 30\u00b0\nB. 60\u00b0\nC. 45\u00b0\nD. 90\u00b0\nE. No correct answer",
+   "question_raw": "In the square BEFG shown in the figure, what is the degree measure of \u2220CBG?  \nA. 30\u00b0\nB. 60\u00b0\nC. 45\u00b0\nD. 90\u00b0\nE. No correct answer",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_01578",
+   "line_index": 1578,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/125.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: How many quadratic functions $y=a x^{2}+b x+c$ (with $a \\neq 0$ ) have graphs that go through at least 3 of the marked points?",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: How many quadratic functions $y=a x^{2}+b x+c$ (with $a \\neq 0$ ) have graphs that go through at least 3 of the marked points?",
+   "answer": "22"
+  },
+  {
+   "qid": "vpb_01580",
+   "line_index": 1580,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/185.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Sofie wants to pick 5 different shapes from the boxes. She can only pick 1 shape from each box. Which shape must she pick from box 4?\nChoices:\n(A) (A)\n(B) (B)\n(C) (C)\n(D) (D)\n(E) (E)",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Sofie wants to pick 5 different shapes from the boxes. She can only pick 1 shape from each box. Which shape must she pick from box 4?\nChoices:\n(A) (A)\n(B) (B)\n(C) (C)\n(D) (D)\n(E) (E)",
+   "answer": "E"
+  },
+  {
+   "qid": "vpb_01587",
+   "line_index": 1587,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/218.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_01594",
+   "line_index": 1594,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/3467.png",
+   "question": "The radar chart below represents different categories. Which category is second highest? Choices: (A) A (B) B (C) C (D) D (E) E",
+   "question_raw": "The radar chart below represents different categories. Which category is second highest? Choices: (A) A (B) B (C) C (D) D (E) E",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_01605",
+   "line_index": 1605,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/639.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "Weight $=63.3 \\mathrm{~g}$"
+  },
+  {
+   "qid": "vpb_01617",
+   "line_index": 1617,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/4695.png",
+   "question": "A sphere is inscribed in a cone with height 11 and base radius 9. What is the volume of the sphere?",
+   "question_raw": "A sphere is inscribed in a cone with height 11 and base radius 9. What is the volume of the sphere ?",
+   "answer": "324.9517"
+  },
+  {
+   "qid": "vpb_01652",
+   "line_index": 1652,
+   "data_source": "MMMU_DEV_VAL",
+   "image": "images/MMMU_DEV_VAL/10713_1.jpg",
+   "question": "<image 1> Which part of the brain represented above is indicated by the blue region?\nA. pons\nB. medulla oblongata\nC. spinal cord\nD. reticular formation",
+   "question_raw": "<image 1> Which part of the brain represented above is indicated by the blue region?\nA. pons\nB. medulla oblongata\nC. spinal cord\nD. reticular formation",
+   "answer": "D"
+  },
+  {
+   "qid": "vpb_01678",
+   "line_index": 1678,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/232.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Amelia has a paper strip with five equal cells containing different drawings, according to the figure. She folds the strip in such a way that the cells overlap in five layers. Which of the sequences of layers, from top to bottom, is not possible to obtain?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Amelia has a paper strip with five equal cells containing different drawings, according to the figure. She folds the strip in such a way that the cells overlap in five layers. Which of the sequences of layers, from top to bottom, is not possible to obtain?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_01679",
+   "line_index": 1679,
+   "data_source": "WeMath",
+   "image": "images/WeMath/1276.png",
+   "question": "As shown in the diagram, there is a square inside a circle with a radius of 2 cm. The area of the square is what fraction of the area of the circle?\nA. \u03c0/2\nB. 2/\u03c0\nC. 4/\u03c0\nD. No correct answer",
+   "question_raw": "As shown in the diagram, there is a square inside a circle with a radius of 2 cm. The area of the square is what fraction of the area of the circle?\nA. \u03c0/2\nB. 2/\u03c0\nC. 4/\u03c0\nD. No correct answer",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_01680",
+   "line_index": 1680,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/414.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "Area $=315.4 \\mathrm{~m}^{2}$"
+  },
+  {
+   "qid": "vpb_01683",
+   "line_index": 1683,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/4662.png",
+   "question": "The white area in the figure is composed of 4 identical sectors, which can be combined to form a complete circle. What is the area of the azure part",
+   "question_raw": "The white area in the figure is composed of 4 identical sectors, which can be combined to form a complete circle. What is the area of the azure part",
+   "answer": "1.9314"
+  },
+  {
+   "qid": "vpb_01696",
+   "line_index": 1696,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/184.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: How many fish will have their heads pointing towards the ring when we straighten the line?",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: How many fish will have their heads pointing towards the ring when we straighten the line?",
+   "answer": "6"
+  },
+  {
+   "qid": "vpb_01700",
+   "line_index": 1700,
+   "data_source": "MMMU_DEV_VAL",
+   "image": "images/MMMU_DEV_VAL/393_1.jpg",
+   "question": "Tim-Buck-II rents jet skis at a beach resort. There are three models available to rent: Junior, Adult, and Expert. The rental price and variable costs for these three models are as follows: <image 1> The current product mix is 5:4:1. The three models share total fixed costs of $114,750. Calculate the sales price per composite unit.\nA. $660\nB. $760\nC. $650\nD. $750",
+   "question_raw": "Tim-Buck-II rents jet skis at a beach resort. There are three models available to rent: Junior, Adult, and Expert. The rental price and variable costs for these three models are as follows: <image 1> The current product mix is 5:4:1. The three models share total fixed costs of $114,750. Calculate the sales price per composite unit.\nA. $660\nB. $760\nC. $650\nD. $750",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_01747",
+   "line_index": 1747,
+   "data_source": "WeMath",
+   "image": "images/WeMath/324.png",
+   "question": "As shown in the figure, a student is in the classroom. The blackboard at the front of the classroom is ( ).\nA. \u2461\nB. \u2460\nC. Cannot be determined\nD. No correct answer",
+   "question_raw": "As shown in the figure, a student is in the classroom. The blackboard at the front of the classroom is ( ).\nA. \u2461\nB. \u2460\nC. Cannot be determined\nD. No correct answer",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_01764",
+   "line_index": 1764,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/1282.png",
+   "question": "In the figure below, the area of square ABCD is equal to the sum of the area of triangles ABE and DCE. If AB = 67, then CE = ___",
+   "question_raw": "In the figure below, the area of square ABCD is equal to the sum of the area of triangles ABE and DCE. If AB = 67, then CE = ___",
+   "answer": "33.5"
+  },
+  {
+   "qid": "vpb_01768",
+   "line_index": 1768,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/747.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "23.41"
+  },
+  {
+   "qid": "vpb_01784",
+   "line_index": 1784,
+   "data_source": "MMMU_DEV_VAL",
+   "image": "images/MMMU_DEV_VAL/8621_1.jpg",
+   "question": "<image 1>A regular hexagon of side length 4 is embedded in a regular octagon of side length 4, as shown. What is the area of quadrilateral $A B C D$?\nA. $16 \\sqrt{2}$\nB. $16 \\sqrt{3}$\nC. $16+16 \\sqrt{2}-16 \\sqrt{3}$\nD. $16+16 \\sqrt{3}-16 \\sqrt{2}$\nE. None of these",
+   "question_raw": "<image 1>A regular hexagon of side length 4 is embedded in a regular octagon of side length 4, as shown. What is the area of quadrilateral $A B C D$ ?\nA. $16 \\sqrt{2}$\nB. $16 \\sqrt{3}$\nC. $16+16 \\sqrt{2}-16 \\sqrt{3}$\nD. $16+16 \\sqrt{3}-16 \\sqrt{2}$\nE. None of these",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_01794",
+   "line_index": 1794,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/25.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Every one of these six building blocks consists of 5 little cubes. The little cubes are either white or grey. Cubes of equal colour don't touch each other. How many little white cubes are there in total?",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Every one of these six building blocks consists of 5 little cubes. The little cubes are either white or grey. Cubes of equal colour don't touch each other. How many little white cubes are there in total?",
+   "answer": "12"
+  },
+  {
+   "qid": "vpb_01803",
+   "line_index": 1803,
+   "data_source": "MMMU_DEV_VAL",
+   "image": "images/MMMU_DEV_VAL/729_1.jpg",
+   "question": "<image 1> What could be the reason for the corky outgrowths on a young ash tree by the roadside in Littondale, Yorkshire?\nA. Fungal disease\nB. Bacterial disease\nC. Don't know or not sure\nD. Genetic abnormality\nE. Insect feeding",
+   "question_raw": "<image 1> What could be the reason for the corky outgrowths on a young ash tree by the roadside in Littondale, Yorkshire?\nA. Fungal disease\nB. Bacterial disease\nC. Don't know or not sure\nD. Genetic abnormality\nE. Insect feeding",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_01812",
+   "line_index": 1812,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/279.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_01846",
+   "line_index": 1846,
+   "data_source": "MMMU_DEV_VAL",
+   "image": "images/MMMU_DEV_VAL/4570_1.jpg",
+   "question": "Which statement about the figure is correct? <image 1>\nA. This tumor is a variant of glioblastoma multiforme (GBM)\nB. This tumor is metastatic from a soft tissue sarcoma\nC. This patient had a pigmented lesion removed 10 years before\nD. This represents a gliotic scar in an infarct\nE. This is a classic example of meningoangiomatosis",
+   "question_raw": "Which statement about the figure is correct? <image 1>\nA. This tumor is a variant of glioblastoma multiforme (GBM)\nB. This tumor is metastatic from a soft tissue sarcoma\nC. This patient had a pigmented lesion removed 10 years before\nD. This represents a gliotic scar in an infarct\nE. This is a classic example of meningoangiomatosis",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_01855",
+   "line_index": 1855,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/313.png",
+   "question": "What is the color of the normal distribution line with largest standard deviation? choice: (A) red (B) blue (C) green (D) orange",
+   "question_raw": "What is the color of the normal distribution line with largest standard deviation? choice: (A) red (B) blue (C) green (D) orange",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_01863",
+   "line_index": 1863,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/328.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "2191.7 metres"
+  },
+  {
+   "qid": "vpb_01865",
+   "line_index": 1865,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/1698.png",
+   "question": "The sum of the numbers at the two vertices at the ends of each edge is equal to the number written on that edge. What number should he write on the edge marked with the question mark?",
+   "question_raw": "The sum of the numbers at the two vertices at the ends of each edge is equal to the number written on that edge. What number should he write on the edge marked with the question mark?",
+   "answer": "20"
+  },
+  {
+   "qid": "vpb_01879",
+   "line_index": 1879,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/91.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_01895",
+   "line_index": 1895,
+   "data_source": "WeMath",
+   "image": "images/WeMath/1123.png",
+   "question": "Among the angles in the triangle below, \u22202 = 30\u00b0, \u22203 = 45\u00b0, \u22201 is ( )\nA. 90 degrees\nB. 120 degrees\nC. 105 degrees\nD. No correct answer",
+   "question_raw": "Among the angles in the triangle below, \u22202 = 30\u00b0, \u22203 = 45\u00b0, \u22201 is (    )\nA. 90 degrees\nB. 120 degrees\nC. 105 degrees\nD. No correct answer",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_01924",
+   "line_index": 1924,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/249.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Peter wants to colour in the cells of a $3 \\times 3$ square so that every row, every column and both diagonals each have three cells with three different colours. What is the smallest number of colours with which Peter can achieve this?",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Peter wants to colour in the cells of a $3 \\times 3$ square so that every row, every column and both diagonals each have three cells with three different colours. What is the smallest number of colours with which Peter can achieve this?",
+   "answer": "5"
+  },
+  {
+   "qid": "vpb_01967",
+   "line_index": 1967,
+   "data_source": "WeMath",
+   "image": "images/WeMath/942.png",
+   "question": "As shown in the diagram, diagram \u2460 is transformed into diagram \u2461 by:\nA. Rotating 90\u00b0 counterclockwise around point P\nB. Rotating 90\u00b0 clockwise around point Q\nC. Rotating 90\u00b0 counterclockwise around point Q\nD. No correct answer",
+   "question_raw": "As shown in the diagram, diagram \u2460 is transformed into diagram \u2461 by:\nA. Rotating 90\u00b0 counterclockwise around point P\nB. Rotating 90\u00b0 clockwise around point Q\nC. Rotating 90\u00b0 counterclockwise around point Q\nD. No correct answer",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_01984",
+   "line_index": 1984,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/399.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "Area $=\\frac{121 \\pi}{4} \\mathrm{~m}^{2}$"
+  },
+  {
+   "qid": "vpb_01988",
+   "line_index": 1988,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/44.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Which of the 5 pictures shows a part of this chain?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Which of the 5 pictures shows a part of this chain?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_01991",
+   "line_index": 1991,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/4278.png",
+   "question": "The 8.9 kg box shown in the figure to the right is sliding to the right along the floor. A horizontal force of 38.8 N is being applied to the right. The coefficient of kinetic friction between the box and the floor is 0.17. The box is moving with:____. choice: (A) acceleration to the left (B) acceleration to the right (C) constant velocity",
+   "question_raw": "The 8.9 kg box shown in the figure to the right is sliding to the right along the floor. A horizontal force of 38.8 N is being applied to the right. The coefficient of kinetic friction between the box and the floor is 0.17. The box is moving with:____.  choice: (A) acceleration to the left (B) acceleration to the right (C) constant velocity",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_02028",
+   "line_index": 2028,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/57.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Two equal trains, each with 31 numbered wagons, travel in opposite directions. When the wagon number 7 of a train is side by side with the wagon number 12 of the other train, which wagon is side by side with the wagon number 11?",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Two equal trains, each with 31 numbered wagons, travel in opposite directions. When the wagon number 7 of a train is side by side with the wagon number 12 of the other train, which wagon is side by side with the wagon number 11 ?",
+   "answer": "8"
+  },
+  {
+   "qid": "vpb_02032",
+   "line_index": 2032,
+   "data_source": "WeMath",
+   "image": "images/WeMath/712.png",
+   "question": "As shown in the diagram, after folding the following figure into a cube, the block opposite to block D is ( ).\nA. A\nB. B\nC. D\nD. F\nE. No correct answer",
+   "question_raw": "As shown in the diagram, after folding the following figure into a cube, the block opposite to block D is ( ).\nA. A\nB. B\nC. D\nD. F\nE. No correct answer",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_02037",
+   "line_index": 2037,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/166.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_02039",
+   "line_index": 2039,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/489.png",
+   "question": "Matrices A, B, and C are given in the image. What is the trace of the matrix ((A + B) * C)?",
+   "question_raw": "Matrices A, B, and C are given in the image. What is the trace of the matrix ((A + B) * C)?",
+   "answer": "146"
+  },
+  {
+   "qid": "vpb_02040",
+   "line_index": 2040,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/80.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: A $3 \\times 3 \\times 3$ cube weighs 810 grams. If we drill three holes through it as shown, each of which is a $1 \\times 1 \\times 3$ rectangular parallelepiped, the weight of the remaining solid is:\nChoices:\n(A) $540 \\mathrm{~g}$\n(B) $570 \\mathrm{~g}$\n(C) $600 \\mathrm{~g}$\n(D) $630 \\mathrm{~g}$\n(E) $660 \\mathrm{~g}$",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: A $3 \\times 3 \\times 3$ cube weighs 810 grams. If we drill three holes through it as shown, each of which is a $1 \\times 1 \\times 3$ rectangular parallelepiped, the weight of the remaining solid is:\nChoices:\n(A) $540 \\mathrm{~g}$\n(B) $570 \\mathrm{~g}$\n(C) $600 \\mathrm{~g}$\n(D) $630 \\mathrm{~g}$\n(E) $660 \\mathrm{~g}$",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_02044",
+   "line_index": 2044,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/135.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Three triangles are connected to each other as shown. In which of the following pictures are the three triangles connected in the same way?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Three triangles are connected to each other as shown. In which of the following pictures are the three triangles connected in the same way?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "answer": "D"
+  },
+  {
+   "qid": "vpb_02073",
+   "line_index": 2073,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/3272.png",
+   "question": "The velocity vs. time graph for the motion of a car on a straight track is shown in the diagram. The thick line represents the velocity. Assume that the car starts at the origin x = 0 and the positive velocity represents moving forward. The position of car at t=10s is ____. choice: (A) in front of the start (B) behind the start (C) at the start",
+   "question_raw": "The velocity vs. time graph for the motion of a car on a straight track is shown in the diagram. The thick line represents the velocity. Assume that the car starts at the origin x = 0 and the positive velocity represents moving forward. The position of car at t=10s is ____.  choice: (A) in front of the start  (B) behind the start (C) at the start",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_02090",
+   "line_index": 2090,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/79.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: How many triangles can be drawn with vertices in the 18 points shown in the figure?",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: How many triangles can be drawn with vertices in the 18 points shown in the figure?",
+   "answer": "711"
+  },
+  {
+   "qid": "vpb_02117",
+   "line_index": 2117,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/414.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "Area $=315.4 \\mathrm{~m}^{2}$"
+  },
+  {
+   "qid": "vpb_02123",
+   "line_index": 2123,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/65.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_02137",
+   "line_index": 2137,
+   "data_source": "WeMath",
+   "image": "images/WeMath/954.png",
+   "question": "(As shown in the diagram) If point C is moved one grid to the left, the resulting point is ( )\nA. E\nB. F\nC. G\nD. No correct answer",
+   "question_raw": "(As shown in the diagram) If point C is moved one grid to the left, the resulting point is ( )\nA. E\nB. F\nC. G\nD. No correct answer",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_02143",
+   "line_index": 2143,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/1013.png",
+   "question": "What is the period of this function y = a*cos(b*x), where both a and b are integers? Answer the question with a floating-point number.",
+   "question_raw": "What is the period of this function y = a*cos(b*x), where both a and b are integers? Answer the question with a floating-point number.",
+   "answer": "3.1416"
+  },
+  {
+   "qid": "vpb_02148",
+   "line_index": 2148,
+   "data_source": "WeMath",
+   "image": "images/WeMath/838.png",
+   "question": "As shown in the diagram, how many angles are there in figure \u2462? ()\nA. 3\nB. 4\nC. 5\nD. 6\nE. No correct answer",
+   "question_raw": "As shown in the diagram, how many angles are there in figure \u2462? ()\nA. 3\nB. 4\nC. 5\nD. 6\nE. No correct answer",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_02183",
+   "line_index": 2183,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/60.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Maia the bee can only walk on colorful houses. How many ways can you color exactly three white houses with the same color so that Maia can walk from $A$ to $B$?",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Maia the bee can only walk on colorful houses. How many ways can you color exactly three white houses with the same color so that Maia can walk from $A$ to $B$ ?",
+   "answer": "16"
+  },
+  {
+   "qid": "vpb_02196",
+   "line_index": 2196,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/274.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Which of the following diagrams shows the locus of the midpoint of the wheel when the wheel rolls along the zig-zag curve shown?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Which of the following diagrams shows the locus of the midpoint of the wheel when the wheel rolls along the zig-zag curve shown?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "answer": "E"
+  },
+  {
+   "qid": "vpb_02198",
+   "line_index": 2198,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/752.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "D"
+  },
+  {
+   "qid": "vpb_02201",
+   "line_index": 2201,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/170.png",
+   "question": "What is the sum of interior angles in this polygon?",
+   "question_raw": "What is the sum of interior angles in this polygon?",
+   "answer": "900"
+  },
+  {
+   "qid": "vpb_02225",
+   "line_index": 2225,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/206.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_02242",
+   "line_index": 2242,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/2165.png",
+   "question": "On which color is the spinner more likely to land?",
+   "question_raw": "On which color is the spinner more likely to land?",
+   "answer": "White"
+  },
+  {
+   "qid": "vpb_02300",
+   "line_index": 2300,
+   "data_source": "WeMath",
+   "image": "images/WeMath/1143.png",
+   "question": "As shown in the diagram, triangle ABC is a cross-section of a cone. What is the measure of \u22201?\nA. 30\u00b0\nB. 45\u00b0\nC. 60\u00b0\nD. 90\u00b0\nE. No correct answer",
+   "question_raw": "As shown in the diagram, triangle ABC is a cross-section of a cone. What is the measure of \u22201?\nA. 30\u00b0\nB. 45\u00b0\nC. 60\u00b0\nD. 90\u00b0\nE. No correct answer",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_02303",
+   "line_index": 2303,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/134.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: On an idealised rectangular billiard table with side lengths $3 \\mathrm{~m}$ and $2 \\mathrm{m}$ a ball (point-shaped) is pushed away from point $M$ on the long side $A B$. It is reflected exactly once on each of the other sides as shown. at which distance from the vertex $A$ will the ball hit this side again if $B M=1.2 \\mathrm{~m}$ and $B N=$ $0.8 m$?\nChoices:\n(A) $2 \\mathrm{~m}$\n(B) $1.5 \\mathrm{~m}$\n(C) $1.2 \\mathrm{~m}$\n(D) $2.8 \\mathrm{~m}$\n(E) $1.8 \\mathrm{~m}$",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: On an idealised rectangular billiard table with side lengths $3 \\mathrm{~m}$ and $2 \\mathrm{m}$ a ball (point-shaped) is pushed away from point $M$ on the long side $A B$. It is reflected exactly once on each of the other sides as shown. at which distance from the vertex $A$ will the ball hit this side again if $B M=1.2 \\mathrm{~m}$ and $B N=$ $0.8 m$?\nChoices:\n(A) $2 \\mathrm{~m}$\n(B) $1.5 \\mathrm{~m}$\n(C) $1.2 \\mathrm{~m}$\n(D) $2.8 \\mathrm{~m}$\n(E) $1.8 \\mathrm{~m}$",
+   "answer": "E"
+  },
+  {
+   "qid": "vpb_02375",
+   "line_index": 2375,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/3163.png",
+   "question": "What are the coordinates of the vector between two blue points?",
+   "question_raw": "What are the coordinates of the vector between two blue points?",
+   "answer": "(1, 2)"
+  },
+  {
+   "qid": "vpb_02378",
+   "line_index": 2378,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/302.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_02379",
+   "line_index": 2379,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/37.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Jim and Ben are sitting in a ferris wheel (see picture on the right). The ferris wheel is turning. Now Ben is in the position where Jim was beforehand. Where is Jim now?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Jim and Ben are sitting in a ferris wheel (see picture on the right). The ferris wheel is turning. Now Ben is in the position where Jim was beforehand. Where is Jim now?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_02402",
+   "line_index": 2402,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/2682.png",
+   "question": "In the diagram, triangle ABC is right-angled at C. Also, points M, N and P are the midpoints of sides BC, AC and AB, respectively. If the area of triangle APN is 10, then what is the area of triangle ABC?",
+   "question_raw": "In the diagram, triangle ABC is right-angled at C. Also, points M, N and P are the midpoints of sides BC, AC and AB, respectively. If the area of triangle APN is 10, then what is the area of triangle ABC?",
+   "answer": "40"
+  },
+  {
+   "qid": "vpb_02403",
+   "line_index": 2403,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/140.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_02406",
+   "line_index": 2406,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/581.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_02443",
+   "line_index": 2443,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/1602.png",
+   "question": "Using the food web above, what would happen to the other organisms if the number of tiger were decreased? choice: (A) coyote will increase (B) fox will decrease (C) cattle will increase (D) Nothing happen",
+   "question_raw": "Using the food web above, what would happen to the other organisms if the number of tiger were decreased? choice: (A) coyote will increase (B) fox will decrease (C) cattle will increase (D) Nothing happen",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_02453",
+   "line_index": 2453,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/277.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: \n\nIn this diagram semi-circles are constructed on diameters $\\overline{AB}$, $\\overline{AC}$, and $\\overline{CB}$, so that they are mutually tangent. If $\\overline{CD} \\bot \\overline{AB}$, then the ratio of the shaded area to the area of a circle with $\\overline{CD}$ as radius is:\nChoices:\n(A) $1:2$\n(B) $1:3$\n(C) $\\sqrt{3}:7$\n(D) $1:4$\n(E) $\\sqrt{2}:6$",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: <image1>\n\nIn this diagram semi-circles are constructed on diameters $\\overline{AB}$, $\\overline{AC}$, and $\\overline{CB}$, so that they are mutually tangent.  If $\\overline{CD} \\bot \\overline{AB}$, then the ratio of the shaded area to the area of a circle with $\\overline{CD}$ as radius is:\nChoices:\n(A) $1:2$\n(B) $1:3$\n(C) $\\sqrt{3}:7$\n(D) $1:4$\n(E) $\\sqrt{2}:6$",
+   "answer": "D"
+  },
+  {
+   "qid": "vpb_02466",
+   "line_index": 2466,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/766.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "0"
+  },
+  {
+   "qid": "vpb_02482",
+   "line_index": 2482,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/246.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Mr. Hide wants to find a treasure that he buried years before. He can only remember that he buried the treasure at least $5 \\mathrm{~m}$ away from the hedge and no more than $5 \\mathrm{~m}$ away from the old pear tree. Which picture shows best the area where Mr. Hide has to look for the treasure?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Mr. Hide wants to find a treasure that he buried years before. He can only remember that he buried the treasure at least $5 \\mathrm{~m}$ away from the hedge and no more than $5 \\mathrm{~m}$ away from the old pear tree. Which picture shows best the area where Mr. Hide has to look for the treasure?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_02483",
+   "line_index": 2483,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/274.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Which of the following diagrams shows the locus of the midpoint of the wheel when the wheel rolls along the zig-zag curve shown?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Which of the following diagrams shows the locus of the midpoint of the wheel when the wheel rolls along the zig-zag curve shown?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "answer": "E"
+  },
+  {
+   "qid": "vpb_02518",
+   "line_index": 2518,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/968.png",
+   "question": "What is the intersection of sets A and B?\nA: [2, 6, 9, 15, 17]\nB: [3, 5, 12, 19]\nC: [2, 4, 6, 9, 15, 16, 17, 18]\nD: [4, 16, 18]",
+   "question_raw": "What is the intersection of sets A and B?\nA: [2, 6, 9, 15, 17]\nB: [3, 5, 12, 19]\nC: [2, 4, 6, 9, 15, 16, 17, 18]\nD: [4, 16, 18]",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_02527",
+   "line_index": 2527,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/422.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "3799 km"
+  },
+  {
+   "qid": "vpb_02546",
+   "line_index": 2546,
+   "data_source": "MMMU_DEV_VAL",
+   "image": "images/MMMU_DEV_VAL/2784_1.jpg",
+   "question": "Using the oxygen affinity curve in <image 1>, determine the amount of oxygen that would be delivered to cells at PO2 = 20 mmHg if the PO2 of the lungs were 60 mmHg. Assume maximum HbO2 to be the level of oxygen delivery if all available oxygen in the RBC's was transferred to cells.\nA. 17% of the maximum HbO2 would be delivered.\nB. 22% of the maximum HbO2 would be delivered.\nC. 65% of the maximum HbO2 would be delivered.\nD. 70% of the maximum HbO2 would be delivered.\nE. 82% of the maximum HbO2 would be delivered.",
+   "question_raw": "Using the oxygen affinity curve in <image 1>, determine the amount of oxygen that would be delivered to cells at PO2 = 20 mmHg if the PO2 of the lungs were 60 mmHg. Assume maximum HbO2 to be the level of oxygen delivery if all available oxygen in the RBC's was transferred to cells.\nA. 17% of the maximum HbO2 would be delivered.\nB. 22% of the maximum HbO2 would be delivered.\nC. 65% of the maximum HbO2 would be delivered.\nD. 70% of the maximum HbO2 would be delivered.\nE. 82% of the maximum HbO2 would be delivered.",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_02555",
+   "line_index": 2555,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/469.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "7"
+  },
+  {
+   "qid": "vpb_02568",
+   "line_index": 2568,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/3269.png",
+   "question": "An object is located a distance from a thin converging lens of focal length f as shown in the diagram below. The distance of the image v from the lens will be ____. choice: (A) f<v<2f (B) v=2f (C) v>2f (D) 0 (No image)",
+   "question_raw": "An object is located a distance from a thin converging lens of focal length f as shown in the diagram below. The distance of the image v from the lens will be ____.  choice: (A) f<v<2f (B) v=2f (C) v>2f (D) 0 (No image)",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_02583",
+   "line_index": 2583,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/65.png",
+   "question": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Edmund cut a ribbon as shown in the picture. How many pieces of the ribbon did he finish with?",
+   "question_raw": "Hint: Please answer the question and provide the final answer at the end.\nQuestion: Edmund cut a ribbon as shown in the picture. How many pieces of the ribbon did he finish with?",
+   "answer": "12"
+  },
+  {
+   "qid": "vpb_02586",
+   "line_index": 2586,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/19.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Ingrid has 4 red, 3 blue, 2 green and 1 yellow cube. She uses them to build the following object:\n\nCubes with the same colour don't touch each other. Which colour is the cube with the question mark?\nChoices:\n(A) red\n(B) blue\n(C) green\n(D) Yellow\n(E) This cannot be worked out for certain.",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Ingrid has 4 red, 3 blue, 2 green and 1 yellow cube. She uses them to build the following object:\n<image1>\nCubes with the same colour don't touch each other. Which colour is the cube with the question mark?\nChoices:\n(A) red\n(B) blue\n(C) green\n(D) Yellow\n(E) This cannot be worked out for certain.",
+   "answer": "A"
+  },
+  {
+   "qid": "vpb_02608",
+   "line_index": 2608,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/2597.png",
+   "question": "Given triangle \u25b3ABC with internal angle bisectors OB and OC intersecting at point O, if \u2220A = 108\u00b0, find the measure of \u2220BOC.",
+   "question_raw": "Given triangle \u25b3ABC with internal angle bisectors OB and OC intersecting at point O, if \u2220A = 108\u00b0, find the measure of \u2220BOC.",
+   "answer": "144.0"
+  },
+  {
+   "qid": "vpb_02665",
+   "line_index": 2665,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/3445.png",
+   "question": "The box plot below represents the salaries of employees in different departments. Which department has the highest median salary? Choices: (A) HR (B) IT (C) Finance (D) Marketing",
+   "question_raw": "The box plot below represents the salaries of employees in different departments. Which department has the highest median salary? Choices: (A) HR (B) IT (C) Finance (D) Marketing",
+   "answer": "B"
+  },
+  {
+   "qid": "vpb_02705",
+   "line_index": 2705,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/592.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "$x=0$"
+  },
+  {
+   "qid": "vpb_02712",
+   "line_index": 2712,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/715.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "8128.50 \\text { units }^2"
+  },
+  {
+   "qid": "vpb_02751",
+   "line_index": 2751,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/502.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the final value, e.g., 1, 2.5, 300.",
+   "answer": "f(x)=|x-3|"
+  },
+  {
+   "qid": "vpb_02753",
+   "line_index": 2753,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/1494.png",
+   "question": "x, y, and z are the solutions of the above equations. What is x*y*z?",
+   "question_raw": "x, y, and z are the solutions of the above equations. What is x*y*z?",
+   "answer": "490"
+  },
+  {
+   "qid": "vpb_02782",
+   "line_index": 2782,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/51.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Julia has 5 pieces of plastic and has stacked these pieces on a table, as shown beside. What was the second piece she put on the table?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Julia has 5 pieces of plastic and has stacked these pieces on a table, as shown beside. What was the second piece she put on the table?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_02790",
+   "line_index": 2790,
+   "data_source": "MathVerse_MINI_Vision_Only",
+   "image": "images/MathVerse_MINI_Vision_Only/236.png",
+   "question": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "question_raw": "According to the question shown in the image, please directly answer the question and provide the correct option letter, e.g., A, B, C, D.",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_02800",
+   "line_index": 2800,
+   "data_source": "MMMU_DEV_VAL",
+   "image": "images/MMMU_DEV_VAL/9106_1.jpg",
+   "question": "Choose the correct key of each of the melody. <image 1>\nA. B major\nB. E major\nC. A minor\nD. E minor",
+   "question_raw": "Choose the correct key of each of the melody. <image 1>\nA. B major\nB. E major\nC. A minor\nD. E minor",
+   "answer": "D"
+  },
+  {
+   "qid": "vpb_02822",
+   "line_index": 2822,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/206.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Johann stacks $1 \\times 1$ cubes on the squares of a $4 \\times 4$ grid. The diagram on the right shows how many cubes were piled on top of each other on each square of the grid. What will Johann see if he looks from behind (hinten) at the tower?\nChoices:\n(A) (A)\n(B) (B)\n(C) (C)\n(D) (D)\n(E) (E)",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Johann stacks $1 \\times 1$ cubes on the squares of a $4 \\times 4$ grid. The diagram on the right shows how many cubes were piled on top of each other on each square of the grid. What will Johann see if he looks from behind (hinten) at the tower?\nChoices:\n(A) (A)\n(B) (B)\n(C) (C)\n(D) (D)\n(E) (E)",
+   "answer": "C"
+  },
+  {
+   "qid": "vpb_02832",
+   "line_index": 2832,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/611.png",
+   "question": "The image shows the derivative of f(x). Where is the local max of f(x) at?",
+   "question_raw": "The image shows the derivative of f(x). Where is the local max of f(x) at?",
+   "answer": "1"
+  },
+  {
+   "qid": "vpb_02846",
+   "line_index": 2846,
+   "data_source": "DynaMath",
+   "image": "images/DynaMath/3684.png",
+   "question": "In the diagram, triangle ABC is right-angled at C. Also, points M, N and P are the midpoints of sides BC, AC and AB, respectively. If the area of triangle APN is 4, then what is the area of triangle ABC?",
+   "question_raw": "In the diagram, triangle ABC is right-angled at C. Also, points M, N and P are the midpoints of sides BC, AC and AB, respectively. If the area of triangle APN is 4, then what is the area of triangle ABC?",
+   "answer": "16"
+  },
+  {
+   "qid": "vpb_02847",
+   "line_index": 2847,
+   "data_source": "MathVision_MINI",
+   "image": "images/MathVision_MINI/135.png",
+   "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Three triangles are connected to each other as shown. In which of the following pictures are the three triangles connected in the same way?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "question_raw": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Three triangles are connected to each other as shown. In which of the following pictures are the three triangles connected in the same way?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D\n(E) E",
+   "answer": "D"
+  },
+  {
+   "qid": "vpb_02861",
+   "line_index": 2861,
+   "data_source": "WeMath",
+   "image": "images/WeMath/1243.png",
+   "question": "As shown in the diagram, there is a circle inside a square. The circumference of this circle is ( ) cm.(\u03c0 = 3.14)\nA. 31.4\nB. 3.14\nC. 62.8\nD. 40\nE. No correct answer",
+   "question_raw": "As shown in the diagram, there is a circle inside a square. The circumference of this circle is ( ) cm.(\u03c0 = 3.14)\nA. 31.4\nB. 3.14\nC. 62.8\nD. 40\nE. No correct answer",
+   "answer": "A"
+  }
+ ],
+ "question_set_sha256": "480aa48a245542b2993d4227dacab30a1e87ea4fff2b5d4c410700d9160ceaa3"
+}

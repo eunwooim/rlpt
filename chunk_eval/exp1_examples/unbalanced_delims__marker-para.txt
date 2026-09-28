@@ -1,0 +1,150 @@
+--- example 1 (unbalanced_delims, marker/para) ---
+A) The first diagram (labeled "A") shows a vertical line with paired branches extending horizontally on both sides. The branches get shorter towards the top.
+
+--- example 2 (unbalanced_delims, marker/para) ---
+The code creates a simple function that checks if the right clicked string matches the regular expression ^[0-9a-zA-Z]{0,20}$ and then creates the context menu link with the url tzkt.io.
+
+--- example 3 (unbalanced_delims, marker/para) ---
+Therefore, the measure of \( EC \) is approximated to:
+\[
+25 \cdot \frac{16}{25} = 
+15/1
+Final answer: 9cm
+
+--- example 4 (unbalanced_delims, marker/para) ---
+n = int(input())
+a = list(map(int, input().split()))
+q = int(input())
+for _ in range(q):
+    p, k = map(int, input().split())
+    s = sum(a)
+    operations = 0
+    while p < s:
+        p += a[p-1]*p + k
+        operations += 1
+    print(operations)
+```
+
+--- example 5 (unbalanced_delims, marker/para) ---
+2016: $2.56 billion
+2017: $3.35 billion
+2018: $3.77 billion
+2019: $4.44 billion
+2020: $5.43 billion
+
+--- example 6 (unbalanced_delims, marker/para) ---
+```python
+def DFS(graph, start, end, visited=None):
+    if visited is None:
+        visited = set()
+
+--- example 7 (unbalanced_delims, marker/para) ---
+The image depicts a swan made from tangram shapes.
+The gold-colored tangram piece represents the head, the charcoal-colored tangram piece represents the body, and the caramel-colored tangram piece represents the neck.
+Therefore, the correct answer is d) Swan.
+
+--- example 8 (unbalanced_delims, marker/para) ---
+Now, let's use the sum of angles relationship \(m \angle 2 + m \angle 4 = 180^\circ\):
+\[ m \angle 2 + (140 - 3(30)) = 180 \]
+\[ m \angle 2 + 140 - 90 = 180 \]
+\[ m \angle 2 + 50 = 180 \]
+\[ m \angle
+
+--- example 9 (unbalanced_delims, marker/para) ---
+\[
+\therefore \boxed{\text{A}}
+]
+
+--- example 10 (unbalanced_delims, marker/para) ---
+Include upper and lower case letters, numbers, and special characters such as! "@ # $ % ^ & * ( ) _ + - = { } [ ] : ; ',.? /
+
+--- example 11 (unbalanced_delims, marker/para) ---
+But since we are considering the correct portion of isosceles triangles intersection:
+\[ \text{The correct answer: C
+
+--- example 12 (unbalanced_delims, marker/para) ---
+So, the revenue is 125 dollars if the price is $1.
+
+--- example 13 (unbalanced_delims, marker/para) ---
+The sport in the picture is baseball. As of my last update, one of the highest-paid athletes in baseball, and indeed in sports overall, has been Mike Trout. Trout, an outfielder for the Los Angeles Angels, signed a record-breaking contract in 2019 worth $426.5 million over 12 years. This contract made him not only the highest-paid baseball player of that time but also the highest-paid player in any U.S. team sport. His salary surpasses that of many athletes in other sports such as football, basketball, and soccer, where superstars such as Cristiano Ronaldo, Lionel Messi, LeBron James, and Derek Jeter also earn well.
+
+--- example 14 (unbalanced_delims, marker/para) ---
+\[ f(x) = 12.40 + 4 = 16
+
+--- example 15 (unbalanced_delims, marker/para) ---
+In low-income countries, mental health spending amounts to $0.02 per person per year.
+
+--- example 16 (unbalanced_delims, marker/para) ---
+"$160 BILLION
+Annual cost of traffic delays and congestion, in wasted time and fuel.
+49% Percentage of vessels on inland waterways experiencing daily delays."
+
+--- example 17 (unbalanced_delims, marker/para) ---
+This line of text is in the same font and style as the main text but is significantly smaller, emphasizing the importance of the main message. The text "BE HIS" is placed on the line above the smaller text "HIS MEANS EVERYTHING.")
+
+--- example 18 (unbalanced_delims, marker/para) ---
+class MyClass:
+    @staticmethod
+    def my_static_method(arg1, arg2):
+        #...code here...
+```
+The main differences are that class methods can access and modify the class state and can be overridden by subclasses, while static methods can't do any of these.
+
+--- example 19 (unbalanced_delims, marker/para) ---
+Under the constraint \( c \in (0, \pi] \), let's use a known value: \( c = 0 \) for simplicity:
+\[ f(x) = 2 \cos\left(0 - \frac{\pi}{3}\right) \]
+\[ f(x) = 2 \cos\left(-\frac{\pi}{3}\right) \]
+Since the cosine function is even:
+\[ 2 \cos\left(-\frac{\pi}{3}\right) = 2 \cos\left(\frac{\pi}{3}\right) \]
+\[ \cos\left(\frac{\pi}{3}\right) = \frac{1}{2} \]
+Thus, the function value is:
+\[ f(x) = 2 \cdot \frac{1}{2} \]
+\[ f(x) = 1 \]
+
+--- example 20 (unbalanced_delims, marker/para) ---
+Using the midpoint property, \(OE + OE = 6 \Rightarrow 3\times2 + x = 6 \Rightarrow x = 3\]
+
+--- example 21 (unbalanced_delims, marker/para) ---
+2016: $2.56 billion
+2017: $3.35 billion
+2018: $3.77 billion
+2019: $4.44 billion
+2020: $5.43 billion
+
+--- example 22 (unbalanced_delims, marker/para) ---
+C) Down left: This image shows a grate or mesh, which has a patterned texture but lacks clear detail or subjects. This image would not be considered high in sharpness.
+
+--- example 23 (unbalanced_delims, marker/para) ---
+For the second example, you can use the same approach but also need to filter out any digits that aren't separated by letters, since the list contains some numbers that are not separated by letters.
+```vbnet
+numbers = []
+for el in A:
+  if el.isdigit():
+    numbers.append(int(el))
+
+--- example 24 (unbalanced_delims, marker/para) ---
+Example Input: "In the end, it's not the years in your life that count. It's the life in your years." - Abraham Lincoln
+Example Output: "இந்த உணர்வு, வாழ்த்துக்கு என்பது நாளும் தன்மையில், வானமாக பாலுங்கள் ஆண்டுக}}^{(அபிராக்மைலின்) அலசாகிகள் தலைவர் அவரே கண்டதி." - அபிராம்சநிலிந்து
+
+--- example 25 (unbalanced_delims, marker/para) ---
+A) Yes, women's bodies are inherently weaker than men's.
+B) No, women's bodies are not inherently weaker than men's.
+C) It depends on the specific sport or activity.
+D) Women's bodies are stronger than men's in certain areas, such as swimming.
+E) Women's bodies are weaker than men's in certain areas, such as distance running.
+
+--- example 26 (unbalanced_delims, marker/para) ---
+Now substitute \( y = 5 \ back into the equation \( 2z + 7 = y + 5 \):
+
+--- example 27 (unbalanced_delims, marker/para) ---
+\[ x = BD + CD = \frac{5}{2} + \frac{5}{2} = 5 \)
+
+--- example 28 (unbalanced_delims, marker/para) ---
+where \( a \) is positive, and \( c \) is in the range \( (-pi, pi] \).
+
+--- example 29 (unbalanced_delims, marker/para) ---
+\[ \text{Area} = \frac{1}{2} \times 48 \times \
+
+--- example 30 (unbalanced_delims, marker/para) ---
+Since we do not have the measure of \(\angle ACD\), but knowing that the interior angles of a quadrilateral sum to \(360^\circ:
+
